@@ -1,0 +1,22 @@
+{
+  "Result": {
+    "LASTUSED_NUM": 2,
+    "SYS_INS": "0",
+    "MEMO": "20160921申辦世界卡加入白金卡系統2016下半年新戶剩2次",
+    "YEARLY_SPENDING": "217738"
+  },
+  "Header": {
+    "SessionID": "69260303-544f-4ff6-956c-6b5c0fa99d3c",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "4fbeae7e-4fc1-4c11-8f3e-00e197132b67",
+    "UserID": "",
+    "RequestTime": "2017-05-16T18:10:08.2396294+08:00",
+    "TxCode": "",
+    "RemoteAddr": "10.11.33.39",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

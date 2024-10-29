@@ -1,0 +1,14 @@
+<div class="content nopad">
+	<table loadHtml={{Regulation}} class="form-table">
+	</table><br>
+	<div class="btn-block center">
+	  <label class="check-form">
+		<input type="checkbox" name="agree" (click)="ClickAgree($event)"><span class="check">我同意</span>
+	  </label>
+	</div><br><br>
+  </div>
+  <div class="content transparent">
+	<div class="btn-block center">
+	  <button class="btn" href="javascript:void(0)" [disabled]="disablNextButton" id="next" (click)="submit()">下一步</button>
+	</div>
+  </div>

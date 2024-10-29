@@ -1,0 +1,13 @@
+{
+    "Result": {
+		"STMTDATE": "20180805",
+		"STMTMM": "201808",
+		"ID": "A123456789",
+		"AuthData": "20180805"
+    },
+    "Header": {
+        "ApplicationName": "EWEB2"
+    },
+    "ResultCode": "00",
+    "ResultMessage": ""
+}

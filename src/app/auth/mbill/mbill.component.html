@@ -1,0 +1,45 @@
+<div class="wrapper">
+<header>
+	<div class="container">
+		<a href="index.html"><i class="fas fa-home"></i></a>
+		<a href="index.html" class="logo" target="_blank">
+		<img src="/mma8/card/images/sinopac-logo.svg" alt=""/><span>{{title}}</span>
+		</a>
+	</div>
+</header>
+<main>
+	<div class="container">
+	<h1>{{messages?.HeaderText}}</h1><!-- 登入行動帳單 -->
+	<div style="float: right; margin: 2px 0 10px 0;">
+		<select #lang [(ngModel)]="language"  (ngModelChange)="onSelectLanguage($event)">
+			<option value="" disabled>語言/Language</option>
+			<option *ngFor="let item of languageList" [value]="item.Code">{{item.Name}}</option>
+		</select>
+	</div>
+	<div class="clearfix"></div>
+	<form [formGroup]="form">
+			{{messages?.IDText}}
+			<input type="text" placeholder="" formControlName="ID" maxlength="4">
+			{{messages?.IsAutoDebitText}}<br />
+			<input type="radio" formControlName="IsAutoDebit" [value]="true"> {{messages?.Yes}}
+			<span class="col-6">
+				&nbsp;
+			</span>
+			<span class="col-6">
+				&nbsp;
+			</span>
+			<input type="radio" formControlName="IsAutoDebit" [value]="false" style="margin-bottom: 10px;"> {{messages?.No}}<br />
+
+			{{messages?.captchaText}}
+			<div>
+				<input type="text" class="artfld col-all-min col-6" formControlName="captcha" maxlength="6" numberOnly placeholder="{{messages?.captchaPlaceholder}}">
+				<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+			</div>
+			<div class="row" style="margin: 1em 0.1em">
+				<input type="button" value="{{messages?.submitText}}" (click)="submit()">
+			</div>
+	</form>
+	</div>
+</main>
+<footer>©版權所有 永豐銀行</footer>
+</div>

@@ -1,0 +1,97 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">頂級卡禮遇資格查詢</h2>
+				<div class="formblock" [formGroup]="form" (ngSubmit)="onSubmit()">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable vtop">
+						<tr>
+							<th>查詢卡別</th>
+							<td>
+								<div class="toggle-with-loading">
+									<div class="artfld select col-5">
+										<select formControlName="InquiryType" class="toggle-slide-select">
+											<!--<option value="" disabled>請選擇卡別</option>-->
+											<option *ngFor="let item of cardgroup" [value]="item.FeedBackType">{{item.CardName}}
+											</option>
+										</select>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr class="line">
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<th>查詢項目</th>
+							<td>
+								<div class="toggle-with-loading">
+									<div class="artfld select col-5">
+										<select formControlName="InquiryPeriod" class="toggle-slide-select">
+											<!--<option value="" disabled>請選擇項目</option>-->
+											<option *ngFor="let item of periodOptions" [value]="item.Flag">{{item.Name}}
+											</option>
+										</select>
+									</div>
+									<div style="margin-left:10px;">
+										<div class="btn-zone inline">
+											<a id="history-query" href="javascript:void(0)" class="nbtn"
+												(click)="onSubmit()">查詢</a>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div *ngIf="this.resultModel">
+					<h2 class="title">一般消費金額查詢結果</h2>
+					<h3 class="regular center">
+						<P class="red">{{inquiryName}}&emsp;{{periodOptions[0].Name}}</P><br>
+						<span class="red">查詢期間 : {{year}}年{{month}}月</span>
+					</h3>
+					<table *ngIf="resultModel?.TotalAmt" cellpadding="0" cellspacing="0" border="0"
+						class="ntable center sizes row5 fs15">
+						<tr>
+							<th>消費金額累計</th>
+						</tr>
+						<tr>
+							<td>{{resultModel.TotalAmt}}</td>
+						</tr>
+					</table>
+					<div class="red center cashB_font" *ngIf="!resultModel?.TotalAmt">查無消費資料</div>
+					<div *ngIf="resultModel?.Items">
+						<h3 class="title">消費紀錄</h3>
+						<div class="ftable full-size fixwidth">
+							<table cellspacing="0" cellpadding="0" border="0" align="center"
+								class="ntable fs15 casbBtable vmiddle vmiddle">
+								<tbody>
+									<tr>
+										<th width="20%">消費日</th>
+										<th width="60%">消費說明</th>
+										<th width="20%">消費金額</th>
+									</tr>
+									<tr *ngFor="let txitem of resultModel.Items">
+										<td>{{txitem.TXDATE}}</td>
+										<td>{{txitem.MEMO}}</td>
+										<td class="cashB_td">{{txitem.TX_AMT}}</td>
+									</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="MemoContent-s2" id="divMemo">
+					<h2 class="title">注意事項</h2>
+					<div class="listStyle">
+						<ol class="inner">
+							<li>本查詢結果僅供參考，一般消費係以消費日為準且已入帳完成者，正、附卡消費合計，消費金額累積可能因時間差、退貨等負項交易影響而有變動，故請依本行系統結算為準，各優惠活動詳細注意事項請參閱本行活動網頁公告。
+							</li>
+						</ol>
+					</div>
+				</div>
+			</section>
+		</div>
+
+
+

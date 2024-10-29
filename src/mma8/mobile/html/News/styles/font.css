@@ -1,0 +1,19 @@
+@font-face {
+    font-family: "CustomFont";
+    src: local("Heiti TC"), local("微軟正黑體");
+}
+@font-face {
+    font-family: "CustomFont";
+    src: local("Helvetica"), local("Arial");
+    unicode-range: U+0000-024F;
+}
+@font-face {
+    font-family: "CustomFont";
+    src: local("LiHei Pro"), local("微軟正黑體");
+    unicode-range: U+3100-312F;
+}
+@font-face {
+    font-family: "CustomFont";
+    src: local("Hiragino Kaku Gothic Pro"), local("Meiryo");
+    unicode-range: U+3040-30FF;
+}

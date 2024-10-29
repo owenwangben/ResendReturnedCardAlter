@@ -1,0 +1,56 @@
+<div class="formblock">
+	<table class="new-datatable center" width="100%">
+		<tbody>
+			<tr>
+				<th class="text-right mobile-col-3">
+					<span>信用卡卡號</span>
+				</th>
+				<td class="text-left">
+					{{cardinfo?.CardNo}}
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right mobile-col-3">卡片名稱
+				</th>
+				<td>
+					{{cardinfo?.CardName}}
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right mobile-col-3">國際組織/卡別
+				</th>
+				<td>
+					{{cardinfo?.CardTypeName}}
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right mobile-col-3">您的總信用額度
+				</th>
+				<td>
+					{{cardinfo?.PermanentCreditLimit | number}}
+				</td>
+			</tr>
+			<tr>
+				<th class="text-right mobile-col-3">{{isComplete ? '虛擬卡調整後額度' : '虛擬卡目前額度' }}
+				</th>
+				<td>
+					{{isComplete ? (newLine | number) : (cardinfo?.CreditLimit | number)}}
+				</td>
+			</tr>
+			<tr *ngIf="!isComplete">
+				<th class="text-right mobile-col-3">請輸入您要調整後額度
+				</th>
+				<td>
+					{{data?.NewLine | number}}
+				</td>
+			</tr>
+			<tr *ngIf="!isComplete">
+				<th class="text-right mobile-col-3">虛擬卡可用餘額(可刷卡金額)
+				</th>
+				<td>
+					{{cardinfo?.CreditAvailable | number}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

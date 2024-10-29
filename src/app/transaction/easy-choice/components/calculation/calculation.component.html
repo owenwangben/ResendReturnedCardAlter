@@ -1,0 +1,63 @@
+﻿<form (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<div class="rowElem">
+			<p>適用條件:「預借現金分期(易通財)」可貸最高金額為<span class="red">臺幣{{easyChoiceDataResultModel?.CrMaxLimit | number}}</span>元</p>
+		</div>
+		<div class="rowElem">
+			<p>適用之各期數手續費及年利率如下表:</p>
+			<table class="ntable table-striped" >
+				<thead>
+					<tr>
+						<th class="mobile-col-3">期數</th>
+						<th class="mobile-col-4">手續費</th>
+						<th class="mobile-col-5">各期數年利率</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let item of easyChoiceDataResultModel?.Items">
+						<td>{{item.RateCycle}}</td>
+						<td>{{item.Fee}}</td>
+						<td>{{item.FeeRate}}%</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div class="rowElem">
+			<p>預借現金分期(易通財)試算</p>
+		</div>
+		<table class="ntable cols">
+			<tr>
+				<th class="mobile-col-3">申貸本金</th>
+				<td class="text-left mobile-col-9">
+					<input type="text" class="artfld col-2" name="LoanAmt" numberOnly maxlength=7 [(ngModel)]="calCycleFeeECModel.LoanAmt">元
+					<span class="spanbox mobile-span red">※最低申貸本金為5,000元(以仟元為單位)</span>
+				</td>
+			</tr>
+			<tr>
+				<th>選擇期數</th>
+				<td class="text-left">
+					<ng-container *ngFor="let item of easyChoiceDataResultModel?.Items;let idx=index">
+						<input type="radio" class="artfld circle"
+							name="period" [id]="'period-' + idx" [value]="item.RateCycle"
+							(click)="setCalCycleFee(item.RateCycle)"/>
+						<label [for]="'period-' + idx">
+							<span><span class="getCheck"></span></span>
+							{{item.RateCycle}}期
+						</label>
+					</ng-container>
+				</td>
+			</tr>
+			<tr>
+				<th>年利率</th>
+				<td class="text-left">
+					<span class="red" *ngIf="calCycleFeeECModel?.AnnRate">{{calCycleFeeECModel?.AnnRate}}%</span>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<!-- <a class="nbtn" href="/Shared/HomePageTwd.aspx?CH=card&ID=2">取消</a> -->
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">我要試算</button>
+	</div>
+</form>

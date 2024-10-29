@@ -1,0 +1,47 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "CardNo": "5588430000004406",
+        "Name": "美元雙幣卡",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "840",
+        "ProductCode": "211",
+        "ExpDate": "0922"
+      },
+      {
+        "CardNo": "5241150300146306",
+        "Name": "Me Card",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "025",
+        "ProductCode": "228",
+        "ExpDate": "0423"
+      },
+      {
+        "CardNo": "5241150300146314",
+        "Name": "Me Card",
+        "CardTypeCode": "NP",
+        "CardTypeDesc": "附卡",
+        "CardFace": "025",
+        "ProductCode": "228",
+        "ExpDate": "0423"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

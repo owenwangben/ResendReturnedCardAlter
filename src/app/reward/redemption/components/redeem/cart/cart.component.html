@@ -1,0 +1,79 @@
+<form [formGroup]="form">
+	<section class="exchange_list">
+		<app-reward-redemption-secondmenu [showCartMenu]="false"></app-reward-redemption-secondmenu>
+		<h2 class="title">兌換商品清單</h2>
+		<table class="exchagetable">
+			<tr class="tr hidden-min">
+				<th class="th">兌換期限</th>
+				<th class="th">商品內容</th>
+				<th class="th hidden-min zip3">
+					<div class="fth ppoint">兌換點數</div>
+					<div class="fth pqty">數量</div>
+					<div class="fth pdelete">刪除</div>
+				</th>
+			</tr>
+			<tr *ngFor="let item of Items; let idx = index" class="tr exchangebox">
+				<td class="td pdate" data-th="兌換期限">{{item.EndTime | date:'y/MM/dd'}}</td>
+				<td class="td ptitle">{{item.Description}}</td>
+				<td class="td zip3">
+					<div class="ppoint">
+						<span class="red">{{item.TotalPoints | number}}</span>
+					</div>
+					<div class="pqty">
+						<div class="qty-zone">
+							<input type="button" value="–" class="qtyminus" field="quantity" (click)="decrease(idx)">
+							<input type="text" name="quantity" [value]="item.Count" class="qty">
+							<input type="button" value="+" class="qtyplus" field="quantity" (click)="increase(idx)">
+						</div>
+					</div>
+					<div class="pdelete">
+						<a href="javascript:void(0)">
+							<img src="/mma8/card/images/delete.png" alt="刪除" (click)="remove(item.ID)" />
+						</a>
+					</div>
+				</td>
+			</tr>
+		</table>
+
+		<div class="sum_point">本次兌換點數合計：
+			<span class="red">{{totalPoints | number}}</span>&nbsp;點
+		</div>
+		<div *ngIf="sso_custId">
+			<hr class="gray" />
+			<table class="new-datatable vtop">
+				<tr>
+					<th>
+						<p>寄送地址</p>
+					</th>
+					<td class="check-disabled-group">
+						<ul class="ctrl-block col-all-min col-3 reverse-margin">
+							<li>
+								<input type="checkbox" id="a31" name="a3" formControlName="IsResidenceAddressIsHomeAddress" class="artfld surround check-disabled" data-agree="1">
+								<label for="a31">同現居/通訊地址</label>
+							</li>
+						</ul>
+						<div class="inline-select">
+							<div class="artfld select col-2 col-all-min">
+								<select formControlName="Address1" [disableControl]="form.value.IsResidenceAddressIsHomeAddress">
+									<option [ngValue]="null" disabled>請選擇</option>
+									<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+								</select>
+							</div>
+							<div class="artfld select col-2 col-all-min">
+								<select formControlName="Address2" [disableControl]="form.value.IsResidenceAddressIsHomeAddress">
+									<option [ngValue]="undefined" disabled>請選擇</option>
+									<option *ngFor="let area of getAreas(form.value.Address1)" [ngValue]="area">{{area}}</option>
+								</select>
+							</div>
+						</div>
+						<input type="text" class="artfld col-all-min col-7" formControlName="Address3" [disableControl]="form.value.IsResidenceAddressIsHomeAddress">
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="btn-zone">
+			<a routerLink="/Reward/Redemption/Products/0" [queryParams]="{isPreview: isPreview}" class="nbtn">繼續挑選</a>
+			<a href="javascript:void(0)" class="nbtn" (click)="submit()">開始兌換</a>
+		</div>
+	</section>
+</form>

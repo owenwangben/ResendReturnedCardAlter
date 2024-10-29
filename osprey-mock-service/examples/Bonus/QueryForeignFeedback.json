@@ -1,0 +1,370 @@
+{
+    "Result": {
+        "TotalFeedbackAmt": "4,000",
+        "TotalFeedbackAmtStyle": "[RED]",
+        "Summary": [
+            {
+                "Code": "479479F ",
+                "Name": "財富無限卡",
+                "TotalAmt": "37,256",
+                "TotalFeedbackAmt": "1,118",
+                "TotalFeedbackAmtStyle": ""
+            },
+            {
+                "Code": "479479FY",
+                "Name": "財富無限卡 - 加碼國家",
+                "TotalAmt": "978,632",
+                "TotalFeedbackAmt": "3,000",
+                "TotalFeedbackAmtStyle": "[RED]"
+            }
+        ],
+        "DetailA": [
+            {
+                "Code": "479479FY",
+                "Name": "財富無限卡 - 加碼國家",
+                "Items": [
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "CHINA ROSE               MILPITAS     US",
+                        "TX_AMT": "1,725"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "IN-N-OUT BURGER #240     SAN JOSE     US",
+                        "TX_AMT": "205"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "HARRY CHAN OD            FREMONT      US",
+                        "TX_AMT": "2,476"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174142EL SEGUNDO   US",
+                        "TX_AMT": "7,573"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "CHINA ROSE               MILPITAS     US",
+                        "TX_AMT": "3,349"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "DTV*DIRECTV SERVICE      800-347-3288 US",
+                        "TX_AMT": "2,050"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174134EL SEGUNDO   US",
+                        "TX_AMT": "34,986"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174135EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174136EL SEGUNDO   US",
+                        "TX_AMT": "34,986"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174137EL SEGUNDO   US",
+                        "TX_AMT": "27,299"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174141EL SEGUNDO   US",
+                        "TX_AMT": "34,986"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "EVA AIR     6957900174145EL SEGUNDO   US",
+                        "TX_AMT": "34,986"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "TAIWAN CAFE              MILPITAS     US",
+                        "TX_AMT": "1,456"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "76 - UNITED PACIFIC 5734 FREMONT      US",
+                        "TX_AMT": "532"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "COM TAM THIEN HUONG IV   MILPITAS     US",
+                        "TX_AMT": "993"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "SHANGHAI FAMILY RESTAURANCUPERTINO    US",
+                        "TX_AMT": "2,237"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "TARGET        00026153   FREMONT      US",
+                        "TX_AMT": "222"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "KUNG FU KITCHEN INC      FREMONT      US",
+                        "TX_AMT": "2,470"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "ERIK'S DELICAFE ML       MILPITAS     US",
+                        "TX_AMT": "805"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "MAYFLOWER RESTAURANT #1  MILPITAS     US",
+                        "TX_AMT": "2,239"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "TAI KEE WONTON           SAN  JOSE    US",
+                        "TX_AMT": "1,251"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "KAHOO RAMEN              SAN JOSE     US",
+                        "TX_AMT": "780"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "STARS CLEANER.INC.       FREMONT      US",
+                        "TX_AMT": "405"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "MCDONALD'S F1462         SAN RAFAEL   US",
+                        "TX_AMT": "695"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "CVS/PHARMACY #09234      FREMONT      US",
+                        "TX_AMT": "275"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "SHANGHAI FLAVOR          FREMONT      US",
+                        "TX_AMT": "1,437"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "COM TAM THIEN HUONG IV   MILPITAS     US",
+                        "TX_AMT": "1,023"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "RINGER HUT HAWAII        SAN JOSE     US",
+                        "TX_AMT": "1,119"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "MILPITAS SGD TOFU HOUSE  MILPITAS     US",
+                        "TX_AMT": "1,335"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "IN-N-OUT BURGER #240     SAN JOSE     US",
+                        "TX_AMT": "540"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "PIATTI RISTORANTE        SANTA CLARA  US",
+                        "TX_AMT": "2,221"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "DIN TAI FUNG SANTA       SANTA CLARA  US",
+                        "TX_AMT": "7,485"
+                    },
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "NORDSTROM #0425          SANTA CLARA  US",
+                        "TX_AMT": "119"
+                    }
+                ]
+            },
+            {
+                "Code": "479479F ",
+                "Name": "財富無限卡",
+                "Items": [
+                    {
+                        "TXDATE": "20200402",
+                        "MEMO": "CHINA AIR   2977900174106LONDON       GB",
+                        "TX_AMT": "34,359"
+                    },
+                    {
+                        "TXDATE": "20200422",
+                        "MEMO": "uniqlo",
+                        "TX_AMT": "256"
+                    },
+                    {
+                        "TXDATE": "20200504",
+                        "MEMO": "YAHOO",
+                        "TX_AMT": "937"
+                    },
+                    {
+                        "TXDATE": "20200510",
+                        "MEMO": "pc",
+                        "TX_AMT": "1,704"
+                    }
+                ]
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

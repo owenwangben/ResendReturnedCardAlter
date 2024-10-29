@@ -1,0 +1,46 @@
+<div class="content steps-outer">
+	<section class="trans-content">
+	  <ul class="steps-block">
+		<li><span> <i>選擇卡片</i></span></li>
+		<li><span>  <i>再次確認</i></span></li>
+		<li class="active"><span> <i>申請結果</i></span></li>
+	  </ul>
+	</section>
+  </div>
+  <div class="content nopad">
+	<div class="result-block">
+	<div class="result-msg"><i class="icon {{success ? 'icon-success' : 'icon-error'}}"></i>
+		<p>{{success ? '掛失成功' : '掛失失敗'}}</p>
+	  </div>
+	  <p class="msg" *ngIf="msg">{{msg}}</p>
+	</div>
+	<table class="form-table">
+	  <caption> <span>掛失卡片資料</span></caption>
+	  <tbody>
+		<tr>
+		  <td>
+			<div class="card-lost-block">
+			  <p>申請日期：<span>{{model?.ApplyDate | date:"yyyy/MM/dd"}}</span></p>
+			  <p>{{model?.Name}} / {{model?.CardBrand}}</p>
+			  <ul class="card-list style2">
+				<li *ngFor="let item of model?.Cards">
+				<div class="card-num"><i class="icon {{item.IsSuccess ? 'icon-success-bg' : 'icon-error-bg'}}"></i>
+					<span>{{item.CardTypeCode != 'NP' ? '正卡' : '附卡'}}</span>
+					<span>{{item.CardNo | creditcard}}</span>
+					<span>{{item.CardHolderName}}</span></div>
+				</li>
+			  </ul>
+			  <div class="notice-block">
+			  <p class="red">{{notice}}</p>
+			  </div>
+			</div>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>
+  <div class="content transparent" *ngIf="canReApplyAnotherCard">
+	<div class="btn-block center">
+	<button class="btn" (click)="goStart()">{{success ? '再掛一張' : '返回掛失頁面'}}</button>
+	</div>
+  </div>

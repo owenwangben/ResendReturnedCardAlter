@@ -1,0 +1,54 @@
+<form [formGroup]="form">
+	<div class="formblock">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable">
+			<tbody>
+				<tr>
+					<th>{{IsVipActivity ? "專屬活動" : "登錄活動"}}</th>
+					<td>
+						<span class="red">{{activityName}}</span>
+					</td>
+				</tr>
+				<tr *ngIf="!IsVipActivity">
+					<th>已登錄人數</th>
+					<td>
+						<span class="red"><span>{{registeredCount | number}}</span> 名</span>
+					</td>
+				</tr>
+				<tr>
+					<th class="vtop">信用卡持卡人身分證字號</th>
+					<td>
+						<input type="text" class="artfld col-all-min" formControlName="id" placeholder="身分證字號" maxlength="10">
+						<br class="hidden-min">
+						<span class="note">(外籍人士請輸入居留證號，共10碼)</span>
+					</td>
+				</tr>
+				<tr>
+					<th>驗證碼</th>
+					<td class="flex-min">
+						<div>
+							<input type="text" class="artfld col-1-s1 col-all-min" formControlName="captcha" placeholder="驗證碼" maxlength="6">
+						</div>
+						<div class="captcha">
+							<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+						</div>
+						<div>
+							<a href="javascript:void(0)" class="reload-captcha" (click)="changeVcaptcha()">重新產生</a>
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<span *ngIf="IsVipActivity" class="note block-note red">* 此活動為限定貴賓專屬邀請制活動，僅限收到邀請函客戶方可參與。</span>
+						<span *ngIf="!IsVipActivity" class="note block-note">注意事項：<br>符合限量回饋名單以成功登錄時間先後排序，且同時符合本活動消費條件為準，依序回饋至額滿為止。僅完成登錄或僅達消費門檻均不符合獲贈資格，查詢時間與公告時間仍會有落差，以本行實際接受登錄之情形為準。</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">{{IsVipActivity ? "確定送出" : "立即登錄"}}</a>
+	</div>
+</form>

@@ -1,0 +1,62 @@
+﻿<span class="red fs15">
+	最新消費紀錄為21天內信用卡交易紀錄，實際金額請以信用卡帳單為準，本紀錄不得做為交易明細證明
+	<a href="javascript:void(0)">
+		<img src="/MMA8/card/images/ico-ques.png"
+			(mouseover)="showHint=true"
+			(mouseleave)="showHint=false"/>
+	</a>
+	<div *ngIf="showHint" loadHtml="/mma8/card/htmls/最新消費資料查詢注意事項.html"></div>
+</span>
+<table class="ntable" *ngIf="!resultModel?.IsCompanyUser">
+	<tr>
+		<th>卡別</th>
+		<th>卡片末四碼</th>
+		<th>手機信用卡</th>
+		<th>授權日期</th>
+		<th>授權時間</th>
+		<th>消費類別/商店名稱</th>
+		<th>授權金額(臺幣)</th>
+		<th>消費國別</th>
+		<th>授權結果</th>
+	</tr>
+	<tr *ngFor="let item of resultModel?.Items" >
+		<td>{{item.CardFlag | cardtype}}</td>
+		<td>{{item.CardNo}}</td>
+		<td>{{item.IsMobileCard | mobilecredit}}</td>
+		<td>{{item.AuthDate | date:'y/MM/dd'}}</td>
+		<td>{{item.AuthTime}}</td>
+		<td>{{item.Memo}}</td>
+		<td>{{item.AuthAmtDesc}}</td>
+		<td>{{item.CountryCode}}</td>
+		<td>{{item.AuthResult}}</td>
+	</tr>
+	<tr *ngIf="!resultModel?.Items?.length">
+		<td colspan="9">查無資料！</td>
+	</tr>
+</table>
+<table class="ntable" *ngIf="resultModel?.IsCompanyUser">
+	<tr>
+		<th>卡別</th>
+		<th>卡片末四碼</th>
+		<th>手機信用卡</th>
+		<th>授權日期</th>
+		<th>授權時間</th>
+		<th>消費類別/商店名稱</th>
+		<th>授權金額(臺幣)</th>
+		<th>消費國別</th>
+		<th>授權結果</th>
+	</tr>
+	<tr *ngIf="!resultModel?.Items?.length">
+		<td colspan="9">查無資料！</td>
+	</tr>
+	<tr *ngIf="resultModel?.Items?.length && resultModel?.IsCompanyUser">
+		<td colspan="9">
+			<span class="red fs15">最新消費紀錄請下載PDF</span>
+		</td>
+	</tr>
+</table>
+<div class="btn-zone">
+	<a class="nbtn" href="javascript:void(0)" (click)="downloadPDF()">下載PDF</a>
+	<a *ngIf="showRTE" class="nbtn focus" routerLink="/Transaction/RTE">申辦單筆分期</a>
+</div>
+

@@ -1,0 +1,14 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<app-wizard [(current)]="current" [steps]="steps"></app-wizard>
+				<div *ngIf="!isHouseFun && !isFromSms" loadHtml="/mma8/card/htmls/信用卡永久額度調整注意事項.html"></div>
+				<div *ngIf="isFromSms" loadHtml="/mma8/card/htmls/信用卡永久額度調整注意事項_簡訊免財力版.html"></div>
+				<div *ngIf="isHouseFun" loadHtml="/mma8/card/htmls/好房卡永久額度調整注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,65 @@
+<section class="exchange_list">
+	<app-reward-redemption-secondmenu [showCartMenu]="false"></app-reward-redemption-secondmenu>
+	<h2 class="title">兌換商品清單</h2>
+	<table class="exchagetable" width="95%">
+		<tr class="tr hidden-min">
+			<th class="th">兌換期限</th>
+			<th class="th">商品內容</th>
+			<th class="th hidden-min zip2">
+				<div class="fth ppoint">兌換點數</div>
+				<div class="fth pqty">數量</div>
+			</th>
+			<th class="fth pstatus">兌換結果</th>
+		</tr>
+		<tr *ngFor="let item of Items" class="tr exchangebox">
+			<td class="td pdate" data-th="兌換期限">{{item.Item.EndTime | date:"y/MM/dd"}}</td>
+			<td class="td ptitle">{{item.Item.Description}}</td>
+			<td class="td zip2">
+				<div class="ppoint">
+					<span class="red">{{item.Item.TotalPoints | number}}</span>
+				</div>
+				<div class="pqty">
+					<span>{{item.Item.Quantity}}</span>
+				</div>
+			</td>
+			<td class="td pstatus">
+				<span *ngIf="!item.IsExchangeSuccess" class="red">
+					<span class="tip hidden-min" [attr.data-tip]="item.ErrorMessage">兌換失敗</span>
+					<span class="hidden-max">兌換失敗</span>
+					<div class="memo hidden-max">{{item.ErrorMessage}}</div>
+				</span>
+				<span *ngIf="item.IsExchangeSuccess" class="green">兌換成功</span>
+			</td>
+			<!--大版要用滑鼠hover後出現提示字，小版為直接顯示-->
+		</tr>
+	</table>
+	<div class="sum_point">本次兌換點數合計：
+		<span class="red">{{TotalPoints}}</span>點
+		<!-- <div class="note red">注意事項本紅利商品兌換為快速兌換流程，您所選擇兌換的商品將直接寄送至您的帳單地址，恕不得更改。</div> -->
+		<ul class="disc">
+			<li>本紅利商品兌換為快速兌換流程，您所選擇兌換的商品將直接寄送至您的帳單地址，恕不得更改，亦無法郵寄至郵政信箱，若您帳單地址留存為郵政信箱，請來電永豐銀行客服專線修改寄送地址。</li>
+			<li class="red">若您兌換之商品類別為【Email】或【簡訊】之電子票券時，本行將會依您留存本行之Email帳號或手機號碼寄送商品。</li>
+			<li>【貼心提醒】若您未留存Email帳號或欲變更，您可致電客服或透過網路銀行(MMA金融交易網)帳號進行變更，以確保您的權益哦!</li>
+			<li>若您兌換【刷卡金】時，其視為現金回饋，本行將統一回饋至申請人兌換日次月的永豐銀行信用卡帳單折抵當期消費款，申請人不得要求開立支票或領取現金。</li>
+			<li>如果您對本次交易有任何疑義，請撥打卡片背面之服務電話洽詢，再次感謝您的支持。</li>
+		</ul>
+	</div>
+
+	<div class="btn-zone">
+		<a routerLink="/Reward/Redemption" class="nbtn">繼續兌換</a>
+		<!-- <a href="#" class="nbtn">精選商品兌換</a> -->
+		<a href="javascript:window.print()" class="nbtn hidden-min">列印</a>
+	</div>
+  <div *ngIf="IsApplyElectronicBill == 0" class="billSet">
+    <div class="billSet__text">
+      <img
+        class="hidden-min"
+        src="/mma8/card/images/Energysaving.svg"
+      />
+      <p>
+        立即申請電子/行動帳單，<br>隨時隨地輕鬆查看消費紀錄。
+      </p>
+    </div>
+    <button class="billSet__button" (click)="redirectToEStatementChange()">前往設定</button>
+  </div>
+</section>

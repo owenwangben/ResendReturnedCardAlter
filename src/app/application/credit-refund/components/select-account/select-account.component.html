@@ -1,0 +1,28 @@
+<div class="content">
+	<section class="trans-content">
+		<div class="prfy">
+		<p *ngIf="model.Balance > 30 || model.Accounts.length > 0">您的溢繳款餘額為<span class="red">NT${{model.Balance | number}}</span><span *ngIf="model.Accounts.length > 0">，您可使用本行帳戶進行退款</span><span *ngIf="model.Accounts.length <= 0">，若您指定匯入他行帳戶(限國內行庫)，<span class="red">則需自行負擔跨行匯款手續費30元，並自您申請領回之款項中扣除</span></span></p>
+		<p *ngIf="model.Balance <= 30 && model.Accounts.length <= 0">
+			您的溢繳餘額為<span class="red">NT${{model.Balance | number}}</span>，因領回溢繳款時需負擔手續費每筆NT$30，且您無本行帳戶可進行退款，請洽客服02-25287776，由專人為您服務
+		</p>
+		</div>
+	</section>
+</div>
+<div *ngIf="model.Balance > 30 || model.Accounts.length > 0" class="content full-content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+		<legend>請選擇退回帳戶類型</legend>
+		<div *ngIf="model.Accounts.length > 0" class="btn-zone full-btn-half">
+			<a class="nbtn focus" href="javascript:void(0)" (click)="submit(1)">本行台幣存款帳戶</a>
+		</div>
+		<div *ngIf="model.Accounts.length <= 0">
+			<div class="btn-zone full-btn-half">
+				<a class="nbtn focus" href="javascript:void(0)" (click)="submit(2)">其他銀行台幣存款帳戶</a>
+			</div>
+			<hr><br>
+			<p>※限臺灣銀行、中國信託、兆豐商銀、國泰世華、第一銀行、玉山銀行、台北富邦、華南銀行、彰化銀行、台新銀行、上海銀行、元大銀行、凱基銀行、臺灣新光銀行、渣打商銀、遠東銀行、聯邦銀行、匯豐銀行、陽信銀行、星展銀行、安泰銀行、王道銀行、高雄銀行、板信銀行、京城銀行、華泰銀行、瑞興銀行、台中二信、花蓮二信、彰化六信、南農中心。</p><br>
+			<p>註1:無法使用數位帳戶(如:Richart、O-Bank)進行驗證。<br>註2:他行留存行動電話號碼需與本行相同。</p><br><br>
+		</div>
+		</fieldset>
+	</section>
+</div>

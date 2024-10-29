@@ -1,0 +1,95 @@
+body {
+    font-family: CustomFont, sans-serif;
+    font-size: 18px;
+    line-height: 1.3em;
+    word-spacing: 0.125em;
+}
+body p{
+    line-height: 22px;
+}
+.board {
+    background: #e3e3e3;
+    padding: 14px 16px;
+    margin-top: -5px;
+    padding-top: 70px;
+    padding-right: 13px;
+    padding-bottom: 14px;
+    padding-left: 13px;
+}
+.wrapper header #global h1 {
+    width: 70%;
+    height: 48px;
+    line-height: 48px;
+    text-align: center;
+    float: left;
+    font-size: 1.125em;
+}
+.wrapper header #global .nav a {
+    width: 32px;
+    height: 48px;
+    display: block;
+    text-indent: -9999em;
+    overflow: hidden;
+}
+ul.tab li a {
+    display: block;
+    font-weight: bold;
+    background: #fff;
+    height: 40px;
+    line-height: 40px;
+}
+.txtInput input[type="text"] {
+    border: 1px solid #f3f3f3;
+    color: #6e6e6e;
+    font-size: 0.95em;
+    background: #f3f3f3;
+    width: 100%;
+    height: 48px;
+    display: block;
+    border: none;
+    padding: 0 10px;
+}
+.txtInput input[type="password"] {
+    border: 1px solid #f3f3f3;
+    color: #6e6e6e;
+    font-size: 0.95em;
+    background: #f3f3f3;
+    width: 100%;
+    height: 48px;
+    display: block;
+    border: none;
+    padding: 0 10px;
+}
+.txtInput {
+    height: 48px;
+    line-height: 48px;
+    padding: 0;
+    width: 100%;
+}
+ol li ul li .txtInput .close {
+    position: absolute;
+    right: 6px;
+    top: 14px;
+}
+.button {
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    color: #fff;
+    border: 1px solid #969696;
+    height: 50px;
+    line-height: 50px;
+    /* letter-spacing: 0.15em; */
+    text-align: center;
+    font-family: CustomFont, sans-serif;
+    cursor: pointer;
+    font-size: 1em;
+    background: #9f9f9f;
+    background: -moz-linear-gradient(top, #9f9f9f 0%, #959595 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #9f9f9f), color-stop(100%, #959595));
+    background: -webkit-linear-gradient(top, #9f9f9f 0%, #959595 100%);
+    background: -o-linear-gradient(top, #9f9f9f 0%, #959595 100%);
+    background: -ms-linear-gradient(top, #9f9f9f 0%, #959595 100%);
+    background: linear-gradient(to bottom, #9f9f9f 0%, #959595 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#9f9f9f', endColorstr='#959595', GradientType=0);
+}

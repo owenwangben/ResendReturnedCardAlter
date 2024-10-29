@@ -1,0 +1,30 @@
+{
+  "Result": {
+    "ID": "M151147491",
+    "CookieValue": "",
+    "Token": "",
+    "SsoUserData": {
+      "Header": "SUCCESS",
+      "Message": null,
+      "CPRTCD": "1",
+      "USERID": "1000309329",
+      "CUSTID": "M151147491",
+      "T24SMS": null,
+      "EMAIL": ""
+    }
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

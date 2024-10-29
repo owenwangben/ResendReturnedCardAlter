@@ -1,0 +1,106 @@
+﻿<div class="btn-zone" style="text-align:left">
+	<ul class="ntabs">
+		<li [class.active]="requestModel.IsExcludePaidUp" (click)="getData(true)"><a href="javascript:void(0)">扣除已繳款金額</a></li>
+		<li [class.active]="!requestModel.IsExcludePaidUp" (click)="getData(false)"><a href="javascript:void(0)">全部顯示</a></li>
+	</ul>
+</div>
+<div *ngIf="!resultModel?.IsCompanyUser">
+	<table class="new-datatable" width="100%">
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">幣別</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select [(ngModel)]="currency" (ngModelChange)="currencyChange($event)" mweb-select="請選擇幣別">
+						<option *ngFor="let item of currencyList" [value]="item">{{item}}{{getCurrencyCode(item)}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div style="padding:5px">目前已請款消費筆數:{{subtotal?.Count}}</div>
+<div style="padding:5px">累計已請款金額：${{subtotal?.SubTotalAmt}}</div>
+<div *ngIf="!detail">
+	<table class="ntable table-striped" width="100%">
+		<thead>
+			<tr style="height:8px"></tr>
+			<tr>
+				<th class="mobile-col-3">交易日期<br>入帳日期</th>
+				<th class="mobile-col-4">消費說明</th>
+				<th class="mobile-col-5">金額<br>卡片末四碼</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody *ngIf="!resultModel?.IsCompanyUser">
+			<tr *ngFor="let item of records" (click)="showDetail(item)">
+				<td>{{item.TXDATE}}<br>{{item.DEDATE}}</td>
+				<td>{{item.MEMO}}</td>
+				<td>{{item.AMT}}<br>{{item.CardLast4}}</td>
+				<td><i class="right-arrow"></i></td>
+			</tr>
+			<tr *ngIf="!records?.length">
+				<td colspan="4">查無資料！</td>
+			</tr>
+		</tbody>
+		<tbody *ngIf="resultModel?.IsCompanyUser">
+			<tr *ngIf="!records?.length">
+				<td colspan="4">查無資料！</td>
+			</tr>
+			<tr *ngIf="records?.length">
+				<td colspan="4">
+					<div class="red" style="font-size:13px">已請款消費明細請下載PDF</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="btn-zone" *ngIf="records?.length">
+		<a class="nbtn" href="api/Accounting/OutstandingDetailPDF?isExcludePaidUp={{requestModel.IsExcludePaidUp}}&PDFtype=pdf">下載PDF</a>
+	</div>
+</div>
+<div *ngIf="detail">
+	<table class="table-striped">
+		<tr>
+			<th class="mobile-col-6">交易日期</th>
+			<td>{{detail.TXDATE}}</td>
+		</tr>
+		<tr>
+			<th>入帳日期</th>
+			<td>{{detail.DEDATE}}</td>
+		</tr>
+		<tr>
+			<th>卡號末四碼</th>
+			<td>{{detail.CardLast4}}</td>
+		</tr>
+		<tr>
+			<th>消費說明</th>
+			<td>{{detail.MEMO}}</td>
+		</tr>
+		<tr>
+			<th>{{detail.CurrencyName}}金額</th>
+			<td>{{detail.AMT}}</td>
+		</tr>
+		<tr>
+			<th>幣別</th>
+			<td>{{detail.TXCUR}}</td>
+		</tr>
+		<tr>
+			<th>消費金額</th>
+			<td>{{detail.TXAMT}}</td>
+		</tr>
+	</table>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" style="width:28%" (click)="onPrev(detail)">上一筆</button>
+		<button type="button" class="nbtn" style="width:28%" (click)="onNext(detail)">下一筆</button>
+		<button type="button" class="nbtn" style="width:28%" (click)="showDetail(null)">返回</button>
+	</div>
+</div>
+<div class="rowElem">
+	<ul class="accordion2">
+		<li>
+			<a href="javascript:void(0)" class="atitle" style="font-size:14px"><h2>注意事項</h2></a>
+			<div class="acontent">
+				<div loadHtml="/mma8/card/htmls/已請款消費明細查詢注意事項.html"></div>
+			</div>
+		</li>
+	</ul>
+</div>

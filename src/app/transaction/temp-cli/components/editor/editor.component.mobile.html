@@ -1,0 +1,167 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form);">
+	<div class="formblock">
+		<table class="new-datatable" width="100%">
+			<tbody>
+				<tr>
+					<th class="mobile-col-5">原始信用額度</th>
+					<td>
+						{{ data.OriginalCredit | number }}
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>目前可用餘額</th>
+					<td>
+						{{ data.AvailableCredit | number }}
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>申請增加信用額度</th>
+					<td>
+						<input type="text"
+							class="artfld col-3 mobile-col-8"
+							[(ngModel)]="data.IncreaseCredit"
+							name="IncreaseCredit"
+							numberOnly
+							maxlength=6
+							required
+							oncopy="return false"
+							onpaste="return false"
+							oninput="this.value = this.value.replace(new RegExp('[^0-9]|^[0][0]*|^[0{n}]','g'),'')"
+							placeholder="以仟元為單位">元
+					</td>
+				</tr>
+				<tr>
+					<th>提高後可用餘額</th>
+					<td>{{ getTotalCredit() | number}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<hr>
+		<div>
+			<div class="rowElem">
+				<p class="red">申請卡片</p>
+			</div>
+			<table class="ntable">
+				<thead>
+					<tr>
+						<th class="mobile-col-2">選擇</th>
+						<th class="mobile-col-7">卡片名稱</th>
+						<th class="mobile-col-3">卡片末四碼</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let card of data.ApplyCards; let idx = index;">
+						<td>
+							<input type="checkbox" class="artfld" [(ngModel)]="card.IsChecked"
+								[name]="'checked-' + idx" [id]="'checked-' + idx"  (change)="onCheckChange(card)"/>
+							<label [for]="'checked-' + idx"><span><span class="getCheck"></span></span></label>
+						</td>
+						<td class="text-left">
+							<label [for]="'checked-' + idx">{{ card.Name + "(" + card.CardTypeDesc + ")" }}</label>
+						</td>
+						<td>
+							<label [for]="'checked-' + idx">{{ card.CardNo.substr(card.CardNo.length - 4) }}</label>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<hr>
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<th>申請起日</th>
+					<td>
+						<div>{{ data.ApplyPeriod.From | date:'y/MM/dd' }}</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>申請迄日</th>
+					<td>
+						<div>
+							<input type="text"
+								class="autofocus artfld mobile-col-12"
+								datepicker
+								[minDate]="minDate"
+								[maxDate]="data.EndDate"
+								[slashfmt]="true"
+								[dob]="false"
+								name="DatePeriodTo"
+								[(ngModel)]="data.ApplyPeriod.To"
+								required
+								placeholder="YYYY/MM/DD" />
+						</div>
+						<div class="red">臨調結束日最長為申請日後30天，若遇國定例假日則順延至下一工作日。臨調結束後於繳款入帳前可能會因超額無法刷卡，可致電客服由專人協助處理。</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>申請原因</th>
+					<td>
+						<div class="artfld select mobile-col-12">
+							<select name="Reason" [(ngModel)]="data.Reason" mweb-select="請選擇申請原因" required>
+								<option value="" disabled>請選擇申請原因</option>
+								<option *ngFor="let option of reasonOptions" [value]="option.key">{{ option.value }}</option>
+							</select>
+						</div>
+						<div style="margin-top:5px">
+							<input type="text" class="artfld mobile-col-12" name="ReasonDesc" [(ngModel)]="data.ReasonDesc"
+								placeholder="請簡述說明(必填欄位)" required/>
+							<div>{{getReasonDesc()}}</div>
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>聯絡方式</th>
+					<td>
+						<label *ngIf="data.ContactMobile">
+							<input type="radio" name="IsContactByMobile"
+								[(ngModel)]="data.IsContactByMobile"
+								[value]="!!data.ContactMobile"/>
+							行動電話 {{ data.ContactMobile | mobile }}
+						</label>
+						<br>
+						<label>
+							<span *ngIf="data.ContactMobile">
+								<input type="radio" name="IsContactByMobile"
+									[(ngModel)]="data.IsContactByMobile"
+									[value]="!data.ContactMobile"/>
+								其他
+							</span>
+							<input type="text" class="artfld col-3 mobile-col-6"
+								name="ContactType" [(ngModel)]="data.ContactType"
+								(focus)="data.IsContactByMobile=false"
+								numberOnly maxlength=12 placeholder="請輸入電話號碼"/>
+						</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div>
+		<div class="rowElem" loadHtml="/mma8/card/htmls/信用卡臨時額度調整注意事項.html"></div>
+		<input type="checkbox" class="artfld" id="consent" name="consent" [(ngModel)]="consent" [value]="consent"/>
+		<label for="consent">
+			<span><span class="getCheck"></span></span>
+			<font class="red fs15">本人特此聲明已詳細閱讀永豐商業銀行提高臨時信用額度注意事項並已充分了解且同意遵守全部內容。</font>
+		</label>
+	</div>
+	<div class="btn-zone">
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">我要申請</button>
+	</div>
+</form>

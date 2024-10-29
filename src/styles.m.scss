@@ -1,0 +1,57 @@
+button.swal2-styled {
+	box-shadow: none!important;
+	// color: white!important;
+	background-color: #d00f24!important;
+	// border: #d00f24 1px solid!important;
+	height: 33px!important;
+	padding-top: 5px!important;
+}
+
+.accordion2 .atitle { font-size: 18px; line-height: 50px; padding: 0 2px; position: relative; display: block; color: #474747; }
+.accordion2 .atitle::after { display: inline-block; content: ''; border: solid #aaaaaa; border-width: 0 1px 1px 0; padding: 4px; transform: rotate(45deg); -webkit-transform: rotate(45deg); top: 20px; right: 10px; position: absolute; }
+.accordion2 .atitle.active::after { transform: rotate(-135deg); -webkit-transform: rotate(-135deg); top: 24px; }
+.accordion2 .atitle:hover::after { border-color: #474747; }
+.accordion2 > li { border-bottom: #dddddd 1px solid; padding: 0; }
+.accordion2 > li:last-child { border: none; }
+
+.highlight { background: ghostwhite; }
+
+.billSetFullWidth {
+  margin: 0 0 20px!important;
+}
+
+.billSet {
+  margin: 0 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #f4f4f4;
+}
+.billSet__text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.billSet__text > p {
+  margin-left: 16px;
+  line-height: 1.5;
+}
+.billSet__button {
+  border-radius: 8px;
+  background: #e54646;
+  color: #fff;
+  padding: 10px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .billSet__text > p {
+    margin-left: 0;
+    font-size: 14px;
+  }
+}

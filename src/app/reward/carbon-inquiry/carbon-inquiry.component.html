@@ -1,0 +1,88 @@
+<header>
+	<div class="container-fluid bg-white">
+		<div class="container-fluid u-maxWidth-1024 p-0">
+			<div [style.marginTop]="marginTop" class="header-content d-flex align-items-center py-3"
+				[ngClass]="isBigWeb?'justify-content-center justify-content-md-start':'justify-content-between'">
+				<a *ngIf="isBigWeb" [ngClass]="hamOpen?'hamburger d-block d-md-none open':'hamburger d-block d-md-none'"
+					(click)="hamClick()"></a>
+				<a class="logo d-flex align-items-center text-decoration-none">
+					<img class="d-block d-md-none" src="/mma8/card/images/carbon/global/logo-mobile.svg" alt="永豐銀行">
+					<img class="d-none d-md-block" src="/mma8/card/images/carbon/global/logo-pc.svg" alt="永豐銀行">
+					<h1 class="text-superRed">消費碳足跡查詢</h1>
+				</a>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="isBigWeb" class="container-fluid bg-light">
+		<div class="container-fluid u-maxWidth-1024 p-0">
+			<div class="nav-content login" [ngClass]="hamOpen? 'open':''">
+				<!-- RWD大網 -->
+				<nav class="nav px-3 px-md-0">
+					<a id="site-bank" [href]="banksite"
+						class="nav-link nav-link-hover text-gray-900 font-weight-bold py-3 px-0 px-md-4">網路銀行
+					</a>
+				</nav>
+				<nav class="nav px-3 px-md-0 d-none d-md-flex">
+					<a class="nav-link text-white bg-superRed font-weight-bold py-3 px-4" [href]="logout"
+						data-status="logout">登出
+					</a>
+				</nav>
+				<!-- RWD小網 登出鈕 -->
+				<nav class="nav px-3 px-md-0 mt-3 d-flex d-md-none">
+					<a class="btn btn-outline-primary btn-block" [href]="logout" data-status="logout">登出
+					</a>
+				</nav>
+			</div>
+		</div>
+	</div>
+</header>
+<app-wizard [(current)]="current" [steps]="steps" [hidden]="true"></app-wizard>
+<footer>
+	<div class="container-fluid bg-gray-700">
+		<div class="container-fluid u-maxWidth-1024 p-0">
+			<div class="contact">
+				<div class="d-flex justify-content-center justify-content-lg-between align-items-center">
+					<div class="contact-info d-flex align-items-start align-items-lg-center">
+						<p class="m-0 pr-2 pr-lg-3 text-white">銀行客服：02-2505-9999</p>
+						<p class="m-0 pl-2 pl-lg-3 text-white">信用卡客服：02-2528-7776</p>
+					</div>
+					<div class="d-none d-lg-flex">
+						<div class="contact-link d-flex align-items-center"><a class="text-white text-decoration-none"
+								href="https://bank.sinopac.com/MMA8/bank/service/service-index.html">客服中心 </a></div>
+					</div><a class="back-to-top bg-gray-400 d-flex justify-content-center align-items-center"
+						(click)="scrollTop()">
+						<img class="img-fluid" src="/mma8/card/images/carbon/icon/back-to-top.svg" alt=""></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container-fluid bg-gray-900">
+		<div class="container-fluid u-maxWidth-1024 p-0">
+			<div class="copyright py-3 d-flex flex-column flex-lg-row justify-content-between align-items-center">
+				<div class="copyright-link d-flex flex-wrap">
+					<a class="my-1 px-2 text-gray-400 text-decoration-none"
+						href="https://bank.sinopac.com/sinopacBT/footer/copyright-notice.html">
+						著作權說明
+					</a>
+					<a class="my-1 px-2 text-gray-400 text-decoration-none"
+						href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html">
+						隱私權保護聲明
+					</a>
+					<a class="my-1 px-2 text-gray-400 text-decoration-none"
+						href="https://bank.sinopac.com/sinopacBT/about/introduction/announcement/legal-disclaimers.html">
+						法定公開揭露事項
+					</a>
+					<a class="my-1 px-2 text-gray-400 text-decoration-none"
+						href="https://bank.sinopac.com/GCSDsp/DspONLINEurl.aspx?item=mma">
+						網站導覽
+					</a>
+					<a class="my-1 px-2 text-gray-400 text-decoration-none"
+						href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html">
+						網路安全說明
+					</a>
+				</div>
+				<p class="mt-2 mb-0 m-lg-0 text-gray-400">©永豐商業銀行股份有限公司</p>
+			</div>
+		</div>
+	</div>
+</footer>

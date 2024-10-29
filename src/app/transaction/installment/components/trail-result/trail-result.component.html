@@ -1,0 +1,48 @@
+<div>
+	<h4 class="rowElem fs15">分期試算</h4>
+	<table class="ntable cols" style="margin-top:0px">
+		<tbody>
+			<tr>
+				<th class="mobile-col-6">分期本金</th>
+				<td>{{ Info.LoanAmt | number }}元</td>
+			</tr>
+			<tr>
+				<th>選擇期數</th>
+				<td>{{ Info.Period }}期</td>
+			</tr>
+			<tr>
+				<th>手續費</th>
+				<td class="red">{{ +Info.Fee | number }}</td>
+			</tr>
+			<tr>
+				<th>總費用年百分率</th>
+				<td class="red">{{ +Info.Rate / 100 | percent:'1.2-2' }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div>
+	<h4 class="rowElem fs15">試算結果</h4>
+	<table class="ntable table-striped">
+		<thead>
+			<tr>
+				<th class="center mobile-col-2">期數</th>
+				<th class="center mobile-col-3">本金</th>
+				<th class="center mobile-col-3">利息</th>
+				<th class="center mobile-col-4">每月應付本息</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of TrailResult;">
+				<td>{{ item.SEQ }}</td>
+				<td>${{ item.PrincipalAmount | number:'1.0-0' }}</td>
+				<td>${{ item.Interest | number:'1.0-0' }}</td>
+				<td>${{ item.MonthPayment | number:'1.0-0' }}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="btn-zone">
+	<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+	<button type="button" class="nbtn focus" (click)="onSubmit()">我要申請</button>
+</div>

@@ -1,0 +1,54 @@
+<div class="wrapper">
+	<div class="cover"></div>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a target="_blank" href="https://bank.sinopac.com/bsp/index/index.asp" title="永豐銀行首頁">
+					<img class="hidden-min" src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" />
+					<img class="hidden-max" src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行">
+				</a>
+			</div>
+			<div class="master-title">{{pageinfo.name}}</div>
+		</div>
+	</header>
+	<div class="outer_container">
+		<div class="container no-breadcrumbs">
+      <div class="content full-content">
+        <section class="trans-content">
+          <table class="new-datatable">
+            <tbody>
+              <tr>
+                <td>
+                  <div class="result-status pt-0"><i class="icon-error"></i>
+                    <p>{{ title }}</p>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="reminds">
+                  <p class="center">{{ msg }}</p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+      <div class="btn-zone flex-inline-min">
+        <!-- <a *ngIf="rc=='2';else rc3" class="nbtn focus" href="javascript:void(0)" (click)="softCertSetting()">申請憑證</a>
+        <ng-template #rc3>
+          <a class="nbtn focus" href="javascript:void(0)" (click)="reCheck()">重新驗證</a>
+        </ng-template> -->
+		<a *ngIf="rc!=='2'" class="nbtn focus" href="javascript:void(0)" (click)="reCheck()">重新驗證</a>
+		<a class="nbtn focus" href="javascript:void(0)" (click)="ExitWebView()">&emsp;確定&emsp;</a>
+      </div>
+            <div class="warnings">
+              <p>謹慎理財 信用至上</p>
+              <p>24小時服務專線：(02)2528-7776/0800-058-888 (限市話)<br class="hidden-max">100900 台北北門郵局第818號信箱<br>循環信用利率年息2.74%~15%(基準日2015/8/3)<br>預借現金手續費：預借現金金額x3.5%+指定金額(100元新台幣/3.5美元/350日圓/3歐元) 其他費用請上永豐銀行網站查詢</p>
+            </div>
+			<br class="hidden-min">
+		</div>
+	</div>
+	<app-rwd-footer></app-rwd-footer>
+</div>
+
+

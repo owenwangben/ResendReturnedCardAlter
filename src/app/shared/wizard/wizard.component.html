@@ -1,0 +1,9 @@
+<div class="stepsboard" [hidden]="hidden">
+    <ng-template ngFor let-step [ngForOf]="vsteps" let-idx="index" let-last="last">
+        <div class="steps" [class.two-steps]="vsteps.length < 3"
+			[class.on]="isActive(idx)" *ngIf="isVisible(idx)">
+			<span>{{idx+1}}</span>{{step.StepName}}
+		</div>
+        <!-- <div *ngIf="last === false" class="steps step"></div> -->
+	</ng-template>
+</div>

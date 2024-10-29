@@ -1,0 +1,14 @@
+.formblock {
+	section {
+		padding: 10px;
+	}
+	p, label {
+		color: red;
+	}
+	textarea {
+		margin: 5px 0;
+		height: 280px;
+		width: 100%;
+		overflow-y: scroll;
+	}
+}

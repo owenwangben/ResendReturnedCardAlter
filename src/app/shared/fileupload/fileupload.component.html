@@ -1,0 +1,8 @@
+<label ng2FileDrop
+  [ngClass]="{'file-over': hasBaseDropZoneOver}"
+  (fileOver)="fileOverBase($event)"
+  [uploader]="uploader"
+  class="well drop-zone">
+  (每個檔案上限為5MB，有效檔案類別包括JPG、GIF或TIF)
+  <input class="hide" type="file" ng2FileSelect [uploader]="uploader" />
+</label>

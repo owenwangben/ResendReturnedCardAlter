@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+.custom-date {
+  display: none; }
+
+.form-date {
+  position: relative; }
+  .form-date:before {
+	content: "至";
+    position: absolute;
+    left: 50%;
+    top: 27%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); }
+    @media (min-width: 576px) {
+      .form-date:before {
+        left: 33.33%;
+        top: 50%; } }
+
+.query-result figure {
+  max-width: 100px; }
+
+.dot {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 0.125rem; }
+  .dot-royalblue {
+    background: #1470CA; }
+  .dot-skyblue {
+    background: #50B0DA; }
+  .dot-orangered {
+    background: #FF4F00; }
+  .dot-gold {
+    background: #FFBA00; }
+  .dot-rebeccapurple {
+    background: #A056BD; }
+  .dot-hotpink {
+    background: #F476A7; }
+  .dot-yellowgreen {
+    background: #BAD72B; }
+
+.overview-title {
+  min-width: 100px; }
+
+.overview-amount {
+  min-width: 100px; }
+
+.progress {
+  height: 12px; }
+
+/*# sourceMappingURL=query.css.map */
+
+
+

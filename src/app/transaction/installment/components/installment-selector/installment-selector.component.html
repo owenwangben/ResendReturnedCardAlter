@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event);">
+	<table class="ntable table-striped mobile-col-12">
+		<thead class="hide mobile-show">
+			<tr>
+				<th>期數</th>
+				<th>各期數年利率</th>
+				<th colspan=1>手續費</th>
+				<th></th>
+			</tr>
+		</thead>
+		<thead class="mobile-hide">
+			<tr>
+				<th>選擇分期</th>
+				<th>期數</th>
+				<th>各期數年利率</th>
+				<th>手續費</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let option of options; let idx = index;" (click)="onMobileApply(idx);">
+				<td class="mobile-hide">
+					<input type="radio" class="artfld circle" [id]="'period-' + idx" formControlName="SelectedInstallment" [value]="idx"/>
+					<label [for]="'period-' + idx"><span><span class="getCheck"></span></span></label>
+				</td>
+				<td>{{ option.Period }}</td>
+				<td>{{ +option.Rate / 100 | percent:'1.2-2' }}</td>
+				<td>
+					{{ option.Fee | number }}
+				</td>
+				<td class="web-hide"><span class="red">試算 </span><i class="right-arrow"></i></td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div class="btn-zone mobile-hide">
+		<app-link-button *ngIf="StmtRTE" type="cancel">取消</app-link-button>
+		<button *ngIf="!StmtRTE" type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">我要試算</button>
+	</div>
+</form>

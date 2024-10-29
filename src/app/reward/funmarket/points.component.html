@@ -1,0 +1,21 @@
+<div class="litebox">
+	<p>永豐網路銀行帳號驗證完成！</p>
+	<p>您所剩餘點數為{{model?.DisplayBonusPoint | number}}點</p>
+	<div>
+		<form ngNoForm [action]="model?.LoginForBonusExternalUrl" method="post">
+			<input type="hidden" name="XMLData" value="">
+			<input type="hidden" name="UID" [value]="model?.UID">
+			<input type="hidden" name="Rs" [value]="model?.Rs">
+			<input type="hidden" name="Desc" [value]="model?.Desc">
+			<input type="hidden" name="IsEmp" [value]="model?.IsEmp">
+			<input type="hidden" name="OTPKey" [value]="model?.OTPKey">
+			<input type="hidden" name="BonusPoint" [value]="share ? model?.DisplayBonusPoint : null">
+			<div class="btn-zone">
+				<button type="submit" class="nbtn focus" style="width:20%">繼續前往豐市集兌換</button>
+			</div>
+		</form>
+	</div>
+
+	<!-- <hr/> -->
+	<!-- <p class="note">當您點選「繼續前往豐市集兌換」，為確保您的交易安全，系統將同時登出您的永豐網路銀行。</p> -->
+</div>

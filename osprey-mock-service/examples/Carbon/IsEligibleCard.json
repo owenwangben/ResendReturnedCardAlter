@@ -1,0 +1,35 @@
+{
+  "Result": {
+    "IsEligibleCard": true,
+    "AgreedDate": "2022/10/05 11:34:55",
+    "Cards": [
+      {
+        "CardNo": "5236460107476708",
+        "Name": "現金回饋Debit卡",
+        "DataType": "D",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "178",
+        "ProductCode": "700",
+        "ExpDate": "0626",
+        "CardBrand": "M"
+      },
+      {
+        "CardNo": "5236460167716704",
+        "Name": "DAWHO現金回饋Debit卡",
+        "DataType": "D",
+        "CardTypeCode": "SP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "181",
+        "ProductCode": "700",
+        "ExpDate": "0328",
+        "CardBrand": "M"
+      }
+    ]
+  },
+  "Header": {
+    "ApplicationName": "CARDBON"
+  },
+  "ResultCode": "00",
+  "ResultMessage": "S0"
+}

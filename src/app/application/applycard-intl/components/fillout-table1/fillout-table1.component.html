@@ -1,0 +1,314 @@
+<form [formGroup]="form">
+	<div class="formblock cards-showroom-block confirm">
+		<p>
+			<span class="en">{{message?.CardCpplication}}</span>
+			本次申請信用卡
+		</p>
+		<fieldset>
+			<legend>
+				<div class="card-name">
+					<span class="en" [innerHTML]="cardinfo?.Title"></span>
+				</div>
+			</legend>
+			<div class="cards-showroom">
+				<div class="card-holder">
+					<img [src]="cardinfo?.CardFaceUrl" [alt]="cardinfo?.CardFullName" [title]="cardinfo?.CardFullName">
+				</div>
+			</div>
+		</fieldset>
+	</div>
+
+	<app-applycard-intl-step-indicator [step]="0"></app-applycard-intl-step-indicator>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span><span class="en">{{message?.SelectEasyCard}}</span>
+					選擇悠遊卡自動加值功能
+				</span>
+				<ul class="ctrl-block center col-2-min">
+					<li>
+						<input type="radio" id="a31" class="artfld surround" formControlName="NotAutoBonus"
+							[value]="false">
+						<label for="a31">
+							<small class="en enSmall">{{btnMessage?.RadioButton.Activation}}</small>
+							預設開啟</label>
+					</li>
+					<li>
+						<input type="radio" id="a32" class="artfld surround" formControlName="NotAutoBonus"
+							[value]="true">
+						<label for="a32">
+							<small class="en enSmall">{{btnMessage?.RadioButton.Inactivation}}</small>預設關閉</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<div class="content full-content">
+		<section class="trans-content">
+			<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable">
+				<tbody>
+					<tr>
+						<th><span class="red">*</span>
+							<span class="en">{{message?.CName}}</span>
+							中文姓名
+						</th>
+						<td class="subNotice">
+							<input type="text" class="artfld col-all-min col-4" formControlName="CName" maxlength="33">
+							<span class=" red">
+								<span class="en">{{message?.CNameNotic}}</span>
+								若無，請參考護照上英文姓名
+							</span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th><span class="red">*</span><span class="en">{{message?.UI_Number}}</span> 居留證統一證號
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="ID" maxlength="10"
+								placeholder="例：AC23456789" [readonly]="cminfo?.ID || isOtherBankAuth">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th><span class="red">*</span><span class="en">{{message?.PeriodOfStay}}</span>
+							居留期限
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="ArcExpireDate"
+								placeholder="YYYYMMDD" maxlength="8">
+							<!--從auth帶過來-->
+						</td>
+					</tr>
+
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th><span class="red">*</span>
+							<span class="en">{{message?.MobilePhone}}</span>行動電話
+						</th>
+						<td class="subNotice">
+							<input type="tel" class="artfld col-all-min col-4" formControlName="Mobile" maxlength="10"
+								numberOnly [readonly]="isOtherBankAuth">
+							<span class="red"><span
+									class="en">{{message?.MobilePhoneNotic}}</span>行動帳單將依左列行動電話進行發送通知</span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th><span class="red">*</span>
+							<span class="en">{{message?.EmailAddr}}</span>電子信箱
+						</th>
+						<td>
+							<input type="email" class="artfld col-all-min col-4" formControlName="Email">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>
+								<span class="en">{{message?.BillDeliverMeth1}}<br
+										class="hidden-min">{{message?.BillDeliverMeth2}}
+								</span>選擇帳單寄送方式
+							</p>
+						</th>
+						<td>
+							<ul class=" ctrl-block col-2-li">
+								<li>
+									<input type="radio" id="a51" class="artfld surround"
+										formControlName="StmtDeliverWay" [value]="1">
+									<label for="a51">
+										<small class="en enSmall">{{btnMessage?.RadioButton.MobileBill}}</small>
+										行動帳單
+									</label>
+								</li>
+								<li>
+									<input type="radio" id="a52" class="artfld surround"
+										formControlName="StmtDeliverWay" [value]="2">
+									<label for="a52">
+										<small
+											class="en enSmall">{{btnMessage?.RadioButton.ElectronicBill}}</small>電子帳單</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds notice">
+							<span class="en">
+								<span>{{message?.BillNotice1}}</span><a  href="javascript:void(0)" (click)="openlbox('#terms-lbox')">{{message?.BillNotice2}}</a><span>{{message?.BillNotice3}}</span><br>
+								<span class="pink2">{{message?.BillNotice4}}</span>
+								<br class="hidden-min">
+								<a href="javascript:void(0)">{{message?.BillNotice5}}</a>
+							</span>
+							<br>
+							<span class="en">{{message?.BillNotice6}}</span>
+							<br>
+							<br>
+							<span>
+								<span>※感謝您本次的申請，相關規範請詳閱<a href="javascript:void(0)" (click)="openlbox('#terms-lbox')">「永豐銀行信用卡電子/行動帳單規範」</a>。</span><br>
+								<span class="pink2">※為留給下一代更美好的地球，申請行動/電子帳單本行將不再郵寄紙本帳單，如您需紙本帳單，請於核卡後洽客服專線申請。</span>
+								<br class="hidden-min">
+
+								<a href="javascript:void(0)">※核卡後可享電子信箱發送「每日消費授權彙總通知(不限消費金額)及(繳款入帳通知)」。</a>
+							</span>
+							<br>
+							<span>※核卡後將以您留存之電子信箱提供信用卡契約之修訂、信用卡相關權益/服務/優惠及其變更、停卡之通知。</span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<span class="en">{{message?.Referrer}}</span>推薦人
+						</th>
+						<td>
+							<input class="artfld col-all-min col-6" maxlength="10"
+								placeholder="Recommended code/Personnel number/ID" type="text"
+								formControlName="Referrer">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<p>
+				<span class="en">{{message?.AgreeSendCardContractViaEmail}}</span>
+				同意貴行以電子郵件寄送信用卡契約
+			</p>
+			<ul class="ctrl-block center col-2-min terms1">
+				<li>
+					<input type="radio" id="a41" class="artfld surround" data-agree="1"
+						formControlName="EmailSendContract" [value]="true">
+					<label for="a41">
+						<small class="enSmall">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+				</li>
+				<li>
+					<input type="radio" id="a42" class="artfld surround" data-agree="0"
+						formControlName="EmailSendContract" [value]="false">
+					<label for="a42"><small class="enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+				</li>
+			</ul>
+			<div class="center"><span class="en">{{message?.DisagreeNotic.SendCardContractViaEmail}}</span>(未勾選視為不同意)
+			</div>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="red">*</span><span class='en'>{{message?.PersonalTerms1}}<a href="javascript:void(0)" class="udline open-lbox"
+						(click)="openlbox('#terms2-lbox')">{{message?.PersonalTerms2}}</a>{{message?.PersonalTerms3}}</span>
+				<span><span class="red">*</span>本人特此聲明已詳細閱讀「<a href="javascript:void(0)" class="udline open-lbox"
+						(click)="openlbox('#terms2-lbox')">個人網路銀行服務條款</a>」，其中以顯著字體表示之重要約定事項，
+						有疑問之處業經本人向 貴行提出詢問並經 貴行說明及解答，對重要約定事項已充分理解並同意遵守全部內容。</span>
+				<ul class="ctrl-block center col-2-min terms2">
+					<li>
+						<input type="radio" id="IBankAgreement_Y" formControlName="IBankAgreement"
+							class="artfld surround" [value]="true">
+						<label for="IBankAgreement_Y"><small
+								class="enSmall">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="IBankAgreement_N" formControlName="IBankAgreement"
+							class="artfld surround" [value]="false">
+						<label for="IBankAgreement_N"><small
+								class="enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.IBankAgreement === false" class="red center req"><span
+						class="en">{{message?.IBankDisagreementNotic}}
+					</span>很抱歉，如您不同意個人網路銀行服務條款，無法完成線上辦卡，如有任何問題，歡迎您撥打24小時服務專線02-2528-7776</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="content" *ngIf="showCustomerInfo">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">{{message?.PersonalTermsNotic1}}</span><br>
+				<span>{{message?.PersonalTermsNotic2}}</span><br><br>
+				<span>{{message?.PersonalTermsNotic3}}
+					<a href="javascript:void(0)" class="udline open-lbox" (click)="openlbox('#terms3-lbox')">
+						{{message?.PersonalTermsNotic4}}
+					</a>
+					{{message?.PersonalTermsNotic5}}</span>
+			</div>
+			<br>
+			<div class="prfy">
+				<span class="title">個人資料同意使用條款</span><br>
+				<span>為了提供後續商品服務，於您按下「下一步」時，您所填寫的資料將會交付永豐銀行。永豐銀行必將保護您個人資料安全，且於法令許可及行銷永豐信用卡目的範圍內，於國內外蒐集、處理、利用您的個人資料。</span><br><br>
+				<span>若您已閱讀了解「
+					<a href="javascript:void(0)" class="udline open-lbox" (click)="openlbox('#terms3-lbox')">
+						永豐銀行履行個人資料保護法第八條第一項告知義務內容
+					</a>
+					」並同意個人資料蒐集處理及利用條款，請按「下一步」。</span>
+			</div>
+		</section>
+	</div>
+
+
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">
+			<span class="en">{{btnMessage?.Continue}}</span>
+			下一步</a>
+	</div>
+
+	<div class="lboxed">
+		<div class="close"></div>
+		<div class="lbox-block">
+			<div id="terms-lbox" class="terms-lbox">
+				<h3>永豐銀行信用卡電子/帳單規範</h3>
+				<h3>Regulations on Electronic/Mobile Billing Statements of Credit Cards of Bank SinoPac</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.EBillTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a class="nbtn focus close" href="#">關閉</a>
+				</div>
+			</div>
+			<div id="terms2-lbox" class="terms-lbox">
+				<h3>網路銀行服務條款</h3>
+				<h3>Online Banking Service Terms and Conditions</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.BankServiceTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close"
+						(click)="form.patchValue({IBankAgreement: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close"
+						(click)="form.patchValue({IBankAgreement: false})">不同意</a>
+				</div>
+			</div>
+			<div id="terms3-lbox" class="terms-lbox">
+				<h3>永豐銀行履行個人資料保護法第八條第一項告知義務內容</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.PersonalDataTermsUrl}}"></span></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

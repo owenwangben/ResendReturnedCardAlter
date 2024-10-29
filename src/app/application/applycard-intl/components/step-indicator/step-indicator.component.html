@@ -1,0 +1,37 @@
+<div class="content full-content-min step-panel-block">
+	<section class="trans-content">
+		<div class="step-panel pink-style">
+			<div class="step-block-spec-style">
+				<div *ngIf="type === 0"  class="step-words">
+					<p [class.active]="step === 0"><span class="en">{{message?.Fill}}</span>填寫資料</p>
+					<p [class.active]="step === 1"><span class="en">{{message?.Confirm}}</span>確認資料</p>
+					<p [class.active]="step === 2"><span class="en">{{message?.AppResult}}</span>申請結果</p>
+				</div>
+				<div *ngIf="type === 1"  class="step-words">
+					<p [class.active]="step === 0"><span class="en">{{message?.Fill}}</span>填寫資料</p>
+					<p [class.active]="step === 1"><span class="en">{{message?.UploadFile}}</span>上傳資料</p>
+					<p [class.active]="step === 2"><span class="en">{{message?.UpResult}}</span>上傳結果</p>
+				</div>
+				<div class="step-circles">
+					<div class="circles">
+						<div class="cle">
+							<i></i>
+						</div>
+						<div class="cle">
+							<i></i>
+						</div>
+						<div class="cle">
+							<i></i>
+						</div>
+					</div>
+					<div class="cle current-dot"
+						[class.active1]="step === 0"
+						[class.active2]="step === 1"
+						[class.active3]="step === 2">
+						<i></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>

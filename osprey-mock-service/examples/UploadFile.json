@@ -1,0 +1,34 @@
+{
+  "Result": {
+	"Success": true,
+	"FileIndex": 0,
+    "FileId": "cd84fcef-4940-4f4e-8ac6-f67662dcf0c1",
+    "OcrResult": {
+        "Name": "陳筱玲",
+        "Birthday": "19680605",
+        "IdCardIssueDateYYY": "9",
+        "IdCardIssueDateMM": "7",
+        "IdCardIssueDateDD": "1",
+        "IdCardIssueLocation": "北市",
+        "IdCardIssueType": "換發",
+        "Address": "桃園市中壢區新生路367號",
+        "AddressCity": "桃園市",
+        "AddressArea": "中壢區",
+        "AddressRoad": "新生路367號"
+    }
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

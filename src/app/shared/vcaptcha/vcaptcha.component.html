@@ -1,0 +1,15 @@
+<div>
+	<input #Input type="text"
+		class="artfld col-2 mobile-col-4"
+		style="vertical-align:top"
+		[(ngModel)]="value"
+		(blur)="onBlur($event)"
+		numberOnly
+		maxlength=6
+		placeholder="驗證碼"/>
+	<a class="vcaptcha" href="javascript:void(0)" (click)="OnChangeVaptchaImage($event)">
+	<img *ngIf="vcaptchaUrl" class="mobile-col-4" style="height:36px" [src]="vcaptchaUrl" alt=""></a>
+	<img class="web-hide" src="/mma8/card/images/cyclic_recurrence.png"
+		style="height:30px;" (click)="OnChangeVaptchaImage($event)">
+	<span class="mobile-hide">(若看不清楚，可按圖更換驗證碼)</span>
+</div>

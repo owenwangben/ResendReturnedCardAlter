@@ -1,0 +1,35 @@
+{
+  "Result": {
+    "ContactMobile": "0987654321",
+    "OriginalCredit": 200000,
+    "AvailableCredit": 10000,
+    "BeginDate": "2017-06-15T00:00:00+08:00",
+    "EndDate": "2017-07-15T00:00:00+08:00",
+    "ApplyCards": [
+      {
+		"Name": "MITSUI OUTLET PARK御璽聯名卡",
+		"CardTypeDesc": "主卡",
+        "CardNo": "4637111122223333"
+      },
+      {
+		"Name": "日圓雙幣卡",
+		"CardTypeDesc": "主卡",
+        "CardNo": "5588111122223333"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

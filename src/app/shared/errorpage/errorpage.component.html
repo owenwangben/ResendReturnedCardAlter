@@ -1,0 +1,19 @@
+<div class="outer_container">
+	<div class="container">
+	  <app-breadcrumbs (loadComplete)="loadComplete($event)"></app-breadcrumbs>
+	  <div class="content">
+		<section class="trans-content">
+		  <h2 class="title">{{funcName}}</h2>
+		  <div class="rowElem">
+			<h3 class="red" [innerHTML]="errMessage"></h3>
+		  </div>
+		</section>
+		<div class="btn-zone">
+			<span *ngFor="let button of buttons">
+				<a *ngIf="button.href" class="nbtn" [href]="button.href">{{button.caption}}</a>
+				<a *ngIf="button.link" class="nbtn" [routerLink]="button.link">{{button.caption}}</a>
+			</span>
+		</div>
+	  </div>
+	</div>
+</div>

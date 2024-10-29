@@ -1,0 +1,41 @@
+<!-- Banner效果 - 針對RWD切換大小網圖片 -->
+<link href="/mma8/card/css-banner/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+<link href="/mma8/card/css-banner/owl.carousel.min.css" rel="stylesheet" type="text/css">
+<style>
+  .hidden-max {
+    display: none;
+  }
+</style>
+<div class="mt20 hidden-min">
+  <div class="owl-carousel owl-theme">
+    <div class="item mb10">
+      <a href="https://dmp.sinopac.com/DMP_SA/r/4B#open-browser">
+        <picture>
+          <source srcset="/mma8/card/images/BN/Dacard_Info_2.jpg" media="(max-width: 769px)"><img src="/mma8/card/images/BN/Dacard_Info_2.jpg">
+        </picture>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- RWD -->
+<div class="mt20 hidden-max">
+  <div class="owl-carousel owl-theme">
+    <div class="item mb10">
+      <a href="https://dmp.sinopac.com/DMP_SA/r/4B#open-browser">
+        <picture>
+          <source srcset="/mma8/card/images/BN/Dacard_Info_2_mb.jpg" media="(max-width: 769px)"><img src="/mma8/card/images/BN/Dacard_Info_2_mb.jpg">
+        </picture>
+      </a>
+    </div>
+  </div>
+</div>
+<!-- RWD -->
+<script type= text/javascript>
+  $(document).ready(function (e) {
+    $('.owl-carousel').owlCarousel({
+      items: 1, // 顯示圖片數量
+      loop: false, // 循環
+      dots:true, // 是否顯示點點(單張則不顯示)
+    });
+  });
+</script>

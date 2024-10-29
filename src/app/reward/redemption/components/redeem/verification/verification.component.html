@@ -1,0 +1,45 @@
+<form [formGroup]="form">
+	<section class="login">
+		<app-reward-redemption-secondmenu [showCartMenu]="false"></app-reward-redemption-secondmenu>
+		<h3 class="center">兌換資料</h3>
+		<ul class="formbox">
+			<li>
+				<label>身分證字號(統一編號)</label>
+				<input type="text" formControlName="id" maxlength="10" class="normal pId" placeholder="請輸入身分證字號" maxlength="10" />
+			</li>
+			<li>
+				<label>出生年月日</label>
+				<input type="text" formControlName="birthday" maxlength="8" class="normal pbday" placeholder="出生年月日 YYYYMMDD" maxlength="8">
+			</li>
+			<li class="code">
+				<label>驗證碼</label>
+				<input type="text" formControlName="captcha" maxlength="6" class="normal code" placeholder="驗證碼" maxlength="6" numberOnly/>
+				<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()" alt="">
+				<a class="renew" href="javascript:void(0)" (click)="changeVcaptcha()">重新產生</a>
+			</li>
+		</ul>
+		<div class="btn-zone">
+			<a class="nbtn" routerLink="/Reward/Redemption">取消</a>
+			<a class="nbtn" href="javascript:void(0)" (click)="submit()">確定</a>
+		</div>
+		<hr class="shadow" />
+		<h2 class="fwb">注意事項</h2>
+		<ul class="disc">
+			<li>本紅利商品兌換為快速兌換流程，您所選擇兌換的商品將直接寄送至您的帳單地址，恕不得更改，亦無法郵寄至郵政信箱，若您帳單地址留存為郵政信箱，請來電永豐銀行客服專線修改寄送地址。</li>
+			<li class="red">若您兌換之商品類別為【Email】或【簡訊】之電子票券時，本行將會依您留存本行之Email帳號或手機號碼寄送商品。</li>
+			<li>【貼心提醒】若您未留存Email帳號或欲變更，您可致電客服或透過網路銀行(MMA金融交易網)帳號進行變更，以確保您的權益哦!</li>
+			<li>若您兌換【刷卡金】時，其視為現金回饋，本行將統一回饋至申請人兌換日次月的永豐銀行信用卡帳單折抵當期消費款，申請人不得要求開立支票或領取現金。</li>
+			<li>如果您對本次交易有任何疑義，請撥打卡片背面之服務電話洽詢，再次感謝您的支持。</li>
+		</ul>
+		<h2 class="fwb">關於您的權益</h2>
+		<ul class="disc">
+			<li>會員兌換本計劃商品，應依本行訂定之兌換辦法或規定辦理。兌換辦法或規定、旅遊憑證、商品兌換券或其它憑證或文宣上所載關於本計劃之規定均視為本辦法之一部份，會員應受該等規定之約束。</li>
+			<li>除特殊狀況外，商品兌換之作業時間需自本行收到會員之兌換申請起計10~20個工作天，由本行或各供應廠商寄發商品或各式兌換券或憑證予正卡會員。若未能於上述之期間內完成作業，本行將協助會員協調處理，但本行不負擔任何責任。</li>
+			<li>部分商品因由海外生產製造，該兌換如遇供應廠商國內供貨量不足需自海外進口，則商品兌換之作業時間需視商品而定，本行或各供應廠商將另行通知會員。</li>
+			<li>會員所欲兌換之商品如為限量，如因兌換數量已達本行所設定之限量，即無法予以兌換，不得異議。</li>
+			<li>會員若未收到兌換商品時，需於本行收到會員之兌換申請日起三個月內向本行提出查詢之請求，否則視為會員已收執商品，本行將不予協助處理。</li>
+			<li>如遇會員所兌換之商品已兌換完畢、缺貨或停產，本行得於本行網站「紅利享樂」專區揭露，並有權取消該次商品兌換退還已扣除之點數。惟基於善意之原則，本行得協助會員兌換其它商品，且本行或供應廠商有權經預先通知並得到會員同意後而提供類似之商品或服務取代之。</li>
+			<li>商品除有瑕疵，一經兌換不可退還或更換。</li>
+		</ul>
+	</section>
+</form>

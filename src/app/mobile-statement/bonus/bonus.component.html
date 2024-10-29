@@ -1,0 +1,93 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<table *ngIf="!ShowAdjustPoint">
+			<tbody>
+				<tr>
+					<td>{{messages?.AddPoint}}</td>
+					<td align="right">{{Model?.AddPoint}}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{messages?.AdjustPoint}}</td>
+					<td align="right">{{Model?.AdjustPoint}}</td>
+					<td><i *ngIf="Model?.AdjustItems" class="fas fa-angle-right" (click)="onShowAdjustPoint()"></i></td>
+				</tr>
+				<tr>
+					<td>{{messages?.ExchangePoint}}</td>
+					<td align="right">{{Model?.ExchangePoint}}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{messages?.TotalPoint}}</td>
+					<td align="right">{{Model?.TotalPoint}}</td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>{{messages?.ExpiringPoint}}</td>
+					<td align="right">{{Model?.ExpiringPoint}}</td>
+					<td></td>
+				</tr>
+				<tr></tr>
+			</tbody>
+		</table>
+		<div class="content2" *ngIf="!ShowAdjustPoint && msg">
+			<table id="AD_1" class="AD">
+				<tbody>
+					<tr>
+						<th><span style="color:#b9160f">{{msg[0]}}</span>{{msg[1]}}</th>
+					</tr>
+					<tr style="background: #fff;">
+						<td>
+							<span class="txt_event">{{msg[2]}}</span>
+							<span class="txt_event">{{msg[6]}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="txt_extra">{{msg[3]}}</span>
+							<span class="txt_extra">{{msg[7]}}</span>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[4]}}</span>
+							<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[8]}}</span>
+							<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[5]}}</span>
+							<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[9]}}</span>
+						</td>
+					</tr>
+					<tr>
+					<td><a class="btn_o_red" href="{{msgUrl}}" target="_blank">立即申請</a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div *ngIf="ShowAdjustPoint">
+			<h1 style="text-align:center">{{messages?.AdjustPoint}}</h1>
+			<p>{{Model?.AdjustTitle}}</p>
+			<table>
+				<tbody>
+					<tr *ngFor="let item of Model?.AdjustItems">
+						<td>{{item.Memo}}</td>
+						<td align="right">{{item.AdjustPoint}} 點</td>
+					</tr>
+					<tr></tr>
+				</tbody>
+			</table>
+			<p>&nbsp;</p>
+			<div class="row">
+				<div class="col">
+				</div>
+				<div class="col">
+					<input type="button" value="{{messages?.BackBtn}}" (click)="ShowAdjustPoint=!ShowAdjustPoint;">
+				</div>
+				<div class="col">
+				</div>
+			</div>
+		</div>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="3" [Token]="token"></app-mobile-statement-nav>
+</div>

@@ -1,0 +1,41 @@
+<!-- Banner效果 - 固定在頁面下方 -->
+<link href="/mma8/card/css-banner/owl.theme.default.min.css" rel="stylesheet" type="text/css">
+<link href="/mma8/card/css-banner/owl.carousel.min.css" rel="stylesheet" type="text/css">
+<style>
+  .ab_cards{
+    max-width: 768px;
+    width:100%;
+    margin: 0 auto;
+    text-align: center;
+    position: fixed;
+    bottom: 0px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+</style>
+
+<div class="ab_cards">
+  <div class="owl-carousel owl-theme">
+    <div class="item mb10">
+      <a href="https://dmp.sinopac.com/DMP_SA/r/4B#open-browser"
+        ><img
+          src="/mma8/card/images/BN/Dacard_Info_2_mb.jpg"
+      /></a>
+    </div>
+    <!-- <div class="item mb10">
+      <a href="https://dmp.sinopac.com/DMP_SA/r/4B"
+        ><img
+          src="/mma8/card/images/BN/Dacard_Info_2_mb.jpg"
+      /></a>
+    </div> -->
+  </div>
+</div>
+<script>
+  $(document).ready(function (e) {
+    $('.owl-carousel').owlCarousel({
+        items: 1, // 顯示圖片數量
+        loop: false, // 循環
+        dots:true, // 是否顯示點點(單張則不顯示)
+    })
+  });
+</script>

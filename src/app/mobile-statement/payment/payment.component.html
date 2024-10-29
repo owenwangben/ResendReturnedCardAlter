@@ -1,0 +1,45 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<h1>{{messages?.HeaderText}}</h1>
+		<a href="{{paymentUrl}}" class="btn" style="white-space: normal;">{{messages?.BankAccountPayment}}</a>
+		<a [routerLink]="['/MobileStatement/PaymentBarcode/1',token]" class="btn" style="white-space: normal;">{{messages?.PaymentBarcodeOf7_11}}</a>
+		<a [routerLink]="['/MobileStatement/PaymentBarcode/2',token]" class="btn" style="white-space: normal;">{{messages?.PaymentBarcodeOfFamilyMart_HiLife}}</a>
+		<a [routerLink]="['/MobileStatement/PaymentQrcode',token]" class="btn" style="white-space: normal;">{{messages?.PaymentQrcode}}</a>
+	</div>
+	<div class="content2" *ngIf="msg">
+		<table id="AD_1" class="AD">
+			<tbody>
+				<tr>
+					<th><span style="color:#b9160f">{{msg[0]}}</span>{{msg[1]}}</th>
+				</tr>
+				<tr style="background: #fff;">
+					<td>
+						<span class="txt_event">{{msg[2]}}</span>
+						<span class="txt_event">{{msg[6]}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="txt_extra">{{msg[3]}}</span>
+						<span class="txt_extra">{{msg[7]}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[4]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[8]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[5]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[9]}}</span>
+					</td>
+				</tr>
+				<tr>
+				<td><a class="btn_o_red" href="{{msgUrl}}" target="_blank">立即申請</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="0" [Token]="token"></app-mobile-statement-nav>
+</div>

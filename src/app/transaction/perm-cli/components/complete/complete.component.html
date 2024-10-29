@@ -1,0 +1,69 @@
+<div class="rnotes full-size center">
+	<span class="red">感謝您的申請，申請資料已送出，將儘速為您處理，審核結果將另行通知。如欲查詢申請進度請至(申請進度查詢)或於營業時間電洽客服中心查詢，謝謝。</span>
+	<span class="transaction_number">交易序號：{{ RefNo }}</span>
+</div>
+<app-perm-cli-display></app-perm-cli-display>
+<div class="btn-zone">
+	<a class="nbtn" routerLink="/Transaction/PermCLIStatus">申請進度查詢</a>
+	<a *ngIf="FinancialProofType === 4" class="nbtn" href="javascript:void(0)" (click)="DoMyData()">前往MyData平臺</a>
+</div>
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div id="gotoMydata">
+			<h3>前往個人化資料自主運用(MyData)平臺</h3>
+			<p>您已充分閱讀
+				<a href="{{personalDataTermsUrl}}" class="udline open-lbox"
+					target="_blank">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>
+				並同意永豐銀行得蒐集處理及利用您的個人資料，接下來您即將離開永豐銀行網頁，前往個人化資料自主運用(MyData)平臺。
+			</p>
+			<br>
+			<p>為簡化永久額度調整流程，透過個人化資料自主運用(MyData)平臺，經消費者完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡永久額度調整額度調整之相關證明文件。
+				若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+			<br>
+			<p class="red"><span *ngIf="isApp">目前提供自然人憑證、健保卡、行動自然人憑證(TW FidO) 、晶片金融卡、軟體憑證方式進行身分驗證，請選擇適合您的身分驗證方式。<br></span>
+				※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>
+				<br>※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用
+				iOS 12.4、Android 8.0 以上之系統。
+			</p>
+			<div class="btn-zone">
+				<!-- <a *ngIf="!isApp" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">同意並前往MyData</a> -->
+				<a href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">{{((isApp && isAndroid) || (!isMobile && (!isFromIOS && !isAndroid))) || isApp ? "其他驗證方式" : "同意並前往MyData"}}</a>
+				<a *ngIf="(isApp && isAndroid) || (!isMobile && (!isFromIOS && !isAndroid))" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="mydataCardVerify()">晶片金融卡</a>
+				<a *ngIf="isApp" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="softCertCheck()">軟體憑證</a>
+			</div>
+		</div>
+	</div>
+</div>
+<form id="mydata-form" method="post">
+	<input type="hidden" name="BusinessNo" value="{{mydataForm?.BusinessNo}}">
+	<input type="hidden" name="ApiVersion" value="{{mydataForm?.ApiVersion}}">
+	<input type="hidden" name="HashKeyNo" value="{{mydataForm?.HashKeyNo}}">
+	<input type="hidden" name="VerifyNo" value="{{mydataForm?.VerifyNo}}">
+	<input type="hidden" name="Token" value="{{mydataForm?.Token}}">
+	<input type="hidden" name="IdentifyNo" value="{{mydataForm?.IdentifyNo}}">
+</form>
+<!-- 小網 -->
+<article class="popup" id="statement" style="z-index: 901 !important;">
+	<header>
+		<h1>前往個人化資料自主運用(MyData)平臺</h1>
+	</header>
+	<div class="content" style="padding:10px 0 10px 10px; font-size: 1.25em;">
+		<p>您已充分閱讀<a href="{{personalDataTermsUrl}}"
+				style="color: #004d99;" target="_blank">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>並同意永豐銀行得蒐集處理及利用您的個人資料，接下來您即將離開永豐銀行網頁，前往個人化資料自主運用(MyData)平臺。
+		</p>
+		<p>為簡化永久額度調整流程，透過個人化資料自主運用(MyData)平臺，經消費者完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡永久額度調整額度調整之相關證明文件。
+			若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+		<p class="red"><span *ngIf="isApp">目前提供自然人憑證、健保卡、行動自然人憑證(TW FidO) 、晶片金融卡、軟體憑證方式進行身分驗證，請選擇適合您的身分驗證方式。<br></span>
+			※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>
+			<br>※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用 iOS
+			12.4、Android 8.0 以上之系統。
+		</p>
+	</div>
+	<footer>
+		<!-- <a *ngIf="!isApp" class="button" style="margin:4px auto" (click)="postMydata()" href="javascript:void(0)">同意並前往MyData</a> -->
+		<a class="button" style="margin:4px auto" (click)="postMydata()" href="javascript:void(0)">{{((isApp && isAndroid) || (!isMobile && (!isFromIOS && !isAndroid))) || isApp ? "其他驗證方式" : "同意並前往MyData"}}</a>
+		<a *ngIf="(isApp && isAndroid) || (!isMobile && (!isFromIOS && !isAndroid))" class="button" style="margin:4px auto" (click)="mydataCardVerify()" href="javascript:void(0)">晶片金融卡</a>
+		<a *ngIf="isApp" class="button" style="margin:4px auto" (click)="softCertCheck()" href="javascript:void(0)">軟體憑證</a>
+	</footer>
+</article>

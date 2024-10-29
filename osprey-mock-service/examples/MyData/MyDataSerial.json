@@ -1,0 +1,25 @@
+{
+    "Result": {
+        "TXID": "EWEB27e7d432738cb4c698007577214bce0bd",
+        "Portal": "EWEB2",
+        "BRANCH": "121",
+        "DEPT": "BR0168"
+    },
+    "Header": {
+        "SessionID": "3nyfkeitkmkqp1e1u53sry45",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "a75efa63-cdda-44f1-92a6-6aeb64d40fa2",
+        "UserID": "F154845239",
+        "RequestTime": "2023-08-16T11:25:26.6172641+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.135",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": "",
+        "ClientRefNo": "98cd540812884da582b40aa4de73049a",
+        "ClientTimestamp": "2023-08-16T11:25:25.953+08:00"
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

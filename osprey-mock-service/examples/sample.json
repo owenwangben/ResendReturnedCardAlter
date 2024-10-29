@@ -1,0 +1,17 @@
+{
+  "Result": null,
+  "Header": {
+    "SessionID": "cd20d505-067e-4530-bd85-7925aaedc306",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "e6e7c419-f973-44ff-b2ce-d0bdb8e0f4af",
+    "UserID": "",
+    "RequestTime": "2017-03-23T18:47:02.3379036+08:00",
+    "TxCode": "",
+    "RemoteAddr": "10.11.33.39",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

@@ -1,0 +1,55 @@
+<!-- 條款 -->
+<div class="container-fluid u-maxWidth-1024 pt-3">
+	<h2 class="text-left my-4 u-font-weight-700 t-superTitle">消費碳足跡查詢</h2>
+	<ng-container *ngIf="!agreeSuccess">
+		<a (click)="showbox = true" data-toggle="modal" data-target="#exampleModal"
+			style="color:#007bff">碳足跡計算器特別約定條款</a>
+		<ng-container *ngIf="showbox">
+			<div class="modal-backdrop fade show"></div>
+			<div class="modal fade show" role="dialog" style="display: block;" aria-modal="true">
+				<div class="modal-dialog modal-dialog-centered">
+					<div class="modal-content pt-2">
+						<div class="modal-header px-0 border-bottom-0">
+							<h5 class="mb-3 font-weight-bold t-subtitle">碳足跡計算器特別約定條款</h5>
+						</div>
+						<div class="modal-body">
+							<div class="terms-container overflow-auto border" scrollCheck
+								(changeState)="changeState($event)">
+								<!-- Type1：回傳條款連結 -->
+								<p class="terms-content m-0 p-2 u-font-size-14"
+									*ngIf="agreementData?.Type === 1 ; else gethtml"
+									loadHtml="{{agreementData?.Content}}">
+								</p>
+								<!-- Type2：回傳條款內文 -->
+								<ng-template #gethtml>
+									<p class="terms-content m-0 p-2 u-font-size-14">
+										{{agreementData?.Content}}
+									</p>
+								</ng-template>
+							</div>
+							<div class="custom-control custom-checkbox mt-3">
+								<input class="custom-control-input" type="checkbox" id="inputRule" [(ngModel)]="agree"
+									[disabled]="disable">
+								<label class="custom-control-label font-weight-bold"
+									for="inputRule">我已詳讀並接受上述約定條款</label>
+							</div>
+						</div>
+						<div class="modal-footer py-3 border-top-0 justify-content-center">
+							<button class="btn btn-outline-primary btn-md-block" (click)="showbox=false;agree=false">取消</button>
+							<button class="btn btn-primary btn-md-block" (click)="confirm()">確定</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</ng-container>
+	</ng-container>
+
+	<!-- 啟用成功 -->
+	<ng-container *ngIf="agreeSuccess">
+		<div class="d-flex flex-column align-items-center"> <span class="icon icon-success mt-5 mb-3"></span>
+			<h3 class="text-center">啟用成功，碳足跡資料累積中，<br>次一工作日後可使用消費碳足跡查詢功能，<br>消費碳足跡資料可於刷卡消費後約1-8天查詢。</h3>
+		</div>
+	</ng-container>
+
+</div>
+<div class="footer-notice"></div>

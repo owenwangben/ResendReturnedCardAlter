@@ -1,0 +1,272 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div class="formblock">
+					<table class="data-table forvd" width="100%">
+						<tr>
+							<th>快速查詢</th>
+							<td>
+								<div class="rowinline left">
+									<ul >
+										<li *ngFor="let link of billMonthLinks"><a href="javascript:void(0)" (click)="onClickMonthLink(link)">{{link}}</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<th>帳單查詢</th>
+							<td>
+								<div class="artfld select col-2 rowElem">
+									<select #selectBillMonth [(ngModel)]="selectedMonth" (change)="onSelectMonth(selectBillMonth.value)">
+										<option *ngFor="let month of billMonths" value="{{month}}">{{month}}</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan=2>
+								<div class="rowElem red">
+									<span class="spanbox">{{billMonth}}信用卡帳單</span>
+									<span class="spanbox">結帳日：{{model?.BaseData.STMTDATE}}</span>
+                                    <span class="spanbox">繳款截止日：{{model?.BaseData.DUEDATE}}</span>
+                                    <div *ngIf="isShowIntRate">
+                                        <span class="spanbox">• 循環利率：{{model?.BaseData.IntRate}}</span>
+                                        <span class="spanbox">• 適用截止年月：{{model?.BaseData.IntDate}}</span>
+                                    </div>
+                                </div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan=2>
+								<span class="spanbox">
+									若您本期已繳納部分款項，請於再次繳款前先確認應繳金額，以免溢繳。您可前往<a href="javascript:void(0)" routerLink="/Account/Info">帳務資訊</a>查詢最近繳款日期與金額。
+								</span>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div class="formblock">
+					<div class="rowElem fs15 fwb">帳單金額</div>
+					<table class="ntable" *ngIf="model">
+						<tr>
+							<th>幣別</th>
+							<th>上期應繳<br>總金額</th>
+							<th>-已繳款金額<br>{{lineCRColName}}
+							</th>
+							<th>+本期<br>新增款項</th>
+							<th>+循環利息</th>
+							<th>+違約金</th>
+							<th>=本期應繳<br>總金額</th>
+							<th>=本期最低<br>應繳金額</th>
+						</tr>
+						<tr>
+							<tr *ngFor="let item of model?.BillAmounts">
+								<td>{{item.CurrencyName}}</td>
+								<td class="num-align">{{item.PREVBAL}}</td>
+								<td class="num-align">{{item.PREVPAYAMT}}</td>
+								<td class="num-align">{{item.NEWADDAMT}}</td>
+								<td class="num-align">{{item.FINCHARGE}}</td>
+								<td class="num-align">{{item.LATECHARGE}}</td>
+								<td class="num-align">{{item.CURRBAL}}</td>
+								<td class="num-align">{{item.DUEAMT}}</td>
+							</tr>
+					</table>
+					<div class="notification" *ngIf="model?.BillDeductMsgs.length > 0">
+						<ol><li *ngFor="let msg of model?.BillDeductMsgs">{{msg}}</li></ol>
+					</div>
+				</div>
+				<div class="formblock" *ngIf="!model?.IsCompanyUser">
+					<div class="rowElem fs15 fwb">紅利享樂回饋計畫</div>
+					<table class="ntable" *ngIf="model">
+						<tbody>
+							<tr>
+								<th>本期消費新增點數</th>
+								<th>活動調整點數</th>
+								<th>本期兌換點數</th>
+								<th>累計可用點數</th>
+								<th>本年度到期點數</th>
+							</tr>
+							<tr>
+								<td class="num-align">{{model?.Reward.AddPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.AdjustPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.ExchangePoint | number}}</td>
+								<td class="num-align">{{model?.Reward.TotalPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.ExpiringPoint | number}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="formblock" id="showTrx">
+					<div class="rowElem fs15 fwb">消費記錄</div>
+					<table class="ntable" *ngIf="model?.IsCompanyUser">
+						<tbody>
+							<tr>
+								<th>消費日</th>
+								<th>入帳起息日</th>
+								<th>卡號<br>末四碼</th>
+								<th>帳單說明</th>
+								<th>{{item?.CurrencyName}}金額</th>
+								<ng-template [ngIf]="item?.CurrencyName == '臺幣'" [ngIfElse]="ForeignCurTitle">
+									<th>外幣<br>折算日</th>
+									<th>外幣金額</th>
+									<th>總費用<br>年百分率</th>
+									<th>分期<br>未到期金額</th>
+								</ng-template>
+								<ng-template #ForeignCurTitle>
+									<th>折算日</th>
+									<th>消費地</th>
+									<th>幣別</th>
+									<th>消費金額</th>
+								</ng-template>
+							</tr>
+							<tr>
+								<td colspan="9">
+									<div class="rowElem red">
+										<span class="spanbox">請下載當期帳單PDF</span>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<ul class="accordion" *ngIf="!model?.IsCompanyUser">
+						<li #tables *ngFor="let item of BillRecordsByCurrency;">
+							<a href="javascript:void(0)" class="atitle">{{item.CurrencyName}}</a>
+							<div class="acontent">
+								<table class="ntable">
+									<tbody>
+										<tr>
+											<th>消費日</th>
+											<th>入帳起息日</th>
+											<th>卡號<br>末四碼</th>
+											<th>帳單說明</th>
+											<th>{{item?.CurrencyName}}金額</th>
+											<ng-template [ngIf]="item?.CurrencyName == '臺幣'" [ngIfElse]="ForeignCurTitle">
+												<th>外幣<br>折算日</th>
+												<th>外幣金額</th>
+												<th>總費用<br>年百分率</th>
+												<th>分期<br>未到期金額</th>
+											</ng-template>
+											<ng-template #ForeignCurTitle>
+												<th>折算日</th>
+												<th>消費地</th>
+												<th>幣別</th>
+												<th>消費金額</th>
+											</ng-template>
+										</tr>
+										<tr *ngFor="let record of item?.BillRecord">
+											<ng-template [ngIf]="record.TXCode.trim() != '0'" [ngIfElse]="SubTotal">
+												<td>{{record.TXDATE}}</td>
+												<td>{{record.DEDATE}}</td>
+												<td>{{record.CardNo}}</td>
+												<td>{{record.MEMO}}</td>
+												<td class="num-align">{{record.AMT}}</td>
+												<ng-template [ngIf]="item?.CurrencyName == '臺幣'" [ngIfElse]="ForeignCurRecord">
+													<td>{{record.CURDATE}}</td>
+													<td class="num-align">{{record.TXAMT}}</td>
+													<td class="num-align">{{record.INST_RATE}}</td>
+													<td class="num-align">{{record.INST_AMT}}</td>
+												</ng-template>
+												<ng-template #ForeignCurRecord>
+														<td>{{record.CURDATE}}</td>
+														<td class="num-align">{{record.COUNTRY}}</td>
+														<td class="num-align">{{record.TXCUR}}</td>
+														<td class="num-align">{{record.TXAMT}}</td>
+													</ng-template>
+											</ng-template>
+											<ng-template #SubTotal>
+												<td colspan="4">{{record.MEMO}}</td>
+												<td class="num-align">{{record.AMT}}</td>
+												<td></td>
+												<td></td>
+												<td></td>
+												<td></td>
+											</ng-template>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="formblock" *ngIf="!model?.IsCompanyUser && model?.AsymmetricInstallmentInfo.length > 0">
+					<div class="rowElem fs15 fwb">專案分期查詢</div>
+					<ul class="acontent">
+						<table class="ntable">
+							<tbody>
+								<tr>
+									<th>首期入帳日</th>
+									<th>帳單說明</th>
+									<th>刷卡金額</th>
+									<th>分期金額說明</th>
+									<th>繳款金額說明</th>
+								</tr>
+								<tr *ngFor="let item of AsymmetricInstallmentRecords">
+									<td>{{item.TXDATE}}</td>
+									<td>{{item.MEMO}}</td>
+									<td>{{item.AMT}}</td>
+									<td class="text-left" [innerHTML]="item.INSAMT_MEMO"></td>
+									<td class="text-left" [innerHTML]="item.PAYAMT_MEMO"></td>
+								</tr>
+							</tbody>
+						</table>
+					</ul>
+				</div>
+				<div>
+					<div class="btn-zone">
+						<app-link-button type="payment1" *ngIf="!model?.IsCompanyUser">網銀轉帳繳卡費</app-link-button>
+						<app-link-button type="payment3" *ngIf="!model?.IsCompanyUser">活存帳戶繳卡費</app-link-button>
+						<!-- <app-link-button type="payment2" *ngIf="!model?.IsCompanyUser">網銀預約轉帳繳卡費</app-link-button> -->
+						<a *ngIf="ebillType === 0" class="nbtn" routerLink="/Application/EStatementChange">設定行動/電子帳單</a>
+						<app-stmt-pdf-button [StmtMonth]="selectedMonth">下載當期帳單PDF</app-stmt-pdf-button>
+						<app-stmt-excel-button [StmtMonth]="selectedMonth" *ngIf="model?.IsCompanyUser">下載當期明細EXCEL</app-stmt-excel-button>
+						<app-stmt-rte-button *ngIf="!model?.IsCompanyUser && billMonths && selectedMonth === billMonths[0]">申請帳單分期</app-stmt-rte-button>
+					</div>
+					<div class="credit_ad" *ngIf="msg">
+						<div class="credit_content">
+							<div class="credit_name">
+								<p>{{msg[0]}}</p>
+								<p>{{msg[1]}}</p>
+							</div>
+							<div class="credit_bg">
+								<p>{{msg[2]}}</p>
+								<p class="Afont">{{msg[3]}}</p>
+							</div>
+							<div class="credit_bg">
+								<p>{{msg[6]}}</p>
+								<p class="Afont">{{msg[7]}}</p>
+							</div>
+							<div class="credit_text">
+								<p>
+									<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+									<span>{{msg[4]}}</span>
+								</p>
+								<p>
+									<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+									<span>{{msg[8]}}</span>
+								</p>
+
+							</div>
+							<div class="credit_text">
+								<p>
+									<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+									<span>{{msg[9]}}</span>
+								</p>
+								<p>
+									<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+									<span>{{msg[5]}}</span>
+								</p>
+							</div>
+							<div class="credit-zone">
+								<a href="{{msgUrl}}" class="credit_btn" target="_blank">立即申請</a>
+							</div>
+						</div>
+					</div>
+					<div loadHtml="/mma8/card/htmls/近期帳單查詢注意事項.html"></div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

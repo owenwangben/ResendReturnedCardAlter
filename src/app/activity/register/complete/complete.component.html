@@ -1,0 +1,38 @@
+<div class="formblock">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable">
+		<tbody>
+			<tr>
+				<td colspan="2">
+					<p class="apply-success"><i class="icon icon-success"></i>登錄成功！</p>
+				</td>
+			</tr>
+			<tr class="line">
+				<td colspan="2"></td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<table cellpadding="0" cellspacing="0" border="0" class="new-datatable">
+						<tr>
+							<th>登錄活動</th>
+							<td>
+								<span class="red">{{activityName}}</span>
+							</td>
+						</tr>
+						<tr>
+							<th class="vtop">序號</th>
+							<td>
+								<span class="red">{{seq}}</span>
+							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div *ngIf="isApplyElectronicBill == 0" class="billSet flex space-between align-center billSetFullWidth">
+  <div class="billSet__text flex justify-center align-center"><img class="hidden-min" src="/mma8/card/images/Energysaving.svg">
+    <p>立即申請電子/行動帳單，<br>隨時隨地輕鬆查看消費紀錄。</p>
+  </div>
+  <button class="billSet__button" (click)="redirectToEStatementChange()">前往設定</button>
+</div>

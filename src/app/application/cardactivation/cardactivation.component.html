@@ -1,0 +1,14 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<app-wizard [(current)]="current" [steps]="steps"></app-wizard>
+				<div loadHtml="/mma8/card/htmls/網路開卡注意事項.html"></div>
+			</section>
+			<div *ngIf="!isMobile" loadHtml="/mma8/card/htmls/卡登錄大網BN.html"></div>
+			<div *ngIf="isMobile" loadHtml="/mma8/card/htmls/卡登錄小網BN.html"></div>
+		</div>
+	</div>
+</div>

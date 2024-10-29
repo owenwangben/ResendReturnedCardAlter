@@ -1,0 +1,13 @@
+{
+    "Result": {
+        "Title": "碳足跡約定書",
+        "Version": "carbon_v1.0",
+        "Type": 1,
+        "Content": "/mma8/card/htmls/carbon.html"
+    },
+    "Header": {
+        "ApplicationName": "CARDBON"
+    },
+    "ResultCode": "00",
+    "ResultMessage": "取得碳足跡約定書API錯誤"
+}

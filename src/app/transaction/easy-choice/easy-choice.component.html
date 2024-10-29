@@ -1,0 +1,11 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<app-wizard [(current)]="current" [steps]="steps"></app-wizard>
+			</section>
+		</div>
+	</div>
+</div>

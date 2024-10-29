@@ -1,0 +1,80 @@
+<div [formGroup]="form">
+	<table class="new-datatable" width="100%">
+		<tr style="height:8px"></tr>
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">查詢卡別</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select formControlName="InquiryType" mweb-select="請選擇查詢卡別">
+						<option *ngFor="let item of cardgroup" [value]="item.FeedBackType">{{item.CardName}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">查詢項目</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select formControlName="InquiryPeriod" mweb-select="請選擇查詢項目">
+						<option *ngFor="let item of periodOptions" [value]="item.Flag">{{item.Name}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="btn-zone">
+					<button type="submit" class="nbtn focus" (click)="onSubmit()">查詢</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div *ngIf="resultModel">
+	<table class="ntable table-striped" *ngIf="!resultModel?.TotalAmt">
+		<tr>
+			<td class="red text-center mobile-col-7">查無消費資料</td>
+		</tr>
+	</table>
+	<div *ngIf="resultModel?.TotalAmt">
+		<table class="ntable table-striped" >
+			<tr style="height:8px"></tr>
+			<tr>
+				<th class="text-center mobile-col-3">查詢期間</th>
+				<th class="text-center mobile-col-3">消費金額累積</th>
+			</tr>
+			<tr>
+				<th class="text-center mobile-col-3">{{year}}年{{month}}月</th>
+				<th class="text-center mobile-col-3">{{resultModel.TotalAmt}}</th>
+			</tr>
+		</table>
+		<table class="ntable table-striped" width="100%" *ngIf="resultModel?.Items">
+			<thead>
+				<tr style="height:8px"></tr>
+				<tr>
+					<th class="mobile-col-2">消費日</th>
+					<th class="mobile-col-5">消費說明</th>
+					<th class="mobile-col-3 text-right">消費金額</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let txitem of this.resultModel?.Items">
+					<td>{{txitem.TXDATE}}</td>
+					<td>{{txitem.MEMO}}</td>
+					<td class="text-right">{{txitem.TX_AMT}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+<div class="MemoContent-s2">
+	<h2 class="title">注意事項</h2>
+	<div class="listStyle">
+		<ul>
+			<li>本查詢結果僅供參考，一般消費係以消費日為準且已入帳完成者，正、附卡消費合計，消費金額累積可能因時間差、退貨等負項交易影響而有變動，故請依本行系統結算為準，各優惠活動詳細注意事項請參閱本行活動網頁公告。</li>
+		</ul>
+	</div>
+</div>
+

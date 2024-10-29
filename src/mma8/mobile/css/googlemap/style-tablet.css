@@ -1,0 +1,198 @@
+body, .fix-body-bg {
+    background-color:#b8ddfc;
+    background-image: url(img/bg_ipad.png), url(img/bg_ipad2.png);
+    background-repeat: repeat, repeat-x;
+}
+
+#wrapper{min-height:100%;}
+#header{padding:5px 0 0 0;height:50px;}
+#header h1{height:46px;padding:0;}
+#header h1 span{width:45px;height:45px;background:url("/App_Themes/img/sprite_logo_tablet.png") 0px 3px no-repeat;}
+#header span.button{width:150px;height:33px;font-size:19px;line-height:33px;}
+.logout{top:10px;right:20px;}
+.showSideBar{top:10px;left:20px;}
+
+#main{padding:0 0 65px 0;}
+
+#sidebar{left:-220px;top:55px;width:220px;}
+#sidebar ul{padding:0 10px;width:200px;}
+#sidebar li span{padding:20px 0 0 0;height:44px;text-indent:80px;font-size:19px;
+background-image:url("/App_Themes/img/sprite_menu80.png");background-repeat:no-repeat;
+}
+#sidebar li:nth-child(1) span{background-position:0px 10px;}
+#sidebar li:nth-child(2) span{background-position:-1px -71px;}
+#sidebar li:nth-child(3) span{background-position:1px -157px;}
+#sidebar li:nth-child(4) span{background-position:2px -990px;}
+#sidebar li:nth-child(5) span{background-position:-1px -910px;}
+#sidebar li:nth-child(6) span{background-position:2px -247px;}
+#sidebar li:nth-child(7) span{background-position:-1px -835px;}
+#sidebar li:nth-child(8) span{background-position:6px -336px;}
+#sidebar li:nth-child(9) span{background-position:-2px -336px;}
+#sidebar li:nth-child(10) span{background-position:-2px -504px;}
+#sidebar li:nth-child(11) span{background-position:-1px -586px;}
+#sidebar li:nth-child(12) span{background-position:-1px -659px;}
+#sidebar li:nth-child(13) span{background-position:1px -742px;}
+
+#sidebar li b{top:27px;right:0px;}
+
+#sidebar footer{padding:50px 0 5px 0px;}
+#sidebar footer span{padding:0 0 0 45px;height:34px;line-height:34px;font-size:14px;
+background:url("/App_Themes/img/sprite_logo_tablet.png") 7px -64px no-repeat;}
+#sidebar footer span small{font-size:11px;}
+
+#homemenu {padding:70px 0 10px 5px;width:590px;}
+#homemenu li{width:180px;height:200px;margin:0 0 40px 10px;}
+#homemenu li span{padding:163px 0 0 0;width:180px;height:37px;font-size:21px;background-image:url("/App_Themes/img/sprite_menu180.png");background-repeat:no-repeat;}
+#homemenu li:nth-child(1) span{background-position:2px 19px;}
+#homemenu li:nth-child(2) span{background-position:0px -172px;}
+#homemenu li:nth-child(3) span{background-position:4px -378px;}
+#homemenu li:nth-child(4) span{background-position:3px -2426px;}
+#homemenu li:nth-child(5) span{background-position:3px -2240px;}
+#homemenu li:nth-child(6) span{background-position:3px -611px;}
+#homemenu li:nth-child(8) span{background-position:2px -2060px;}
+#homemenu li:nth-child(9) span{background-position:2px -1890px;}
+#homemenu li:nth-child(10) span{background-position:3px -1271px;}
+#homemenu li:nth-child(11) span{background-position:3px -1500px;}
+#homemenu li:nth-child(12) span{background-position:3px -1704px;}
+
+#homemenu li span b{top:9px;right:10px;
+padding:2px 0 0 0;width:40px;height:38px;font-size:22px;line-height:35px;font-weight:bold;
+ background:url("/App_Themes/img/newNum_tablet.png") no-repeat;
+}
+
+#mainmenu{padding:30px 0 0 0;}
+#mainmenu li{margin:0 0 10px 0;height:80px;}
+#mainmenu li div {height:80px;line-height:80px;font-size:27px;background:url("/App_Themes/img/sprite_logo_tablet.png") 98% -95px no-repeat;}
+#mainmenu li div span{width:60px;height:80px;
+background-image:url("/App_Themes/img/sprite_icons_tablet.png");background-repeat:no-repeat;
+}
+.MMArate li:nth-child(1) div span{background-position:0 14px;}
+.MMArate li:nth-child(2) div span{background-position:0 -66px;}
+.MMArate li:nth-child(3) div span{background-position:0 -147px;}
+.MMArate li:nth-child(4) div span{background-position:0 -226px;}
+.MMArate li:nth-child(5) div span{background-position:0 -1197px;}
+
+.MMAeasy li:nth-child(1) div span{background-position: 0 -307px;}
+.MMAeasy li:nth-child(2) div span{background-position: 0 -388px;}
+.MMAeasy li:nth-child(3) div span{background-position: 0 -469px;}
+.MMAeasy li:nth-child(4) div span{background-position: 0 -550px;}
+.MMAeasy li:nth-child(5) div span{background-position: 0 -631px;}
+
+.MMAgood li:nth-child(1) div span{background-position: 0 -711px;}
+.MMAgood li:nth-child(2) div span{background-position: 0 -791px;}
+
+.MMAservices li:nth-child(1) div span{background-position: 0 -872px;}
+.MMAservices li:nth-child(2) div span{background-position: 0 -953px;}
+.MMAservices li:nth-child(3) div span{background-position: 0 -1034px;}
+
+#mainmenu li div span.specialstore{background-position: 0 -711px;}
+#mainmenu li div span.namecard{background-position: 0 -791px;}
+#mainmenu li div span.storegift{background-position: 0 -1116px;}
+
+#mainmenu li div span.Customer1{background-position: 0 -872px;}
+#mainmenu li div span.Customer2{background-position: 0 -953px;}
+#mainmenu li div span.Customer3{background-position: 0 -1034px;}
+
+/*生活便利*/
+#mainmenu li div span.bus_icon{background-position: 0 -307px;}
+#mainmenu li div span.parking_icon{background-position: 0 -388px;}
+#mainmenu li div span.rail_icon{background-position: 0 -469px;}
+#mainmenu li div span.highspeed_icon{background-position: 0 -550px;} 
+
+#creditcard{padding:20px 0 0 40px;}
+#creditcard dt{font-size:23px;line-height:31px;letter-spacing:1px;}
+#creditcard dd{padding:0 0 0 15px;font-size:19px;line-height:21px;letter-spacing:1px;}
+
+
+#memberlogin h2{height:55px;font-size:31px;line-height:55px;}
+#memberlogin ul{padding:25px 0 0 0;}
+#memberlogin ul li{height:80px;font-size:29px;}
+#memberlogin ul li label{height:80px;line-height:80px;}
+#memberlogin ul li span{padding:0 0 0 155px;height:80px;line-height:80px;}
+#memberlogin ul li span.remember{padding:0 0 0 280px;}
+#memberlogin ul li input[type="text"],#memberlogin ul li input[type="password"]{padding:0 0 0 10px;height:60px;border-radius:10px;}
+#memberlogin ul li.btnn{margin:25px auto 32px auto;padding:30px 15px;}
+#memberlogin ul li input[type="button"],#memberlogin ul li input[type="submit"],#memberlogin ul li input[type="reset"]
+{margin:0 20px;width:180px;height:52px;font-size:24px;line-height:52px;border-radius:10px}
+#memberlogin ul li input[type="submit"]
+{ margin-bottom: 20px; }
+#rePwdChangeHeader { font-size:140%; line-height:42px; }
+#rePwdChange input.inputText { font-size:115%; width:95%; height:60px; background-color:#e9ecf8; border:0; border-radius:10px; }
+#rePwdChange td.inputLabel { padding:0 20px 15px 0; width:25%; font-size: 22px; text-align: right; height: 100px; }
+#rememberId table { font-size:29px; }
+
+#accountData{padding:20px 0 0 0;width:90%;}
+#ClientErrorMessage{font-size:17px;}
+#accountData h2{margin:0 0 15px 0;padding:7px 0;font-size:21px;}
+#accountData div.message_red{font-size:17px;}
+#accountData div.btnn button,#accountData div.mapbtnn button{margin:0 20px;padding:10px 45px;font-size:150%;border-radius:10px;}
+#accountData table{margin:0 0 15px 0;padding:10px;font-size:17px;}
+#accountData table td{padding:15px 20px;}
+#accountData table td select{ max-width:none; font-size:17px;}
+#accountData table td.arrow{width:15px;}
+#accountData table td.bold{ padding-right:0;width:120px;}
+#accountData table td input{padding:0 0 0 10px;height:60px;font-size:27px;border-radius:10px;}
+
+/*店家資料，電話鈕及導航鈕=====================================================================footer===========================================================*/
+#btnNav{width: 80px;background-image:url("/App_Themes/img/location_button_tablet.png");background-position:center -5px;padding: 0 !important;cursor: pointer;}
+#btnCall{display: none}
+
+/*====公車搜尋======*/
+#colorBox li{height:55px;font-size:28px;line-height:55px;}
+.number li{height:70px;font-size:32px;line-height:70px;}
+.number li.back span{width:57px;height:70px;background:url("/App_Themes/img/bus_delete_tablet.jpg") 0 15px no-repeat;}
+/*====永豐牌告利率======*/
+table.list td{padding:15px 20px!important}
+table.cash td{padding:15px 20px!important}
+#cash tbody tr td:nth-child(2), #list tbody tr td:nth-child(2){width:120px;height:auto;}
+/*========地圖StoreInfo=======*/
+#divStoreInfo div{font-size:16px;}
+/*========搜尋選單=======*/
+#accountData #divQuery button{margin:0 20px;}
+#keyQuery{font-size:180%;line-height:48px;}
+/*=====================================================================footer===========================================================*/
+#footer{margin-top:-50px;height:50px;}
+#footer p{font-size:14px;line-height:22px;} 
+/*===台高鐵清單表格===*/
+div.rail select{font-size:150%;margin:15px 0;}
+.stationColor { background-color: #293C80;background-image: -webkit-gradient(linear, 0 0, 0 80%, from(#293C80), to(#1E2233)); }
+.stationColor p.title {line-height: 34px;margin:0; text-align: center;  font-size: 120%; color: #fff; }
+.stationColor p.half{float: left; width: 49%;}
+.btns button { padding: 5px; font-size:110%; }
+.stationColor div.cdRight{ text-align:right;}
+.stationColor div button{width:60%;height:42px;font-size:120%;text-align:center;border-radius:8px;}
+/*20130624 ipad彈出視窗標題寬度*/
+.ui-dialog .ui-dialog-titlebar {position: relative; /*20140320hidden width:97.5%;*/}
+
+/* Begin===「非約定轉帳」轉入帳號輸入鍵盤===*/
+ol,ul { list-style:none; }
+#WTransPanel { padding:30px 0 0 0;width:100%;height:auto;margin:0 auto; }
+#WTransPanel h2{ height:42px;font-size:140%;text-align:center;line-height:42px;background-color:#C5BFAE;border-radius:8px 8px 0 0; }
+#WTransPanel ul{ padding-top:6px;background-color:#FFF;border:1px solid #C6C6C6;border-radius:10px 10px 10px 10px; }
+#WTransPanel ul li { height:50px; font-weight:bold; border-bottom:1px solid #ABABAB; margin-left: 0px; }
+#WTransPanel ul li label { height:50px; font-weight:bold; margin-left: 15px; color: #000080; }
+#WTransPanel ul li span { display:inline-block; }
+#WTransPanel ul li span.left { width:100px; margin-top:15px; text-align:left; }
+#WTransPanel ul li span.right { width:196px; text-align:left; }
+#WTransPanel ul li span.setNopact { width:196px; text-align:left; }
+#WTransPanel ul li.noButtom { border-bottom-width:0px; }
+#WTransPanel ul li.maskedAcct { height:auto; }
+#WTransPanel ul li.setNopactAcct { min-height:50px; }
+#WTransPanel ul li.maskedAcct button.btn_pos { display:inline; position: relative; top: -10px; left: 5px; }
+#WTransPanel ul li.maskedAcct select.sel_pos { display: inline; position: relative; top: -10px; left: 22px; margin-top: 15px; }
+/* End===「非約定轉帳」轉入帳號輸入鍵盤===*/
+
+
+/*20131031確認頁按鈕*/
+#btnConfirm {margin:0 20px;padding:10px 45px;font-size:150%;border-radius:10px;}
+
+
+
+.c_wrap { width: 100%; height: 40px; display: inline-table; margin-top: 0px; }
+
+/* 20131220 Fund InculdeMemo */
+#MemoContent { width:600px; }
+#MemoContent table.mt { border:0px; -webkit-border-radius:0px; width:400px; }
+#MemoContent table.mt_fund { margin-left:0px; }
+#listStyle { width:580px; }
+#listStyle ol { margin-left:30px; }

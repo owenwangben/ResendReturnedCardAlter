@@ -1,0 +1,16 @@
+<div style="margin: 20px">
+	<app-column-chart [data]="Records" display="Month" quantity="Amount" color="Color"></app-column-chart>
+</div>
+<table *ngFor="let records of HalfYearRecords" class="ntable cols center">
+	<tbody>
+		<tr>
+			<th>消費月份</th>
+			<td *ngFor="let record of records">{{ record.Month }}</td>
+		</tr>
+		<tr>
+			<th>消費總金額</th>
+			<td *ngFor="let record of records">{{ record.Amount | number }}</td>
+		</tr>
+	</tbody>
+</table>
+<div loadHtml="/mma8/card/htmls/每月消費分析注意事項.html"></div>

@@ -1,0 +1,165 @@
+﻿<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="new-datatable" width="100%">
+			<tr>
+				<th *ngIf="!isMobile">收取帳單方式</th>
+				<td class="text-left">
+					<div class="rowElem">
+						<div *ngIf="isMobile" class="rowElem">收取帳單方式</div>
+						<input type="radio" class="artfld circle" id="r11" formControlName="IsApplyElectronicBill" [value]="2">
+						<label for="r11"><span><span class="getCheck"></span></span>行動帳單</label>
+						<input type="radio" class="artfld circle" id="r12" formControlName="IsApplyElectronicBill" [value]="1">
+						<label for="r12"><span><span class="getCheck"></span></span>電子帳單</label>
+						<input *ngIf="form.value.IsApplyElectronicBill == 0" type="radio" class="artfld circle" id="r13" formControlName="IsApplyElectronicBill" [value]="0">
+						<label *ngIf="form.value.IsApplyElectronicBill == 0" for="r13"><span><span class="getCheck"></span></span>實體帳單</label>
+					</div>
+				</td>
+			</tr>
+			<tr *ngIf="form.value.IsApplyElectronicBill == 1">
+				<th *ngIf="!isMobile">電子帳單寄送信箱</th>
+				<div class="rowElem">
+					<div *ngIf="isMobile">電子帳單寄送信箱</div>
+					<td>{{(form.value.Email | mask:'1-' + ((form.value.Email || '').indexOf('@') - 1):'*') || "未設定"}} <span  *ngIf="sso">(<a class="link" href="javascript:void(0)" (click)="onChangeEmail()">{{!form.value.Email ? "立即設定" : "變更"}}</a>)</span></td>
+				</div>
+			</tr>
+			<tr *ngIf="form.value.IsApplyElectronicBill == 2">
+				<th *ngIf="!isMobile">行動帳單寄送手機</th>
+				<div class="rowElem">
+					<div *ngIf="isMobile">行動帳單寄送手機</div>
+					<td>
+						{{(form.value.Mobile | mobile) || "未設定"}}
+						<span class="red">
+							<br *ngIf="isMobile"> (若欲{{!form.value.Mobile ? "設定" : "變更"}}請洽信用卡客服<a *ngIf="isMobile" class="link" href="tel:0225287776">02-2528-7776</a><span *ngIf="!isMobile">02-2528-7776</span>)
+						</span>
+					</td>
+				</div>
+			</tr>
+		</table>
+	</div>
+	<div class="formblock" *ngIf="sso">
+		<div>
+			<table *ngIf="!isMobile" class="new-datatable center" width="100%">
+				<tr>
+					<td colspan="2">信用卡服務Email通知設定</td>
+				</tr>
+				<tr *ngIf="form.value.IsApplyElectronicBill != 1">
+					<td class="text-right" width="25%">
+						寄送信箱
+					</td>
+					<td>{{(form.value.Email | mask:'1-' + ((form.value.Email || '').indexOf('@') - 1):'*') || "未設定"}} (<a class="link" href="javascript:void(0)" (click)="onChangeEmail()">{{!form.value.Email ? "立即設定" : "變更"}}</a>)</td>
+				</tr>
+				<tr>
+					<td class="text-right" width="25%">
+						每日消費彙整通知
+					</td>
+					<td class="text-left">
+						<input type="radio" class="artfld circle" id="r21" formControlName="IsApplyConsumerCollection" [value]=true>
+						<label for="r21"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r22" formControlName="IsApplyConsumerCollection" [value]=false>
+						<label for="r22"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-right">
+						電子活動通知
+					</td>
+					<td class="text-left">
+						<input type="radio" class="artfld circle" id="r31" formControlName="IsApplyEaper" [value]=true>
+						<label for="r31"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r32" formControlName="IsApplyEaper" [value]=false>
+						<label for="r32"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-right">
+						信用卡繳款入帳通知
+					</td>
+					<td class="text-left">
+						<input type="radio" class="artfld circle" id="r41" formControlName="IsApplyPaymentNotify" [value]=true>
+						<label for="r41"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r42" formControlName="IsApplyPaymentNotify" [value]=false>
+						<label for="r42"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+
+				</tr>
+				<tr>
+					<td class="text-right">
+						信用卡繳款提醒通知
+					</td>
+					<td class="text-left">
+						<input type="radio" class="artfld circle" id="r51" formControlName="IsRemindPaymentEmailNotify" [value]=true   >
+						<label for="r51"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r52" formControlName="IsRemindPaymentEmailNotify" [value]=false  >
+						<label for="r52"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+				</tr>
+			</table>
+			<table *ngIf="isMobile" class="data-table" width="100%">
+				<tr>
+					<td colspan="2">
+						<div class="rowElem">
+							<div>以下服務僅提供Email通知</div>
+							<div *ngIf="form.value.IsApplyElectronicBill != 1">
+								<div>寄送信箱</div>
+								<div>{{(form.value.Email | mask:'1-' + ((form.value.Email || '').indexOf('@') - 1):'*') || "未設定"}} (<a class="link" href="javascript:void(0)" (click)="onChangeEmail()">{{!form.value.Email ? "立即設定" : "變更"}}</a>)</div>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">每日消費彙整通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsApplyConsumerCollection" id="switch2" checked="" value="on" /><label
+								 for="switch2"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">電子活動通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsApplyEaper" id="switch3" checked="" value="on" /><label for="switch3"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">信用卡繳款入帳通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsApplyPaymentNotify" id="switch4" checked="" value="on" /><label for="switch4"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">信用卡繳款提醒通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsRemindPaymentEmailNotify" id="switch5" checked="" value="on"  /><label for="switch5"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="btn-zone">
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">確認</button>
+	</div>
+</form>

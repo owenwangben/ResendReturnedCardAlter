@@ -1,0 +1,329 @@
+<app-applycard-intl-step-indicator [step]="1"></app-applycard-intl-step-indicator>
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.KindOfApplyCard}}</span>申請卡別</legend>
+			<div class="confirm-data-block">
+				<span>{{cardinfo?.CardFullName}}</span>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+<div *ngIf="cardinfo?.IsEasyCard" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.AutoloadEastCardSetting}}</span>悠遊卡自動加值功能設定</legend>
+			<div class="confirm-data-block">
+				<span>{{applyinfo.NotAutoBonus ? "Default inactivation" : "Default activation"}}</span>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.PersonalInfo.PersonalInfo}}</span>您的個人資料</legend>
+			<div class="confirm-data-block ">
+				<table>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.CName}}</span>
+								中文姓名
+							</p>
+						</th>
+						<td>{{applyinfo.Name}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.EName}}</span>
+								英文姓名
+							</p>
+						</th>
+						<td>{{applyinfo.EnglishName}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.DOB}}</span>
+								出生年月日
+							</p>
+						</th>
+						<td>{{applyinfo.Birthday}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.UI_Number}}</span>
+								居留證統一證號
+							</p>
+						</th>
+						<td>{{applyinfo.IDNumber}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.DateOfIssue}}</span>
+								居留證核發日期
+							</p>
+						</th>
+						<td>{{applyinfo.ArcIssueDate}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.PerOfStay}}</span>
+								居留期限
+							</p>
+						</th>
+						<td>{{applyinfo.ArcExpireDate}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.PersonalInfo.BarCodeMumber}}</span>
+								條碼號碼
+							</p>
+						</th>
+						<td>{{applyinfo.ArcBarcodeNumber}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.MobilePhone}}</span>行動電話</p>
+						</th>
+						<td>{{applyinfo.Mobile}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span class="en-confirm-span">{{message?.PersonalInfo.AddrNow1}}<br
+										class="hidden-min">{{message?.PersonalInfo.AddrNow2}}</span>現居地址</p>
+						</th>
+						<td *ngIf="!applyinfo.Address && applyinfo.IsUploadAddress">{{message?.PersonalInfo.UploadLater}} 稍後上傳</td>
+						<td *ngIf="applyinfo.Address && !applyinfo.IsUploadAddress">{{applyinfo.Address}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.AddrOfCom}}</span>公司地址</p>
+						</th>
+						<td
+							*ngIf="applyinfo.IsCompanyAddressSameAsHomeAddress && !applyinfo.IsUploadCompanyAddress && !applyinfo.CompanyAddress">
+							{{message?.PersonalInfo.SameAddrOfDomicile}} 同現居地址</td>
+						<td *ngIf="applyinfo.IsUploadCompanyAddress && !applyinfo.CompanyAddress">
+							{{message?.PersonalInfo.UploadLater}} 稍後上傳</td>
+						<td
+							*ngIf="!applyinfo.IsCompanyAddressSameAsHomeAddress && !applyinfo.IsUploadCompanyAddress && applyinfo.CompanyAddress">
+							{{applyinfo.CompanyAddress}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.AddrOfMailing1}}<br
+										class="hidden-min">{{message?.PersonalInfo.AddrOfMailing2}}</span>卡片寄送地址</p>
+						</th>
+						<td *ngIf="applyinfo.ReceiveAddressType == 1">{{message?.PersonalInfo.SameAddrOfDomicile}} 同現居地址<br>{{applyinfo.Address}}</td>
+						<td *ngIf="applyinfo.ReceiveAddressType == 2">{{message?.PersonalInfo.SameAddrOfCompany}} 同公司地址<br>{{applyinfo.CompanyAddress}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.Email}}</span>電子郵件</p>
+						</th>
+						<td>{{applyinfo.Email}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.Referrer}}</span>推薦人</p>
+						</th>
+						<td>{{applyinfo.Referrer}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.EduLvl}}</span>教育程度</p>
+						</th>
+						<td>{{educationGrade}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.ComName}}</span>公司名稱</p>
+						</th>
+						<td>{{applyinfo.Company}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.ComTel}}</span>公司電話</p>
+						</th>
+						<td>{{applyinfo.CompanyPhoneAreaCode + "-" + applyinfo.CompanyPhone + (applyinfo.CompanyPhoneEx ? "#" + applyinfo.CompanyPhoneEx : "")}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.AnnualSalary}}</span>年薪</p>
+						</th>
+						<td>{{applyinfo.AnnualSalary | number}} ten thousand</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.NameOfManpowerBrokerCom1}}<br>
+									{{message?.PersonalInfo.NameOfManpowerBrokerCom2}}</span>人力仲介公司名稱</p>
+						</th>
+						<td>{{applyinfo.ManpowerBrokerCompany}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.TelOfManpowerBrokerCom1}}<br>{{message?.PersonalInfo.TelOfManpowerBrokerCom2}}</span>人力仲介公司電話
+							</p>
+						</th>
+						<td>{{TelOfManpowerBrokerCom}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.ManagerNameOfManpowerBrokerCom1}}<br>{{message?.PersonalInfo.ManagerNameOfManpowerBrokerCom2}}</span>管理師/翻譯師姓名
+							</p>
+						</th>
+						<td>{{applyinfo.ManpowerBrokerCompanyManagerName}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p"><span
+									class="en-confirm-span">{{message?.PersonalInfo.ManagerTelOfManpowerBrokerCom1}}<br>{{message?.PersonalInfo.ManagerTelOfManpowerBrokerCom2}}</span>管理師/翻譯師電話
+							</p>
+						</th>
+						<td>{{ManagerTelOfManpowerBrokerCom}}</td>
+					</tr>
+
+				</table>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+<div *ngIf="applyinfo.AgreeTwdAuthDebit" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.ApplyInfo}}</span>您的申請資料
+			</legend>
+			<div class="confirm-data-block">
+				<table>
+					<tr *ngIf="applyinfo.TaiwanDepositAccount">
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.AutopayNTDAccount}}</span>
+								臺幣帳款自動扣繳帳號
+							</p>
+						</th>
+						<td>{{applyinfo.TaiwanDepositAccount}}</td>
+					</tr>
+					<tr>
+						<th class="en-confirm-th">
+							<p class="en-confirm-p">
+								<span class="en-confirm-span">{{message?.AuthAutopayAmount}}
+								</span>
+								臺幣授權扣繳金額
+							</p>
+						</th>
+						<td *ngIf="applyinfo.TwdAuthDebitAmount == 1">{{message?.FullPay}}</td>
+						<td *ngIf="applyinfo.TwdAuthDebitAmount == 2">{{message?.MinimalPay}}</td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.DeclarationAndAgreement}}</span>您的聲明與同意事項</legend>
+			<div class="confirm-data-block">
+				<p class="terms-list"></p>
+				<p>
+					<span class="pink2 fwb"><span class="en">{{message?.ReadAndAgree}}</span>本人已閱讀且同意</span>
+					<br>
+				</p>
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.PersonalTerms}}</p>個人網路銀行服務條款
+					</span>
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.PersonalInfoCollection}}</p>永豐銀行個人資料蒐集、處理及利用告知義務內容
+					</span>
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.TermsOfCreditCardApply}}</p>信用卡申請書同意條款暨約定事項
+					</span>
+				<div *ngIf="applyinfo.AgreeTwdAuthDebit">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.AutopayMatters}}</p>永豐信用卡自動扣繳申請及注意事項
+					</span>
+				</div>
+				<div *ngIf="cardinfo.IsBrandedCard">
+				<p class="terms-list"></p>
+					<span *ngIf="cardinfo.IsBrandedCard" style="display:block">
+						<p class="en">{{message?.PersonalInfoAgreement}}</p>聯名卡/認同機構之個人資料使用同意條款
+					</span>
+				</div>
+				<div *ngIf="applyinfo.AgreeAllCompany">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.PersonalInfoForMarketingAgreement}}</p>共同行銷/合作推廣個人資料
+					</span>
+				</div>
+				<p class="terms-list"></p>
+					<span style="display:block" *ngIf="applyinfo.StmtDeliverWay == 1">
+						<p class="en">{{message?.MobileBill}}</p>寄送行動帳單
+					</span>
+					<span style="display:block" *ngIf="applyinfo.StmtDeliverWay == 2">
+						<p class="en">{{message?.ElectronicBill}}</p>寄送電子帳單
+					</span>
+				<div *ngIf="applyinfo.EmailSendContract">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.AgreeSendCardContractViaEmail}}</p>以電子郵件寄送信用卡契約
+					</span>
+				</div>
+				<br>
+				<p>
+					<span class="pink2 fwb"><span class="en">{{message?.ReadAndDisagree}}</span>本人已閱讀且不同意</span>
+					<br>
+				</p>
+				<div *ngIf="!applyinfo.AgreeTwdAuthDebit">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.AutopayMatters}}</p>永豐信用卡自動扣繳申請及注意事項
+					</span>
+				</div>
+				<div *ngIf="!applyinfo.AgreeAllCompany">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.PersonalInfoForMarketingAgreement}}</p>共同行銷/合作推廣個人資料
+					</span>
+				</div>
+				<div *ngIf="!applyinfo.EmailSendContract">
+				<p class="terms-list"></p>
+					<span style="display:block">
+						<p class="en">{{message?.AgreeSendCardContractViaEmail}}</p>以電子郵件寄送信用卡契約
+					</span>
+				</div>
+			</div>
+		</fieldset>
+	</section>
+</div>
+
+<div class="btn-zone flex-inline-min">
+	<a href="javascript:void(0)" class="nbtn" (click)="goPrev()"><span class="en">{{btnMessage?.Back}}</span>上一步</a>
+	<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span class="en">{{btnMessage?.Submit}}</span>送出申請</a>
+</div>

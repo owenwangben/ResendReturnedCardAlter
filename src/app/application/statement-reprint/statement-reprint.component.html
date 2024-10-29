@@ -1,0 +1,52 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="onSubmit()">
+					<div class="formblock">
+						<table class="data-table mobile-col-12">
+							<tbody>
+								<tr>
+									<th class="text-right mobile-col-3">
+										<span>帳單期別</span>
+									</th>
+									<td class="text-left">
+										<div class="artfld select col-auto mobile-col-12">
+											<select formControlName="BillDate" (change)="onChange($event)" mweb-select="請選擇帳單期別">
+												<option value="" disabled>請選擇帳單期別</option>
+												<option *ngFor="let item of billMonths" [value]="item">{{(item + '/01') | date:'yyyy年MM月'}}</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						<div style="padding-top:10px">
+							<table class="ntable cols" style="width:100%">
+								<tr>
+									<th width="25%">應繳金額</th><td width="25%" class="text-right">{{model?.CurrBal}}</td>
+									<th width="25%">最低應繳金額</th><td width="25%" class="text-right">{{model?.DueAmt}}</td>
+								</tr>
+								<tr>
+									<th>繳款截止日</th><td class="text-right">{{model?.DueDate}}</td>
+									<th>結帳日</th><td class="text-right">{{model?.StmtDate}}</td>
+								</tr>
+								<tr>
+									<th>信用額度</th><td class="text-right">{{model?.CreditLimit | number}}</td>
+									<th>目前可用額度</th><td class="text-right">{{model?.CreditAvailable | number}}</td>
+								</tr>
+							</table>
+						</div>
+						<div class="btn-zone">
+							<app-link-button type="cancel">取消</app-link-button>
+							<button type="submit" class="nbtn focus">補寄實體帳單</button>
+						</div>
+					</div>
+				</form>
+				<!-- <div class="rowElem" loadHtml="/mma8/card/htmls/補寄電子帳單注意事項.html"></div> -->
+			</section>
+		</div>
+	</div>
+</div>

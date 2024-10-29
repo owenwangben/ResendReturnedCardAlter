@@ -1,0 +1,92 @@
+﻿<div class="red" style="font-size:13px">以下為21天內信用卡交易記錄，實際金額以信用卡帳單為準，本紀錄不得做為交易明細證明</div>
+<div *ngIf="!detail">
+	<table class="ntable table-striped" width="100%">
+		<thead>
+			<tr>
+				<th class="mobile-col-3">授權日期<br>授權時間</th>
+				<th class="mobile-col-4">消費類別/<br>商店名稱</th>
+				<th class="mobile-col-5">授權金額(臺幣)<br>卡片末四碼</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody *ngIf="!resultModel?.IsCompanyUser">
+			<tr *ngFor="let item of resultModel?.Items" (click)="showDetail(item)">
+				<td>{{item.AuthDate | date:'y/MM/dd'}}<br>{{item.AuthTime}}</td>
+				<td>{{item.Memo}}</td>
+				<td>{{item.AuthAmtDesc}}<br>{{item.CardNo}}</td>
+				<td><i class="right-arrow"></i></td>
+			</tr>
+			<tr *ngIf="!resultModel?.Items?.length">
+				<td colspan="4">查無資料！</td>
+			</tr>
+		</tbody>
+		<tbody *ngIf="resultModel?.IsCompanyUser">
+			<tr *ngIf="!resultModel?.Items?.length">
+				<td colspan="4">查無資料！</td>
+			</tr>
+			<tr *ngIf="resultModel?.Items?.length">
+				<td colspan="4">
+					<div class="red" style="font-size:13px">最新消費紀錄請下載PDF</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="btn-zone" *ngIf="resultModel?.IsCompanyUser && resultModel?.Items?.length">
+		<a class="nbtn" href="api/Accounting/LatestTxPDF?PDFtype=pdf">下載PDF</a>
+	</div>
+</div>
+<div *ngIf="detail">
+	<table class="table-striped">
+		<tr>
+			<th class="mobile-col-6">卡號末四碼</th>
+			<td>{{detail.CardNo}}</td>
+		</tr>
+		<tr>
+			<th>卡別</th>
+			<td>{{detail.CardFlag | cardtype}}</td>
+		</tr>
+		<tr>
+			<th>手機信用卡</th>
+			<td>{{detail.IsMobileCard | mobilecredit}}</td>
+		</tr>
+		<tr>
+			<th>授權日期</th>
+			<td>{{detail.AuthDate | date:'y/MM/dd'}}</td>
+		</tr>
+		<tr>
+			<th>授權時間</th>
+			<td>{{detail.AuthTime}}</td>
+		</tr>
+		<tr>
+			<th>消費類別/商店名稱</th>
+			<td>{{detail.Memo}}</td>
+		</tr>
+		<tr>
+			<th>授權金額(臺幣)</th>
+			<td>{{detail.AuthAmtDesc}}</td>
+		</tr>
+		<tr>
+			<th>消費國別</th>
+			<td>{{detail.CountryCode}}</td>
+		</tr>
+		<tr>
+			<th>授權結果</th>
+			<td>{{detail.AuthResult}}</td>
+		</tr>
+	</table>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" style="width:28%" (click)="onPrev(detail)">上一筆</button>
+		<button type="button" class="nbtn" style="width:28%" (click)="onNext(detail)">下一筆</button>
+		<button type="button" class="nbtn" style="width:28%" (click)="showDetail(null)">返回</button>
+	</div>
+</div>
+<div class="rowElem">
+	<ul class="accordion2 collapse">
+		<li>
+			<a href="javascript:void(0)" class="atitle" style="font-size:14px"><h2>注意事項</h2></a>
+			<div class="acontent">
+				<div loadHtml="/mma8/card/htmls/最新消費資料查詢注意事項.html"></div>
+			</div>
+		</li>
+	</ul>
+</div>

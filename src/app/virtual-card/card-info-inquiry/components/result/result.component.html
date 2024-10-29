@@ -1,0 +1,70 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="data-table mobile-col-12">
+			<tbody>
+				<tr>
+					<th class="text-right mobile-col-3">
+						<span>信用卡卡號</span>
+					</th>
+					<td class="text-left">
+							<div class="artfld select col-4 mobile-col-12">
+								<select formControlName="CardNo" (ngModelChange)="onCardNoChange($event)" mweb-select="請選擇信用卡卡號">
+									<option *ngFor="let item of data.Cards" [value]="item.CardNo">{{item.Name + '(' + item.CardTypeDesc + ") " + item.CardNo?.slice(-4)}}</option>
+								</select>
+							</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div style="padding: 10px 0 0 0; text-align: center;">
+			<img src="{{cardImagePath}}" class="mobile-col-8" style="width: 300px;" />
+		</div>
+
+		<div>
+			<table class="ntable table-striped cols" style="width:100%">
+				<tr>
+					<th width="50%">卡片名稱</th>
+					<td width="50%" class="text-right">{{data.SelectedCardInfo?.CardName}}</td>
+				</tr>
+				<tr>
+					<th>國際組織/卡別</th>
+					<td class="text-right">{{data.SelectedCardInfo?.CardTypeName}}</td>
+				</tr>
+				<tr>
+					<th>信用卡卡號</th>
+					<td class="text-right red">{{data.SelectedCardInfo?.DisplayCardNo}}</td>
+				</tr>
+				<tr>
+					<th>有效期限(MM/YY)</th>
+					<td class="text-right red">{{data.SelectedCardInfo?.ExpDate?.length >= 4 ? data.SelectedCardInfo?.ExpDate.substring(0, 2) + "/" + data.SelectedCardInfo?.ExpDate.substring(2, 4) : ""}}</td>
+				</tr>
+				<tr>
+					<th>卡片背面末三碼</th>
+					<td class="text-right red">{{data.SelectedCardInfo?.CVV2}}</td>
+				</tr>
+				<tr>
+					<th>持卡人中文姓名</th>
+					<td class="text-right">{{data.SelectedCardInfo?.CName}}</td>
+				</tr>
+				<tr>
+					<th>持卡人英文姓名</th>
+					<td class="text-right">{{data.SelectedCardInfo?.EName}}</td>
+				</tr>
+				<tr>
+					<th>您的總信用額度</th>
+					<td class="text-right">{{data.SelectedCardInfo?.PermanentCreditLimit | number}}</td>
+				</tr>
+				<tr>
+					<th>虛擬卡目前額度</th>
+					<td class="text-right">{{data.SelectedCardInfo?.CreditLimit | number}}</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	<div class="btn-zone">
+		<button type="submit" class="nbtn focus" *ngIf="data.SelectedCardInfo && !data.SelectedCardInfo.IsActived">開卡</button>
+		<a class="nbtn focus" routerLink="/VirtualCard/PermCLI" *ngIf="showPermCliButton">額度調整</a>
+		<a class="nbtn focus" href="/MemberPortal/Member/CreditCardApplyMember.aspx?REFURL=/SinoCard/VirtualCard/PermCLI" *ngIf="showApplyMmaMemberButton">申請網銀</a>
+	</div>
+	<div class="rowElem" loadHtml="/mma8/card/htmls/虛擬卡卡號查詢注意事項.html"></div>
+</form>

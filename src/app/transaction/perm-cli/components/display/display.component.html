@@ -1,0 +1,48 @@
+<div class="formblock">
+	<table class="data-table table-striped" width="100%">
+		<tbody>
+			<tr>
+				<th class="mobile-col-6">原始信用額度</th>
+				<td>
+					{{ data.OriginalCredit | number }}
+				</td>
+			</tr>
+			<tr>
+				<th>申請增加信用額度</th>
+				<td>
+					{{ data.IncreaseCredit | number }} 元
+				</td>
+			</tr>
+			<tr>
+				<th>申請提高信用額度至</th>
+				<td>
+					{{ getTotalCredit() | number }}
+				</td>
+			</tr>
+			<tr *ngIf="!data.IsSmsList">
+				<th>申請原因</th>
+				<td>{{ applyReasonDisplay }} {{ data.ReasonDesc }}</td>
+			</tr>
+			<tr *ngIf="!data.IsSmsList">
+				<th>服務機構名稱</th>
+				<td>
+					{{ data.Company }}
+				</td>
+			</tr>
+			<tr *ngIf="data.IsMortgageCM || !data.IsSmsList || data.IsRequireFinancialProof">
+				<th>上傳財力證明</th>
+				<td>
+					<div *ngIf="data.FinancialProofType === 4">使用個人化資料自主運用(MyData)平臺</div>
+					<div *ngIf="data.IsFinancialCustomer === true; else attachments">
+						我是永豐銀行理財客戶，依本行往來資料審理，暫不上傳財力證明
+					</div>
+					<ng-template #attachments>
+						<ul>
+							<li *ngFor="let attachment of data.AttachmentRefs">{{attachment.FileName}}</li>
+						</ul>
+					</ng-template>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,47 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "ID": "A900000794          ",
+                "CardNo": "5241890101085506",
+                "CardName": "新鈦豐Combo DP卡(主卡)",
+                "HomeAddr": "新北市蘆洲區永平街３２巷１號",
+                "CompanyAddr": "新北市蘆洲區永平街３２巷２號",
+                "RegisterAddr": "新北市蘆洲區永平街３２巷３號"
+            },
+            {
+                "ID": "A900000794          ",
+                "CardNo": "5588438888881001",
+                "CardName": "美元雙幣信用卡(主卡)",
+                "HomeAddr": "",
+                "CompanyAddr": "",
+                "RegisterAddr": ""
+            },
+            {
+                "ID": "A900000794          ",
+                "CardNo": "4705720200018201",
+                "CardName": "MasterCard世界卡(主卡)",
+                "HomeAddr": "",
+                "CompanyAddr": "",
+                "RegisterAddr": ""
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": "",
+        "ClientRefNo": null,
+        "ClientTimestamp": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

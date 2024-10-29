@@ -1,0 +1,55 @@
+<div class="formblock">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable">
+		<tr>
+			<th>回饋種類</th>
+			<td>
+				<input class="artfld" type="radio" id="r11" name="checkway" value="1" checked="checked" (click)="onChangType($event.target.value)"><label
+					for="r11"><span><span class="getCheck"></span></span>現金回饋</label>
+				<input class="artfld" type="radio" id="r12" name="checkway" value="2" (click)="onChangType($event.target.value)"><label for="r12"><span><span
+							class="getCheck"></span></span>紅利回饋</label>
+			</td>
+		</tr>
+	</table>
+</div>
+
+<div class="disable_scrolling_table">
+	<div class="viewport">
+		<div class="overview">
+			<div class="fl-wrap">
+				<div id="chart" class="propage">
+					<div class="charts">
+						<div id="chart-container" class="chart-container" style="margin: 0 auto;width:700px;"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<br />
+<table *ngIf="this.QueryType === 1" cellpadding="0" cellspacing="0" border="0" width="100%" class="ntable cols center oddeven">
+	<tr>
+		<th>帳單月份</th>
+		<th>大戶帳戶</th>
+		<th>銀行帳戶</th>
+		<th>信用卡帳單</th>
+		<th>總額</th>
+	</tr>
+	<tr *ngFor="let item of RewardItems">
+		<td>{{item.Month}}</td>
+		<td>{{item.Amount1 | number}}</td>
+		<td>{{item.Amount2 | number}}</td>
+		<td>{{item.Amount3 | number}}</td>
+		<td>{{(item.Amount1 + item.Amount2 + item.Amount3) | number}}</td>
+	</tr>
+</table>
+<table *ngIf="this.QueryType === 2" cellpadding="0" cellspacing="0" border="0" width="100%" class="ntable cols center oddeven">
+	<tr>
+		<th>帳單月份</th>
+		<th>紅利回饋</th>
+	</tr>
+	<tr *ngFor="let item of BonusItems">
+		<td>{{item.Month}}</td>
+		<td>{{item.Point | number}}</td>
+	</tr>
+</table>
+<br />

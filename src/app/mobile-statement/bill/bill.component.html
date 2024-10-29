@@ -1,0 +1,99 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+		<div class="container">
+		<p *ngIf="resultModel">{{FirstLineText}}</p>
+			<div>
+				<table [ngStyle]="tableStyle">
+					<tbody>
+						<tr></tr>
+						<tr>
+							<td>{{messages?.currency}}</td>
+							<td align="right">
+								<select [(ngModel)]="currency" *ngIf="localCurrencyList">
+									<option *ngFor="let item of localCurrencyList" [value]="item.Value">{{item.Text}}</option>
+								</select>
+							</td>
+						</tr>
+						<tr>
+							<td>{{messages?.StmtDate}}</td>
+							<td align="right">{{Model?.StmtDate}}</td>
+						</tr>
+						<tr>
+						<td>{{messages?.DUE_DATE}}<p style="font-size: 12px;">(<span style="color: #e72411;">{{messages?.DUE_DATE_NOTE}}</span>)</p></td>
+							<td align="right" [style.color]="FirstRecord?.DUE_DATE == '無需繳款' || FirstRecord?.DUE_DATE == '臺幣金額無需繳款' ? redStyle : ''">{{FirstRecord?.DUE_DATE == '無需繳款' ? messages?.DUE_DATE_1 : (FirstRecord?.DUE_DATE == '臺幣金額無需繳款' ? messages?.DUE_DATE_2 : FirstRecord?.DUE_DATE)}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.PREVBAL}}</td>
+							<td align="right">{{Model?.PREVBAL}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.PREVPAYAMT}}{{Model?.RESERVEAMT}}</td>
+							<td align="right">{{Model?.PREVPAYAMT}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.CURRAMT}}</td>
+							<td align="right">{{Model?.CURRAMT}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.FINCHARGE}}</td>
+							<td align="right">{{Model?.FINCHARGE}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.LATECHARGE}}</td>
+							<td align="right">{{Model?.LATECHARGE}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.CURRBAL}}</td>
+							<td align="right">{{Model?.CURRBAL}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.DUEAMT}}</td>
+							<td align="right">{{Model?.DUEAMT}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.CreditCardLimit}}</td>
+							<td align="right">{{FirstRecord?.CreditCardLimit}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.InternalCashLimit}}</td>
+							<td align="right">{{FirstRecord?.InternalCashLimit}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.ExternalCashLimit}}</td>
+							<td align="right">{{FirstRecord?.ExternalCashLimit}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.INTRATE}}</td>
+							<td align="right">{{FirstRecord?.INTRATE}}</td>
+						</tr>
+						<tr>
+							<td>{{messages?.INTDATE}}</td>
+							<td align="right">{{FirstRecord?.INTDATE}}</td>
+						</tr>
+						<tr></tr>
+						<tr></tr>
+						<tr *ngIf="resultModel">
+							<td colspan="2">
+								<p>{{resultModel[0]?.AInfo_1}}{{resultModel[0]?.AInfo_2}}<br />{{resultModel[0]?.AInfo_3}}</p>
+							</td>
+						</tr>
+						<tr></tr>
+					</tbody>
+				</table>
+			</div>
+			<nav style="bottom: 65px; background: #fff;" *ngIf="Model?.CurrencyName == '臺幣'">
+				<div class="container row">
+					<div class="col" style="background-color: #fff">
+						<a [routerLink]="['/MobileStatement/Payment',token]"><input type="button" value="{{messages?.PaymentButton}}"></a>
+					</div>
+					<div class="col" style="background-color: #fff">
+						<a [routerLink]="['/Transaction/RTEStmt']"><input type="button" value="{{messages?.RTEStmtButton}}"></a>
+					</div>
+				</div>
+			</nav>
+		</div>
+	</main>
+
+	<app-mobile-statement-nav [Index]="0" [Token]="token"></app-mobile-statement-nav>
+</div>

@@ -1,0 +1,105 @@
+{
+    "Result": {
+        "TotalFeedbackAmt": 336,
+        "Summary": [
+            {
+                "Code": "RE6U_1",
+                "Name": "現金回饋卡一般消費回饋(國內)",
+                "TotalAmt": "6,344",
+                "TotalFeedbackAmt": "63"
+            },
+            {
+                "Code": "REGJ",
+                "Name": "現金回饋JCB卡特選通路",
+                "TotalAmt": "5,454",
+                "TotalFeedbackAmt": "164"
+            },
+            {
+                "Code": "REGK",
+                "Name": "現金回饋JCB卡加碼回饋",
+                "TotalAmt": "5,454",
+                "TotalFeedbackAmt": "109"
+            }
+        ],
+        "DetailA": [
+            {
+                "Code": "RE6U_1",
+                "Name": "現金回饋卡一般消費回饋(國內)",
+                "Items": [
+                    {
+                        "TXDATE": "20210621",
+                        "MEMO": "亞柏八卦寮加油站",
+                        "TX_AMT": "890"
+                    },
+                    {
+                        "TXDATE": "20210627",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "-2,742"
+                    },
+                    {
+                        "TXDATE": "20210627",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,742"
+                    },
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,712"
+                    },
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,742"
+                    }
+                ]
+            },
+            {
+                "Code": "REGJ",
+                "Name": "現金回饋JCB卡特選通路",
+                "Items": [
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,712"
+                    },
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,742"
+                    }
+                ]
+            },
+            {
+                "Code": "REGK",
+                "Name": "現金回饋JCB卡加碼回饋",
+                "Items": [
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,712"
+                    },
+                    {
+                        "TXDATE": "20210710",
+                        "MEMO": "東森得易購股份有限公司",
+                        "TX_AMT": "2,742"
+                    }
+                ]
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

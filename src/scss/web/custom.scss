@@ -1,0 +1,89 @@
+@import 'stepsboard';
+@import 'rnotes';
+
+.text-right {
+	text-align: right !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.text-center {
+	text-align: center !important;
+}
+
+.num-align {
+	text-align: right !important;
+}
+
+.drop-zone {
+	&:after {
+		content: url('/mma8/card/images/upgrade-lbox.png') !important;
+	}
+}
+
+.ntable {
+	th, td {
+		padding: 15px 10px 10px 10px !important;
+		border-radius: 0px !important;
+	}
+	&.cols {
+		/*第一欄第一列：左上*/
+		tr:first-child th:first-child{
+			border-top-left-radius: 8px !important;
+		}
+		/*最後欄第一列：右上*/
+		tr:first-child td:last-child{
+			border-top-right-radius: 8px !important;
+		}
+		/*第一欄最後列：左下*/
+		tr:last-child th:first-child{
+			border-bottom-left-radius: 8px !important;
+		}
+		/*最後欄第一列：右下*/
+		tr:last-child td:last-child{
+			border-bottom-right-radius: 8px !important;
+		}
+	}
+	&:not(.cols) {
+		/*第一欄第一列：左上*/
+		tr:first-child th:first-child{
+			border-top-left-radius: 8px !important;
+		}
+		/*最後欄第一列：右上*/
+		tr:first-child th:last-child{
+			border-top-right-radius: 8px !important;
+		}
+		/*第一欄最後列：左下*/
+		tr:last-child td:first-child{
+			border-bottom-left-radius: 8px !important;
+		}
+		/*最後欄第一列：右下*/
+		tr:last-child td:last-child{
+			border-bottom-right-radius: 8px !important;
+		}
+	}
+}
+
+button {
+	cursor: pointer;
+}
+
+ul.ntabs {
+	li {
+		cursor: pointer;
+	}
+}
+
+.web-hide {
+	display: none;
+}
+
+// div.wrapper {
+// 	display: none;
+// }
+
+div.scrollbar {
+	height:310px;
+	width:100%;
+	overflow-y:scroll;
+}

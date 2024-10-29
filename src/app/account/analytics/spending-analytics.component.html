@@ -1,0 +1,45 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-content">
+        <h2 class="title">{{pageinfo.name}}</h2>
+        <div class="abgne_tab">
+          <ul class="ntabs">
+            <li [class.active]="route.children[0].routeConfig.path === 'Category'" routerLink="Category">
+			  <a href="javascript:void(0)">消費類別分析</a>
+			</li>
+            <li [class.active]="route.children[0].routeConfig.path === 'Month'" routerLink="Month">
+			  <a href="javascript:void(0)">消費金額分析</a>
+			</li>
+			<li [class.active]="route.children[0].routeConfig.path === 'Feedback'" routerLink="Feedback">
+				<a href="javascript:void(0)">消費回饋分析</a>
+			  </li>
+		  </ul>
+		  <div class="tab-container">
+			  <div class="tab-content">
+				  <router-outlet></router-outlet>
+			  </div>
+		  </div>
+		</div>
+
+		<div class="MemoContent-s2 mt20" *ngIf="route.children[0].routeConfig.path !== 'Feedback'">
+			<h2 class="title">注意事項</h2>
+			<p class="single print-fwb print-red">消費分析以您實際消費之項目進行分析，以上資料僅供您作為參考，實際明細仍以本行帳單為準。</p>
+		</div>
+		<div class="MemoContent-s2 mt20" *ngIf="route.children[0].routeConfig.path === 'Feedback'">
+			<h2 class="title">注意事項</h2>
+			<div class="listStyle">
+				<ul>
+					<li>以上分析資料僅供卡友參考，實際明細仍以本行帳單為準。</li>
+					<li>銀行帳戶係指回饋金存入正卡持卡人指定於本行之有效台幣帳戶。</li>
+					<li>信用卡帳單係指回饋金回饋予正卡持卡人以作為折抵信用卡帳單消費款之用途。</li>
+				</ul>
+			</div>
+		</div>
+
+      </section>
+    </div>
+  </div>
+</div>
+

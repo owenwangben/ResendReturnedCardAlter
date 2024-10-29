@@ -1,0 +1,56 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "ApplyDate": "2016-12-03T00:00:00+08:00",
+        "Channel": "電話",
+        "StmtAmt": 57229,
+        "StmtMinAmt": 5722,
+        "InstallmentAmt": "51507",
+        "Rate": 12.5,
+        "Fee": 0,
+        "FirstPeriodAmt": 17684,
+        "Period": 3,
+        "Status": "處理中"
+      },
+      {
+        "ApplyDate": "2016-12-02T00:00:00+08:00",
+        "Channel": "網路",
+        "StmtAmt": 47682,
+        "StmtMinAmt": 16482,
+        "InstallmentAmt": "31200",
+        "Rate": 12.4,
+        "Fee": 0,
+        "FirstPeriodAmt": 5512,
+        "Period": 6,
+        "Status": "已完成"
+      },
+      {
+        "ApplyDate": "2016-12-01T00:00:00+08:00",
+        "Channel": "網路",
+        "StmtAmt": 20200,
+        "StmtMinAmt": 2020,
+        "InstallmentAmt": "18180",
+        "Rate": 13.5,
+        "Fee": 0,
+        "FirstPeriodAmt": 2202,
+        "Period": 9,
+        "Status": "申請失敗"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

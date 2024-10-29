@@ -1,0 +1,56 @@
+{
+  "Result": {
+    "IsApplyElectronicBill": 0,
+    "Items": [
+      {
+        "ProjectId": "TK65",
+        "AddSource": "EWEB",
+        "SNO": 3,
+        "AddDateTime": "2017-04-06T17:14:49.853+08:00",
+        "Name": "代繳牌照稅享3期0利率"
+      },
+      {
+        "ProjectId": "ABAB",
+        "AddSource": "EWEB",
+        "SNO": 1,
+        "AddDateTime": "2017-04-06T17:03:39.473+08:00",
+        "Name": ""
+      },
+      {
+        "ProjectId": "TJOU",
+        "AddSource": "EWEB",
+        "SNO": 4,
+        "AddDateTime": "2016-09-10T11:01:57.860+08:00",
+        "Name": "豐活動-測試"
+      },
+      {
+        "ProjectId": "TJMK",
+        "AddSource": "EWEB",
+        "SNO": 3,
+        "AddDateTime": "2016-07-11T09:29:19.107+08:00",
+        "Name": "刷旅遊有好康_水岸生活~特選餐廳滿3000元送300元"
+      },
+      {
+        "ProjectId": "RDAA",
+        "AddSource": "EWEB",
+        "SNO": 2,
+        "AddDateTime": "2014-05-30T11:31:42.710+08:00",
+        "Name": "代繳有線電視‧享雙重優惠"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

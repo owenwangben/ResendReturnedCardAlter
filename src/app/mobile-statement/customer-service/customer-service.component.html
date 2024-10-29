@@ -1,0 +1,11 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<a href="https://chatservice.sinopac.com/Webhook/?site=ebill#department/2" class="btn">{{messages?.ChatService}}</a>
+		<a href="https://bank.sinopac.com/SearchMB/index.aspx" class="btn">{{messages?.CustomerServiceCenter}}</a>
+		<a href="javascript:void(0)" class="btn" (click)="onClickCustServiceTel()">{{messages?.CustomerServiceTel}}</a>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="5" [Token]="token"></app-mobile-statement-nav>
+</div>

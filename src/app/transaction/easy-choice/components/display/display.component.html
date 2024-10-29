@@ -1,0 +1,29 @@
+<div class="formblock" width="100%">
+	<p>預借現金分期(易通財)試算</p>
+	<table class="ntable cols table-striped">
+		<tbody>
+			<tr>
+				<th class="mobile-col-4">申貸本金</th>
+				<td class="mobile-col-8">${{calCycleFeeECModel.LoanAmt | number}}元</td>
+			</tr>
+			<tr>
+				<th>選擇期數</th>
+				<td>{{calCycleFeeECModel.Period}}期</td>
+			</tr>
+			<tr>
+				<th>年利率</th>
+				<td>{{calCycleFeeECModel.AnnRate}}%</td>
+			</tr>
+			<tr *ngIf="showAccount">
+				<th>轉入帳號</th>
+				<td>
+					{{bankDisplayName}}
+					<br>
+					{{branchDisplayName}}
+					<br>
+					{{applyECModel.BankAccount}}
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

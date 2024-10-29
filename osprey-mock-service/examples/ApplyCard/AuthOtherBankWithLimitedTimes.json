@@ -1,0 +1,22 @@
+{
+    "Result": {
+		"AuthType": "AuthOtherBank",
+        "ID": "A127862050",
+        "SessionKey": "f66c687bb7c9c52c6138697232d8e6984f69c2ccd6cac75b8c3c9b94ef44d906",
+        "CellPhoneChg": "Y"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "06",
+    "ResultMessage": "",
+    "Error": null
+}

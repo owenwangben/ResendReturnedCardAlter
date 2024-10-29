@@ -1,0 +1,260 @@
+
+#jpreOverlay {
+  background-color: #fff;
+}
+#jpreSlide{
+  font-size:100px;
+  font-weight:bold;
+  color:#ccc;
+  text-align:center;
+  width:100%;
+  height:30%;
+
+}
+#jpreLoader{
+  width:100%;
+  height:10px;
+}
+#jpreBar {
+  background:#3bb1e6;
+}
+#jprePercentage {
+  color:#666;
+  font-family:"Trebuchet MS",Arial,Helvetica,sans-serif;
+  text-align:center;
+  top:-50px;
+  font-size:16px;
+}
+
+#jpreButton{
+  display: none !important;
+}
+.cssload-container *, .cssload-container *:before, .cssload-container *:after{
+  box-sizing: border-box;
+    -o-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.cssload-container {
+  margin: auto;
+  width: 80px;
+  height: 41px;
+}
+.cssload-container > div {
+  float: left;
+  background: rgb(0,125,214);
+  height: 100%;
+  width: 7px;
+  margin-right: 1px;
+  display: inline-block;
+}
+
+.cssload-container .cssload-shaft1 {
+  animation-delay: 0.06s;
+    -o-animation-delay: 0.06s;
+    -ms-animation-delay: 0.06s;
+    -webkit-animation-delay: 0.06s;
+    -moz-animation-delay: 0.06s;
+}
+.cssload-container .cssload-shaft2 {
+  animation-delay: 0.12s;
+    -o-animation-delay: 0.12s;
+    -ms-animation-delay: 0.12s;
+    -webkit-animation-delay: 0.12s;
+    -moz-animation-delay: 0.12s;
+}
+.cssload-container .cssload-shaft3 {
+  animation-delay: 0.17s;
+    -o-animation-delay: 0.17s;
+    -ms-animation-delay: 0.17s;
+    -webkit-animation-delay: 0.17s;
+    -moz-animation-delay: 0.17s;
+}
+.cssload-container .cssload-shaft4 {
+  animation-delay: 0.23s;
+    -o-animation-delay: 0.23s;
+    -ms-animation-delay: 0.23s;
+    -webkit-animation-delay: 0.23s;
+    -moz-animation-delay: 0.23s;
+}
+.cssload-container .cssload-shaft5 {
+  animation-delay: 0.29s;
+    -o-animation-delay: 0.29s;
+    -ms-animation-delay: 0.29s;
+    -webkit-animation-delay: 0.29s;
+    -moz-animation-delay: 0.29s;
+}
+.cssload-container .cssload-shaft6 {
+  animation-delay: 0.35s;
+    -o-animation-delay: 0.35s;
+    -ms-animation-delay: 0.35s;
+    -webkit-animation-delay: 0.35s;
+    -moz-animation-delay: 0.35s;
+}
+.cssload-container .cssload-shaft7 {
+  animation-delay: 0.4s;
+    -o-animation-delay: 0.4s;
+    -ms-animation-delay: 0.4s;
+    -webkit-animation-delay: 0.4s;
+    -moz-animation-delay: 0.4s;
+}
+.cssload-container .cssload-shaft8 {
+  animation-delay: 0.46s;
+    -o-animation-delay: 0.46s;
+    -ms-animation-delay: 0.46s;
+    -webkit-animation-delay: 0.46s;
+    -moz-animation-delay: 0.46s;
+}
+.cssload-container .cssload-shaft9 {
+  animation-delay: 0.52s;
+    -o-animation-delay: 0.52s;
+    -ms-animation-delay: 0.52s;
+    -webkit-animation-delay: 0.52s;
+    -moz-animation-delay: 0.52s;
+}
+.cssload-container .cssload-shaft10 {
+  animation-delay: 0.58s;
+    -o-animation-delay: 0.58s;
+    -ms-animation-delay: 0.58s;
+    -webkit-animation-delay: 0.58s;
+    -moz-animation-delay: 0.58s;
+}
+
+.cssload-container {
+  height: 55px;
+}
+.cssload-container > div {
+  position: relative;
+  bottom: 0;
+  margin-top: 48px;
+  height: 7px;
+  animation: cssload-wave 1.73s infinite ease-in-out;
+    -o-animation: cssload-wave 1.73s infinite ease-in-out;
+    -ms-animation: cssload-wave 1.73s infinite ease-in-out;
+    -webkit-animation: cssload-wave 1.73s infinite ease-in-out;
+    -moz-animation: cssload-wave 1.73s infinite ease-in-out;
+}
+.cssload-container .shaft1 {
+  animation-delay: -1.73s;
+    -o-animation-delay: -1.73s;
+    -ms-animation-delay: -1.73s;
+    -webkit-animation-delay: -1.73s;
+    -moz-animation-delay: -1.73s;
+}
+.cssload-container .shaft2 {
+  animation-delay: -1.61s;
+    -o-animation-delay: -1.61s;
+    -ms-animation-delay: -1.61s;
+    -webkit-animation-delay: -1.61s;
+    -moz-animation-delay: -1.61s;
+}
+.cssload-container .shaft3 {
+  animation-delay: -1.5s;
+    -o-animation-delay: -1.5s;
+    -ms-animation-delay: -1.5s;
+    -webkit-animation-delay: -1.5s;
+    -moz-animation-delay: -1.5s;
+}
+.cssload-container .shaft4 {
+  animation-delay: -1.38s;
+    -o-animation-delay: -1.38s;
+    -ms-animation-delay: -1.38s;
+    -webkit-animation-delay: -1.38s;
+    -moz-animation-delay: -1.38s;
+}
+.cssload-container .shaft5 {
+  animation-delay: -1.27s;
+    -o-animation-delay: -1.27s;
+    -ms-animation-delay: -1.27s;
+    -webkit-animation-delay: -1.27s;
+    -moz-animation-delay: -1.27s;
+}
+.cssload-container .shaft6 {
+  animation-delay: -1.15s;
+    -o-animation-delay: -1.15s;
+    -ms-animation-delay: -1.15s;
+    -webkit-animation-delay: -1.15s;
+    -moz-animation-delay: -1.15s;
+}
+.cssload-container .shaft7 {
+  animation-delay: -1.04s;
+    -o-animation-delay: -1.04s;
+    -ms-animation-delay: -1.04s;
+    -webkit-animation-delay: -1.04s;
+    -moz-animation-delay: -1.04s;
+}
+.cssload-container .shaft8 {
+  animation-delay: -0.92s;
+    -o-animation-delay: -0.92s;
+    -ms-animation-delay: -0.92s;
+    -webkit-animation-delay: -0.92s;
+    -moz-animation-delay: -0.92s;
+}
+.cssload-container .shaft9 {
+  animation-delay: -0.81s;
+    -o-animation-delay: -0.81s;
+    -ms-animation-delay: -0.81s;
+    -webkit-animation-delay: -0.81s;
+    -moz-animation-delay: -0.81s;
+}
+.cssload-container .shaft10 {
+  animation-delay: -0.69s;
+    -o-animation-delay: -0.69s;
+    -ms-animation-delay: -0.69s;
+    -webkit-animation-delay: -0.69s;
+    -moz-animation-delay: -0.69s;
+}
+.cssload-container .shaft11 {
+  animation-delay: -0.58s;
+    -o-animation-delay: -0.58s;
+    -ms-animation-delay: -0.58s;
+    -webkit-animation-delay: -0.58s;
+    -moz-animation-delay: -0.58s;
+}
+
+
+
+@keyframes cssload-wave {
+  50% {
+    height: 100%;
+    margin-top: 0;
+    background: rgba(93,211,240,0.96);
+  }
+}
+
+@-o-keyframes cssload-wave {
+  50% {
+    height: 100%;
+    margin-top: 0;
+    background: rgba(93,211,240,0.96);
+  }
+}
+
+@-ms-keyframes cssload-wave {
+  50% {
+    height: 100%;
+    margin-top: 0;
+    background: rgba(93,211,240,0.96);
+  }
+}
+
+@-webkit-keyframes cssload-wave {
+  50% {
+    height: 100%;
+    margin-top: 0;
+    background: rgba(93,211,240,0.96);
+  }
+}
+
+@-moz-keyframes cssload-wave {
+  50% {
+    height: 100%;
+    margin-top: 0;
+    background: rgba(93,211,240,0.96);
+  }
+}
+    select {
+      width:150px;
+    }

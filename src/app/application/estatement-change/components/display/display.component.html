@@ -1,0 +1,59 @@
+﻿<div class="rowElem">
+	<table class="new-datatable" width="100%">
+		<tr>
+			<td *ngIf="!isMobile" class="text-right" width="25%">收取帳單方式</td>
+			<td *ngIf="isMobile" class="text-right" width="60%">收取帳單方式</td>
+			<td class="text-left">
+				{{formValue.IsApplyElectronicBill == 0 ? "實體帳單" : formValue.IsApplyElectronicBill == 1 ? "電子帳單" : "行動帳單"}}
+			</td>
+		</tr>
+		<tr *ngIf="formValue.IsApplyElectronicBill == 1">
+			<td class="text-right">
+				電子帳單寄送信箱
+			</td>
+			<td class="text-left">
+				{{formValue.Email | mask:'1-' + ((formValue.Email || '').indexOf('@') - 1):'*'}}
+			</td>
+		</tr>
+		<tr *ngIf="formValue.IsApplyElectronicBill == 2">
+			<td class="text-right">
+				行動帳單寄送手機
+			</td>
+			<td class="text-left">
+				{{formValue.Mobile | mobile}}
+			</td>
+		</tr>
+		<tr *ngIf="sso">
+			<td class="text-right">
+				每日消費彙整通知
+			</td>
+			<td class="text-left">
+				{{formValue.IsApplyConsumerCollection ? "同意" : "不同意"}}
+			</td>
+		</tr>
+		<tr *ngIf="sso">
+			<td class="text-right">
+				電子活動通知
+			</td>
+			<td class="text-left">
+				{{formValue.IsApplyEaper ? "同意" : "不同意"}}
+			</td>
+		</tr>
+		<tr *ngIf="sso">
+			<td class="text-right">
+				信用卡繳款入帳通知
+			</td>
+			<td class="text-left">
+				{{formValue.IsApplyPaymentNotify ? "同意" : "不同意"}}
+			</td>
+		</tr>
+		<tr *ngIf="sso">
+			<td class="text-right">
+				信用卡繳款提醒通知
+			</td>
+			<td class="text-left">
+				{{formValue.IsRemindPaymentNotify ? "同意" : "不同意"}}
+			</td>
+		</tr>
+	</table>
+</div>

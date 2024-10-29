@@ -1,0 +1,51 @@
+<div class="big-container">
+	<div class="wrapper">
+		<app-reward-redemption-header></app-reward-redemption-header>
+		<div class="body-container">
+			<div class="container" style="min-height: 400px;">
+				<section class="overview">
+					<app-reward-redemption-secondmenu></app-reward-redemption-secondmenu>
+					<h2 class="title">商品總覽
+						<span class="hidden-max">-{{categoryName}}</span>
+					</h2>
+					<nav class="pnav btn-zone hidden-min">
+						<a [routerLink]="['/Reward/Redemption/Products',0]" [queryParams]="{isPreview: isPreview}" [class.active]="CategoryId == 0" class="nbtn">商品一覽</a>
+						<a *ngFor="let item of Categories" [routerLink]="['/Reward/Redemption/Products',item.ID]" [queryParams]="{isPreview: isPreview}" [class.active]="CategoryId == item.ID"
+						 class="nbtn">{{item.Name}}</a>
+					</nav>
+					<p>全部商品共
+						<span class="red">{{Products?.length}}</span>件，請選擇您要兌換的商品：</p>
+					<ul class="products_zone">
+						<li *ngFor="let item of Products">
+							<img class="pimg" [src]="item.SmallImagePath" [alt]="item.Name" />
+							<span class="pcat">【{{item.SubCategoryName}}】</span>
+							<span href="#" class="ptitle">{{item.Name}}</span>
+							<div class="row2 pbottom">
+								<b class="pbonus">{{item.Point | number}}點</b>
+								<a [routerLink]="['/Reward/Redemption/Detail',item.ID]" [queryParams]="{isPreview: isPreview}" class="pinfo fright">詳細內容</a>
+							</div>
+						</li>
+					</ul>
+					<!-- <div class="center">
+						<ul class="pagination">
+							<li class="prev disabled">
+								<a href="#">上一頁</a>
+							</li>
+							<li class="page active">
+								<a href="#">1</a>
+							</li>
+							<li class="page">
+								<a href="#">2</a>
+							</li>
+							<li class="next">
+								<a href="#">下一頁</a>
+							</li>
+						</ul>
+					</div> -->
+				</section>
+			</div>
+			<app-reward-redemption-warning></app-reward-redemption-warning>
+		</div>
+		<app-reward-redemption-footer></app-reward-redemption-footer>
+	</div>
+</div>

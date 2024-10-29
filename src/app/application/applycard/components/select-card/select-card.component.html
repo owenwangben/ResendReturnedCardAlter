@@ -1,0 +1,178 @@
+<div class="formblock cards-showroom-block">
+	<p *ngIf="titles?.length > 1">請選擇信用卡</p>
+	<fieldset>
+		<legend>
+			<div class="card-name" [innerHTML]="cardinfo?.Title"></div>
+		</legend>
+		<div class="cards-showroom">
+			<div class="cards-carousel owl-carousel">
+				<div *ngFor="let title of titles; let owlidx=index" class="card-holder"
+					[attr.data-title]="title" [attr.data-owl-index]="owlidx">
+					<img *ngFor="let card of getCards(title); let idx=index" [src]="card.CardFaceUrl"
+						[class.selected]="idx === 0"
+						[attr.data-card-type]="card.CardType" [attr.data-card-title]="card.CardName"
+						[attr.data-card-type-id]="card.Id" [attr.data-card-face]="card.CardFace">
+				</div>
+			</div>
+		</div>
+		<div class="carousel-nav">
+			<div class="nav" *ngIf="titles?.length > 1"></div>
+			<div class="dots"></div>
+			<a *ngIf="titles?.length > 1" href="javascript:void(0)" class="pick-a-card-by-list open-lbox" (click)="openlbox('#choose-cards')">
+				<i class="icon-pick"></i>挑選信用卡
+			</a>
+		</div>
+	</fieldset>
+</div>
+<div class="content">
+	<section class="card-apply-block">
+		<div class="lft" *ngIf="!dsno">
+			<div class="tab-container">
+				<ul class="tab-block">
+					<li [class.active]="selectedTab === 1" (click)="tabClick(1)" *ngIf="cardinfo?.FirstBrushCeremony">
+						<a href="javascript:void(0)">最新優惠</a>
+					</li>
+					<li [class.active]="selectedTab === 2" (click)="tabClick(2)">
+						<a href="javascript:void(0)">專屬權益</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="tab1" [class.active]="selectedTab === 1">
+						<div [innerHTML]="promotion | safeHtml"></div>
+						<div *ngIf="cardinfo?.IsDualCurrencyCard"><br></div>
+						<div class="special" *ngIf="cardinfo?.IsDualCurrencyCard">
+							<span>
+								提醒您！申請
+								<span *ngIf="!cardinfo?.IsComboCard" class="pink2">永豐幣倍信用卡</span>
+								<span *ngIf="cardinfo?.IsComboCard" class="pink2">永豐幣倍金融信用卡</span>
+								請先確認已開立本行<span *ngIf="cardinfo?.IsComboCard">臺</span>外幣帳戶，如您尚未開立帳戶，建議您可至
+								<a class="hidden-min" href="https://mma.sinopac.com/MMA7txt/CustomerService/BranchService/mma_branch.html" target="_blank">永豐銀行各分行</a>
+								<a class="hidden-max" href="https://m.sinopac.com/m/bank/easy_index_preServiceNum/m_branches_nearby.aspx" target="_blank">永豐銀行各分行</a>
+								<span *ngIf="!cardinfo?.IsComboCard">或數位帳戶平台</span>辦理或選擇申請其他卡片種類。<span *ngIf="cardinfo?.IsComboCard">(數位帳戶目前不適用申辦本金融信用卡)</span>
+							</span>
+						</div>
+					</div>
+					<div id="tab2" [class.active]="selectedTab === 2">
+						<div [innerHTML]="rights"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rgt" [style.margin]="dsno ? '0 auto' : ''">
+			<div class="apply-block">
+				<h3>立即申辦</h3>
+				<p class="title">請選擇信用卡類別</p>
+				<div class="artfld select">
+					<div class="icons" [ngClass]="'icon-' + cardinfo?.CardType"></div>
+					<select id="card-type" (change)="cardTypeChange($event)"></select>
+				</div>
+				<div *ngIf="sso; else notsso" class="btn-zone">
+					<a href="javascript:void(0)" class="nbtn focus" *ngIf="canApply" (click)="submit(cardinfo?.ShowDawhoAuthDebitUI ? 'Dawho' : 'MMA')">{{twoFactorAuthButtonText(true)}}</a>
+				</div>
+				<ng-template #notsso>
+					<div class="btn-zone" *ngIf="source != 1 && source != 2 && canApply">
+						<a href="javascript:void(0)" class="nbtn focus" (click)="submit('CardOrAccount')">{{twoFactorAuthButtonText(false)}}</a>
+						<a *ngIf="prodtype !== 2 && prodtype !== 3" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="ShowOtherApplyBox()">新客戶辦卡</a>
+					</div>
+					<div class="btn-zone" *ngIf="source == 1 && canApply">
+						<a href="javascript:void(0)" class="nbtn focus" (click)="submit((cardinfo?.ShowDawhoAuthDebitUI || this.prodtype === 6) ? 'Dawho' : 'CardOrAccount')">{{twoFactorAuthButtonText(null)}}</a>
+					</div>
+					<div class="btn-zone" *ngIf="source == 2 && canApply">
+						<a href="javascript:void(0)" class="nbtn focus" routerLink="ApplyCard/QuickAccount" (click)="submit('QuickAccount')">{{twoFactorAuthButtonText(null)}}</a>
+					</div>
+				</ng-template>
+				<p *ngIf="cardinfo?.ShowDawhoAuthDebitUI && canApply && prodtype == 5" class="center" style="font-size: 16px; font-weight: bold;">(需申辦數位帳戶成功，始可核卡成功)</p>
+				<p *ngIf="cardinfo?.ShowDawhoAuthDebitUI && canApply && cardface == 426090" class="center red" style="font-size: 16px; font-weight: bold;">(邀請制卡別，需符合資格方能申請)</p>
+<p *ngIf="cardinfo?.CardFace === 228188" class="center red" style="font-size: 18px; font-weight: bold;">國民旅遊卡(簽約機構專屬)</p>
+				<p *ngIf="!canApply" class="center red" style="font-size: 16px; font-weight: bold;">【2020年東京奧運主題限量版】卡面，限量{{cardinfo.MaxApplyCount | number}}卡已額滿。</p>
+			</div>
+			<div class="apply-block" style="margin-top: 15px;" *ngIf="sso">
+				<p class="title" style="font-weight: bold;">個人資料同意使用條款</p>
+				<div class="tab-content" style="padding-top: 0px; padding-bottom: 0px;">
+					<span>
+						為了提供您後續商品電話服務，於您按下<span *ngIf="!cardinfo?.ShowDawhoAuthDebitUI">「我要辦卡」</span><span
+							*ngIf="cardinfo?.ShowDawhoAuthDebitUI">「DAWHO辦卡」</span>時，您所填寫的資料將會交付永豐銀行。永豐銀行必將保護您個人資料安全，且於法令許可及行銷永豐信用卡目的範圍內，於國內外蒐集、處理、利用您的個人資料。<br><br>
+						若您已閱讀了解
+						<a href="javascript:void(0)" class="udline open-lbox"
+							(click)="openlbox('#terms3-lbox')">「永豐銀行個人資料蒐集、處理及利用告知義務內容」</a>
+						並同意個人資料蒐集處理及利用條款，請按<span *ngIf="!cardinfo?.ShowDawhoAuthDebitUI">「我要辦卡」</span><span
+							*ngIf="cardinfo?.ShowDawhoAuthDebitUI">「DAWHO辦卡」</span>。
+					</span>
+				</div>
+			</div>
+		</div>
+
+	</section>
+</div>
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div id="choose-cards" class="choose-cards{{ titles.length > 10 ? '' : ' special'}}">
+			<h3>挑選信用卡</h3>
+			<div class="choose-cards-block">
+				<ul>
+					<li *ngFor="let title of titles; let idx=index">
+						<input type="radio" [id]="'a5' + idx" name="a5" class="artfld surround" (click)="chooseCardsClick(idx)" [attr.data-carousel-index]="idx">
+						<label [for]="'a5' + idx" [innerHTML]="title"></label>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div id="choose-auth-method" class="choose-auth-method">
+			<h3>請選擇認證方式</h3>
+			<div class="auth-method-block">
+				<div class="btn-zone">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit('MMA')">MMA 網銀會員</a>
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit('Card')">本行信用卡卡友</a>
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit('Account')">本行存款戶</a>
+				</div>
+			</div>
+		</div>
+		<div id="choose-signup-method" class="choose-auth-method sign-method">
+			<h3>請選擇認證方式</h3>
+			<div class="auth-method-block">
+				<div class="btn-zone">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit('OtherCard')">
+						<span>他行信用卡驗證申請</span>
+						<br>
+						<span class="sub">線上申請免郵寄</span>
+					</a>
+					<div class="desc bubble-msg-block">
+						<span loadHtml="/mma8/card/htmls/以卡辦卡身分驗證指定銀行.html"></span>
+					</div>
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit('OtherBank')">
+						<span>他行臺幣帳戶驗證申請</span>
+						<br>
+						<span class="sub">線上申請免郵寄</span>
+					</a>
+					<div class="desc bubble-msg-block">
+						<span loadHtml="/mma8/card/htmls/他行臺幣帳戶身分驗證指定銀行.html"></span>
+					</div>
+					<a href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=creditcard&menu=1" class="nbtn focus" (click)="submit('New')" *ngIf="prodtype !==7">
+						<span>下載申請書填寫郵寄申辦</span>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div id="terms3-lbox" class="terms-lbox">
+			<h3>永豐銀行個人資料蒐集、處理及利用告知義務內容</h3>
+			<div class="terms-block">
+				<div class="wrapper">
+					<p>
+						<span loadHtml="{{personalDataTermsUrl}}"></span>
+					</p>
+				</div>
+			</div>
+			<div class="btn-zone flex-inline-min">
+				<a href="#" class="nbtn focus close">關閉</a>
+			</div>
+		</div>
+		<div id="terms4-lbox" class="terms-lbox">
+			<h3 class="hidden-max" >幣倍卡限本行存款客戶申辦，若為本行存款客戶，請點選【永豐卡友/存戶】申辦</h3>
+			<h3 class="hidden-min" >幣倍卡限本行存款客戶申辦，若為本行存款客戶，<br>請點選【永豐卡友/存戶】申辦</h3>
+			<div class="btn-zone flex-inline-min">
+				<a href="#" class="nbtn focus close">確定</a>
+			</div>
+		</div>
+	</div>
+</div>

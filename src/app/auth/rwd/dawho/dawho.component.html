@@ -1,0 +1,103 @@
+<div class="wrapper">
+	<app-auth-header></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content transparent">
+					<h2 class="title-with-icon">
+						<i class="icon-auth"></i>{{pageinfo.name}}</h2>
+				</div>
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p><span class="red">*</span>身分證字號</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="ID" maxlength="10" placeholder="請輸入身分證字號">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>出生年月日</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4 ctrl-date" formControlName="DOB" maxlength="8" numberOnly placeholder="YYYYMMDD">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>驗證碼</p>
+									</th>
+									<td class="flex-min">
+										<div>
+											<input type="text" class="artfld col-2 col-all-min" formControlName="Captcha" placeholder="驗證碼" maxlength="6" numberOnly>
+										</div>
+										<div class="captcha">
+											<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+										</div>
+										<div>
+											<a href="javascript:void(0)" class="reload-captcha" (click)="changeVcaptcha()">重新產生</a>
+										</div>
+									</td>
+									<!-- <td>
+										<div class="captcha-block flex-box flex-vcenter">
+											<input type="text" class="artfld col-all-min col-2" formControlName="Captcha" maxlength="6" numberOnly placeholder="驗證碼">
+											<a class="captcha" href="javascript:void(0)" (click)="changeVcaptcha()">
+												<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" alt="">
+											</a>
+										</div>
+									</td> -->
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+				<div class="content">
+					<section class="trans-content">
+						<div class="prfy">
+							<span class="title">個人資料同意使用條款</span>
+							<br>
+							<span>為了提供您線上申辦信用卡及後續商品電話服務，於您按下「確認」時，您本次申請程序所填寫的資料，將會交付永豐銀行；若您未能順利完成信用卡線上申請資料填寫，本行將依申請人所填寫或留存於本行之聯絡電話，指派專人與您聯絡，以利後續案件審核。永豐銀行必將保護您個人資料安全，且於法令許可及行銷永豐信用卡目的範圍內，於國內外蒐集、處理、利用您的個人資料。</span>
+							<br>
+							<br>
+							<span>若您已閱讀了解「
+								<a href="javascript:void(0)" class="udline open-lbox" (click)="openlbox('#terms3-lbox')">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>
+								」並同意個人資料蒐集處理及利用條款，請按「確認」。
+							</span>
+						</div>
+					</section>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">確認</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+		<div class="lboxed">
+			<div class="close"></div>
+			<div class="lbox-block">
+				<div id="terms3-lbox" class="terms-lbox">
+					<h3>永豐銀行個人資料蒐集、處理及利用告知義務內容</h3>
+					<div class="terms-block">
+						<div class="wrapper">
+							<p><span loadHtml="{{personalDataTermsUrl}}"></span></p>
+						</div>
+					</div>
+					<div class="btn-zone flex-inline-min">
+						<a href="#" class="nbtn focus close">關閉</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

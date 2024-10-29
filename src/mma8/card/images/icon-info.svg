@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20">
+    <defs>
+        <linearGradient id="a" x1="50%" x2="50%" y1="99.487%" y2="57.624%">
+            <stop offset=".077%" stop-color="#A68B61"/>
+            <stop offset="100%" stop-color="#D1B175"/>
+        </linearGradient>
+    </defs>
+    <g fill="none" fill-rule="evenodd">
+        <path fill="#FFF" d="M-204-484h375v667h-375z"/>
+        <path fill="#E9E2D7" fill-rule="nonzero" d="M-204-484h375v667h-375z"/>
+        <path fill="#FFF" fill-rule="nonzero" stroke="url(#a)" stroke-width="2" d="M-16 465v118h314c32.585 0 59-26.415 59-59s-26.415-59-59-59H-16z" transform="translate(-204 -484)"/>
+        <text fill="#030303" font-family="PingFangTC-Regular, PingFang TC" font-size="20" transform="translate(-204 -10)">
+            <tspan x="15" y="27">基金</tspan>
+        </text>
+        <text fill="#333" font-family="PingFangTC-Light, PingFang TC" font-size="15" font-weight="300" transform="translate(-204 -10)">
+            <tspan x="184.135" y="89">總投資金額 $56,000</tspan>
+        </text>
+        <text fill="#666" font-family="PingFangTC-Light, PingFang TC" font-size="14" font-weight="300" transform="translate(-204 -10)">
+            <tspan x="229.676" y="25">總現值(台幣計)</tspan>
+        </text>
+        <text fill="#030303" font-family="PingFangTC-Regular, PingFang TC" font-size="16" transform="translate(-204 -10)">
+            <tspan x="219.576" y="50">＄</tspan> <tspan x="235.576" y="50" font-size="28">57,700</tspan>
+        </text>
+        <g fill-rule="nonzero">
+            <circle cx="10" cy="10" r="9.5" stroke="#A68B61"/>
+            <path fill="#A68B61" d="M10 8a1 1 0 0 1 1 1v5a1 1 0 0 1-2 0V9a1 1 0 0 1 1-1z"/>
+            <circle cx="10" cy="6" r="1" fill="#A68B61"/>
+            <circle cx="10" cy="6" r="1" fill="#A68B61"/>
+        </g>
+    </g>
+</svg>

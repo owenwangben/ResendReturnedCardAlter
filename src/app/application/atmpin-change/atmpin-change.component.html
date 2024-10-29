@@ -1,0 +1,53 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="onSubmit()">
+					<div class="formblock">
+						<table class="new-datatable mobile-col-12">
+							<tbody>
+								<tr>
+									<th class="mobile-col-4">信用卡號</th>
+									<td>
+										<div class="artfld select col-3 mobile-col-12">
+											<select formControlName="CardNo" mweb-select="請選擇信用卡">
+												<option value="" disabled>請選擇信用卡</option>
+												<option *ngFor="let cardNo of cardNos" [value]="cardNo">{{cardNo | creditcard}}</option>
+											</select>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>輸入現有密碼</th>
+									<td>
+										<input type="password" class="artfld col-3 mobile-col-12" formControlName="OldPin" numberOnly maxlength=4 placeholder="請輸入現有密碼">
+									</td>
+								</tr>
+								<tr>
+									<th>輸入新的密碼</th>
+									<td>
+										<input type="password" class="artfld col-3 mobile-col-12" formControlName="NewPin" numberOnly maxlength=4 placeholder="請輸入新的密碼">
+									</td>
+								</tr>
+								<tr>
+									<th>確認新的密碼</th>
+									<td>
+										<input type="password" class="artfld col-3 mobile-col-12" formControlName="NewPinConfirm" numberOnly maxlength=4 placeholder="再次輸入新的密碼">
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn-zone">
+						<!-- <a class="nbtn" href="/Shared/HomePageTwd.aspx?CH=card&ID=1">取消</a> -->
+						<app-link-button type="cancel">取消</app-link-button>
+						<button type="submit" class="nbtn focus">確認送出</button>
+					</div>
+				</form>
+				<div loadHtml="/mma8/card/htmls/預借現金密碼變更注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>

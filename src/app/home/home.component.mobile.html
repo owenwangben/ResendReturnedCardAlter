@@ -1,0 +1,117 @@
+﻿<style>
+  ul {
+    padding-left: 30px;
+    list-style-type: disc;
+  }
+</style>
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+		<div class="rowElem">
+		<ul>
+			<li>查詢繳款
+				<ul>
+					<li><a routerLink="/Account/Info">帳務資訊</a></li>
+					<li><a routerLink="/Account/StatementInquiry">近期帳單查詢</a></li>
+					<li><a routerLink="/Account/UnbilledTxInquiry">未出帳單明細查詢</a></li>
+				</ul>
+			</li>
+			<li>紅利點數
+			<ul>
+				<li><a routerLink="/Reward/AvailablePoints">紅利點數查詢</a></li>
+				<li><a routerLink="/Reward/RedemptionRecords">紅利兌換紀錄</a></li>
+				<li><a routerLink="/Reward/Redemption">紅利點數兌換</a></li>
+				<li><a routerLink="/Reward/Bonus2018Q1">2018Q1集點活動</a></li>
+				<li><a routerLink="/Reward/CashbackInquiry">消費回饋查詢</a></li>
+				<li><a routerLink="/Reward/TopCardInquiry">頂級卡禮遇資格查詢</a></li>
+			</ul>
+			</li>
+			<li>台灣大車隊聯名卡 - T Point回饋計畫
+				<ul>
+					<li><a routerLink="/Reward/TPointsRedemptionRecords">兌換紀錄與設定</a></li>
+					<li><a routerLink="/Reward/TPointsRewardInquiry">累積查詢</a></li>
+				</ul>
+			</li>
+			<li><a routerLink="/Reward/CarbonInquiry">碳足跡查詢</a></li>
+			<li>智慧理財
+			<ul>
+				<li><a routerLink="/Transaction/TempCLI">信用卡臨時額度調整</a></li>
+				<li><a routerLink="/Transaction/PermCLI">信用卡永久額度調整</a></li>
+				<li><a routerLink="/Transaction/PermCLIMortgage">好房卡永久額度調整</a></li>
+				<li><a routerLink="/Transaction/TempCLIStatus">額度調整進度-臨調</a></li>
+				<li><a routerLink="/Transaction/PermCLIStatus">額度調整進度-永調</a></li>
+				<li><a routerLink="/Transaction/CashAdvance">預借現金</a></li>
+				<li><a routerLink="/Transaction/RTEAgreement">消費分期約定事項</a></li>
+				<li><a routerLink="/Transaction/RTE">單筆消費分期</a></li>
+				<li><a routerLink="/Transaction/RTEStmt" >帳單分期</a></li>
+				<li><a routerLink="Transaction/RTEStmtRecords">帳單分期查詢</a></li>
+				<li><a routerLink="/Transaction/EasyChoice">網路易通財</a></li>
+				<li><a routerLink="/Transaction/EasyChoiceStatus">網路易通財查詢</a></li>
+			</ul>
+			</li>
+			<li>活動資格
+			<ul>
+				<!-- <li><a routerLink="/Activity/AnnualFee">年費資格查詢</a></li>
+				<li><a routerLink="/Activity/AirportPickup">機場接送資格查詢</a></li> -->
+				<li><a routerLink="/Activity/RegisteredInquiry">查詢已登錄活動</a></li>
+				<li><a routerLink="/Activity/Register">活動登錄</a></li>
+				<li><a routerLink="/Reward/CarbonInquiry">消費碳足跡查詢</a></li>
+			</ul>
+			</li>
+			<li>服務申請
+			<ul>
+				<li><a routerLink="/Application/EStatementChange">行動/電子帳單通知設定</a></li>
+				<li><a routerLink="/Application/AutomaticDebit">自動扣繳設定</a></li>
+				<li><a routerLink="/Application/EStatementReprint">補寄電子帳單</a></li>
+				<li><a routerLink="/Application/ApplyCard">線上辦卡</a></li>
+				<li><a routerLink="/Application/CardActivation">網路開卡</a></li>
+				<li><a routerLink="/Application/ApplicationStatus">申請進度查詢</a></li>
+				<li><a routerLink="/Application/ApplyCard/Intl/en">移工卡線上辦卡</a></li>
+				<li><a routerLink="/Application/ApplyCard/Upload">上傳缺補文件</a></li>
+				<li><a routerLink="/Application/ApplyCard/Intl/Upload/en">移工卡上傳缺補文件</a>
+				<li><a routerLink="/Application/ATMPINSetup">預借現金密碼申請</a></li>
+				<li><a routerLink="/Application/ATMPINChange">預借現金密碼變更</a></li>
+				<li><a routerLink="/Application/LeaveMessage">電話留言申辦</a></li>
+				<li><a href="/Application/ApplyCard?DsNo=DS1234">線上辦卡(業務人員)</a></li>
+				<li><a routerLink="/Application/ApplyCard/DsQrcode">人員推薦線上辦卡QR Code產生器</a></li>
+				<li><a routerLink="/Application/ChangeEmail">變更電子郵件信箱</a></li>
+				<li><a routerLink="/Application/HanshinarenaCardTransfer">漢神巨蛋卡轉卡</a></li>
+				<li><a routerLink="/Application/CreditRefund">信用卡溢繳退款申請</a></li>
+				<li><a routerLink="/Application/CardLost">卡片掛失</a></li>
+			</ul>
+			</li>
+			<li>簽帳金融卡(Debit卡)
+				<ul>
+						<li><a routerLink="/DebitCard/StatementInquiry">Debit卡近期交易明細</a></li>
+						<li><a routerLink="/DebitCard/UnbilledTxInquiry">Debit卡授權交易明細</a></li>
+						<li><a routerLink="/DebitCard/SetNotify">Debit卡交易明細單/通知設定</a></li>
+						<li><a routerLink="/DebitCard/ResendStatement">補寄Debit卡交易明細單</a></li>
+						<li><a routerLink="/DebitCard/Apply">簽帳金融卡換發</a></li>
+				</ul>
+			</li>
+			<li>行動帳單
+				<ul>
+					<li><a routerLink="/MobileStatement/Bill/003UW">帳務資訊</a></li>
+				</ul>
+			</li>
+			<li>虛擬卡
+				<ul>
+					<li><a routerLink="/VirtualCard/CardInfoInquiry">虛擬卡卡號查詢</a></li>
+					<li><a routerLink="/VirtualCard/PermCLI">虛擬卡額度調整</a></li>
+					<li><a href="/Application/ApplyCard?VirtualCard=true">線上辦卡(所有的虛擬卡)</a></li>
+					<li><a href="/Application/ApplyCard?VirtualCard=true&CardFace=479066&mode=1">線上辦卡(無限虛擬卡)</a></li>
+					<li><a href="/Application/ApplyCard?VirtualCard=true&CardFace=272066&mode=1">線上辦卡(世界虛擬卡)</a></li>
+				</ul>
+			</li>
+			<li>虛實卡
+				<ul>
+					<li><a href="/Application/ApplyCard?CardFace=425178&Branch=BR2491&Flag=01&mode=1">線上辦卡(現金回饋VISA卡: 綠色通關獨立網址)</a></li>
+					<li><a routerLink="/Application/PriorActivateCard/425178">優先啟用碼 卡號資訊查詢</a></li>
+				</ul>
+			</li>
+		</ul>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "DE_DATE": "20160901",
+        "ADD_POINT": "",
+        "TRA_POINT_TTL": "100",
+        "MEMO": "新光三越禮券"
+      },
+      {
+        "DE_DATE": "20161010",
+        "ADD_POINT": "",
+        "TRA_POINT_TTL": "11980",
+        "MEMO": "台北國賓飯店1F明園自助式吃到飽下午茶券"
+      },
+      {
+        "DE_DATE": "20161030",
+        "ADD_POINT": "",
+        "TRA_POINT_TTL": "6000",
+        "MEMO": "國賓影城電影票一張"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

@@ -1,0 +1,62 @@
+{
+	"/api/security/captcha": {
+		"target": {
+			"host": "sinopac.eweb.web",
+			"protocol": "http:",
+			"port": 80
+		},
+		"pathRewrite": {
+			"/api": "/SinoCard/api"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/api": {
+		"target": {
+			"host": "localhost",
+			"protocol": "http:",
+			"port": 3000
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/ValidateNumber.ashx": {
+		"target": {
+			"host": "sinopac.eweb.web",
+			"protocol": "http:",
+			"port": 80
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/MemberPortal": {
+		"target": "http://localhost:3000",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/ws/shared/menu/ws_breadcrumbs.ashx": {
+		"target": "http://localhost:3000"
+	},
+	"/ws": {
+		"target": "http://10.11.22.235",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/Shared/ws_Adv.ashx": {
+		"target": "http://localhost:3000"
+	},
+	"/Shared": {
+		"target": "http://10.11.22.235",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/m/member/login/m_menubar.aspx": {
+		"target": "http://localhost:3000"
+	}
+}

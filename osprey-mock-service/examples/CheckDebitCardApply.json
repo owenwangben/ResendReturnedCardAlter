@@ -1,0 +1,49 @@
+{
+    "Result": {
+        "Accounts": [
+			{
+				"AccountNo":"00100400050698",
+				"IsDigitalAccount":true,
+				"IsForeignAccount":false
+			},
+			{
+				"AccountNo":"00100400050699",
+				"IsDigitalAccount":false,
+				"IsForeignAccount":false
+			},
+			{
+				"AccountNo":"00100400050700",
+				"IsDigitalAccount":false,
+				"IsForeignAccount":true
+			},
+			{
+				"AccountNo":"00100400050739",
+				"IsDigitalAccount":false,
+				"IsForeignAccount":true
+			},
+			{
+				"AccountNo":"00100400050743",
+				"IsDigitalAccount":true,
+				"IsForeignAccount":true
+			},
+			{
+				"AccountNo":"00100400050756",
+				"IsDigitalAccount":true,
+				"IsForeignAccount":true
+			}
+		]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

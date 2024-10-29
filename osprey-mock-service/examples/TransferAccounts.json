@@ -1,0 +1,26 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "AccountNo": "00100460185231"
+			},
+			{
+                "AccountNo": "20100460185231"
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "9cd13b32-9226-472a-918c-6613e5c0cf28",
+        "ApplicationName": "EWEB",
+        "ReferenceNo": "9438b7d4-815e-4a4a-82da-aa34be390293",
+        "UserID": "",
+        "RequestTime": "2017-08-25T15:18:11.1139945+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.39",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

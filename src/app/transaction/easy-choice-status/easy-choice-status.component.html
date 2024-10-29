@@ -1,0 +1,66 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<app-period-query
+					[fastQueryOptions]="fastQueryOptions"
+					[(start)]="requestModel.StartDate"
+					[(end)]="requestModel.EndDate"
+					(search)="onSearch();">
+				</app-period-query>
+				<table *ngIf="!isMobile" class="ntable" width="100%">
+					<thead>
+						<tr>
+							<th>序號</th>
+							<th>申請來源</th>
+							<th>申請日期</th>
+							<th>處理進度</th>
+							<th>核可金額</th>
+							<th>核可日期</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of resultModel?.Items; let idx = index">
+							<td>{{idx + 1}}</td>
+							<td>{{item.ApplyChannel}}</td>
+							<td>{{item.ApplyDate}}</td>
+							<td>{{item.StatusDesc}}</td>
+							<td class="num-align">{{item.ApproveAmount | number}}</td>
+							<td>{{item.ApproveDate}}</td>
+						</tr>
+						<tr *ngIf="!resultModel?.Items?.length">
+							<td colspan=6>查無資料！</td>
+						</tr>
+					</tbody>
+				</table>
+				<table *ngIf="isMobile" class="table-striped" width="100%">
+					<thead>
+						<tr>
+							<th class="mobile-col-3">申請日期</th>
+							<th class="mobile-col-6">處理進度</th>
+							<th class="mobile-col-3">核可日期<br>核可金額</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let item of resultModel?.Items; let idx = index">
+							<td>{{item.ApplyDate}}</td>
+							<td>{{item.StatusDesc}}</td>
+							<td>{{item.ApproveDate}}<br>{{item.ApproveAmount | number}}</td>
+						</tr>
+						<tr *ngIf="!resultModel?.Items?.length">
+							<td colspan=3>查無資料！</td>
+						</tr>
+					</tbody>
+				</table>
+				<!-- <div class="btn-zone">
+					<button type="button" class="nbtn">近期帳單</button>
+					<button type="button" class="nbtn focus">信用卡調額</button>
+				</div> -->
+				<div class="rowElem" loadHtml="/mma8/card/htmls/預借現金分期查詢注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>
+

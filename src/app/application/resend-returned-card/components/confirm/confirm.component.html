@@ -1,0 +1,102 @@
+<!-- <div class="wrapper-container">
+  <div class="wrapper">
+    <div class="wrapper-mask"></div> -->
+    <!-- <header>
+      <div class="header-top">
+        <div class="container">
+          <div class="logo">
+            <a href="https://bank.sinopac.com/" title="永豐銀行首頁"
+              ><img class="hidden-min" src="../images/sinopac-logo.svg" alt="永豐銀行" /><img class="hidden-max" src="../images/sinopac-logo-min.svg" alt="永豐銀行"
+            /></a>
+          </div>
+          <h1 class="master-title">信用卡卡片退回重寄申請</h1>
+        </div>
+      </div>
+    </header> -->
+    <!-- <div class="outer_container">
+      <div class="container no-breadcrumbs">
+        <div class="content transparent step-panel-block"> -->
+          <!-- <div class="step">
+            <ul class="list-step list-step--gray">
+              <li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span class="list-step__item-title">填寫資料</span></li>
+              <li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">確認資料</span></li>
+              <li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">申請結果</span></li>
+            </ul>
+          </div> -->
+        <!-- </div> -->
+        <div class="content">
+          <section class="trans-content">
+            <fieldset class="fieldset-block pink-legend">
+              <legend class="nowrap">基本資料<i class="fieldset-block__icon-collapse"></i></legend>
+              <div class="fieldset-block__body">
+                <div class="confirm-data-block">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <th>
+                          <p>申請卡片</p>
+                        </th>
+                        <td>
+                          <p class="mbhalf" *ngFor="let item of cards">{{item.CardName}}<br />{{item.CardNo | creditcard}}</p>
+                          <!-- <p class="mbhalf">SPORT悠遊鈦商奶油黃卡(主卡)<br />1234 **** **** 5678</p>
+                          <p class="mbhalf">DAWHO現金回饋信用卡(主卡)<br />1234 **** **** 5678</p> -->
+                        </td>
+                      </tr>
+                      <tr>
+                        <th>
+                          <p>卡片寄送地址</p>
+                        </th>
+                        <td>{{address}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </fieldset>
+          </section>
+        </div>
+        <div class="btn-zone flex-inline-min">
+          <a class="nbtn" href="javascript:void(0)" (click)="goPrev()">上一步</a>
+          <input class="nbtn focus" id="next" type="submit" value="送出" (click)="submit()" />
+        </div>
+        <!-- <script>
+          $('#next').click(function (e) {
+            e.preventDefault();
+            showLoading(true);
+            setTimeout(function () {
+              // 開發時 setTimeout 要代換成 Ajax
+              /**
+               * 模擬使用 Ajax 的時間延遲 Loading 圖示
+               * 並切換至下一步的畫面
+               */
+              showLoading(false);
+              //do something here
+            }, 1000); // 開發時 setTimeout 要代換成 Ajax
+          });
+
+          $('.fieldset-block--collapse legend').click(function (e) {
+            e.preventDefault();
+            var $collapse = $(this).closest('.fieldset-block');
+
+            $collapse.attr('data-open', $collapse.attr('data-open') == 'false' ? 'true' : 'false');
+          });
+        </script>
+      </div>
+    </div> -->
+    <!-- <footer>
+      <div class="container">
+        <div class="copyright">
+          <p>©版權所有 永豐銀行</p>
+          <p class="hidden-min"><a href="https://mma.sinopac.com/Bank/BankFrame.aspx?url=browser/upgrade.html" target="_blank">建議使用之瀏覽器</a>/ 建議解析度1024*768</p>
+        </div>
+        <div class="copyright">
+          <p>
+            <a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a
+            ><a href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html" target="_blank">網路安全說明</a
+            ><a href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank">隱私權保護聲明</a>
+          </p>
+        </div>
+      </div>
+    </footer> -->
+  <!-- </div>
+</div> -->

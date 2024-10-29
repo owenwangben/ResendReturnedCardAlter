@@ -1,0 +1,250 @@
+{
+    "Result": {
+        "Reward": [
+            {
+                "Type": 1,
+                "Month": "201912",
+                "Amount": 147.0
+            },
+            {
+                "Type": 2,
+                "Month": "201912",
+                "Amount": 47.0
+            },
+            {
+                "Type": 3,
+                "Month": "201912",
+                "Amount": 584.0
+            },
+            {
+                "Type": 1,
+                "Month": "202001",
+                "Amount": 123.0
+            },
+            {
+                "Type": 2,
+                "Month": "202001",
+                "Amount": 1100.0
+            },
+            {
+                "Type": 3,
+                "Month": "202001",
+                "Amount": 478.0
+            },
+            {
+                "Type": 1,
+                "Month": "202002",
+                "Amount": 65.0
+            },
+            {
+                "Type": 2,
+                "Month": "202002",
+                "Amount": 258.0
+            },
+            {
+                "Type": 3,
+                "Month": "202002",
+                "Amount": 123.0
+            },
+            {
+                "Type": 1,
+                "Month": "202003",
+                "Amount": 157.0
+            },
+            {
+                "Type": 2,
+                "Month": "202003",
+                "Amount": 369.0
+            },
+            {
+                "Type": 3,
+                "Month": "202003",
+                "Amount": 965.0
+            },
+            {
+                "Type": 1,
+                "Month": "202004",
+                "Amount": 741.0
+            },
+            {
+                "Type": 2,
+                "Month": "202004",
+                "Amount": 152.0
+            },
+            {
+                "Type": 3,
+                "Month": "202004",
+                "Amount": 251.0
+            },
+            {
+                "Type": 1,
+                "Month": "202005",
+                "Amount": 150.0
+            },
+            {
+                "Type": 2,
+                "Month": "202005",
+                "Amount": 741.0
+            },
+            {
+                "Type": 3,
+                "Month": "202005",
+                "Amount": 258.0
+            },
+            {
+                "Type": 1,
+                "Month": "202006",
+                "Amount": 654.0
+            },
+            {
+                "Type": 2,
+                "Month": "202006",
+                "Amount": 456.0
+            },
+            {
+                "Type": 3,
+                "Month": "202006",
+                "Amount": 147.0
+            },
+            {
+                "Type": 1,
+                "Month": "202007",
+                "Amount": 123.0
+            },
+            {
+                "Type": 2,
+                "Month": "202007",
+                "Amount": 123.0
+            },
+            {
+                "Type": 3,
+                "Month": "202007",
+                "Amount": 369.0
+            },
+            {
+                "Type": 1,
+                "Month": "202008",
+                "Amount": 100.0
+            },
+            {
+                "Type": 2,
+                "Month": "202008",
+                "Amount": 789.0
+            },
+            {
+                "Type": 3,
+                "Month": "202008",
+                "Amount": 852.0
+            },
+            {
+                "Type": 1,
+                "Month": "202009",
+                "Amount": 1080.0
+            },
+            {
+                "Type": 2,
+                "Month": "202009",
+                "Amount": 187.0
+            },
+            {
+                "Type": 3,
+                "Month": "202009",
+                "Amount": 241.0
+            },
+            {
+                "Type": 1,
+                "Month": "202010",
+                "Amount": 233.0
+            },
+            {
+                "Type": 2,
+                "Month": "202010",
+                "Amount": 154.0
+            },
+            {
+                "Type": 3,
+                "Month": "202010",
+                "Amount": 123.0
+            },
+            {
+                "Type": 1,
+                "Month": "202011",
+                "Amount": 106.0
+            },
+            {
+                "Type": 2,
+                "Month": "202011",
+                "Amount": 321.0
+            },
+            {
+                "Type": 3,
+                "Month": "202011",
+                "Amount": 600.0
+            }
+        ],
+        "Bonus": [
+            {
+                "Month": "201912",
+                "Point": 778
+            },
+            {
+                "Month": "202001",
+                "Point": 1701
+            },
+            {
+                "Month": "202002",
+                "Point": 446
+            },
+            {
+                "Month": "202003",
+                "Point": 1491
+            },
+            {
+                "Month": "202004",
+                "Point": 1144
+            },
+            {
+                "Month": "202005",
+                "Point": 1149
+            },
+            {
+                "Month": "202006",
+                "Point": 1257
+            },
+            {
+                "Month": "202007",
+                "Point": 615
+            },
+            {
+                "Month": "202008",
+                "Point": 1741
+            },
+            {
+                "Month": "202009",
+                "Point": 1508
+            },
+            {
+                "Month": "202010",
+                "Point": 510
+            },
+            {
+                "Month": "202011",
+                "Point": 1027
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

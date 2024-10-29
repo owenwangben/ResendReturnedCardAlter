@@ -1,0 +1,239 @@
+﻿//轉出帳號以外的下拉選單
+//Type=1 約定轉入帳號
+//Type=2 常用非約定轉入帳號
+//Type=3 銀行代碼
+function getDropdown_Menu(JsonObj, DialogMenuType,Type) {
+  if (JsonObj[0]["Header"] == "SUCCESS") {
+    var objSubInfo = JsonObj[0]["SubInfo"];
+    for (i = 0; i < objSubInfo.length; i++) {
+      var tmp1 = objSubInfo[i]["DataText"];
+      var tmp2 = objSubInfo[i]["DataValue"];
+      var tmp3 = objSubInfo[i]["DataType"];
+      if(tmp3==Type){
+        $("#" + DialogMenuType).append($("<option></option>").attr("value", tmp2).text(tmp1));
+      }
+    }
+  } else {
+    showalert(JsonObj[0]["Message"]);
+  }
+}
+//轉出帳號下拉選單
+function getDebitAcct_Dropdown_Menu(JsonObj, DialogMenuType) {
+  if (JsonObj[0]["Header"] == "SUCCESS") {
+    var objSubInfo = JsonObj[0]["SubInfo"];
+    for (i = 0; i < objSubInfo.length; i++) {
+      var tmp1 = objSubInfo[i]["DataText"];
+      var tmp2 = objSubInfo[i]["DataValue"] + "$$" + objSubInfo[i]["DisplayText"];
+      $("#" + DialogMenuType).append($("<option></option>").attr("value", tmp2).text(tmp1));
+    }
+  } else {
+    showalert(JsonObj[0]["Message"]);
+  }
+}
+//提示訊息
+function showalert(s) {
+  alert(s);
+}
+/*
+<summary>執行JQuery的Ajax</summary>
+<param name="url" type="string">Ajax的URL</param>
+<param name="dataType" type="string">return的格式，json,html,.....</param>
+<param name="asyncType" type="string">true==async</param>
+<param name="formSerialize" type="JQuery Object">Post回Server的data Object</param>
+<returns type=""></returns>
+*/	
+function JQCommon_sendAjax(url,dataType,asyncType,formSerialize) {
+  url=url+"?"+new Date().getTime();
+  //alert(url);
+  $.ajax({
+      url: url,
+      type: "POST",
+      data: formSerialize,
+      dataType: dataType,
+      async: asyncType,
+      cache: false,
+      controller: this,
+      success: function(responseData) {
+          if (responseData != null) {
+              results = responseData;
+          }
+      },
+      error: function(aXMLHttpRequest, textStatus, errorTown) {
+          //showalert(responseData.data);
+          showalert("FAIL");
+      }
+  });
+  return results;
+}
+
+//左邊補0
+function padLeft(str, len) {
+  str = '' + str;
+  if (str.length >= len) {
+    return str;
+  } else {
+    return padLeft("0" + str, len);
+  }
+}
+
+//動態鍵盤亂數產生
+function selRandom(min,max,sel){
+   var maxNum = max;
+   var minNum = min;
+   var selNum = sel-1;
+   var aArray=new Array;
+   var i=0,j=0,k=0;
+   while(aArray[selNum]==undefined){
+       var n = Math.floor(Math.random() * (maxNum - minNum + 1)) + minNum;
+       flag=0;
+       for (j=0;j<=selNum;j++){
+           if(n==aArray[j]){
+               flag=1;
+               break;
+           }
+       }
+       if(flag==0){
+           aArray[k]=n;
+           k=k+1;
+       }
+   }
+   var sReturn="";
+   for (j=0;j<=selNum;j++){
+     $("#showBlock").append('<a id="idK' + aArray[j] + '" class="k' + aArray[j] + ' numbers_value" value="' + aArray[j] + '" ></a>');
+   }
+}
+
+
+	function onlyDynamicKeyboard(e)
+	{
+		var jsKeyCode = window.event?e.keyCode:e.which;
+		if (window.event) //IE
+		{
+			//<-Backspace
+			if(jsKeyCode==8)
+			{
+			}
+			else
+			{
+				//event.returnValue=false 效果相同.
+				e.returnValue = false;   
+			}
+		}
+		else //Firefox
+		{
+			if(jsKeyCode==8)
+			{
+			}
+			else
+			{
+				e.preventDefault();
+			}
+		}
+	}
+	
+	//0-9
+	function onlyDigit(e)
+	{
+		var jsKeyCode = window.event?e.keyCode:e.which;
+		if (jsKeyCode < 48 || jsKeyCode > 57)
+		{
+			if (window.event) //IE
+			{
+				//<-Backspace
+				if(jsKeyCode==8)
+				{
+				}
+				else
+				{
+				e.returnValue = false;  
+				}
+			}
+			else //Firefox
+			{
+				if(jsKeyCode==8)
+				{
+				}
+				else
+				{
+				e.preventDefault();
+				}
+			}
+		}
+	}
+	
+
+  // fancyfield 單組資料建置，dspText 值可有可無(放目前餘額用的)
+  function ffBuild(obj, id, textName, valName, dspText, noneText) {
+    var listOptions = [], data = [];
+	listOptions.push([ffSelDefText(noneText)]);
+    $(obj).each(function(){
+      a = this[textName];
+      b = this[valName];
+      c = '';
+      if (dspText != undefined) {
+        c = '$$' + this[dspText];
+        data = [a,b+c];
+      } else {
+        data = [a,b]; 
+      }
+      listOptions.push(data);
+    });
+    if (id != undefined) {
+    	$(id).setOptions(listOptions);
+    } else {
+    	return listOptions;
+    }
+  }
+  // fancyfield 多重資料建置 by Type 判斷
+  function ffBuildMulti(obj, id, textName, valName, Type, noneText) {
+    var listOptions = [], data = [];
+    listOptions.push([ffSelDefText(noneText)]);
+    $(obj).each(function(){
+      if (this['DataType'] == Type) {
+        a = this[textName];
+        b = this[valName];
+        data = [a,b]; 
+        listOptions.push(data);
+      }
+    });
+    if (id != undefined) {
+    	$(id).setOptions(listOptions);
+    } else {
+    	return listOptions;
+    }
+  }
+  //清空下拉的資料。含資料回傳 FAIL。
+  function ffResetData(id, noneText) {
+    var listOptions = [];
+	listOptions.push([ffSelDefText(noneText)]);
+  	$(id).setOptions(listOptions);
+  }
+  //單純抽出來用的，給下拉選單使用的預設無值文字
+  function ffSelDefText(noneText) {
+    if (noneText != undefined) {
+      return noneText;
+    } else {
+      return "請選擇...";
+    }
+  }
+  //觸發 radio 的 click
+  function ffRadioClick(id) {
+  	$(id).siblings('.ffRadio').trigger("click");
+  }
+  //觸發 reset
+  function ffResetClick(id) {
+  	$(id).fancyfields("reset");
+  }
+  //觸發 disable
+  function ffDisableClick(id) {
+  	$(id).fancyfields("disable");
+  }
+  //觸發 enable
+  function ffEnableClick(id) {
+  	$(id).fancyfields("enable");
+  }
+  //觸發 clean
+  function ffCleanClick(id) {
+  	$(id).fancyfields("clean");
+  }
+  

@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link href="/App_Themes/information.css" rel="stylesheet" type="text/css" />
+    <title>永豐銀行 MMA金融交易網</title>
+</head>
+
+<script type="text/javascript" language="javascript">
+    function CopyRightClick(e) {
+        var netscape;
+        if (navigator.appName.indexOf("Netscape") > -1) {
+            // window.captureEvents(Event.MOUSEDOWN);
+            netscape = e.button;
+        }
+        else {
+            netscape = event.button;
+        }
+
+        if (netscape == 2) {
+            alert('版權所有！瀏覽本頁時是禁止使用滑鼠右鍵的！');
+        }
+    }
+    if (navigator.appName.indexOf("Netscape") > -1) {
+        document.addEventListener('mousedown', CopyRightClick, false);
+    }
+    else {
+        document.onmousedown = CopyRightClick;
+    }
+</script>
+
+<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<table width="700" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><a href="<%=HttpContext.Current.Request.Url.Scheme %>://mma.sinopac.com"><img src="/images/infoImg_top_l.gif" name="MMA金融交易網" width="700" height="81" border="0" id="MMA金融交易網" /></a></td>
+  </tr>
+  <tr>
+    <td background="/images/infoImg_bg_l.gif"><br />
+      <table width="95%" border="0" align="center" cellspacing="0" class="f9">
+
+            <tr>
+              <td valign="top"><p>親愛的客戶，您好： <br />
+                <br />
+                很抱歉！<br />
+                <br />
+                目前本系統進行調整維護，暫時無法提供相關服務。請您稍後再使用本系統服務！<br />
+                不便之處，尚請見諒 ! <br />
+                <br />
+                24小時客服專線：02-2505-9999 / 0203-08989     永豐商業銀行 敬上<br />
+              </p>
+              </td>
+              <td rowspan="2" valign="bottom"><P><BR>
+                </P>
+              </td>
+            </tr>
+            <tr>
+              <td align="right"><p><strong><font size="3">MMA金融交易網</font></strong>　敬上</p></td>
+              </tr>
+        </table>
+      <br />
+    </td>
+  </tr>
+  <tr>
+    <td height="60" align="center" background="/images/infoImg_down_l.gif" class="InfoCopyright">© 版權所有　永豐金控　24小時客服專線：02-2505-9999 / 0203-08989</td>
+  </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<div class="outer_container">
+	<div class="container no-breadcrumbs">
+		<div class="content transparent step-panel-block">
+			<div class="step">
+			<ul class="list-step list-step--gray">
+				<li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span class="list-step__item-title">設定資料</span></li>
+				<li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span class="list-step__item-title">再次確認</span></li>
+				<li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">確認結果</span></li>
+			</ul>
+			</div>
+		</div>
+		<div *ngIf="(FirstFlag && FlagResponse) || !FirstFlag" class="content">
+			<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+				<tr>
+					<td>
+					<div class="success"><i class="icon-tick"></i>
+						<p>已完成設定</p>
+					</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<p *ngIf="!FirstFlag" class="center">感謝您的使用，交易已成功設定。<br>本次變更將於<span class="red">{{EffectDate}}生效。</span></p>
+					<p *ngIf="FirstFlag && FlagResponse" class="center">感謝您的使用，交易已成功設定。<br><span class="red">本次變更將於次期帳單生效，請以帳單顯示之扣款帳號為準。</span></p>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</section>
+		</div>
+		<div *ngIf="FirstFlag && !FlagResponse" class="content">
+			<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+				<tr>
+					<td>
+					<div class="success"><i class="icon-tick"></i>
+						<p>已完成設定</p>
+					</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+					<p class="center">
+						感謝您的使用，交易已成功設定。<br>本次變更將於<span class="red">{{EffectDate}}生效。</span></p>
+					</td>
+					<tr class="line">
+					<td></td>
+					</tr>
+					<tr>
+					<td>
+						<ol class="disc">
+						<li>生效日已超過您當期繳款截止日，仍請依原設定於本行方式繳款。 </li>
+						<li>正式生效後將傳送簡訊至您留在本行信用卡之手機號碼通知，如有任何問題，歡迎來您來電本行信用卡<br>客服專線：(02)2528-7776</li>
+						</ol>
+					</td>
+					</tr>
+				</tbody>
+			</table>
+			</section>
+		</div>
+		<div class="btn-zone flex-inline-min"><a class="nbtn focus" (click)="return()">返回</a></div>
+	</div>
+</div>

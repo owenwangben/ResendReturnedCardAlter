@@ -1,0 +1,50 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "BEGIN_YM": "201702",
+        "END_YM": "201801",
+        "CARD_TYPE": "國民旅遊卡",
+        "TAMT": "129705",
+        "TTIMES": "47",
+        "CARD_FEE_DT": "201802",
+        "FREE_MARK": "是",
+        "CARD": "5241 1503 xxxx 5305"
+      },
+      {
+        "BEGIN_YM": "201703",
+        "END_YM": "201802",
+        "CARD_TYPE": "美安鈦金悠遊卡",
+        "TAMT": "33705",
+        "TTIMES": "55",
+        "CARD_FEE_DT": "201802",
+        "FREE_MARK": "是",
+        "CARD": "5241 1503 xxxx 4707"
+      },
+      {
+        "BEGIN_YM": "201702",
+        "END_YM": "201801",
+        "CARD_TYPE": "漢神巨蛋鈦金卡",
+        "TAMT": "55896",
+        "TTIMES": "32",
+        "CARD_FEE_DT": "201802",
+        "FREE_MARK": "是",
+        "CARD": "5241 1506 xxxx 5904"
+      }
+    ]
+  },
+   "Header":{  
+      "SessionID":"fc5d4069-abb9-4705-8574-09a343466cd6",
+      "ApplicationName":"WEB",
+      "ReferenceNo":"b5fff130-4f37-4183-b5b3-fed592d6db50",
+      "UserID":"",
+      "RequestTime":"2017-04-13T14:02:35.0077832+08:00",
+      "TxCode":"",
+      "RemoteAddr":"10.11.33.42",
+      "PageName":"",
+      "SsaToken":""
+   },
+   "ResultCode":"00",
+   "ResultMessage":"",
+   "Error":null
+}

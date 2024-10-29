@@ -1,0 +1,30 @@
+﻿<div>
+	<table class="ntable cols" width="100%">
+		<tr>
+			<th width="40%">Debit卡<br />交易明細單寄送信箱</th>
+			<td class="text-left" width="60%">{{formValue.Email | mask:'1-' + ((formValue.Email || '').indexOf('@') - 1):'*'}}</td>
+		</tr>
+	</table>
+	<table class="data-table" width="100%">
+		<tr>
+			<td class="text-right" width="30%">
+				收取消費通知
+			</td>
+			<td width="10%">
+			</td>
+			<td class="text-left" width="60%">
+				{{formValue.IsApplyConsumerCollection ? "同意" : "不同意"}}
+			</td>
+		</tr>
+		<tr>
+			<td class="text-right" width="30%">
+				收取電子活動通知
+			</td>
+			<td width="10%">
+			</td>
+			<td class="text-left" width="60%">
+				{{formValue.IsApplyEaper ? "同意" : "不同意"}}
+			</td>
+		</tr>
+	</table>
+</div>

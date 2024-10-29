@@ -1,0 +1,410 @@
+<app-applycard-intl-step-indicator [step]="1" [type]="step >= 0 ? 0 : 1"></app-applycard-intl-step-indicator>
+
+<div class="content full-content" *ngIf="showARCinfoArea == 1">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.ARCInfo.InfoOfARC}}</span>居留證資訊</legend>
+		</fieldset>
+		<div class="ARC-example">
+			<div class="ARC-img">
+				<img src="../../../../../mma8/card/images/ARC-front.jpg" alt="居留證前面" />
+				<img src="../../../../../mma8/card/images/ARC-backend.jpg" alt="居留證背面" />
+			</div>
+			<div class="ARC-desc">
+				<span class="en">{{message?.ARCInfo.FillData}}</span>
+				請於下列欄位依序填寫資料
+			</div>
+		</div>
+		<form [formGroup]="form">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="list-num">1</span><span class="en" style="white-space:pre-wrap;">{{message?.ARCInfo.ARC_Number}}</span>統一證號
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="NewID" maxlength="10" oninput="this.value = this.value.toUpperCase()">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="list-num">2</span><span class="en">{{message?.ARCInfo.DateOfIssue}}
+								</span>核發日期</p>
+						</th>
+						<td>
+							<input type="tel" class="artfld col-all-min col-4" formControlName="ArcIssueDate" placeholder="YYYYMMDD" maxlength="8">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="list-num">3</span><span class="en">{{message?.ARCInfo.PerOfStay}}</span>居留期限</p>
+						</th>
+						<td>
+							<input type="tel" class="artfld col-all-min col-4" formControlName="ArcExpireDate" placeholder="YYYYMMDD" maxlength="8">
+							{{PeriodOfStay}}
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="list-num">4</span><span
+									class="en">{{message?.ARCInfo.BarCodeMumber}}</span>條碼號碼
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="ArcBarcodeNumber" placeholder="" maxlength="10" oninput="this.value = this.value.toUpperCase()">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</section>
+</div>
+<div class="content full-content" *ngIf="showARCinfoArea == 1">
+	<section class="trans-content">
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<th>
+						<p style="margin-left: 10px;"><span class="en" style="white-space:pre-wrap;">{{message?.ARCInfo.ARC_Number_Prior}}</span></p>
+						<p>原申請信用卡之統一證號</p>
+					</th>
+					<td>{{ARCNumber}}</td>
+				</tr>
+		</table>
+	</section>
+</div>
+<div class="content full-content">
+	<section class="trans-content">
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td class="reminds red notice" *ngIf="showARCinfoArea == 1">
+						<p><span class="en">{{message?.Notice.MaximumFiles}}</span></p>
+						<p>提醒您，檔案格式限JPG、PNG、TIF檔，單一檔案大小不得超過5MB</p>
+					</td>
+					<td class="reminds red notice" *ngIf="showARCinfoArea != 1">
+						<p><span class="en">{{message?.Notice.MaximumFiles}}，{{message?.Notice.Limit10Pages}}</span></p>
+						<p>提醒您，檔案格式限JPG、PNG、TIF檔，單一檔案大小不得超過5MB，在職證明或財力證明文件最多上傳10張</p>
+					</td>
+				</tr>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message.UploadFile}}</span>上傳證件</legend>
+		</fieldset>
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="cardbox minwrap double-check">
+							<li>
+								<div class="cardblock">
+									<p class="title left"><span class="en">{{message?.ARCFront}}</span>居留證正面影像</p>
+									<div class="imgupload-block {{showARCinfoArea == 1 ? (img_src[0] ? 'uploaded':'idcard'):(img_src[0] ? 'idcard uploaded':'idcard')}}">
+										<input class="artfld" id="file1" type="file" name="file1"
+											accept="image/jpeg,image/tiff,image/png" ng2FileSelect
+											[uploader]="uploaders[0]"
+											(change)="readUrl($event, 0, uploaders[0], 'arc')">
+										<label for="file1"><span class="addfile"><span
+													class="en">{{btnMessage?.Upload}}</span>上傳</span></label>
+										<div class="imgupload-del"><span class="addfile"
+												(click)="removeFileName(0)"><span
+													class="en">{{btnMessage?.Delete}}</span>刪除</span></div>
+										<div class="imgblock"><img *ngIf="img_src[0]" [src]="img_src[0]"
+												[alt]="img_fname[0]" style="width:100%;height:100%;"></div>
+										{{ img_fname[0] }}
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="cardblock">
+									<p class="title left"><span class="en">{{message?.ARCBack}}</span>居留證背面影像 </p>
+									<div class="imgupload-block {{showARCinfoArea == 1 ? (img_src[1] ? 'uploaded':'idcard'):(img_src[1] ? 'idcard uploaded':'idcard')}}">
+										<input class="artfld" id="file2" type="file" name="file2"
+											accept="image/jpeg,image/tiff,image/png" ng2FileSelect
+											[uploader]="uploaders[1]"
+											(change)="readUrl($event, 1, uploaders[1], 'arc')">
+										<label for="file2"><span class="addfile"><span
+													class="en">{{btnMessage?.Upload}}</span>上傳</span></label>
+										<div class="imgupload-del"><span class="addfile"
+												(click)="removeFileName(1)"><span
+													class="en">{{btnMessage?.Delete}}</span>刪除</span></div>
+										<div class="imgblock"><img id="img1" *ngIf="img_src[1]" [src]="img_src[1]"
+												[alt]="img_fname[1]" style="width:100%;height:100%;"></div>
+										{{ img_fname[1] }}
+									</div>
+								</div>
+							</li>
+						</ul>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content" *ngIf="showARCinfoArea != 1">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message.Passport}}</span>護照內頁</legend>
+		</fieldset>
+		<table class="new-datatable single">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="fupload" id="fuploadlistx3">
+							<ng-container *ngFor="let fname of passport_img_fname ; let idx = index">
+								<li class="fupload__item" *ngIf="fname">
+									<div class="fupload__title">{{ fname }}</div>
+									<a class="fupload__del" href="javascript:void(0)"
+										(click)="removeFileName(idx +4, 'passport')">
+										<img class="fupload__trashcan"
+											src="../../../../../mma8/card/images/trashcan.svg" alt="刪除">
+									</a>
+								</li>
+							</ng-container>
+						</ul>
+						<div class="btn-zone" *ngIf="passport_img_fname.length < 2">
+							<a class="fupload__btn nbtn focus" href="javascript:void(0)" (click)="click('fuploadx3')">
+								<span class="en">{{btnMessage?.AddFile}}</span>新增上傳檔案
+							</a>
+							<input class="fupload__input visually-hidden" id="fuploadx3" type="file"
+								accept="image/jpeg,image/tiff,image/png" ng2FileSelect
+								[uploader]="uploaders[getUploaderIndex('passport')]"
+								(change)="readUrl($event, passport_img_fname.length + 4, uploaders[getUploaderIndex('passport')],'passport')">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content"
+	*ngIf="(applyinfo?.IsUploadAddress !=null? applyinfo?.IsUploadAddress : true) && showARCinfoArea != 1">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.PreAddr}}</span>現居地址</legend>
+		</fieldset>
+		<table class="new-datatable single">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="fupload" id="fuploadlistx4" *ngIf="img_fname[2]">
+							<li class="fupload__item">
+								<div class="fupload__title">{{img_fname[2]}}</div>
+								<a class="fupload__del" href="javascript:void(0)" (click)="removeFileName(2)">
+									<img class="fupload__trashcan" src="../../../../../mma8/card/images/trashcan.svg"
+										alt="刪除"></a>
+							</li>
+						</ul>
+						<div class="btn-zone" *ngIf="!img_fname[2]">
+							<a class="fupload__btn nbtn focus" href="javascript:void(0)" (click)="click('fuploadx4')">
+								<span class="en">{{btnMessage?.AddFile}}</span>新增上傳檔案
+							</a>
+							<input class="fupload__input visually-hidden" id="fuploadx4" type="file"
+								accept="image/jpeg,image/tiff,image/png" ng2FileSelect [uploader]="uploaders[2]"
+								(change)="readUrl($event, 2, uploaders[2], 'addr')">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content" *ngIf="isShowCompAddr()">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.ComAddr}}</span>公司地址</legend>
+		</fieldset>
+		<table class="new-datatable single">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="fupload" id="fuploadlistx4" *ngIf="img_fname[3]">
+							<li class="fupload__item">
+								<div class="fupload__title">{{img_fname[3]}}</div>
+								<a class="fupload__del" href="javascript:void(0)" (click)="removeFileName(3)">
+									<img class="fupload__trashcan" src="../../../../../mma8/card/images/trashcan.svg"
+										alt="刪除"></a>
+							</li>
+						</ul>
+						<div class="btn-zone" *ngIf="!img_fname[3]">
+							<a class="fupload__btn nbtn focus" href="javascript:void(0)" (click)="click('fuploadx5')">
+								<span class="en">{{btnMessage?.AddFile}}</span>新增上傳檔案
+							</a>
+							<input class="fupload__input visually-hidden" id="fuploadx5" type="file"
+								accept="image/jpeg,image/tiff,image/png" ng2FileSelect [uploader]="uploaders[3]"
+								(change)="readUrl($event, 3, uploaders[3], 'comaddr')">
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content" *ngIf="showARCinfoArea != 1">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.EmpCer}}</span>在職證明</legend>
+		</fieldset>
+		<table class="new-datatable single">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="fupload" id="fuploadlistx2">
+							<ng-container *ngFor="let fname of empl_cert_img_fname ; let idx = index">
+								<li class="fupload__item" *ngIf="fname">
+									<div class="fupload__title">{{fname}}</div>
+									<a class="fupload__del" href="javascript:void(0)"
+										(click)="removeFileName(idx + 6, 'employee')">
+										<img class="fupload__trashcan"
+											src="../../../../../mma8/card/images/trashcan.svg" alt="刪除">
+									</a>
+								</li>
+							</ng-container>
+						</ul>
+						<div class="btn-zone" *ngIf="empl_cert_img_fname.length < 10">
+							<a class="fupload__btn nbtn focus" href="javascript:void(0)" (click)="click('fuploadx2')">
+								<span class="en">{{btnMessage?.AddFile}}</span>新增上傳檔案
+							</a>
+							<input class="fupload__input visually-hidden" id="fuploadx2" type="file"
+								accept="image/jpeg,image/tiff,image/png" ng2FileSelect
+								[uploader]="uploaders[getUploaderIndex('employee')]"
+								(change)="readUrl($event, empl_cert_img_fname.length + 6, uploaders[getUploaderIndex('employee')],'employee')">
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr>
+					<td class="notice">
+						<p class="title left">{{message?.Notice.Notice}}：</p>
+						<p><span class="en">{{message?.Notice.EmpCerNot}}</span>
+							勞動契約僅須檢附勞動契約簽約雙方、契約期間及工作報酬內容即可</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="content full-content" *ngIf="showARCinfoArea != 1">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend><span class="en">{{message?.FinStat}}</span>財力證明</legend>
+		</fieldset>
+		<table class="new-datatable single">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="fupload" id="fuploadlistx1">
+							<ng-container *ngFor="let fname of fin_state_img_fname ; let idx = index">
+								<li class="fupload__item" *ngIf="fname">
+									<div class="fupload__title">{{fname}}</div>
+									<a class="fupload__del" href="javascript:void(0)"
+										(click)="removeFileName(idx + 16, 'financial')">
+										<img class="fupload__trashcan"
+											src="../../../../../mma8/card/images/trashcan.svg" alt="刪除">
+									</a>
+								</li>
+							</ng-container>
+						</ul>
+						<div class="btn-zone" *ngIf="fin_state_img_fname.length < 10">
+							<a class="fupload__btn nbtn focus" href="javascript:void(0)" (click)="click('fuploadx1')">
+								<span class="en">{{btnMessage?.AddFile}}</span>新增上傳檔案
+							</a>
+							<input class="fupload__input visually-hidden" id="fuploadx1" type="file"
+								accept="image/jpeg,image/tiff,image/png" ng2FileSelect
+								[uploader]="uploaders[getUploaderIndex('financial')]"
+								(change)="readUrl($event, fin_state_img_fname.length + 16, uploaders[getUploaderIndex('financial')],'financial')">
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr>
+					<td class="notice">
+						<p class="title left">{{message?.Notice.Notice}}：</p>
+						<p>
+							<span class="en">{{message?.Notice.FinStatNot}}</span>
+							財力證明請提供最近1個月薪資單影本或最近3個月薪轉存摺內頁影本含封面
+							<span class="red"><span class="en">{{message?.Notice.DepAccNot}}</span>
+								若您為本行存款戶／薪轉戶可先不用提供您的財力證明，若有需要將有專人與您聯繫
+							</span>
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="btn-zone flex-inline-min">
+	<a href="javascript:void(0)" class="nbtn focus open-lbox" (click)="openlbox('#check-upload-items')"><span
+			class="en">{{btnMessage?.UploadCompleteSubmitAppy}}</span>上傳完成，送出申請</a>
+</div>
+
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div id="check-upload-items" class="check-upload-items">
+			<h3>{{message?.UploadImgConfirm}}<br>上傳文件確認</h3>
+			<ol class="disc">
+				<li class="id_positive">{{message?.UploadConfirm.ARCFront}}：
+					<span *ngIf="imgExists(0,'list')">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(0,'list')" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="id_negative">{{message?.UploadConfirm.ARCBack}}：
+					<span *ngIf="imgExists(1,'list')">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(1,'list')" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="money_proof" *ngIf="showARCinfoArea != 1">{{message?.UploadConfirm.PassprotInside}}：
+					<span *ngIf="imgExists(4)">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(4)" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="money_proof" *ngIf="showARCinfoArea != 1">{{message?.UploadConfirm.Addr}}：
+					<span *ngIf="imgExists(2)">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(2)" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="money_proof" *ngIf="showARCinfoArea != 1">{{message?.UploadConfirm.ComAddr}}：
+					<span *ngIf="imgExists(3)">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(3)" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="money_proof" *ngIf="showARCinfoArea != 1">{{message?.UploadConfirm.Employee}}：
+					<span *ngIf="imgExists(5)">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(5)" class="pink2">{{message?.No}}</span>
+				</li>
+				<li class="money_proof" *ngIf="showARCinfoArea != 1">{{message?.UploadConfirm.Financial}}：
+					<span *ngIf="imgExists(6)">{{message?.Yes}}</span>
+					<span *ngIf="!imgExists(6)" class="pink2">{{message?.No}}</span>
+				</li>
+			</ol>
+			<div class="btn-zone">
+				<a href="javascript:void(0)" class="nbtn close" (click)="closelbox()"><span [innerHTML]="BackBtnText"></span></a>
+				<a *ngIf="imgExists(0,'btn') || imgExists(1,'btn') || imgExists(2) || imgExists(3) || imgExists(4) || imgExists(5) || imgExists(6)"
+					href="javascript:void(0)" class="nbtn focus" (click)="submit(true)"><span [innerHTML]="ConfirmBtnText"></span></a>
+				<a *ngIf="!imgExists(0,'btn') && !imgExists(1,'btn') && !imgExists(2) && !imgExists(3) && !imgExists(4) && !imgExists(5) && !imgExists(6)"
+					href="javascript:void(0)" class="nbtn focus disabled"><span [innerHTML]="ConfirmBtnText"></span></a>
+			</div>
+		</div>
+	</div>
+</div>

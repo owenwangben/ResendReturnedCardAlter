@@ -1,0 +1,22 @@
+{
+  "Result": {
+    "Success": true,
+    "ShortUrl": "https://mma.tw/qr11s",
+    "BeginDate": "20171201",
+    "EndDate": "20171231"
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

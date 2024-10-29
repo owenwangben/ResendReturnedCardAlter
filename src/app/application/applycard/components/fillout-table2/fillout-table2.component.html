@@ -1,0 +1,494 @@
+<form [formGroup]="form">
+	<app-applycard-step-indicator [step]="0"></app-applycard-step-indicator>
+	<div *ngIf="cardinfo?.IsDualCurrencyCard" class="content full-content">
+		<section *ngIf="this.source != 1 &&  !quickaccount" class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>外幣帳款自動扣繳</legend>
+				<p class="red">(須同意方可申請)</p>
+			</fieldset>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="IsAgreeForeignCurrencyAuthDebit_Y" formControlName="IsAgreeForeignCurrencyAuthDebit" class="artfld surround" [value]="true">
+						<label for="IsAgreeForeignCurrencyAuthDebit_Y">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="IsAgreeForeignCurrencyAuthDebit_N" formControlName="IsAgreeForeignCurrencyAuthDebit" class="artfld surround" [value]="false">
+						<label for="IsAgreeForeignCurrencyAuthDebit_N">我不同意</label>
+					</li>
+				</ul>
+				<div *ngIf="form.value.IsAgreeForeignCurrencyAuthDebit == false" class="pink2 fwb center">幣倍卡外幣帳戶需約定透過申請人於本行開設之外幣帳存款帳戶進行自動轉帳扣繳，如不同意則無法完成申請。</div>
+		</section>
+		<section class="trans-content" *ngIf="this.source != 1 &&  !quickaccount && form.value.IsAgreeForeignCurrencyAuthDebit">
+			<fieldset class="fieldset-block">
+				<legend>外幣帳款自動扣繳</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span>永豐外幣存款帳號<br class="hidden-min">(限正卡本人帳戶)</p>
+						</th>
+						<td>
+							<div class="chain-phone with-qmark switch-input">
+								<div class="toggle-input-method">
+									<div *ngIf="!fcAccountManualInput" class="artfld select col-all-min">
+										<select formControlName="ForeignDepositAccount">
+											<option [ngValue]="null">請選擇</option>
+											<option *ngFor="let account of fcAccounts" [ngValue]="account.AccountNo">{{account.IsDigitalAccount ? account.AccountNo + "*": account.AccountNo}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 標記「*｣表數位帳戶，請您留意帳戶餘額，以利扣繳帳款。</p>
+							<p class="pink2">2. 因外幣複委託證券帳戶係依國外有價證券服務約定，其帳戶餘額需經證券公司覆核後通知，始得辦理提領或轉匯，無法做為幣倍卡外幣信用卡帳款自動扣款帳戶。
+							</p>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="a11" formControlName="ForeignAuthDebitAmount" [value]="1" class="artfld surround">
+									<label for="a11">應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="a12" formControlName="ForeignAuthDebitAmount" [value]="2" class="artfld surround">
+									<label for="a12">最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section class="trans-content" *ngIf="this.source == 1 &&  !quickaccount">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th style="padding-left: 25px; font-weight: bold;">
+							<p><span class="red">*</span><span class="udline">數位帳戶外幣帳款自動扣繳</span><br class="hidden-min"><span class="red">(須同意方可申請)</span></p>
+						</th>
+						<td style="padding-left: 45px; vertical-align: moddle;">
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="AgreedigitForeignAutoWithholding_Y" formControlName="AgreedigitForeignAutoWithholding" class="artfld surround" [value]="true">
+									<label for="AgreedigitForeignAutoWithholding_Y">我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="AgreedigitForeignAutoWithholding_N" formControlName="AgreedigitForeignAutoWithholding" class="artfld surround" [value]="false">
+									<label for="AgreedigitForeignAutoWithholding_N">我不同意</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 幣倍卡外幣帳款須約定透過申請人於本行開設之外幣帳戶進行轉帳扣款。</p>
+							<p class="pink2">2. 本次自動申請扣繳，係約定您名下【數位存款外幣帳戶】自動扣繳外幣費用。</p>
+							<p class="pink2">3. 如欲變更為其它本行外幣帳戶自動扣繳外幣費用，請逕自官網下載信用卡自動轉帳付款授權書表單申請。</p>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="a11" formControlName="ForeignAuthDebitAmount" [value]="1" class="artfld surround">
+									<label for="a11">應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="a12" formControlName="ForeignAuthDebitAmount" [value]="2" class="artfld surround">
+									<label for="a12">最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section class="trans-content" *ngIf="quickaccount">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th style="padding-left: 25px; font-weight: bold;">
+							<p><span class="red">*</span><span class="udline">雲端開戶外幣帳款自動扣繳</span><br class="hidden-min"><span class="red">(須同意方可申請)</span></p>
+						</th>
+						<td style="padding-left: 45px; vertical-align: moddle;">
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="AgreequickaccountForeignAutoWithholding_Y" formControlName="AgreequickaccountForeignAutoWithholding" class="artfld surround" [value]="true">
+									<label for="AgreequickaccountForeignAutoWithholding_Y">我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="AgreequickaccountForeignAutoWithholding_N" formControlName="AgreequickaccountForeignAutoWithholding" class="artfld surround" [value]="false">
+									<label for="AgreequickaccountForeignAutoWithholding_N">我不同意</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 幣倍卡外幣帳款須約定透過申請人於本行開設之外幣帳戶進行轉帳扣款。</p>
+							<p class="pink2">2. 本次自動申請扣繳，係約定您名下【雲端存款外幣帳戶】自動扣繳外幣費用。</p>
+							<p class="pink2">3. 如欲變更為其它本行外幣帳戶自動扣繳外幣費用，請逕自官網下載信用卡自動轉帳付款授權書表單申請。</p>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="ForeignAuthDebitAmount_1" formControlName="ForeignAuthDebitAmount" [value]="1" class="artfld surround">
+									<label for="ForeignAuthDebitAmount_1">應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="ForeignAuthDebitAmount_2" formControlName="ForeignAuthDebitAmount" [value]="2" class="artfld surround">
+									<label for="ForeignAuthDebitAmount_2">最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsDualCurrencyCard" class="content full-content">
+		<section class="trans-content" *ngIf="this.source != 1 && !quickaccount">
+			<fieldset  class="fieldset-block">
+				<legend>臺幣帳款自動扣繳</legend>
+				<p><span class="red">*</span><a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms11-lbox')">永豐信用卡自動扣繳申請及注意事項</a></p>
+			</fieldset>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebit_Y" formControlName="AgreeTwdAuthDebit" class="artfld surround" [value]="true">
+						<label for="AgreeTwdAuthDebit_Y">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebit_N" formControlName="AgreeTwdAuthDebit" class="artfld surround" [value]="false">
+						<label for="AgreeTwdAuthDebit_N">我不同意</label>
+					</li>
+				</ul>
+				<div *ngIf="form.value.AgreeTwdAuthDebit == false" class="pink2 fwb center">提醒您!同意綁定【臺幣帳款自動轉帳扣繳】始可享有回饋加碼!</div>
+				<div *ngIf="form.value.AgreeTwdAuthDebit" class="pink2 fwb center">臺幣授權扣繳金額同上開外幣帳款自動扣繳所勾選之項目。</div>
+		</section>
+		<section class="trans-content" *ngIf="this.source != 1 && !quickaccount && form.value.AgreeTwdAuthDebit">
+			<fieldset class="fieldset-block">
+				<legend>臺幣帳款自動扣繳</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr class="empty">
+						<th></th>
+						<td></td>
+					</tr>
+					<!-- <tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※臺幣授權扣繳金額同上開外幣帳款自動扣繳所勾選之項目</p>
+						</td>
+					</tr> -->
+					<tr>
+						<th>
+							<p><span *ngIf="cardinfo?.IsComboCard" class="red">*</span>永豐臺幣存款帳號<br class="hidden-min">(限正卡本人帳戶)</p>
+						</th>
+						<td>
+							<div class="chain-phone with-qmark switch-input">
+								<div class="toggle-input-method">
+									<div *ngIf="!twAccountManualInput" class="artfld select col-all-min">
+										<select formControlName="TaiwanDepositAccount">
+											<option [ngValue]="null">請選擇</option>
+											<option *ngFor="let account of twdAccounts" [ngValue]="account.AccountNo">{{account.IsDigitalAccount ? account.AccountNo + "*" : account.AccountNo}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</td>
+						<td>
+							<p>標記「*」表示數位帳戶</p>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="3" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 同意綁定【臺幣帳款自動轉帳扣繳】始可享有回饋加碼！</p>
+							<p class="pink2">2. 同意後本行將依此帳號自動扣繳您所有本行信用卡新臺幣費用，若您先前已設定本行臺幣帳戶自動轉帳扣繳舊有約定即失效。</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section class="trans-content" *ngIf="this.source == 1 && !quickaccount">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th style="padding-left:25px; font-weight:bold;">
+							<p><span class="red">*</span><span class="udline">數位帳戶臺幣帳款自動扣繳</span></p>
+						</th>
+						<td style="padding-left: 45px;">
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="AgreeTWAutoWithholding_Y" formControlName="AgreeTWAutoWithholding" class="artfld surround" [value]="1">
+									<label for="AgreeTWAutoWithholding_Y">我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="AgreeTWAutoWithholding_N" formControlName="AgreeTWAutoWithholding" class="artfld surround" [value]="2">
+									<label for="AgreeTWAutoWithholding_N">我不同意</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 同意綁定【臺幣帳款自動轉帳扣繳】始可享有回饋加碼！</p>
+							<p class="pink2">2. 同意後依約定將您名下【數位存款新臺幣帳戶】自動轉帳扣繳，臺幣授權扣繳金額同上開外幣帳款自動扣繳所勾選之項目。</p>
+							<p class="pink2">3. 本行將依此帳號自動扣繳您所有本行信用卡新臺幣費用，若您先前已設定本行臺幣帳戶自動轉帳扣繳舊有約定即失效。</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+		<section class="trans-content" *ngIf="quickaccount">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th style="padding-left:25px; font-weight:bold;">
+							<p><span class="red">*</span><span class="udline">雲端開戶臺幣帳款自動扣繳</span></p>
+						</th>
+						<td style="padding-left: 45px;">
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="AgreeQuickaccountTWAutoWithholding_Y" formControlName="AgreeQuickaccountTWAutoWithholding" class="artfld surround" [value]="1">
+									<label for="AgreeQuickaccountTWAutoWithholding_Y">我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="AgreeQuickaccountTWAutoWithholding_N" formControlName="AgreeQuickaccountTWAutoWithholding" class="artfld surround" [value]="2">
+									<label for="AgreeQuickaccountTWAutoWithholding_N">我不同意</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 同意綁定【臺幣帳款自動轉帳扣繳】始可享有回饋加碼！</p>
+							<p class="pink2">2. 同意後依約定將您名下【雲端存款新臺幣帳戶】自動轉帳扣繳，臺幣授權扣繳金額同上開外幣帳款自動扣繳所勾選之項目。</p>
+							<p class="pink2">3. 本行將依此帳號自動扣繳您所有本行信用卡新臺幣費用，若您先前已設定本行臺幣帳戶自動轉帳扣繳舊有約定即失效。</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsDualCurrencyCard" class="content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>幣倍卡自動換匯扣款功能</legend>
+				<div class="prfy">
+					<span class="title">本人已閱讀並了解「
+						<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms8-lbox')">幣倍卡自動扣繳及換匯款功能重要注意事項</a>」
+						<span class="pink2">(須同意方可申請)</span>
+					</span>
+					<ul class="ctrl-block col-2-min center terms8">
+						<li>
+							<input type="radio" id="a21" formControlName="IsAgreeAuthDebit" class="artfld surround" [value]="true">
+							<label for="a21">我同意</label>
+						</li>
+						<li>
+							<input type="radio" id="a22" formControlName="IsAgreeAuthDebit" class="artfld surround" [value]="false">
+							<label for="a22">我不同意</label>
+						</li>
+					</ul>
+				</div>
+			</fieldset>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsComboCard && !cardinfo?.IsDualCurrencyCard" class="content full-content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>連結臺幣帳號</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr class="empty">
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>永豐臺幣存款帳號<br class="hidden-min">(限正卡本人帳戶)</p>
+						</th>
+						<td>
+							<div class="chain-phone with-qmark switch-input">
+								<div class="toggle-input-method">
+									<div *ngIf="!twAccountManualInput" class="artfld select col-all-min">
+										<select formControlName="ComboDepositAccount">
+											<option [ngValue]="null" disabled>請選擇</option>
+											<option *ngFor="let account of twdAccounts" [ngValue]="account.AccountNo">{{account.AccountNo}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！請先確認已開立本行[一般帳戶]，若您僅有本行[數位帳戶]帳號，將無法申請金融信用卡。</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsComboCard" class="content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>開啟國際金融卡功能</legend>
+				<div class="prfy">
+					<span class="title">本人已閱讀並了解「
+						<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms9-lbox')">國際金融卡特別約定事項</a>」
+					</span>
+					<ul class="ctrl-block col-2-min center terms9">
+						<li>
+							<input type="radio" id="a31" formControlName="ComboInternationalCardFeatures" class="artfld surround" [value]="1">
+							<label for="a31">申請</label>
+						</li>
+						<li>
+							<input type="radio" id="a32" formControlName="ComboInternationalCardFeatures" class="artfld surround" [value]="2">
+							<label for="a32">註銷</label>
+						</li>
+					</ul>
+					<p class="pink2 center">※如未勾選視同未申請</p>
+				</div>
+			</fieldset>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsComboCard" class="content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>開啟金融卡消費扣款功能</legend>
+				<div class="prfy">
+					<ul class="ctrl-block col-2-min center terms6">
+						<li>
+							<input type="radio" id="a41" formControlName="ComboIsApplyDebitFunction" class="artfld surround" [value]="true">
+							<label for="a41">申請</label>
+						</li>
+						<li>
+							<input type="radio" id="a42" formControlName="ComboIsApplyDebitFunction" class="artfld surround" [value]="false">
+							<label for="a42">不申請</label>
+						</li>
+					</ul>
+					<p class="pink2 center">※如未勾選視同未申請</p>
+				</div>
+			</fieldset>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsComboCard" class="content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>申請/變更帳號轉帳功能</legend>
+				<div class="prfy">
+					<ul class="ctrl-block col-2-min center terms6">
+						<li>
+							<input type="radio" id="a51" formControlName="ComboTransferFunction" class="artfld surround" [value]="1">
+							<label for="a51">不限約定帳號轉帳</label>
+						</li>
+						<li>
+							<input type="radio" id="a52" formControlName="ComboTransferFunction" class="artfld surround" [value]="2">
+							<label for="a52">限約定帳號轉帳</label>
+						</li>
+					</ul>
+					<p class="pink2 center">※如未勾選視同僅提領現金</p>
+				</div>
+			</fieldset>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsComboCard" class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<p><span class="red">*</span>本人已於</p>
+				<div class="artfld select col-3 col-all-min">
+					<select formControlName="ReviewTime">
+						<option [ngValue]="null" disabled>請選擇</option>
+						<option *ngFor="let reviewDate of reviewDates" [ngValue]="reviewDate">{{reviewDate}}</option>
+					</select>
+				</div>
+				<br class="hidden-min">
+				<br class="hidden-min">
+				<p>審閱「<a href="javascript:void(0)" class="open-lbox" (click)="openlbox('#terms10-lbox')">金融卡使用說明及約定條款(CSR-001)</a>」(審閱期間距離申請日至少五日以上)</p>
+			</div>
+		</section>
+	</div>
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()">上一步</a>
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">下一步</a>
+	</div>
+	<div class="lboxed">
+		<div class="close"></div>
+		<div class="lbox-block">
+			<div id="terms8-lbox" class="terms-lbox">
+				<h3>幣倍卡自動換匯扣款功能</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo.DualCurrencyCardAutoDebitTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({IsAgreeAuthDebit: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({IsAgreeAuthDebit: false})">不同意</a>
+				</div>
+			</div>
+			<div id="terms9-lbox" class="terms-lbox">
+				<h3>國際金融卡特別約定事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo.InternationalComboCardTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({ComboInternationalCardFeatures: 1})">申請</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({ComboInternationalCardFeatures: 2})">註銷</a>
+				</div>
+			</div>
+			<div id="terms10-lbox" class="terms-lbox">
+				<h3>金融卡使用說明及約定條款(CSR-001)</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo.ComboCardTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="#" class="nbtn focus close">關閉</a>
+				</div>
+			</div>
+			<div id="terms11-lbox" class="terms-lbox">
+				<h3>永豐信用卡自動扣繳申請注意事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo.AuthDebitAgreementUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeTwdAuthDebit: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeTwdAuthDebit: false})">不同意</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

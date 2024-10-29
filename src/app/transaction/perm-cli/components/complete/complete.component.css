@@ -1,0 +1,90 @@
+.lboxed { display: none; height: auto; -webkit-box-sizing: border-box; box-sizing: border-box; position: relative; max-width: 1000px; padding: 0 25px 50px; }
+.lboxed > .close { position: absolute; right: 39px; top: 14px; width: 38px; height: 38px; cursor: pointer; }
+.lboxed > .close::before, .lboxed > .close::after { content: ""; display: block; width: 80%; height: 3px; background: #ccc; position: absolute; top: 50%; left: 50%; margin-top: -1.5px; margin-left: -40%; -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg); transform: rotate(45deg); }
+.lboxed > .close::after { -webkit-transform: rotate(135deg); -ms-transform: rotate(135deg); transform: rotate(135deg); }
+.lboxed .lbox-block { width: 100%; height: 100%; overflow-y: auto; -webkit-box-sizing: border-box; box-sizing: border-box; background: transparent; border: 0px; border-radius: 0; }
+.lboxed .lbox-block > div { display: none; margin: 0 auto; max-width: 768px; padding: 15px; box-sizing: border-box; background-color: #FFFFFF; border-radius: 5px; }
+.lboxed .lbox-block > div.upload-legend { padding: 0; }
+.lboxed .lbox-block > div.cutbox { max-width: 100%; background: transparent; }
+.lboxed .lbox-block > div.confirm { max-width: 600px; }
+.lboxed .lbox-block > div.error-msg { max-width: 640px; min-width: 300px; }
+.lboxed h3 { border-bottom: 0; font-weight: normal; padding-left: 0; padding-right: 40px; }
+.lboxed .terms-block { height: 50vh; padding: 15px; padding-right: 0; background: #f5f5f5; overflow: hidden; }
+.lboxed .terms-block .wrapper { height: 100%; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-right: 7px; }
+.lboxed .has-table table th, .lboxed .has-table table td { border: 1px solid #aaa; vertical-align: middle; padding: 10px 5px; }
+.lboxed .has-table table tr th { text-align: center; }
+.lboxed .has-table table tr th:first-child { white-space: nowrap; }
+.lboxed .cutbox { max-width: 100%; padding: 0; background: none; border: 0px solid #dddddd; border-radius: 0px; }
+.lboxed .cutbox .rimg { max-width: 100%; box-sizing: border-box; padding: 20px; background: #ffffff; text-align: center; }
+.lboxed .cutbox .rimg img { max-width: 100%; height: auto; }
+.lboxed .cutbox h3 { text-align: center; color: #ffffff; letter-spacing: 0.2em; font-size: 2.5em; margin-bottom: 30px; }
+.lboxed .cutbox > .close { right: 18px; width: 50px; height: 50px; top: -10px; }
+.lboxed .error-msg h3 { display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; font-weight: bold; }
+.lboxed .error-msg h3::before { content: "！"; display: inline-block; background: #d00f24; width: 30px; height: 30px; border-radius: 50%; color: white; font-weight: bold; display: -webkit-box; display: -webkit-flex; display: -ms-flexbox; display: flex; -webkit-box-pack: center; -webkit-justify-content: center; -ms-flex-pack: center; justify-content: center; -webkit-box-align: center; -webkit-align-items: center; -ms-flex-align: center; align-items: center; margin-right: .6em; font-size: 28px; }
+.lboxed p { font-size: 16px; line-height: 24px; }
+.lboxed p a { color: #004d99;}
+
+.popup {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 9999;
+	background: #fff;
+	border-radius: 10px;
+	font-size: 1em;
+	line-height: 1.3em;
+	text-align: center;
+	display: none;
+}
+#overlay, .overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	height: 100%;
+	background: none repeat fixed 0% 0% rgba(0, 0, 0, 0.7);
+	overflow: hidden;
+	-ms-touch-action: none;
+	touch-action: none;
+	backface-visibility: hidden;
+	overflow:hidden;
+}
+#msgWarning,  #msgWarning1, #msgWarning2  {
+	width: 300px;
+	height: auto;
+	margin-left: -150px;
+	margin-top: -120px;
+}
+#msgWarning header,#msgWarning1 header, #msgWarning2 header {
+	padding: 10px;
+	text-align: center;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background: #e3e3e3;
+	margin-top: 180px;
+	width: 300px;
+}
+#msgWarning header h1,#msgWarning1 header h1, #msgWarning2 header h1 {
+	font-size: 0.9em; margin: 3px 0;
+}
+#msgWarning div.content, #msgWarning1 div.content, #msgWarning2 div.content {
+	height: auto; padding: 40px 16px 20px 16px; font-size: 0.95em;
+}
+#msgWarning div.content a img, #msgWarning1 div.content a img,#msgWarning2 div.content a img  {
+	float: right;
+	top: 8px;
+	right: 8px;
+	position: absolute;
+}
+#msgWarning div.content .button,#msgWarning1 div.content .button, #msgWarning2 div.content .button {
+	width:80%;margin:15px auto 0 auto
+}
+#msgWarning footer {
+	padding: 10px;
+	background: #e3e3e3;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	hight:10px;
+	margin-top: -25px;
+}

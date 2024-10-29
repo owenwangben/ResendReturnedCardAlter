@@ -1,0 +1,1021 @@
+@charset "UTF-8";
+section.trans-content, div#PrintContent {
+  width: 950px;
+  padding-left: 10px;
+  margin-left: -10px !important;
+}
+section.trans-content .ffTextBoxWrapper, section.trans-content .ffPasswordWrapper, section.trans-content .ffCheckboxWrapper, section.trans-content .ffRadioWrapper, section.trans-content .ffTextAreaWrapper, section.trans-content .ffSubmitWrapper, section.trans-content .ffResetWrapper, section.trans-content .ffButtonWrapper, div#PrintContent .ffTextBoxWrapper, div#PrintContent .ffPasswordWrapper, div#PrintContent .ffCheckboxWrapper, div#PrintContent .ffRadioWrapper, div#PrintContent .ffTextAreaWrapper, div#PrintContent .ffSubmitWrapper, div#PrintContent .ffResetWrapper, div#PrintContent .ffButtonWrapper {
+  display: inline-block;
+  zoom: 1;
+  *display: inline;
+  vertical-align: middle;
+  margin-right: 10px !important;
+}
+section.trans-content .ffSelectWrapper, div#PrintContent .ffSelectWrapper {
+  display: inline-block;
+  zoom: 1;
+  vertical-align: middle;
+  margin-right: 10px !important;
+}
+section.trans-content .ffTextBoxLeft, section.trans-content .ffTextBoxRight, section.trans-content .ffPasswordLeft, section.trans-content .ffPasswordRight, section.trans-content .ffCheckbox, section.trans-content .ffRadio, div#PrintContent .ffTextBoxLeft, div#PrintContent .ffTextBoxRight, div#PrintContent .ffPasswordLeft, div#PrintContent .ffPasswordRight, div#PrintContent .ffCheckbox, div#PrintContent .ffRadio {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffSelectButton, div#PrintContent .ffSelectButton {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffSelectButton span, div#PrintContent .ffSelectButton span {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffSelectMenuWrapper div.ffSelectMenuTop, section.trans-content .ffSelectMenuWrapper div.ffSelectMenuBottom, div#PrintContent .ffSelectMenuWrapper div.ffSelectMenuTop, div#PrintContent .ffSelectMenuWrapper div.ffSelectMenuBottom {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffSelectMenuWrapper > div > span, div#PrintContent .ffSelectMenuWrapper > div > span {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffTextAreaTop, section.trans-content .ffTextAreaBottom, section.trans-content .ffSubmitWrapper a, section.trans-content .ffResetWrapper a, section.trans-content .ffButtonWrapper a, div#PrintContent .ffTextAreaTop, div#PrintContent .ffTextAreaBottom, div#PrintContent .ffSubmitWrapper a, div#PrintContent .ffResetWrapper a, div#PrintContent .ffButtonWrapper a {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .ffTextAreaTop span, section.trans-content .ffTextAreaBottom span, section.trans-content .ffSubmitWrapper a span, section.trans-content .ffResetWrapper a span, section.trans-content .ffButtonWrapper a span, div#PrintContent .ffTextAreaTop span, div#PrintContent .ffTextAreaBottom span, div#PrintContent .ffSubmitWrapper a span, div#PrintContent .ffResetWrapper a span, div#PrintContent .ffButtonWrapper a span {
+  background-image: url(../images/sprite.png);
+  background-repeat: no-repeat;
+}
+section.trans-content .text-xm .ffTextBoxWrapper, div#PrintContent .text-xm .ffTextBoxWrapper {
+  width: 74px;
+  *clear: both;
+}
+section.trans-content .text-sm .ffTextBoxWrapper, div#PrintContent .text-sm .ffTextBoxWrapper {
+  width: 134px;
+  *clear: both;
+}
+section.trans-content .text-sm input, div#PrintContent .text-sm input {
+  width: 115px;
+}
+section.trans-content .text-m .ffTextBoxWrapper, div#PrintContent .text-m .ffTextBoxWrapper {
+  width: 194px;
+  *clear: both;
+}
+section.trans-content .text-m1 .ffTextBoxWrapper, div#PrintContent .text-m1 .ffTextBoxWrapper {
+  width: 160px;
+  *clear: both;
+}
+section.trans-content .text-l .ffTextBoxWrapper, div#PrintContent .text-l .ffTextBoxWrapper {
+  width: 230px;
+  *clear: both;
+}
+section.trans-content .text-l1 .ffTextBoxWrapper, div#PrintContent .text-l1 .ffTextBoxWrapper {
+  width: 300px;
+  *clear: both;
+}
+section.trans-content .text-xl .ffTextBoxWrapper, div#PrintContent .text-xl .ffTextBoxWrapper {
+  width: 350px;
+  *clear: both;
+}
+section.trans-content .text-xll .ffTextBoxWrapper, div#PrintContent .text-xll .ffTextBoxWrapper {
+  width: 370px;
+  *clear: both;
+}
+section.trans-content .text-xll1 .ffTextBoxWrapper, div#PrintContent .text-xll1 .ffTextBoxWrapper {
+  width: 400px;
+  *clear: both;
+}
+section.trans-content .ffTextBoxRight, section.trans-content .ffPasswordRight, div#PrintContent .ffTextBoxRight, div#PrintContent .ffPasswordRight {
+  background-position: right -256px;
+  padding-right: 5px !important;
+}
+section.trans-content .ffTextBoxLeft, section.trans-content .ffPasswordLeft, div#PrintContent .ffTextBoxLeft, div#PrintContent .ffPasswordLeft {
+  background-position: 0 0;
+  padding: 0 5px 0 10px !important;
+}
+section.trans-content .ffTextBoxLeft input, section.trans-content .ffPasswordLeft input, div#PrintContent .ffTextBoxLeft input, div#PrintContent .ffPasswordLeft input {
+  width: 100%;
+  border: 0;
+  height: 34px;
+  background-color: transparent;
+  margin-top: 8px \9;
+  height: 26px \9;
+}
+section.trans-content .ffTextBoxRight:hover, section.trans-content .ffPasswordRight:hover, div#PrintContent .ffTextBoxRight:hover, div#PrintContent .ffPasswordRight:hover {
+  background-position: right -320px;
+}
+section.trans-content .ffTextBoxLeft:hover, section.trans-content .ffPasswordLeft:hover, div#PrintContent .ffTextBoxLeft:hover, div#PrintContent .ffPasswordLeft:hover {
+  background-position: 0 -38px;
+}
+section.trans-content .focus .ffTextBoxRight, section.trans-content .focus .ffPasswordRight, div#PrintContent .focus .ffTextBoxRight, div#PrintContent .focus .ffPasswordRight {
+  background-position: right -320px;
+}
+section.trans-content .focus .ffTextBoxLeft, section.trans-content .focus .ffPasswordLeft, div#PrintContent .focus .ffTextBoxLeft, div#PrintContent .focus .ffPasswordLeft {
+  background-position: 0 -76px;
+}
+section.trans-content .ffTextBoxWrapper.disabled .ffTextBoxRight, section.trans-content .ffPasswordWrapper.disabled .ffPasswordRight, div#PrintContent .ffTextBoxWrapper.disabled .ffTextBoxRight, div#PrintContent .ffPasswordWrapper.disabled .ffPasswordRight {
+  background-position: right -206px;
+}
+section.trans-content .ffTextBoxWrapper.disabled .ffTextBoxLeft, section.trans-content .ffPasswordWrapper.disabled .ffPasswordLeft, div#PrintContent .ffTextBoxWrapper.disabled .ffTextBoxLeft, div#PrintContent .ffPasswordWrapper.disabled .ffPasswordLeft {
+  background-position: 0 -112px;
+  color: #999999;
+}
+section.trans-content .ffCheckboxWrapper a, div#PrintContent .ffCheckboxWrapper a {
+  text-decoration: none;
+  color: #6f6f6f;
+  position: relative;
+  top: 1px;
+  font-size: 13px;
+  padding-left: 5px;
+  margin-right: 10px;
+}
+section.trans-content .ffCheckbox, div#PrintContent .ffCheckbox {
+  width: 21px;
+  height: 21px;
+  float: left;
+  background-position: 0 -296px;
+  cursor: pointer;
+}
+section.trans-content .ffCheckboxWrapper:hover a, section.trans-content .ffCeckboxWrapper.focus a, div#PrintContent .ffCheckboxWrapper:hover a, div#PrintContent .ffCeckboxWrapper.focus a {
+  color: #4e4e4e;
+}
+section.trans-content .ffCheckboxWrapper:hover .ffCheckbox, section.trans-content .ffCeckboxWrapper.focus .ffCheckbox, div#PrintContent .ffCheckboxWrapper:hover .ffCheckbox, div#PrintContent .ffCeckboxWrapper.focus .ffCheckbox {
+  background-position: -30px -296px;
+}
+section.trans-content .ffCheckboxWrapper.on .ffCheckbox, div#PrintContent .ffCheckboxWrapper.on .ffCheckbox {
+  background-position: -60px -296px;
+}
+section.trans-content .ffCheckboxWrapper.on:hover .ffCheckbox, div#PrintContent .ffCheckboxWrapper.on:hover .ffCheckbox {
+  background-position: -90px -296px;
+}
+section.trans-content .ffCeckboxWrapper.on.focus .ffCheckbox, div#PrintContent .ffCeckboxWrapper.on.focus .ffCheckbox {
+  background-position: -90px -296px;
+}
+section.trans-content .ffCheckboxWrapper.disabled .ffCheckbox, div#PrintContent .ffCheckboxWrapper.disabled .ffCheckbox {
+  background-position: -120px -296px;
+}
+section.trans-content .ffCheckboxWrapper.on.disabled .ffCheckbox, div#PrintContent .ffCheckboxWrapper.on.disabled .ffCheckbox {
+  background-position: -150px -296px;
+}
+section.trans-content .ffCheckboxWrapper.disabled a, div#PrintContent .ffCheckboxWrapper.disabled a {
+  color: #999999;
+}
+section.trans-content .ffCeckboxWrapper.disabled:hover a, section.trans-content .ffCeckboxWrapper.disabled.focus a, div#PrintContent .ffCeckboxWrapper.disabled:hover a, div#PrintContent .ffCeckboxWrapper.disabled.focus a {
+  color: #999999;
+}
+section.trans-content .ffRadioWrapper a, div#PrintContent .ffRadioWrapper a {
+  text-decoration: none;
+  color: #555555;
+  position: relative;
+  top: 1px;
+  font-size: 13px;
+  padding-left: 5px;
+  margin-right: 10px;
+}
+section.trans-content .ffRadio, div#PrintContent .ffRadio {
+  width: 18px;
+  height: 18px;
+  float: left;
+  background-position: -180px -296px;
+  cursor: pointer;
+}
+section.trans-content .line24 .ffRadio, div#PrintContent .line24 .ffRadio {
+  height: 24px;
+}
+section.trans-content .ffRadioWrapper:hover a, section.trans-content .ffRadioWrapper.focus a, div#PrintContent .ffRadioWrapper:hover a, div#PrintContent .ffRadioWrapper.focus a {
+  color: #4e4e4e;
+}
+section.trans-content .ffRadioWrapper:hover .ffRadio, section.trans-content .ffRadioWrapper.focus .ffRadio, div#PrintContent .ffRadioWrapper:hover .ffRadio, div#PrintContent .ffRadioWrapper.focus .ffRadio {
+  background-position: -210px -296px;
+}
+section.trans-content .ffRadioWrapper.on .ffRadio, div#PrintContent .ffRadioWrapper.on .ffRadio {
+  background-position: -240px -296px;
+}
+section.trans-content .line24 .ffRadioWrapper.on .ffRadio, div#PrintContent .line24 .ffRadioWrapper.on .ffRadio {
+  background-position: -240px -296px;
+}
+section.trans-content .ffRadioWrapper.on:hover .ffRadio, section.trans-content .ffRadioWrapper.on.focus .ffRadio, div#PrintContent .ffRadioWrapper.on:hover .ffRadio, div#PrintContent .ffRadioWrapper.on.focus .ffRadio {
+  background-position: -270px -296px;
+}
+section.trans-content .line24 .ffRadioWrapper.on:hover .ffRadio, section.trans-content .line24 .ffRadioWrapper.on.focus .ffRadio, div#PrintContent .line24 .ffRadioWrapper.on:hover .ffRadio, div#PrintContent .line24 .ffRadioWrapper.on.focus .ffRadio {
+  background-position: -270px -296px;
+}
+section.trans-content .ffRadioWrapper.disabled .ffRadio, div#PrintContent .ffRadioWrapper.disabled .ffRadio {
+  background-position: -300px -296px;
+}
+section.trans-content .ffRadioWrapper.on.disabled .ffRadio, div#PrintContent .ffRadioWrapper.on.disabled .ffRadio {
+  background-position: -330px -296px;
+}
+section.trans-content .ffRadioWrapper.disabled a, section.trans-content .ffRadioWrapper.disabled:hover a, section.trans-content .ffRadioWrapper.disabled.focus a, div#PrintContent .ffRadioWrapper.disabled a, div#PrintContent .ffRadioWrapper.disabled:hover a, div#PrintContent .ffRadioWrapper.disabled.focus a {
+  color: #999999;
+}
+section.trans-content .aclist .ffSelectWrapper, div#PrintContent .aclist .ffSelectWrapper {
+  width: 250px;
+  *clear: both;
+}
+section.trans-content .aclist-large .ffSelectWrapper, div#PrintContent .aclist-large .ffSelectWrapper {
+  width: 403px;
+  *clear: both;
+}
+section.trans-content .select-ss .ffSelectWrapper, div#PrintContent .select-ss .ffSelectWrapper {
+  width: 64px;
+  *clear: both;
+}
+section.trans-content .select-sm .ffSelectWrapper, div#PrintContent .select-sm .ffSelectWrapper {
+  width: 124px;
+  *clear: both;
+}
+section.trans-content .select-m .ffSelectWrapper, div#PrintContent .select-m .ffSelectWrapper {
+  width: 194px;
+  *clear: both;
+}
+section.trans-content .select-m1 .ffSelectWrapper, div#PrintContent .select-m1 .ffSelectWrapper {
+  width: 160px;
+  *clear: both;
+}
+section.trans-content .select-l .ffSelectWrapper, div#PrintContent .select-l .ffSelectWrapper {
+  width: 230px;
+  *clear: both;
+}
+section.trans-content .select-l1 .ffSelectWrapper, div#PrintContent .select-l1 .ffSelectWrapper {
+  width: 300px;
+  *clear: both;
+}
+section.trans-content .select-xl .ffSelectWrapper, div#PrintContent .select-xl .ffSelectWrapper {
+  width: 350px;
+  *clear: both;
+}
+section.trans-content .select-xll .ffSelectWrapper, div#PrintContent .select-xll .ffSelectWrapper {
+  width: 370px;
+  *clear: both;
+}
+section.trans-content .ffSelectWrapper, div#PrintContent .ffSelectWrapper {
+  width: 180px;
+  *clear: both;
+}
+section.trans-content .custom-add .ffSelectWrapper, div#PrintContent .custom-add .ffSelectWrapper {
+  width: 180px;
+}
+section.trans-content .custom-add .ffTextBoxWrapper, div#PrintContent .custom-add .ffTextBoxWrapper {
+  width: 160px;
+}
+section.trans-content .custom-edit .ffTextBoxWrapper, div#PrintContent .custom-edit .ffTextBoxWrapper {
+  width: 160px;
+}
+section.trans-content .ffSelect, div#PrintContent .ffSelect {
+  position: relative;
+}
+section.trans-content .ffSelect > a, div#PrintContent .ffSelect > a {
+  background-position: right -128px;
+  display: block;
+  text-decoration: none;
+  outline: 0;
+  cursor: default;
+}
+section.trans-content .ffSelect > a > span, div#PrintContent .ffSelect > a > span {
+  display: block;
+  height: 34px;
+  margin-right: 33px;
+  padding-left: 10px;
+  background-position: 0 0;
+  overflow: hidden;
+  line-height: 34px;
+  font-size: 13px;
+  color: #555555;
+  white-space: nowrap;
+  *white-space: normal;
+  text-overflow: ellipsis;
+}
+section.trans-content .ffSelect:hover > a, div#PrintContent .ffSelect:hover > a {
+  background-position: right -165px;
+}
+section.trans-content .ffSelectWrapper.focus .ffSelect > a, div#PrintContent .ffSelectWrapper.focus .ffSelect > a {
+  background-position: right -165px;
+}
+section.trans-content .ffSelect:hover > a > span, div#PrintContent .ffSelect:hover > a > span {
+  background-position: 0 -76px;
+}
+section.trans-content .ffSelectWrapper.focus .ffSelect > a > span, div#PrintContent .ffSelectWrapper.focus .ffSelect > a > span {
+  background-position: 0 -76px;
+}
+section.trans-content .ffSelectWrapper.active .ffSelect > a, div#PrintContent .ffSelectWrapper.active .ffSelect > a {
+  background-position: right -165px;
+  z-index: 1005;
+  position: relative;
+}
+section.trans-content .ffSelectWrapper.active .ffSelect > a > span, div#PrintContent .ffSelectWrapper.active .ffSelect > a > span {
+  background-position: 0 -76px;
+}
+section.trans-content .ffSelectWrapper.disabled .ffSelect > a, div#PrintContent .ffSelectWrapper.disabled .ffSelect > a {
+  background-position: right -128px;
+}
+section.trans-content .ffSelectWrapper.disabled .ffSelect > a > span, div#PrintContent .ffSelectWrapper.disabled .ffSelect > a > span {
+  background-position: 0 -112px;
+  color: #999999;
+}
+section.trans-content .ffSelectMenuWrapper, div#PrintContent .ffSelectMenuWrapper {
+  width: 100%;
+}
+section.trans-content .ffSelectMenuWrapper .ffSelectMenuMidBG ul, div#PrintContent .ffSelectMenuWrapper .ffSelectMenuMidBG ul {
+  list-style-type: none;
+  margin: 0 0;
+  padding: 0;
+}
+section.trans-content .ffSelectMenuWrapper .ffSelectMenuMidBG li, div#PrintContent .ffSelectMenuWrapper .ffSelectMenuMidBG li {
+  cursor: default;
+  background-color: #ffffcc;
+  line-height: 34px;
+  padding-left: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+section.trans-content .ffSelectMenuWrapper .ffSelectMenuMidBG li SPAN, div#PrintContent .ffSelectMenuWrapper .ffSelectMenuMidBG li SPAN {
+  font-size: 13px;
+}
+section.trans-content .ffSelectMenuWrapper .ffSelectMenuMidBG li.disabled SPAN, div#PrintContent .ffSelectMenuWrapper .ffSelectMenuMidBG li.disabled SPAN {
+  color: #888888;
+}
+section.trans-content .ffSelectMenuWrapper .ffSelectMenuMidBG li.on, div#PrintContent .ffSelectMenuWrapper .ffSelectMenuMidBG li.on {
+  background-color: #ffea5f;
+}
+section.trans-content .ffSelectMenuTop, div#PrintContent .ffSelectMenuTop {
+  height: 5px;
+  background-position: 0 -394px;
+}
+section.trans-content .ffSelectMenuTop span, div#PrintContent .ffSelectMenuTop span {
+  display: block;
+  height: 5px;
+  margin-left: 8px;
+  background: right -384px;
+}
+section.trans-content .ffSelectMenuBottom, div#PrintContent .ffSelectMenuBottom {
+  height: 5px;
+  background-position: 0 -414px;
+}
+section.trans-content .ffSelectMenuBottom span, div#PrintContent .ffSelectMenuBottom span {
+  display: block;
+  height: 5px;
+  margin-left: 8px;
+  background-position: right -404px;
+}
+section.trans-content .ffSelectMenuMidBG, div#PrintContent .ffSelectMenuMidBG {
+  background: url(../images/sides.png) repeat-y right 0;
+}
+section.trans-content .ffSelectMenuMid, div#PrintContent .ffSelectMenuMid {
+  max-height: 200px;
+  overflow: auto;
+  background: url(../images/sides.png) repeat-y 0 0;
+  padding-left: 4px;
+  margin-right: 4px;
+}
+section.trans-content .scrollingBarWrapper, div#PrintContent .scrollingBarWrapper {
+  width: 24px;
+  height: 200px;
+  background: url(../images/scrollingBarBg.png) no-repeat;
+  right: 3px !important;
+}
+section.trans-content .scrollingHandle, div#PrintContent .scrollingHandle {
+  width: 24px;
+  padding-top: 20px;
+  background: url(../images/scrollingHandleTop.png) no-repeat 0 0;
+}
+section.trans-content .scrollingHandleBottom, div#PrintContent .scrollingHandleBottom {
+  width: 24px;
+  background: url(../images/scrollingHandleBottom.png) no-repeat 0px bottom;
+}
+section.trans-content .ffTextAreaWrapper textarea, div#PrintContent .ffTextAreaWrapper textarea {
+  border: 0;
+  margin: 10px 10px 10px 15px;
+  padding: 0;
+  font-size: 13px;
+  color: #555555;
+  background: none;
+  font-family: Arial;
+  resize: none;
+}
+section.trans-content .ffTextAreaTop, div#PrintContent .ffTextAreaTop {
+  height: 5px;
+  background-position: 0 -394px;
+}
+section.trans-content .ffTextAreaTop span, div#PrintContent .ffTextAreaTop span {
+  display: block;
+  height: 5px;
+  margin-left: 8px;
+  background-position: right -384px;
+}
+section.trans-content .ffTextAreaMid, div#PrintContent .ffTextAreaMid {
+  background: transparent url(../images/sides.png) repeat-y right 0;
+}
+section.trans-content .ffTextAreaMid .ffTextAreaLeft, div#PrintContent .ffTextAreaMid .ffTextAreaLeft {
+  background: url(../images/sides.png) repeat-y 0 0;
+  margin-right: 4px;
+}
+section.trans-content .ffTextAreaBottom, div#PrintContent .ffTextAreaBottom {
+  height: 5px;
+  background-position: 0 -414px;
+}
+section.trans-content .ffTextAreaBottom span, div#PrintContent .ffTextAreaBottom span {
+  display: block;
+  height: 5px;
+  margin-left: 6px;
+  background-position: right -404px;
+}
+section.trans-content .ffButtonWrapper > a, div#PrintContent .ffButtonWrapper > a {
+  background-position: right -585px;
+  display: block;
+  text-decoration: none;
+  outline: 0;
+}
+section.trans-content .ffButtonWrapper > a > span, div#PrintContent .ffButtonWrapper > a > span {
+  display: block;
+  height: 36px;
+  padding-bottom: 2px;
+  line-height: 39px;
+  font-size: 15px;
+  background-position: 0 -424px;
+  text-align: center;
+  padding: 0 10px 0 15px;
+  color: white;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 5px;
+}
+section.trans-content .ffButtonWrapper:hover > a, div#PrintContent .ffButtonWrapper:hover > a {
+  background-position: right -625px;
+}
+section.trans-content .ffButtonWrapper:hover > a > span, div#PrintContent .ffButtonWrapper:hover > a > span {
+  background-position: 0 -464px;
+}
+section.trans-content .ffButtonWrapper > a:active, div#PrintContent .ffButtonWrapper > a:active {
+  background-position: right -665px;
+  position: relative;
+}
+section.trans-content .ffButtonWrapper > a:active > span, div#PrintContent .ffButtonWrapper > a:active > span {
+  background-position: 0 -504px;
+}
+section.trans-content .ffButtonWrapper.disabled > a, div#PrintContent .ffButtonWrapper.disabled > a {
+  background-position: right -705px;
+  position: static;
+}
+section.trans-content .ffButtonWrapper.disabled > a > span, div#PrintContent .ffButtonWrapper.disabled > a > span {
+  background-position: 0 -544px;
+  color: #c1c1c1;
+}
+section.trans-content input[type="text"], section.trans-content input[type="password"], div#PrintContent input[type="text"], div#PrintContent input[type="password"] {
+  outline: none;
+}
+section.trans-content textarea, div#PrintContent textarea {
+  outline: none;
+}
+section.trans-content select, div#PrintContent select {
+  outline: none;
+}
+section.trans-content select.mobileSelect, div#PrintContent select.mobileSelect {
+  opacity: 0;
+  filter: alpha(opacity=0);
+  position: absolute;
+  top: 0;
+  display: block;
+}
+section.trans-content .btn-zone, div#PrintContent .btn-zone {
+  clear: both;
+  margin: 10px auto;
+  text-align: center;
+}
+section.trans-content .btn-zone a.nbtn, section.trans-content .btn-zone input.nbtn, section.trans-content .btn-zone button.nbtn, div#PrintContent .btn-zone a.nbtn, div#PrintContent .btn-zone input.nbtn, div#PrintContent .btn-zone button.nbtn {
+  margin: 10px 8px;
+  font-weight: normal;
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  font-size: 15px;
+  color: #666666;
+  padding: 8px 30px;
+  line-height: 15px;
+  border-radius: 5px;
+  border: 1px solid #dddddd;
+  box-shadow: 0px 1px 1px rgba(180, 178, 178, 0.5), inset 0px 0px 0px rgba(255, 255, 255, 0.7);
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 25%, #efefef);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(0.25, #ffffff), to(#efefef));
+}
+section.trans-content .btn-zone a.nbtn.disabled, section.trans-content .btn-zone a.nbtn.disabled:hover, section.trans-content .btn-zone input.nbtn.disabled, section.trans-content .btn-zone input.nbtn.disabled:hover, section.trans-content .btn-zone button.nbtn.disabled button.nbtn.disabled:hover, div#PrintContent .btn-zone a.nbtn.disabled, div#PrintContent .btn-zone a.nbtn.disabled:hover, div#PrintContent .btn-zone input.nbtn.disabled, div#PrintContent .btn-zone input.nbtn.disabled:hover, div#PrintContent .btn-zone button.nbtn.disabled button.nbtn.disabled:hover {
+  color: #c7c7c7;
+  cursor: not-allowed;
+  border: 1px solid #dddddd;
+  background: -moz-linear-gradient(top, #ffffff 0%, #ffffff 25%, #efefef);
+  background: -webkit-gradient(linear, left top, left bottom, from(#ffffff), color-stop(0.25, #ffffff), to(#efefef));
+}
+section.trans-content .btn-zone.inline, div#PrintContent .btn-zone.inline {
+  display: inline-block;
+  *display: inline;
+  zoom: 1;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+section.trans-content .btn-zone .search, div#PrintContent .btn-zone .search {
+  background: url(/MMA8/mma/images/menu_bg_active.png) repeat-x 0 0;
+  width: 136px;
+  height: 38px;
+  border: none;
+  font-size: 15px;
+  color: #FFF;
+  font-family: "微軟正黑體", "MS UI Gothic", Arial, Helvetica, sans-serif;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+section.trans-content .btn-zone a.nbtn:hover, section.trans-content .btn-zone input.nbtn:hover, section.trans-content .btn-zone button.nbtn:hover, div#PrintContent .btn-zone a.nbtn:hover, div#PrintContent .btn-zone input.nbtn:hover, div#PrintContent .btn-zone button.nbtn:hover {
+  color: white;
+  background: #f31e36;
+  border: #d00f24 1px solid;
+  box-shadow: 0px 1px 1px rgba(180, 178, 178, 0.5), inset 0px 0px 0px rgba(255, 255, 255, 0.7);
+}
+section.trans-content .btn-zone a.focus, div#PrintContent .btn-zone a.focus {
+  color: white;
+  background: #d00f24;
+  border: 1px solid #ac1414;
+}
+section.trans-content .btn-zone a:hover, div#PrintContent .btn-zone a:hover {
+  text-decoration: none;
+}
+section.trans-content .btn-zone a.focus:hover, div#PrintContent .btn-zone a.focus:hover {
+  background: #f31e36;
+}
+section.trans-content .btn-zone img, div#PrintContent .btn-zone img {
+  margin: 8px;
+}
+section.trans-content .keyboard-zone, div#PrintContent .keyboard-zone {
+  overflow: hidden;
+}
+section.trans-content .keyboard-zone .numbers, div#PrintContent .keyboard-zone .numbers {
+  width: 240px;
+  float: left;
+}
+section.trans-content .keyboard-zone .numbers a, div#PrintContent .keyboard-zone .numbers a {
+  width: 40px;
+  height: 41px;
+  display: block;
+  float: left;
+  margin-right: 8px;
+  margin-bottom: 7px;
+}
+section.trans-content .keyboard-zone .numbers .k0, div#PrintContent .keyboard-zone .numbers .k0 {
+  background: url(../images/k0.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k0:hover, div#PrintContent .keyboard-zone .numbers .k0:hover {
+  background: url(../images/k0_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k1, div#PrintContent .keyboard-zone .numbers .k1 {
+  background: url(../images/k1.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k1:hover, div#PrintContent .keyboard-zone .numbers .k1:hover {
+  background: url(../images/k1_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k2, div#PrintContent .keyboard-zone .numbers .k2 {
+  background: url(../images/k2.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k2:hover, div#PrintContent .keyboard-zone .numbers .k2:hover {
+  background: url(../images/k2_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k3, div#PrintContent .keyboard-zone .numbers .k3 {
+  background: url(../images/k3.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k3:hover, div#PrintContent .keyboard-zone .numbers .k3:hover {
+  background: url(../images/k3_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k4, div#PrintContent .keyboard-zone .numbers .k4 {
+  background: url(../images/k4.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k4:hover, div#PrintContent .keyboard-zone .numbers .k4:hover {
+  background: url(../images/k4_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k5, div#PrintContent .keyboard-zone .numbers .k5 {
+  background: url(../images/k5.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k5:hover, div#PrintContent .keyboard-zone .numbers .k5:hover {
+  background: url(../images/k5_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k6, div#PrintContent .keyboard-zone .numbers .k6 {
+  background: url(../images/k6.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k6:hover, div#PrintContent .keyboard-zone .numbers .k6:hover {
+  background: url(../images/k6_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k7, div#PrintContent .keyboard-zone .numbers .k7 {
+  background: url(../images/k7.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k7:hover, div#PrintContent .keyboard-zone .numbers .k7:hover {
+  background: url(../images/k7_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k8, div#PrintContent .keyboard-zone .numbers .k8 {
+  background: url(../images/k8.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k8:hover, div#PrintContent .keyboard-zone .numbers .k8:hover {
+  background: url(../images/k8_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k9, div#PrintContent .keyboard-zone .numbers .k9 {
+  background: url(../images/k9.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers .k9:hover, div#PrintContent .keyboard-zone .numbers .k9:hover {
+  background: url(../images/k9_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .numbers a[class*="k"]:active, div#PrintContent .keyboard-zone .numbers a[class*="k"]:active {
+  background-position: 1px 1px;
+}
+section.trans-content .keyboard-zone .clear_btn, div#PrintContent .keyboard-zone .clear_btn {
+  width: 67px;
+  height: 89px;
+  background: url(../images/btn_clear.png) no-repeat left top;
+  text-indent: -9999px;
+  border: none;
+  cursor: pointer;
+  outline: none;
+}
+section.trans-content .keyboard-zone .clear_btn:hover, div#PrintContent .keyboard-zone .clear_btn:hover {
+  background: url(../images/btn_clear_over.png) no-repeat left top;
+}
+section.trans-content .keyboard-zone .clear_btn:active, div#PrintContent .keyboard-zone .clear_btn:active {
+  background-position: 1px 1px;
+  outline: none;
+}
+section.trans-content a, div#PrintContent a {
+  color: #000000;
+  text-decoration: none;
+}
+section.trans-content a:hover, div#PrintContent a:hover {
+  color: #3d9fd8;
+}
+section.trans-content .icon, div#PrintContent .icon {
+  display: inline-block;
+  background-image: url(/MMA8/mma/images/icons.png);
+}
+section.trans-content .icon.icon-login, div#PrintContent .icon.icon-login {
+  background-position: 20px 13px;
+}
+section.trans-content .icon.icon-login.logout, div#PrintContent .icon.icon-login.logout {
+  color: #d00f24;
+}
+section.trans-content .icon.icon-service, div#PrintContent .icon.icon-service {
+  background-position: 20px -27px;
+}
+section.trans-content .icon.icon-branch, div#PrintContent .icon.icon-branch {
+  background-position: 20px -68px;
+}
+section.trans-content .icon.icon-search, div#PrintContent .icon.icon-search {
+  background-position: 20px -107px;
+  position: relative;
+}
+section.trans-content .icon.icon-search.active, div#PrintContent .icon.icon-search.active {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 9999;
+  height: 46px;
+  background-position: -98px -107px;
+  background-color: #af0d1e;
+  color: white;
+}
+section.trans-content .icon.icon-funcashier, div#PrintContent .icon.icon-funcashier {
+  position: absolute;
+  background-position: 0 -166px;
+  width: 33px;
+  height: 38px;
+  left: 11px;
+  top: 0;
+  cursor: pointer;
+}
+section.trans-content h2.title, div#PrintContent h2.title {
+  border-bottom: 2px solid #e8362c;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  font-family: "微軟正黑體", "新細明體";
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.5em;
+}
+section.trans-content th, div#PrintContent th {
+  font-weight: bold;
+}
+section.trans-content .clearboth, div#PrintContent .clearboth {
+  clear: both;
+}
+section.trans-content .before_select_txt, div#PrintContent .before_select_txt {
+  margin-right: 5px;
+}
+section.trans-content .formblock, div#PrintContent .formblock {
+  margin: 15px 0 20px 0 !important;
+  border: #dddddd 1px solid;
+  border-radius: 5px;
+  padding: 0 10px;
+}
+section.trans-content .data-table, div#PrintContent .data-table {
+  border-collapse: collapse;
+}
+section.trans-content .data-table th, div#PrintContent .data-table th {
+  font-size: 15px;
+  color: #666666;
+  width: 311px;
+  text-align: right;
+  vertical-align: top;
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+  line-height: 32px;
+}
+section.trans-content .data-table th .slave, div#PrintContent .data-table th .slave {
+  margin-left: 10px;
+  color: #666666;
+  font-size: 12px;
+  font-weight: normal;
+}
+section.trans-content .data-table td, div#PrintContent .data-table td {
+  padding: 10px;
+  border-bottom: 1px solid #dddddd;
+  line-height: 32px;
+  font-size: 15px;
+}
+section.trans-content .data-table .detail-tables, div#PrintContent .data-table .detail-tables {
+  border: 1px solid #dddddd;
+  display: table;
+  float: left;
+  margin-right: 10px;
+}
+section.trans-content .data-table .detail-tables dt, div#PrintContent .data-table .detail-tables dt {
+  color: #666666;
+  background-color: #eeeeee;
+  padding: 0 20px;
+  height: 33px;
+}
+section.trans-content .data-table .detail-tables dd, div#PrintContent .data-table .detail-tables dd {
+  text-align: center;
+  line-height: 33px;
+}
+section.trans-content .data-table.info td, div#PrintContent .data-table.info td {
+  text-align: right;
+  line-height: 1.5em;
+  padding: 0 24px;
+}
+section.trans-content .data-table.info th, div#PrintContent .data-table.info th {
+  font-size: 18px;
+  text-align: left;
+  width: auto;
+  line-height: 1.5em;
+  padding: 0 24px;
+  vertical-align: middle;
+}
+section.trans-content .data-table .notice, div#PrintContent .data-table .notice {
+  line-height: 18px;
+  font-size: 13px;
+  font-weight: normal;
+  margin: 10px 0 5px 0;
+  clear: both;
+}
+section.trans-content .msgbox, div#PrintContent .msgbox {
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 16px;
+  font-weight: bold;
+}
+section.trans-content .msgbox p, div#PrintContent .msgbox p {
+  font-size: 13px;
+  font-weight: normal;
+  margin: 20px 10px 20px 0;
+}
+section.trans-content .formblock p, div#PrintContent .formblock p {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+section.trans-content.termserv .formblock, div#PrintContent.termserv .formblock {
+  line-height: 2em;
+  padding: 0 20px 15px;
+}
+section.trans-content.termserv .formblock ol li, div#PrintContent.termserv .formblock ol li {
+  list-style: decimal;
+  margin-left: 20px;
+  line-height: 26px;
+}
+section.trans-content .rowElem label, div#PrintContent .rowElem label {
+  margin: 0 10px;
+}
+section.trans-content .stepsboard, div#PrintContent .stepsboard {
+  background: #e7e7e7;
+  background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIzMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjZTdlN2U3IiBzdG9wLW9wYWNpdHk9IjEiLz4KICA8L2xpbmVhckdyYWRpZW50PgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSIxIiBoZWlnaHQ9IjEiIGZpbGw9InVybCgjZ3JhZC11Y2dnLWdlbmVyYXRlZCkiIC8+Cjwvc3ZnPg==);
+  background: -moz-linear-gradient(top, white 30%, #e7e7e7 100%);
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, white), color-stop(100%, #e7e7e7));
+  background: -webkit-linear-gradient(top, white 30%, #e7e7e7 100%);
+  background: -o-linear-gradient(top, white 30%, #e7e7e7 100%);
+  background: -ms-linear-gradient(top, white 30%, #e7e7e7 100%);
+  background: linear-gradient(to bottom, #ffffff 30%, #e7e7e7 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#e7e7e7',GradientType=0 );
+  border: #dddddd 1px solid;
+  -webkit-border-radius: 6px;
+  -moz-border-radius: 6px;
+  border-radius: 6px;
+  height: 44px;
+  margin: 14px auto 0;
+  color: #aaaaaa;
+  padding-left: 10px;
+}
+section.trans-content .stepsboard .steps, div#PrintContent .stepsboard .steps {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  padding-left: 34px;
+  background-position: left 11px;
+  background-repeat: no-repeat;
+  margin-left: 9px;
+  margin-right: 9px;
+  color: #aaaaaa;
+  line-height: 45px;
+}
+section.trans-content .stepsboard .steps.step, div#PrintContent .stepsboard .steps.step {
+  background-image: url(/MMA8/mma/images/split.png);
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  width: 5px;
+  background-position: 0 18px;
+}
+section.trans-content .stepsboard .steps span, div#PrintContent .stepsboard .steps span {
+  display: none;
+}
+section.trans-content .stepsboard .s1, div#PrintContent .stepsboard .s1 {
+  background-image: url(/MMA8/mma/images/s1.png);
+}
+section.trans-content .stepsboard .s1_on, div#PrintContent .stepsboard .s1_on {
+  background-image: url(/MMA8/mma/images/s1_on.png);
+  color: #d00f24;
+}
+section.trans-content .stepsboard .s2, div#PrintContent .stepsboard .s2 {
+  background-image: url(/MMA8/mma/images/s2.png);
+}
+section.trans-content .stepsboard .s2_on, div#PrintContent .stepsboard .s2_on {
+  background-image: url(/MMA8/mma/images/s2_on.png);
+  color: #d00f24;
+}
+section.trans-content .stepsboard .s3, div#PrintContent .stepsboard .s3 {
+  background-image: url(/MMA8/mma/images/s3.png);
+}
+section.trans-content .stepsboard .s3_on, div#PrintContent .stepsboard .s3_on {
+  background-image: url(/MMA8/mma/images/s3_on.png);
+  color: #d00f24;
+}
+section.trans-content .data-table th, div#PrintContent .data-table th {
+  font-size: 13px;
+  padding: 15px 10px 5px 0px;
+  width: 185px;
+  vertical-align: middle;
+}
+section.trans-content .data-table td, div#PrintContent .data-table td {
+  font-size: 13px;
+  padding: 15px 0px 5px 10px;
+  vertical-align: middle;
+}
+section.trans-content .data-table td.padadj, div#PrintContent .data-table td.padadj {
+  padding: 0 0 10px 10px;
+}
+section.trans-content .rnotes, div#PrintContent .rnotes {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  line-height: 32px;
+  border: #f3d0d4 1px solid;
+  background: #fcecef;
+  margin-top: 15px;
+  position: relative;
+}
+section.trans-content .rnotes .transaction_number, div#PrintContent .rnotes .transaction_number {
+  right: 2%;
+  position: absolute;
+  display: block;
+}
+section.trans-content .rnotes-df, div#PrintContent .rnotes-df {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  line-height: 20px;
+  margin-top: 15px;
+}
+section.trans-content .gray_notes, div#PrintContent .gray_notes {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  vertical-align: middle;
+  line-height: 32px;
+  padding: 0 10px;
+  margin: 15px auto -15px auto;
+  position: relative;
+}
+section.trans-content .bdr-radius, div#PrintContent .bdr-radius {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+}
+section.trans-content .full-size, div#PrintContent .full-size {
+  width: 100%;
+}
+section.trans-content .center, div#PrintContent .center {
+  text-align: center;
+}
+section.trans-content .fwb, div#PrintContent .fwb {
+  font-weight: bold;
+}
+section.trans-content .red, div#PrintContent .red {
+  color: #d00f24 !important;
+}
+section.trans-content .gray, div#PrintContent .gray {
+  color: #666666;
+}
+section.trans-content .fs15, div#PrintContent .fs15 {
+  font-size: 15px;
+}
+section.trans-content .fs20, div#PrintContent .fs20 {
+  font-size: 20px;
+}
+section.trans-content .sarrow, div#PrintContent .sarrow {
+  line-height: 34px;
+  background: url(/MMA8/mma/images/sarrow.png) no-repeat left 14px;
+}
+section.trans-content .rowElem, div#PrintContent .rowElem {
+  margin-bottom: 10px;
+  line-height: 34px;
+}
+section.trans-content .rowElem a.sarrow, div#PrintContent .rowElem a.sarrow {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+  margin-left: 10px;
+  padding-left: 12px;
+}
+section.trans-content .balance, div#PrintContent .balance {
+  margin: 0 7px;
+}
+section.trans-content .foreign-exchange-instructions, div#PrintContent .foreign-exchange-instructions {
+  background-color: #fcecef;
+  padding: 15px;
+  line-height: 28px;
+  margin-right: 5px;
+}
+section.trans-content .foreign-exchange-instructions .row, div#PrintContent .foreign-exchange-instructions .row {
+  margin-bottom: 15px;
+}
+section.trans-content .foreign-exchange-instructions .title, div#PrintContent .foreign-exchange-instructions .title {
+  float: left;
+  width: 17%;
+}
+section.trans-content .foreign-exchange-instructions .description, div#PrintContent .foreign-exchange-instructions .description {
+  float: right;
+  width: 83%;
+  line-height: 21px;
+}
+section.trans-content .foreign-exchange-instructions p, div#PrintContent .foreign-exchange-instructions p {
+  font-size: 12px;
+  font-weight: normal;
+  margin: 0;
+}
+section.trans-content .MemoContent-s2 .listStyle, div#PrintContent .MemoContent-s2 .listStyle {
+  margin: 15px 20px;
+}
+section.trans-content .MemoContent-s2 .listStyle *, div#PrintContent .MemoContent-s2 .listStyle * {
+  line-height: 24px;
+}
+section.trans-content .MemoContent-s2 ol li, div#PrintContent .MemoContent-s2 ol li {
+  list-style: decimal inside;
+  text-indent: -15px;
+  margin-left: 15px;
+}
+section.trans-content .MemoContent-s2 .inner, div#PrintContent .MemoContent-s2 .inner {
+  margin-left: 24px;
+}
+section.trans-content .before_select_txt, div#PrintContent .before_select_txt {
+  margin-right: 5px;
+}
+section.trans-content .row, div#PrintContent .row {
+  margin-bottom: 15px;
+}
+section.trans-content .ffRadioWrapper a, div#PrintContent .ffRadioWrapper a {
+  color: #555;
+  margin-right: 0;
+  padding-left: 15px;
+}
+section.trans-content .ffRadioWrapper a:hover, div#PrintContent .ffRadioWrapper a:hover {
+  text-decoration: none;
+}
+section.trans-content .ffRadio, div#PrintContent .ffRadio {
+  float: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+div#PrintContent {
+  width: initial;
+}
+div#PrintContent .stepsboard {
+  display: none;
+}
+div#PrintContent .rnotes {
+  margin-top: 0;
+}

@@ -1,0 +1,20 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<h1>{{messages?.Title}}</h1>
+		<div style="color: #e72411;margin-top:1em;" *ngIf="errorMessage">{{errorMessage}}</div>
+		<div *ngIf="resultModel">
+			<div class="center">
+				<div>{{messages?.CName}} : {{resultModel?.CName}}</div>
+				<img width="75%" src="data:image/jpeg;base64,{{resultModel?.QRCode}}" *ngIf="resultModel?.QRCode" />
+			</div>
+			<div class="notesContent" style="padding-top: 2em;font-size: 0.78em;" *ngIf="success">
+				<div class="notesTitle" style="font-size: 1.1em;color: #e72411;">{{messages?.Notes}}</div>
+				<p>{{messages?.Notes_1}}</p>
+			</div>
+		</div>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="0" [Token]="token"></app-mobile-statement-nav>
+</div>

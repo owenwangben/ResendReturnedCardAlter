@@ -1,0 +1,134 @@
+<form [formGroup]="form" id='mainForm3' style="margin-top: 35px;">
+	<div class="content full-content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>選擇卡片</legend>
+			</fieldset>
+			<ul class="card-block">
+				<li class="card-item">
+					<label class="form-radio" *ngIf="!digitmark">
+						<input type="radio" formControlName="CardType" [value]="1"><i class="tickr"></i><span
+							class="details"><span>現金回饋 Debit 卡</span><img class="debitcard" id="img1"
+								src="/mma8/card/images/debit_money.png" alt="現金回饋Debit卡"></span>
+					</label>
+					<label class="form-radio" *ngIf="digitmark">
+						<input type="radio" formControlName="CardType" [value]="2"><i class="tickr"></i><span
+							class="details"><span>DAWHO現金回饋Debit卡</span><img class="debitcard" id="img1"
+								src="/mma8/card/images/debit_Dawho.png" alt="DAWHO現金回饋Debit卡"></span>
+					</label>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content"><span>選擇悠遊卡自動加值功能(自動加值功能開啟後即無法關閉)</span>
+			<ul class="ctrl-block">
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="EasyCardAutoload" [value]="true"><i
+							class="tickr"><span>預設開啟</span></i>
+					</label>
+				</li>
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="EasyCardAutoload" [value]="false"><i
+							class="tickr"><span>預設關閉</span></i>
+					</label>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<a class="udline" target="_blank" (click)="openlbox('#terms1-lbox')">
+				聯名卡/認同機構之個人資料使用同意條款</a><br>
+			<span class="red">(須同意方可申請)</span>
+			<ul class="ctrl-block">
+				<li>
+					<label class="form-radio surround" (click)="openlbox('#terms1-lbox')">
+						<input type="radio" class="js-terms1" formControlName="AgreeBrandedCard" [value]="true" required disabled><i
+							class="tickr"><span>我同意</span></i>
+					</label>
+				</li>
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="AgreeBrandedCard" [value]="false" required><i
+							class="tickr"><span>我不同意</span></i>
+					</label>
+				</li>
+			</ul>
+			<p class="red center" *ngIf="form.value.AgreeBrandedCard === false">
+				很抱歉，如您不同意聯名卡/認同機構之個人資料使用同意條款，無法完成簽帳金融卡換發，如有任何疑問，歡迎您撥打24小時服務專線(02)2528-7776。</p>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content"><span>提供個人資料予悠遊卡公司作為行銷業務之特定目的使用</span>
+			<ul class="ctrl-block">
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="AgreeEasyCard" [value]="true"><i
+							class="tickr"><span>我同意</span></i>
+					</label>
+				</li>
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="AgreeEasyCard" [value]="false"><i
+							class="tickr"><span>我不同意</span></i>
+					</label>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<span>本人同意申請永豐簽帳金融卡。同意「
+				<a class="udline" target="_blank" (click)="openlbox('#terms2-lbox')">永豐銀行開立帳戶總約定書</a>」內各項條款，並於合理期間審閱相關條款。</span><br><span class="red">(須同意方可申請)</span>
+			<ul class="ctrl-block">
+				<li>
+					<label class="form-radio surround" (click)="openlbox('#terms2-lbox')">
+						<input type="radio" class="js-terms2"  formControlName="AgreeTnC" [value]="true"  disabled>
+						<i class="tickr"><span>我同意</span></i>
+					</label>
+				</li>
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="AgreeTnC" [value]="false"><i
+							class="tickr"><span>我不同意</span></i>
+					</label>
+				</li>
+			</ul>
+			<p class="red center" *ngIf="form.value.AgreeTnC === false">
+				很抱歉，如您不同意永豐銀行開立帳戶總約定書內各項條款，無法完成簽帳金融卡換發，如有任何疑問，歡迎您撥打24小時服務專線(02)2528-7776。</p>
+		</section>
+	</div>
+	<div class="content transparent">
+		<div class="btn-block center">
+			<button class="btn cancel" (click)="prestep()"><span>上一步</span></button>
+			<button *ngIf="canSubmit" class="btn" id="send-data" appPreventDoubleClick (throttledClick)="submit()" ><span>送出申請</span></button>
+		</div>
+	</div>
+</form>
+<!-- 彈窗功能 -->
+<div class="lboxed lboxed-iframe">
+	<div class="close"></div>
+	<div class="lbox-block lbox-block-full">
+	  <div class="terms-lbox" id="terms1-lbox">
+		<div class="terms-block terms-block-iframe">
+		  <iframe width="100%" src="/mma8/card/pdfjs-dist/web/viewer.html?file=/MMA8/card/documents/DebitCard/聯名及認同機構之個人資料同意條款201911版.pdf"></iframe>
+		</div>
+		<div class="btn-block center">
+		  <p class="reminds mt-1 fs-15">請滑動至最下方查看完整內容</p>
+		  <button class="btn close mt01 btn-agree" disabled (click)="form.patchValue({AgreeBrandedCard: true})"><span>我已詳閱並同意</span></button>
+		</div>
+	  </div>
+	  <div class="terms-lbox" id="terms2-lbox">
+		<div class="terms-block terms-block-iframe" >
+		  <iframe width="100%" [src]="safeurl"></iframe>
+		</div>
+		<div class="btn-block center">
+		  <p class="reminds mt-1 fs-15">請滑動至最下方查看完整內容</p>
+		  <button class="btn close mt0 btn-agree" disabled (click)="form.patchValue({AgreeTnC: true})"><span>我已詳閱並同意</span></button>
+		</div>
+	  </div>
+	</div>
+</div>

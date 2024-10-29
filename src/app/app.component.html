@@ -1,0 +1,8 @@
+<!-- <div *ngIf="!navigated" class="blocking"></div> -->
+<div *ngIf="!navigated || showLoader" class="loading"></div>
+<div [hidden]="!navigated || !css_loaded">
+	<app-header *ngIf="navigated" (complete)="headerComplete()"></app-header>
+	<router-outlet>
+	</router-outlet>
+	<app-footer></app-footer>
+</div>

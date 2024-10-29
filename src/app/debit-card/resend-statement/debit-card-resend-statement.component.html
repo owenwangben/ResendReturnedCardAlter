@@ -1,0 +1,75 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content" [style.padding]="IsMobile ? '0 16px 0 16px' : ''">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div *ngIf="eStatementRemailInfoResultModel?.Email?.trim().length > 0">
+					<form (ngSubmit)="onSubmit()">
+						<div class="formblock">
+							<div *ngIf="IsMobile">
+								<ol class="list formList">
+									<li style="border-bottom: none;">
+										<ul>
+											<li>
+												<div class="label">交易明細單寄送信箱</div>
+												<div>
+													<div class="slTxt">{{eStatementRemailInfoResultModel?.Email}}</div>
+												</div>
+											</li>
+										</ul>
+									</li>
+									<li style="border-bottom: 1px solid #efefef;"></li>
+								</ol>
+								<table class="ntable cols" width="100%" style="margin:20px 0">
+									<tbody>
+										<tr>
+											<td *ngFor="let item of BillMonth1;let idx = index">
+												<a [className]="'billDetail' + selectMonthClass[idx]" href="javascript:void(0)" (click)="onSelectMonth(idx)">{{item | date:'yyyy/MM'}}</a>
+											</td>
+										</tr>
+										<tr>
+											<td *ngFor="let item of BillMonth2;let idx = index">
+												<a [className]="'billDetail' + selectMonthClass[idx + 3]" href="javascript:void(0)" (click)="onSelectMonth(idx + 3)">{{item | date:'yyyy/MM'}}</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<table *ngIf="!IsMobile" class="new-datatable mobile-col-12">
+								<tbody>
+									<tr>
+										<th class="mobile-col-5">
+											<span>交易明細單寄送信箱</span>
+										</th>
+										<td>
+											{{eStatementRemailInfoResultModel?.Email}}
+										</td>
+									</tr>
+									<tr>
+										<th>
+											<span>補寄期別</span>
+										</th>
+										<td>
+											<span *ngFor="let item of eStatementRemailInfoResultModel?.BillMonth;let idx = index" [className]="'period ' + selectMonthClass[idx]" (click)="onSelectMonth(idx)">{{item | date:'yyyyMM'}}</span>
+										  </td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn-zone">
+								<app-link-button type="cancel">取消</app-link-button>
+								<button type="submit" class="nbtn focus">補寄交易明細單</button>
+							</div>
+						</div>
+					</form>
+					<div class="rowElem" loadHtml="/mma8/card/htmls/補寄Debit卡交易明細單注意事項.html"></div>
+				</div>
+				
+				<div class="rowElem fs15" *ngIf="eStatementRemailInfoResultModel?.Email?.trim().length <= 0">
+					<span class="fwb">親愛的客戶您好:<br *ngIf="IsMobile" />
+						<br />因您尚未留存電子信箱於本行，請撥打信用卡客服<a *ngIf="IsMobile" [href]="servicePhoneUri" (click)="dialPhone()" style="color: #2196f3;text-decoration: underline;">02-2528-7776</a><span *ngIf="!IsMobile">02-2528-7776</span>，將有專人為您服務，謝謝。</span>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

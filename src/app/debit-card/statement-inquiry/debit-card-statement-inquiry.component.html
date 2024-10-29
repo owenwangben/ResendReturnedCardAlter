@@ -1,0 +1,114 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-content">
+        <h2 class="title">{{pageinfo.name}}</h2>
+        <div class="formblock">
+          <table class="data-table forvd" width="100%">
+            <tr>
+              <th>快速查詢</th>
+              <td>
+                <div class="rowinline left">
+                  <ul>
+                    <li *ngFor="let link of billMonthLinks">
+                      <a href="javascript:void(0)" (click)="onClickMonthLink(link)">{{link}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>交易明細查詢</th>
+              <td>
+                <div class="artfld select col-2 rowElem">
+                  <select #selectBillMonth [(ngModel)]="selectedMonth" (change)="onSelectMonth(selectBillMonth.value)">
+                    <option *ngFor="let month of billMonths" value="{{month}}">{{month}}</option>
+                  </select>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <div class="formblock" id="showTrx">
+          <div class="rowElem fs15 fwb">消費記錄</div>
+		  <ul class="accordion">
+			<li #tables *ngFor="let item of detailClassifyModel;let idx = index;">
+				<a href="javascript:void(0)" class="atitle {{idx === 0 ? 'active' : ''}}" (click)="slideToggle($event.target)">{{item.CurrencyCName}}</a>
+				<div class="acontent" [style.display]="idx === 0 ? '' : 'none'">
+					<table class="ntable">
+						<thead>
+							<tr>
+								<th width="8%">消費日</th>
+								<th width="8%">入帳日</th>
+								<th width="9%">卡號<br>末四碼</th>
+								<th width="11%">存款帳號<br>末四碼</th>
+								<th width="22%">交易明細說明</th>
+								<th width="8%">{{item.CurrencyCName}}<br>金額</th>
+								<th width="9%">外幣<br>折算日</th>
+								<th width="9%">消費地</th>
+								<th width="8%">原幣<br>金額</th>
+								<th width="8%">未扣款<br>金額</th>
+							  </tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let record of item?.Items">
+								<ng-template [ngIf]="record.TXDATE?.trim()" [ngIfElse]="SubTotal">
+									<td>{{record.TXDATE}}</td>
+									<td>{{record.DEDATE}}</td>
+									<td>{{record.CARDNO}}</td>
+									<td>{{record.ACCOUNT}}</td>
+									<td>{{record.MEMO}}</td>
+									<td>{{record.AMT}}</td>
+									<td>{{record.CURDATE}}</td>
+									<td>{{record.CountryCode}}</td>
+									<td>{{record.TXAMT}}</td>
+									<td>{{record.NOT_DE_AMT}}</td>
+								</ng-template>
+								<ng-template #SubTotal>
+									<td colspan="5">{{record.MEMO}}</td>
+									<td>{{record.AMT}}</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</ng-template>
+							</tr>
+							<tr *ngIf="!item?.Items?.length">
+								<td colspan="10">查無資料！</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			<table class="ntable" *ngIf="!detailClassifyModel?.length">
+				<tbody>
+					<tr>
+						<th width="8%">消費日</th>
+						<th width="8%">入帳日</th>
+						<th width="9%">卡號<br>末四碼</th>
+						<th width="11%">存款帳號<br>末四碼</th>
+						<th width="22%">交易明細說明</th>
+						<th width="8%">金額</th>
+						<th width="9%">外幣<br>折算日</th>
+						<th width="9%">消費地</th>
+						<th width="8%">原幣<br>金額</th>
+						<th width="8%">未扣款<br>金額</th>
+					  </tr>
+					<tr>
+						<td colspan="10">查無資料！</td>
+					</tr>
+				</tbody>
+			  </table>
+		  </ul>
+        </div>
+        <div>
+          <div class="btn-zone">
+            <a class="nbtn" href="javascript:void(0)" (click)="downloadPDF()">下載當期交易明細</a>
+          </div>
+          <div loadHtml="/mma8/card/htmls/Debit卡近期交易明細注意事項.html"></div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

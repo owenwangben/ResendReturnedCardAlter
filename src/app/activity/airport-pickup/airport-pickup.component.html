@@ -1,0 +1,33 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-details">
+        <h2 class="title">{{pageinfo.name}}</h2>
+        <table class="ntable">
+          <tr>
+            <th>使用有效期限</th>
+            <th>可享有之機場接送次數(單程)</th>
+            <!-- <th>年消費金額</th> -->
+            <th>提醒訊息</th>
+          </tr>
+          <tr>
+            <td>{{model?.EffectiveDateRange}}</td>
+            <td>{{model?.AvailableTime}}</td>
+            <!-- <td class="num-align">{{model?.YEARLY_SPENDING | number}}</td> -->
+            <td class="text-left"><span class="red" *ngFor="let msg of model?.Messages">{{msg}}<br></span></td>
+          </tr>
+		  <tr>
+			  <td colspan=4 style="text-align:left">
+				  適用對象：永豐銀行世界卡、無限卡、鈦金卡、御璽卡、晶緻卡之正/附卡持卡人並符合使用機場接送服務資格者。
+			  </td>
+		  </tr>
+          <!--<tr *ngIf="model?.Items.length <= 0">
+            <td colspan="7">查無資料!</td>
+          </tr>-->
+        </table>
+		<div loadHtml="/mma8/card/htmls/20231226/機場接送資格查詢注意事項.html" [backupHtml]="'/mma8/card/htmls/202211/機場接送資格查詢注意事項.html'"></div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+{
+  "Result": {
+    "EmailPoolStatus": "尚未申請",
+	"Email": "b4546464542@gmail.com",
+	"Mobile": "0912345678",
+    "IsApplyElectronicBill": 0,
+    "IsApplyConsumerCollection": true,
+    "IsApplyEaper": true,
+    "IsApplyPaymentNotify": true,
+    "IsRemindPaymentSMSNotify": true,
+	"IsRemindPaymentEmailNotify": false
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

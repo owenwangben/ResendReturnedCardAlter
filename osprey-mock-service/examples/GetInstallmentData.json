@@ -1,0 +1,54 @@
+{
+  "Result": {
+    "IsSignedInstallmentAgreement": true,
+    "CanApplyInstallment": true,
+    "Items": [
+      {
+        "TransactionDate": "2017-01-15T00:00:00+08:00",
+        "IsTCTD": true,
+        "DeDate": "2017-01-16T00:00:00+08:00",
+        "Amount": "12100",
+        "Memo": "財團法人私立淡江大學",
+        "IsAlreadyInstallment": false,
+        "AuthCode": "123",
+        "CardNumber": "1111222233334444",
+        "MCC": "001",
+        "MerchNumber": "888999",
+		"FirstFlag": "0",
+		"SalRef": "20191004-01",
+    "TXCUR": "TWD",
+    "MerchArea": "US"
+      },
+      {
+        "TransactionDate": "2017-01-30T00:00:00+08:00",
+        "IsTCTD": true,
+        "DeDate": "2017-02-01T00:00:00+08:00",
+        "Amount": "2200",
+        "Memo": "國泰人壽保費",
+        "IsAlreadyInstallment": false,
+        "AuthCode": "456",
+        "CardNumber": "1111222233334444",
+        "MCC": "001",
+        "MerchNumber": "888999",
+        "FirstFlag": "0",
+		"SalRef": "20191004-02",
+    "TXCUR": "TWD",
+    "MerchArea": "US"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

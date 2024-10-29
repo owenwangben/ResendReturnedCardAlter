@@ -1,0 +1,17 @@
+{
+    "Result": "SUCCESS",
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": null,
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

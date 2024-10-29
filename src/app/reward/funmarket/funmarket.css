@@ -1,0 +1,7 @@
+body { margin: 0 auto; padding: 0 }
+.litebox { text-align: center; font-family: Microsoft JhengHei; }
+.litebox > p { font-size: 18px; color:#333333; line-height: 1.5; margin:0em auto; }
+.litebox > input[type="checkbox"] { display: inline-block; vertical-align: top; margin: 6px 5px 6px 3px; }
+.litebox > p.note { font-size: 15px; display: block; text-align: left; margin: 0 auto }
+.litebox > input[type="checkbox"] ~ p { display: inline-block; vertical-align: top; width: calc(100% - 24px); font-size: 15px; }
+.litebox > hr { display: block;height: 1px; border: 0; border-top: 1px solid #dddddd; margin: 1em 0; padding: 0; }

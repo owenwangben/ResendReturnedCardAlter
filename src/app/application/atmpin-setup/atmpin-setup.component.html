@@ -1,0 +1,37 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="submit()">
+					<div class="formblock">
+						<table class="new-datatable mobile-col-12">
+							<tr>
+								<th class="mobile-col-2">
+									<span>卡號</span>
+								</th>
+								<td class="mobile-col-10">
+									<app-card-number-input formControlName="cardNo"></app-card-number-input>
+									<span class="spanbox mobile-span">依序輸入卡號16碼(美國運通卡15碼)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>驗證碼</span>
+								</th>
+								<td>
+									<app-vcaptcha formControlName="captcha"></app-vcaptcha>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="btn-zone">
+						<app-link-button type="cancel">取消</app-link-button>
+						<button type="submit" class="nbtn focus">確認送出</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

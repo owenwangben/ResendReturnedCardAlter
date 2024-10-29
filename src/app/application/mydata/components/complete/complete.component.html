@@ -1,0 +1,65 @@
+<div class="content full-content-min step-panel-block">
+	<section class="trans-content">
+		<div class="step-panel pink-style">
+			<div class="step-block-spec-style">
+				<div class="step-words">
+					<p [class.active]=""></p>
+					<p [class.active]=""></p>
+					<p [class.active]="true">申請結果</p>
+				</div>
+				<div class="step-circles">
+					<div class="circles">
+						<div class="cle">
+							<i></i>
+						</div>
+						<div class="cle">
+							<i></i>
+						</div>
+						<div class="cle">
+							<i></i>
+						</div>
+					</div>
+					<div class="cle current-dot"
+						[class.active1]=""
+						[class.active2]=""
+						[class.active3]="true">
+						<i></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</div>
+<div class="content full-content">
+	<section class="trans-content">
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td>
+						<div class="success">
+							<i class="{{success ? 'icon-tick' : 'icon-error'}}"></i>
+							<p>MyData 申請{{success ? '成功' : '失敗'}}</p>
+						</div>
+            <p *ngIf="!success" style="text-align:center">錯誤代碼{{errCode}}</p>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr>
+					<td class="reminds">
+						<div>
+							<p class="pink2">※提醒您，個人化資料自主運用(MyData)平臺服務由行政院數位發展部提供，若資料傳送過程異常以致無法完成申請，您可前往官網上傳缺補文件，以維護您的申辦權益。
+							</p>
+						</div>
+						<br>
+						<p>若有任何需服務之處，請聯絡客服專線 02-2528-7776。</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+	<div class="btn-zone" *ngIf="IsMobile && isApp && c3mode">
+		<a class="nbtn" (click)="ExitWebView()">回到首頁</a>
+	</div>
+</div>

@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MMA金融交易網(行動網頁版)</title>
+    <link href="/mma8/mobile/css/googlemap/style.css" rel="stylesheet" type="text/css" /><!--使用原有mma版型-->
+    <link href="/mma8/mobile/css/googlemap/branch_style.css?v=1.0" rel="stylesheet" type="text/css" /><!--版型-->
+    <link href="/mma8/mobile/css/googlemap/style-tablet.css" rel="stylesheet" media="screen and (min-width: 721px)" /><!--使用原有mma版型背景-->
+    <script type="text/javascript" src="/mma8/mobile/js/jquery-1.11.0.min.js"></script><!--抓取後台資料-->
+    <script type="text/javascript" src="/mma8/mobile/js/googlemap/MapShared.js"></script><!--地圖共用function-->
+  	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script><!--Google map api 版本-->
+  	<script type="text/javascript" src="/mma8/mobile/js/commonScripts.js"></script><!--phone_appVersion-->
+  	<script src="/mma8/mobile/js/googlemap/jquery.nicescroll.js"></script>
+
+	
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <style type="text/css">
+      .disableFooter { display:none; }
+      .Customer_Groups { display:''; }
+      .Bank_Groups{ display:none; }
+    </style>
+    <script>
+      var map, places, infoWindow, results, rescountry, resDIST, directionsDisplay;
+      var markers = [];
+      var directionsService = new google.maps.DirectionsService();
+      
+      /*取得使用者目前位置 開始*/
+      function Locate(Locate_value,branch_value) {
+        Location(Locate_value,branch_value);
+        document.getElementById('Transport').style.display = 'none';
+      }
+      /*取得使用者目前位置 結束*/
+      
+      /*Map畫布預設開始*/
+      function initialize(latitude, longitude,branch_value) {
+        setMapOptions(latitude, longitude, branch_value);//Map畫布預設
+        BusName(); //右下角資料來源
+        var myLatLng=new google.maps.LatLng(latitude,longitude);
+        search(myLatLng,branch_value);
+      }
+      /*Map畫布預設結束*/
+
+      /*發ajax詢問後台全部分行資料開始*/
+      function search(myLatLng,branch_value) {
+        $.ajax({
+             url: "/Share/CustomerService/ATMListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"1"},
+                        dataType: 'json',
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              results=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+        if(results[0]["Header"]=="SUCCESS"){
+          document.getElementById("first_myLatLng").value = myLatLng;
+          clearResults();//清除右ATM列表資料
+          clearMarkers();//清除左邊地圖資料
+          search_branch(myLatLng,branch_value);//搜尋ATM資料
+        }
+        else{
+          document.getElementById('listing').style.display = 'none';
+          alert(results[0]["Message"]);
+        }
+        searchCountry();  //下拉式選單資料顯示
+      }
+      /*發ajax詢問後台ATM資料結束*/
+
+      /*發ajax詢問後台ATM縣市資料開始*/
+      function searchCountry() {
+        clearCounty();
+        $.ajax({
+             url: "/Share/CustomerService/ATMListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"2"},
+                        dataType: 'json',                        
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              rescountry=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+          addCountry();
+      }
+      /*發ajax詢問後台ATM縣市資料結束*/
+      /*收取ajax資料後進行縣市下拉式選單匯入開始*/
+      function addCountry() {
+        if(rescountry[0]["Header"]=="SUCCESS"){
+          for (var i = 0; i < rescountry.length; i++) {
+              var ATM_Country = rescountry[i].Country;
+                  $("#country").append($("<option></option>").attr("value", ATM_Country).text(ATM_Country));
+          }
+        }
+        else{
+          var ATM_Country = "請選擇"
+          $("#country").append($("<option></option>").attr("value", ATM_Country).text(ATM_Country));
+        }
+        var country = document.getElementById('country').value;
+        searchDIST(country);
+        $('#country').change(function () { searchDIST(); });
+      }
+      /*清除縣市 資料*/
+      function clearCounty() {
+        var country = document.getElementById('country');
+        while (country.childNodes[0]) {
+          country.removeChild(country.childNodes[0]);
+        }
+      }
+      /*發ajax詢問後台ATM區域資料開始*/
+      function searchDIST(country) {
+        country=(document.getElementById('country').value);
+        clearDIST();
+        $.ajax({
+             url: "/Share/CustomerService/ATMListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"3",country:country},
+                        dataType: 'json',                        
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              resDIST=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+          addDIST();
+      }
+      /*發ajax詢問後台ATM區域資料結束*/
+      /*收取ajax資料後進行區域下拉式選單匯入開始*/
+      function addDIST() {
+        if(resDIST[0]["Header"]=="SUCCESS"){
+          for (var i = 0; i < resDIST.length; i++) {
+              var ATM_DIST = resDIST[i].Dist;
+                $("#DIST").append($("<option></option>").attr("value", ATM_DIST).text(ATM_DIST));
+          }
+        }
+        else{
+          var ATM_DIST = "請選擇";
+          $("#DIST").append($("<option></option>").attr("value", ATM_DIST).text(ATM_DIST));
+        }
+      }
+
+      /*收取ajax資料後進行區域下拉式選單匯入結束*/
+      /*清除區 資料*/
+      function clearDIST() {
+        var DISTs = document.getElementById('DIST');
+        while (DISTs.childNodes[0]) {
+          DISTs.removeChild(DISTs.childNodes[0]);
+        }
+      }
+      //搜尋縣市區資料
+      function address_select() {
+        document.getElementById('listing').style.display = '';
+        document.getElementById('address-zone').style.display = 'none';
+        document.getElementById('Transport').style.display = 'none';
+
+        var Dist=document.getElementById('DIST').value;
+        var Country=document.getElementById('country').value;
+        var ServiceItem=document.getElementById('ServiceItem').value;
+        var ServiceTime=document.getElementById('ServiceTime').value;
+        var myLatLng = document.getElementById("first_myLatLng").value;
+
+        var isNotServiceTimeChecked=false;
+        for(var lcnt=0;lcnt<2 ;lcnt++){   
+          if(document.getElementsByName("ServiceTime")[lcnt].checked){
+            var ServiceTime="";
+            ServiceTime=document.getElementsByName("ServiceTime")[lcnt].value;
+            isNotServiceTimeChecked=true;
+          }
+        }
+
+        $.ajax({
+             url: "/Share/CustomerService/ATMListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"1",ServiceItem:ServiceItem,ServiceTime:ServiceTime,Country:Country,Dist:Dist},
+                        dataType: 'json',
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              results=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+        if(results!=""){
+          if(results[0]["Header"]=="SUCCESS"){
+            clearResults();//清除ATM列表資料
+            clearMarkers();//清除左邊地圖資料
+            search_branch(myLatLng,"ATM_area");//搜尋ATM資料
+          }
+          else{
+            document.getElementById('listing').style.display = 'none';
+            alert(results[0]["Message"]);
+          }
+        }
+        else{
+          document.getElementById('listing').style.display = 'none';
+          alert("很抱歉， 找不到符合條件的ATM， 請您重新設定搜尋條件，謝謝。");
+        }
+      }
+
+    </script>
+    <script>
+    $( document ).ready(function() {
+      var open = 1;
+      $("#panel").click(function() {
+        $( "#address-zone" ).toggle("fast");
+        $(this).toggleClass('panelon');
+        $("#Search_all .list").removeClass('on');
+        $("#Search_all .map").addClass('on');
+        if ($('#listing').css('display','block')) {
+          $('#listing').css('display','none');
+        }
+       searchDIST();
+      });
+      $("#Search_all div").click(function() {
+        $("#Search_all div").removeClass('on');
+        $(this).addClass('on');
+        $('#panel').removeClass('panelon');
+        $( "#address-zone" ).css('display','none');
+        if ($(this).hasClass('list')) 
+        {
+          $('#listing').css('display','block');
+        }
+      });
+      $("#results").click(function() {
+        $("#Search_all .list").removeClass('on');
+        $("#Search_all .map").addClass('on');
+      });
+      $("#address-zone .nbtn").click(function() {
+        $('#panel').removeClass('panelon');
+        $("#Search_all .map").removeClass('on');
+        $("#Search_all .list").addClass('on');
+      });
+	  $('#Search_ATMmap').click(function() {
+			$('#Transport a').removeClass('on').css('border','');
+			$('#Transport a').first().addClass('on');
+		});		
+      $("#Transport a").click(function() {
+        $('#Transport a').removeClass('on').css('border','');
+        $(this).addClass('on');
+        if ($('#Transport .walking').hasClass('on')) {
+          $('#Transport .walking').css('border','#c6c6c6 1px solid');
+        }
+        if ($('#Transport .driving').hasClass('on')) {
+          $('#Transport .walking').css('border-left','#c6c6c6 1px solid');
+        }
+        if ($('#Transport .transit').hasClass('on')) {
+          $('#Transport .walking').css('border-right','#c6c6c6 1px solid');
+        }
+      });
+	  //以下動作-如果在mweb的話fix header讓它永遠至上。 20140603
+		if($("#header").length == 0){
+			$('#main,#close').css('top','0px');
+		}
+		else{
+			if($('#header').css('display') != 'none')  {
+				$('#header').css('position','fixed'); 
+				if ($(document).width() < 721) {
+					$('#main,#close').css('top','45px');
+					$('#main').css('height','calc(100% - 45px)');
+					
+				} else {
+					$('#main,#close').css('top','55px');
+					$('#main').css('height','calc(100% - 55px)');
+				}
+			};
+
+		}
+    });
+    </script>
+  </head>
+  <body style="margin:0px; padding:0px;" onload="Locate('','ATM_first')">
+    <div id="address-zone" class="atm-search" style="display:none">
+      <h2>功能</h2>
+      <div class="selectbar">
+      	<select id="ServiceItem">
+        　<option value="0">全部</option>
+        　<option value="1">提款</option>
+        　<option value="2">存款</option>
+        　<option value="3">外幣</option>
+          </select><BR>
+          <input type="hidden" id="ServiceItem" name="ServiceItem" value="">
+      </div>
+      <div class="clear"></div>    
+      <h2>縣市</h2>
+      <div class="selectbar">
+      <select id="country"></select><BR>
+      <select id="DIST"></select><BR>
+      <input  type="radio" id="ServiceTime" name="ServiceTime" value="1" checked />24小時
+      <input  type="radio" id="ServiceTime" name="ServiceTime" value="0" />非24小時<BR>
+      <input onclick="address_select();" type="button" class="nbtn" value="搜尋">
+      </div>
+    </div>
+    <div id="panel" class="panel">搜尋</div>
+    <div id="Search_all">
+      <div onclick="close_list();" class="map on">地圖</div>
+      <div onclick="Locate('','ATM_all');" class="list">列表</div> 
+    </div>  
+    <div onclick="close_Route();" id="close" style="display:none;"><img id="closeimg" src="/MMA7txt/CustomerService/images/backtomap.png" alt="返回地圖" /></div>
+    <div id="directions-panel" style="display:none">
+      <div id="Transport">
+        <a onclick="calcRoute('DRIVING');" class="driving on"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="開車" /></a>
+        <a onclick="calcRoute('WALKING');" class="walking"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="走路" /></a>
+        <a onclick="calcRoute('TRANSIT');" class="transit"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="大眾運輸" /></a>
+      </div>
+    </div>
+    <div id="map-canvas"></div>
+
+    <div id="listing" style="display:none">
+      <table id="resultsTable">
+        <tbody id="results"></tbody>
+      </table>
+    </div>
+    <div id="info-content" style="display:none">
+      <table class="atm-info-content">
+        <tr id="iw-url-row" class="iw_table_row">
+          <td id="iw-location"></td>
+          <td id="iw-distance" align="right" nowrap></td>
+        </tr>
+        <tr id="iw-address-row" class="iw_table_row atm-add-tr">
+          <td id="iw-address" colspan="2"></td>
+        </tr>
+        <tr id="iw-withdrawoutcurr-row" class="iw_table_row">
+          <td id="iw-withdrawoutcurr" colspan="2"></td>
+        </tr>
+        <tr id="iw-savingwithdrawoutntd-row" class="iw_table_row">
+          <td id="iw-savingwithdrawoutntd" colspan="2"></td>
+        </tr>
+        <tr id="iw-ATM_24_service-row" class="iw_table_row">
+          <td id="iw-ATM_24_service" colspan="2"></td>
+        </tr>
+        <tr id="iw-route-row" class="iw_table_row">
+          <td class="maproute" colspan="2" align="center">
+            <div id="Search_ATMmap" onclick="calcRoute('DRIVING');">
+              路線規劃
+            </div>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <input type="hidden" id="first_myLatLng" value="">
+    <input type="hidden" id="branch_Latlng" value="">
+    <input type="hidden" id="latitude" value="">
+    <input type="hidden" id="longitude" value="">
+    <input type="hidden" id="Distance" value="">
+    <input type="hidden" id="branch_Lat" value="">
+    <input type="hidden" id="branch_Lng" value="">
+    <input type="hidden" id="Classification" value="ATM">
+  </body>
+</html>

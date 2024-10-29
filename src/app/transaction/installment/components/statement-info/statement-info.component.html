@@ -1,0 +1,42 @@
+<table *ngIf="!isMobile" class="ntable">
+	<thead>
+		<tr>
+			<th>帳單日</th>
+			<th>繳款截止日</th>
+			<th>當期應繳總金額</th>
+			<th>當期最低應繳金額</th>
+			<th>可分期金額</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td>{{ info.StmtDate | date:'y/MM/dd' }}</td>
+			<td>{{ info.DueDate | date:'y/MM/dd' }}</td>
+			<td>{{ info.StmtAmt | number }}</td>
+			<td>{{ info.StmtMinAmt | number }}</td>
+			<td>{{ info.InstallmentAmt | number }}</td>
+		</tr>
+	</tbody>
+</table>
+<table *ngIf="isMobile" class="table-striped two-cols-list">
+	<tr>
+		<th>帳單日</th>
+		<td>{{ info.StmtDate | date:'y/MM/dd' }}</td>
+	</tr>
+	<tr>
+		<th>繳款截止日</th>
+		<td>{{ info.DueDate | date:'y/MM/dd' }}</td>
+	</tr>
+	<tr>
+		<th>當期應繳總金額</th>
+		<td>{{ info.StmtAmt | number }}</td>
+	</tr>
+	<tr>
+		<th>當期最低應繳金額</th>
+		<td>{{ info.StmtMinAmt | number }}</td>
+	</tr>
+	<tr>
+		<th>可分期金額</th>
+		<td>{{ info.InstallmentAmt | number }}</td>
+	</tr>
+</table>

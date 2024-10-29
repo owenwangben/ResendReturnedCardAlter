@@ -1,0 +1,13 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main><div class="container">
+		<div id="Accordion1" class="listNews">
+			<h3 style="font-size: 1em;"><a href="#">{{Title}}</a></h3>
+			<div>
+				<p *ngFor="let item of Messages">{{item}}</p>
+			</div>
+		</div>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="2" [Token]="token"></app-mobile-statement-nav>
+</div>

@@ -1,0 +1,30 @@
+{
+	"Result": {
+		"Items": [
+			{
+				"Rtn01": "活動名單：薪轉戶",
+				"Rtn02": "24",
+				"Rtn03": "100000",
+				"Rtn04": "100",
+				"Rtn05": "",
+				"Rtn06": "https://mma.tw/LoansSMS01",
+				"Rtn07": "最高可貸額度10萬元，首期利率 0.35 %，第二期利率3.99 %，手續費100元，隨時還款免綁約",
+				"Rtn08": "豐時貸|信貸方案|個人專屬額度|$100,000|第2期起利率3.99 %|隨時還款免違約金|首期專屬利率| 0.35 %|手續費100元起|最速30分鐘資金入袋"
+			}
+		]
+	},
+	"Header": {
+		"SessionID": "",
+		"ApplicationName": "EWEB2",
+		"ReferenceNo": "",
+		"UserID": "",
+		"RequestTime": "",
+		"TxCode": "",
+		"RemoteAddr": "",
+		"PageName": "",
+		"SsaToken": ""
+	},
+	"ResultCode": "00",
+	"ResultMessage": "",
+	"Error": null
+}

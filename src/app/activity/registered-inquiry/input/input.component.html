@@ -1,0 +1,28 @@
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="data-table" width="100%">
+			<tbody>
+				<tr>
+					<th *ngIf="!IsMobile">信用卡正卡人身分證字號</th>
+					<th *ngIf="IsMobile" class="mobile-col-5">身分證字號(正卡)</th>
+					<td>
+						<input type="text" class="artfld col-3" formControlName="idNumber" maxlength=10 placeholder="請輸入身分證字號">
+						<span class="mobile-hide">(外籍人士請輸入居留證號，共10碼)</span>
+					</td>
+				</tr>
+				<tr>
+					<th><span>驗證碼</span></th>
+					<td>
+						<app-vcaptcha formControlName="captcha"></app-vcaptcha>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<!-- <a href="javascript:void(0)" class="nbtn" (click)="onClear()">清除</a> -->
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">送出查詢</button>
+	</div>
+</form>

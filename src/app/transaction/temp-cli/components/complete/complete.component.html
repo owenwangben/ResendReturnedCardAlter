@@ -1,0 +1,9 @@
+<div class="rnotes full-size center">
+	<span *ngIf="Success" class="red">您本次申請的提高臨時信用額度已成功！</span>
+	<span *ngIf="!Success" class="red">感謝您的申請，申請資料已送出，將儘速為您處理，審核結果另將發送簡訊通知。如欲查詢申請進度請至﹝申請進度查詢﹞或於營業時間電洽客服中心查詢，謝謝。</span>
+  	<span class="transaction_number">交易序號：{{ RefNo }}</span>
+</div>
+<app-temp-cli-display></app-temp-cli-display>
+<div class="btn-zone">
+	<a class="nbtn" routerLink="/Transaction/TempCLIStatus">申請進度查詢</a>
+</div>

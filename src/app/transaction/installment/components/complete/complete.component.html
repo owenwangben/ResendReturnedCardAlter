@@ -1,0 +1,12 @@
+<div class="rnotes full-size center">
+	<span class="red">申請完成!</span>
+  <span class="transaction_number" *ngIf="Result.RefNo">交易編號：{{ Result?.RefNo }}</span>
+</div>
+
+<app-display></app-display>
+
+<div class="btn-zone">
+	<a *ngIf="sso" class="nbtn focus" href="javascript:void(0)" (click)="goStart()">再做一筆</a>
+	<a *ngIf="StmtRTE" class="nbtn" routerLink="/Transaction/RTEStmtRecords">帳單分期查詢</a>
+	<!-- <button type="button" class="nbtn focus" (click)="onSubmit()">帳單查詢</button> -->
+</div>

@@ -1,0 +1,75 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="submit();">
+					<div class="formblock">
+						<table class="new-datatable mobile-col-12">
+							<tr>
+								<th class="mobile-col-2">
+									<span>信用卡卡號</span>
+								</th>
+								<td class="mobile-col-10">
+									<app-card-number-input formControlName="cardNo"></app-card-number-input>
+									<span class="spanbox mobile-span">請依序輸入卡號16碼(美國運通卡15碼)</span>
+								</td>
+							</tr>
+							<tr>
+								<th class="mobile-col-4">
+									<span>身分證字號</span>
+								</th>
+								<td>
+									<input type="text" class="artfld col-3 mobile-col-12" formControlName="idNumber" maxlength=10 placeholder="請輸入身分證字號">
+									<span class="mobile-hide">(請輸入申辦信用卡本人身分證號碼，連同英文字母共十碼;外籍人士請輸入外僑居留證號)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>出生年月日</span>
+								</th>
+								<td>
+									<input type="text" formControlName="birthday" class="autofocus artfld col-2 mobile-col-10" datepicker [defDate]="defDate" maxlength="8" placeholder="例:20141113">
+									<span class="spanbox mobile-span">(日期填寫方式︰2014年11月13日請填寫20141113)</span>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<input type="checkbox" class="artfld" id="r2" formControlName="agree"/>
+									<label for="r2">
+										<span>
+											<span class="getCheck"></span>
+										</span>
+										<font class="red left fs15">申請人聲明已審閱
+											<a target="_blank" href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=mma" *ngIf="!IsMobile">
+												MMA金融交易網服務約定書
+											</a>
+											<a target="_blank" href="https://bank.sinopac.com/SearchMB/docdownload/sectionlist.aspx?sid=MMA" *ngIf="IsMobile">
+												MMA金融交易網服務約定書
+											</a>
+											內容且已充分瞭解並確認同意遵守。
+										</font>
+									</label>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>驗證碼</span>
+								</th>
+								<td>
+									<app-vcaptcha formControlName="captcha"></app-vcaptcha>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="btn-zone">
+						<button type="reset" class="nbtn">清除</button>
+						<button type="submit" class="nbtn focus">送出查詢</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

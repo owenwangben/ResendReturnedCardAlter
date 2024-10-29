@@ -1,0 +1,101 @@
+<div *ngIf="!detail">
+<table class="listing-table table-striped">
+	<thead>
+		<tr>
+			<th *ngIf="!isMobile">申請編號</th>
+			<th>卡片種類</th>
+			<th>申請狀態<span *ngIf="showDesc && isMobile"><br>說明</span></th>
+			<th *ngIf="showDesc && !isMobile">說明</th>
+			<th><span *ngIf="isMobile">申請編號<br></span>狀態時間</th>
+		</tr>
+	</thead>
+	<tr *ngFor="let item of model?.Items" (click)="showDetail(item)">
+		<td *ngIf="!isMobile">{{item.APPLNO}}</td>
+		<td>{{item.CARD_DESC}}</td>
+		<td style="text-align: left;">{{item.STATUS_DESC}}
+			<span *ngIf="showDesc && isMobile">
+				<div *ngIf="item.UploadFileMessages?.length> 0" style="text-align: left;">敬請提供：
+					<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.UploadFileMessages">
+						<li>{{msg}}</li>
+					</ul>
+					〔點選下方按鍵即可立即上傳缺補文件〕
+				</div>
+				<hr *ngIf="item.UploadFileMessages?.length > 0 && item.ServiceMessages?.length > 0">
+				<div *ngIf="item.ServiceMessages?.length > 0" style="text-align: left;">敬請提供：
+					<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.ServiceMessages">
+						<li>{{msg}}</li>
+					</ul>
+					〔請洽本行客服中心：02-2528-7776〕
+				</div>
+				<hr *ngIf="item.ServiceMessages?.length > 0 && item.DownloadFileMessages?.length > 0">
+				<div *ngIf="item.DownloadFileMessages?.length > 0" style="text-align: left;">敬請提供：
+					<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.DownloadFileMessages">
+						<li>{{msg}}</li>
+					</ul>
+					〔點選下方按鍵即可立即下載聲明書〕
+				</div>
+				<hr *ngIf="item.DownloadFileMessages?.length > 0 && item.Memo">
+				<div>{{item.Memo}}</div>
+			</span>
+		</td>
+		<td style="text-align:initial;" *ngIf="showDesc && !isMobile">
+			<div *ngIf="item.UploadFileMessages?.length > 0">敬請提供：
+				<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.UploadFileMessages">
+					<li>{{msg}}</li>
+				</ul>
+				〔點選下方按鍵即可立即上傳缺補文件〕
+			</div>
+			<hr *ngIf="item.UploadFileMessages?.length > 0 && item.ServiceMessages?.length > 0">
+			<div *ngIf="item.ServiceMessages?.length > 0">敬請提供：
+				<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.ServiceMessages">
+					<li>{{msg}}</li>
+				</ul>
+				〔請洽本行客服中心：02-2528-7776〕
+			</div>
+			<hr *ngIf="item.ServiceMessages?.length > 0 && item.DownloadFileMessages?.length > 0">
+			<div *ngIf="item.DownloadFileMessages?.length > 0">敬請提供：
+				<ul style="padding-left: 20px; list-style:disc;" *ngFor="let msg of item?.DownloadFileMessages">
+					<li>{{msg}}</li>
+				</ul>
+				〔點選下方按鍵即可立即下載聲明書〕
+			</div>
+			<hr *ngIf="item.DownloadFileMessages?.length > 0 && item.Memo">
+			<div>{{item.Memo}}</div>
+		</td>
+		<td><span *ngIf="isMobile">{{item.APPLNO}}<br></span>{{item.STATUS_DATE}}</td>
+	</tr>
+</table>
+<div class="btn-zone">
+	<button type="button" class="nbtn" (click)="goPrev()">重新查詢</button>
+	<a *ngIf="requireUploadFile" class="nbtn" routerLink="/Application/ApplyCard/Upload" >上傳缺補文件</a>
+	<a *ngIf="requireDownloadFile" class="nbtn" [href]="downloadlink" target="_blank">下載聲明書</a>
+	<button *ngIf="model.CanApplyUrgentCase && !appliedUrgentCase" class="nbtn" (click)="showApplyUrgentCaseUI=true;">急需用卡</button>
+</div>
+</div>
+<form *ngIf="showApplyUrgentCaseUI" #form="ngForm" (ngSubmit)="onSubmit(form);">
+	<div class="formblock">
+		<table class="data-table" width="100%">
+			<tbody>
+				<tr>
+					<th>申請原因</th>
+					<td>
+						<div class="artfld select col-4">
+							<select name="Reason" [(ngModel)]="Reason" required mweb-select="請選擇申請原因">
+								<option value="" disabled>請選擇申請原因</option>
+								<option *ngFor="let option of reasonOptions" [value]="option">{{ option }}
+								</option>
+							</select>
+						</div>
+						<div style="margin-top:5px">
+							<input type="text" class="artfld col-4" name="ReasonDesc" [(ngModel)]="ReasonDesc"
+								placeholder="請簡述說明" maxlength="10" />
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<button type="submit" class="nbtn focus">確認送出</button>
+	</div>
+</form>

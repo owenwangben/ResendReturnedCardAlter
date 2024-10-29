@@ -1,0 +1,88 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div *ngIf="(BillType === 2 && eStatementRemailInfoResultModel?.Mobile?.trim().length > 0) || (BillType === 1 && eStatementRemailInfoResultModel?.Email?.trim().length > 0)">
+					<form [formGroup]="form" (ngSubmit)="onSubmit()">
+						<div class="formblock">
+							<div *ngIf="IsMobile">
+								<table class="new-datatable mobile-col-12">
+									<tbody>
+										<tr *ngIf="BillType == 1">
+											<th class="mobile-col-5">
+												<span>電子帳單寄送信箱</span>
+											</th>
+											<td>
+												{{eStatementRemailInfoResultModel?.Email | mask:'1-' + ((eStatementRemailInfoResultModel?.Email || '').indexOf('@') - 1):'*'}}
+											</td>
+										</tr>
+										<tr *ngIf="BillType == 2">
+											<th class="mobile-col-5">
+												<span>行動帳單寄送手機</span>
+											</th>
+											<td>
+												{{eStatementRemailInfoResultModel?.Mobile | mobile}}
+											</td>
+										</tr>
+										<tr>
+										<th>
+											<span>補寄期別</span>
+										</th>
+										<td>
+											<div class="artfld select col-auto mobile-col-10">
+												<select formControlName="BillDate" mweb-select="請選擇帳單期別">
+													<option value="" disabled>請選擇帳單期別</option>
+													<option *ngFor="let item of eStatementRemailInfoResultModel?.BillMonth" [value]="item" selected="selectMonth = moment(item).format('YYYYMM')">{{item | date:'yyyy年MM月'}}</option>
+												</select>
+											</div>
+										</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<table *ngIf="!IsMobile" class="new-datatable mobile-col-12">
+								<tbody>
+									<tr *ngIf="BillType == 2">
+										<th>行動帳單寄送手機</th>
+										<td>{{eStatementRemailInfoResultModel?.Mobile | mobile}} <span class="red">(若欲變更請洽信用卡客服02-2528-7776)</span></td>
+									</tr>
+									<tr *ngIf="BillType == 1">
+										<th class="mobile-col-5">
+											<span>電子帳單寄送信箱</span>
+										</th>
+										<td>
+											{{eStatementRemailInfoResultModel?.Email | mask:'1-' + ((eStatementRemailInfoResultModel?.Email || '').indexOf('@') - 1):'*'}}
+										</td>
+									</tr>
+									<tr>
+										<th>
+											<span>補寄期別</span>
+										</th>
+										<td>
+											<span *ngFor="let item of eStatementRemailInfoResultModel?.BillMonth;let idx = index" [className]="'period ' + selectMonthClass[idx]" (click)="onSelectMonth(idx)">{{item | date:'yyyyMM'}}</span>
+											</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn-zone">
+								<app-link-button type="cancel">取消</app-link-button>
+								<button type="submit" class="nbtn focus">{{BillType == 1 ? '補寄電子帳單' : '補寄行動帳單'}}</button>
+							</div>
+						</div>
+					</form>
+					<div *ngIf="BillType == 1" class="rowElem" loadHtml="/mma8/card/htmls/補寄電子帳單注意事項.html"></div>
+					<div *ngIf="BillType == 2" class="rowElem" loadHtml="/mma8/card/htmls/補寄行動帳單注意事項.html"></div>
+				</div>
+				<div class="rowElem fs15" *ngIf="eStatementRemailInfoResultModel?.BillType == 0 && eStatementRemailInfoResultModel?.Mobile?.trim().length <= 0">
+					<span class="fwb">親愛的客戶您好:<br *ngIf="IsMobile" />
+					<br />因您尚未留存手機於本行，請撥打客服專線<a *ngIf="IsMobile" [href]="servicePhoneUri" (click)="dialPhone()" style="color: #2196f3;text-decoration: underline;">02-2528-7776</a><span *ngIf="!IsMobile">02-2528-7776</span>提供行動電話後，方可申請行動帳單。<span *ngIf="!IsMobile">您亦可點選下方按鈕，選擇補寄實體帳單。</span></span>
+					<div class="btn-zone" *ngIf="!IsMobile">
+						<a routerLink="/Application/StatementReprint" class="nbtn focus">補寄實體帳單</a>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

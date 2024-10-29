@@ -1,0 +1,529 @@
+<form [formGroup]="form">
+	<app-applycard-step-indicator [step]="0"></app-applycard-step-indicator>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">以下條款勾選「同意」者，視為已詳閱且同意，並請詳閱「
+					<a href="javascript:void(0)" class="open-lbox" (click)="openlbox('#terms-other-lbox')">{{cardinfo?.IsDualCurrencyCard ? "幣倍卡特別約定條款暨其他條款" : "其他條款"}}</a>」。
+				</span>
+			</div>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms4-lbox')">信用卡申請書同意條款暨約定事項</a>
+					<br>
+					<span class="red">(須同意方可申請)</span>
+				</span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="a41" formControlName="AgreeTnC" class="artfld surround" [value]="true">
+						<label for="a41">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a42" formControlName="AgreeTnC" class="artfld surround" [value]="false">
+						<label for="a42">我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.AgreeTnC === false" class="red center req">很抱歉，如您不同意信用卡申請書同意條款暨約定事項，無法完成線上辦卡，如有任何疑問，歡迎您撥打 24 小時服務專線 02-2528-7776。</p>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="showTwdAuthDebitUI && hasTwdAccounts">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#AuthDebitAgreement-lbox')">永豐信用卡自動扣繳申請及注意事項</a>
+				</span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebit_Y" formControlName="AgreeTwdAuthDebit" class="artfld surround" [value]="true">
+						<label for="AgreeTwdAuthDebit_Y">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebit_N" formControlName="AgreeTwdAuthDebit" class="artfld surround" [value]="false">
+						<label for="AgreeTwdAuthDebit_N">我不同意</label>
+					</li>
+				</ul>
+        <p class="red" *ngIf="cardinfo?.CardFace === 428001 || cardinfo?.CardFace === 428178" style="margin-bottom: 16px;">
+          *提醒您！申辦DAWAY卡須申請永豐銀行帳戶自動扣繳，方可享有新戶加碼回饋！
+        </p>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="!cardinfo?.IsDualCurrencyCard && form.value.AgreeTwdAuthDebit">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>臺幣帳款自動扣繳</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr class="empty">
+						<th></th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>永豐臺幣存款帳號<br class="hidden-min">(限正卡本人帳戶)</p>
+						</th>
+						<td>
+							<div class="chain-phone with-qmark switch-input">
+								<div class="toggle-input-method">
+									<div class="artfld select col-all-min">
+										<select formControlName="TaiwanDepositAccount">
+											<option [ngValue]="null">請選擇</option>
+											<option *ngFor="let account of twdAccounts" [ngValue]="account.AccountNo">{{account.IsDigitalAccount ? account.AccountNo + "*" : account.AccountNo}}</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<p class="pink2">※提醒您！</p>
+							<p class="pink2">1. 填寫帳號即同意申請【臺幣帳款自動轉帳扣繳】。</p>
+							<p class="pink2">2. 同意後本行將依此帳號自動扣繳您所有本行信用卡新臺幣費用，若您先前已設定本行臺幣帳戶自動轉帳扣繳舊有約定即失效。</p>
+							<p class="pink2">3. 帳號後「*｣表數位帳戶，請注意相關卡片綁定數位帳戶加碼優惠。</p>
+						</td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="TwdAuthDebitAmount_1" formControlName="TwdAuthDebitAmount" [value]="1" class="artfld surround">
+									<label for="TwdAuthDebitAmount_1">應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="TwdAuthDebitAmount_2" formControlName="TwdAuthDebitAmount" [value]="2" class="artfld surround">
+									<label for="TwdAuthDebitAmount_2">最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+  <div class="content" *ngIf="showTwdAuthDebitUI && !hasTwdAccounts && (cardinfo?.CardFace === 428001 || cardinfo?.CardFace === 428178)">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#AuthDebitAgreement-lbox')">預設申請自動轉帳扣繳及注意事項</a>
+				</span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebitReserved_Y" formControlName="AgreeTwdAuthDebitReserved" class="artfld surround" [value]="'Y'">
+						<label for="AgreeTwdAuthDebitReserved_Y">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="AgreeTwdAuthDebitReserved_N" formControlName="AgreeTwdAuthDebitReserved" class="artfld surround" [value]="'N'">
+						<label for="AgreeTwdAuthDebitReserved_N">我不同意</label>
+					</li>
+				</ul>
+        <p class="red" style="margin-bottom: 16px;">*提醒您！<br />
+					1. 申辦DAWAY卡須申請永豐銀行帳戶自動扣繳，方可享有新戶加碼回饋！<br />
+					2. 如於核卡日後30日內開立完成DAWHO數位帳戶，視為您同意設定為自動轉帳扣繳帳戶，自動扣繳您歸戶下所有永豐銀行信用卡新臺幣帳款，若您先前已設定其他新臺幣存款帳戶為自動轉帳扣繳帳戶，舊有約定即失其效力。
+				</p>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="showTwdAuthDebitUI && !hasTwdAccounts && (cardinfo?.CardFace === 428001 || cardinfo?.CardFace === 428178) &&form.value.AgreeTwdAuthDebitReserved == 'Y'">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend>臺幣帳款自動扣繳</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="TwdAuthDebitAmount_1" formControlName="TwdAuthDebitAmount" [value]="1" class="artfld surround">
+									<label for="TwdAuthDebitAmount_1">應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="TwdAuthDebitAmount_2" formControlName="TwdAuthDebitAmount" [value]="2" class="artfld surround">
+									<label for="TwdAuthDebitAmount_2">最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="content" *ngIf="cardinfo?.ShowDawhoAuthDebitUI">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms9-lbox')">永豐信用卡自動扣繳申請及注意事項</a>
+					<br>
+					<span class="red">(須同意方可申請)</span>
+				</span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="AgreeDawhoAuthDebit_Y" formControlName="AgreeDawhoAuthDebit" class="artfld surround" [value]="true">
+						<label for="AgreeDawhoAuthDebit_Y">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="AgreeDawhoAuthDebit_N" formControlName="AgreeDawhoAuthDebit" class="artfld surround" [value]="false">
+						<label for="AgreeDawhoAuthDebit_N">我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.AgreeDawhoAuthDebit === true" class="red" style="margin-bottom: 16px;">提醒您：<br />
+					1. 本次自動申請扣繳，係約定依您名下【數位存款新臺幣帳戶】自動扣繳所有本行信用卡新臺幣費用。<br />
+					2. 若您原已有約定自動扣繳，本次【數位存款新臺幣帳戶】扣繳約定生效時，既有約定即失效。<br />
+					3. 若您同時持有本行幣倍卡，幣倍卡之外幣交易及費用，仍依您原約定之外幣帳戶進行費用扣繳。<br />
+				</p>
+				<p *ngIf="form.value.AgreeDawhoAuthDebit === false" class="red center">申請DAWHO現金回饋信用卡，需設定您的數位帳戶自動扣繳帳款，如不同意無法完成申請。</p>
+			</div>
+			<div class="prfy">
+				<span class="title">
+					<p><span class="red">*</span>授權扣繳金額</p>
+					<br>
+				</span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="DawhoAuthDebitAmount_1" formControlName="DawhoAuthDebitAmount" class="artfld surround" [value]="1">
+						<label for="DawhoAuthDebitAmount_1">應繳總金額</label>
+					</li>
+					<li>
+						<input type="radio" id="DawhoAuthDebitAmount_2" formControlName="DawhoAuthDebitAmount" class="artfld surround" [value]="2">
+						<label for="DawhoAuthDebitAmount_2">最低應繳金額</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.ProductType == 3 || cardinfo?.IsVirtualCard" class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms8-lbox')">虛擬卡約定條款同意事項
+					</a>
+					<div>
+						<span class="red">(須同意方可申請)</span>
+					</div>
+				</span>
+				<ul class="ctrl-block col-2-min center terms8">
+					<li>
+						<input type="radio" id="a81" formControlName="AgreeVirtualCard" class="artfld surround" [value]="true">
+						<label for="a81">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a82" formControlName="AgreeVirtualCard" class="artfld surround" [value]="false">
+						<label for="a82">我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div *ngIf="flag == '01' && cardinfo?.IsPriorActivateCard" class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#PriorActivateTerms-lbox')">優先啟用碼同意事項
+					</a>
+					<div>
+						<span class="red">(須同意方可申請)</span>
+					</div>
+				</span>
+				<ul class="ctrl-block col-2-min center terms8">
+					<li>
+						<input type="radio" id="a81" formControlName="AgreePriorActivateCard" class="artfld surround" [value]="true">
+						<label for="a81">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a82" formControlName="AgreePriorActivateCard" class="artfld surround" [value]="false">
+						<label for="a82">我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div *ngIf="cardinfo?.IsBrandedCard" class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms5-lbox')">聯名卡/認同機構之個人資料使用同意條款</a>
+					<br>
+					<span class="red">(須同意方可申請)</span>
+				</span>
+				<ul class="ctrl-block col-2-min center terms5">
+					<li>
+						<input type="radio" id="a51" formControlName="AgreeBrandedCard" class="artfld surround" [value]="true">
+						<label for="a51">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a52" formControlName="AgreeBrandedCard" class="artfld surround" [value]="false">
+						<label for="a52">我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.AgreeBrandedCard === false" class="red center req">很抱歉，如您不同意聯名卡/認同機構之個人資料使用同意條款，無法完成線上辦卡，如有任何疑問，歡迎您撥打 24 小時服務專線 02-2528-7776。</p>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="isShowShareHoldingTerm">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<a [href]="getShareHoldingTermPDFUrl()" target="_blank" class="title-black udline open-lbox">
+						資料共享服務同意書及告知事項（選填）</a>
+				</span>
+				<ul class="ctrl-block col-2-min center terms7">
+					<li>
+						<input type="radio" id="a31" formControlName="ShareHoldingFlag" class="artfld surround" value="Y">
+						<label for="a31">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a32" formControlName="ShareHoldingFlag" class="artfld surround" value="N">
+						<label for="a32">我不同意</label>
+					</li>
+				</ul>
+				<div class="center">(未勾選視為不同意)</div>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="!(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms6-lbox')">共同行銷/合作推廣個人資料</a>
+					<div *ngIf="cardinfo?.IsShopCard && !cardinfo?.IsIpassCard">
+						<span class="red">(須不同意方可申請)</span>
+					</div>
+				</span>
+				<ul class="ctrl-block col-2-min center terms6">
+					<li>
+						<input type="radio" id="a61" formControlName="AgreeAllCompany" class="artfld surround" [value]="true">
+						<label for="a61">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a62" formControlName="AgreeAllCompany" class="artfld surround" [value]="false">
+						<label for="a62">我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="!(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>
+					<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms7-lbox')">{{cardinfo?.IsShopCard && !cardinfo?.IsIpassCard ? "不提供個人資料予第三人行銷條款" : "第三人行銷之個人資料使用同意條款"}}</a>
+					<div *ngIf="cardinfo?.IsShopCard && !cardinfo?.IsIpassCard">
+						<span class="red">(須同意方可申請)</span>
+					</div>
+				</span>
+				<ul class="ctrl-block col-2-min center terms7">
+					<li>
+						<input type="radio" id="a71" formControlName="AgreeThirdParty" class="artfld surround" [value]="true">
+						<label for="a71">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a72" formControlName="AgreeThirdParty" class="artfld surround" [value]="false">
+						<label for="a72">我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+  <div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					「<a href="javascript:void(0)" class="title-black udline open-lbox" (click)="openlbox('#terms10-lbox')">
+            行動電話號碼辦理身分驗證服務之使用者約定條款及隱私權告知條款</a>」，並同意 貴行將本人行動電話送至電信業者進行身分認證（選填）。
+				</span>
+				<ul class="ctrl-block col-2-min center terms7">
+					<li>
+						<input type="radio" id="a91" formControlName="MobileVerificationServices" class="artfld surround" [value]="true">
+						<label for="a91">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a92" formControlName="MobileVerificationServices" class="artfld surround" [value]="false">
+						<label for="a92">我不同意</label>
+					</li>
+				</ul>
+        <div class="center">(未勾選視為不同意)</div>
+			</div>
+		</section>
+	</div>
+  <!-- <div *ngIf="cardinfo.CardFace === 428001 || cardinfo.CardFace === 428178" class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span>※ 申請人同意本行基於回饋與服務卡友之立場，核發卡別可獲得永豐銀行提供之消費回饋為連家網路商業股份有限公司LINE Biz+ Taiwan Ltd.(以下簡稱LINE Pay)之LINE POINTS點數，並得將申請人基本資料、往來交易資料等提供與LINE Pay，作為消費回饋處理、資料串接、訊息通知及點數發放等相關目的範圍內使用。</span>
+			</div>
+		</section>
+	</div> -->
+	<p class="red"></p>
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()">上一步</a>
+		<a href="javascript:void(0)" class="nbtn focus" id="checkRequirment" (click)="submit()">下一步</a>
+	</div>
+	<div class="lboxed">
+		<div class="close"></div>
+		<div class="lbox-block">
+			<div id="terms4-lbox" class="terms-lbox">
+				<h3>信用卡申請書同意條款暨約定事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.ApplicationAgreementUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeTnC: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeTnC: false})">不同意</a>
+				</div>
+			</div>
+			<div id="terms5-lbox" class="terms-lbox">
+				<h3>聯名卡/認同機構之個人資料使用同意條款</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.BrandCardPersonalDataTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeBrandedCard: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeBrandedCard: false})">不同意</a>
+				</div>
+				<p *ngIf="!cardinfo?.ShowDawhoAuthDebitUI && !cardinfo?.IsShopCard && !IsEasternCard">上欄勾選同意者，如所申請之卡片中含悠遊或一卡通功能者，則視為申請人亦同意 貴行提供個人資料予悠遊卡(股)公司或一卡通票證(股)公司。</p>
+				<p *ngIf="cardinfo?.IsShopCard && !cardinfo?.IsIpassCard">提供個人資料予聯名/認同卡之聯名/認同機構(美商美安美台股份有限公司台灣分公司及悠遊卡股份有限公司《對悠遊卡公司僅提供申請書資料，未附加悠遊卡功能之卡片，則不會將資料提供予悠遊卡公司美安版共同行銷/合作推廣個人資料》)</p>
+				<p *ngIf="cardinfo?.IsShopCard && cardinfo?.IsIpassCard">提供個人資料予聯名/認同卡之聯名/認同機構申請人於上欄勾選同意者，如所申請之卡片中含一卡通功能者，則視為申請人亦同意 貴行提供個人資料予(含美安美商 美台股份有限公司台灣分公司及一卡通票證(股)公司)</p>
+				<p *ngIf="cardinfo?.ShowDawhoAuthDebitUI">於上方點選【同意】即視為申請人同意  貴行提供個人資料予聯名機構：悠遊卡股份有限公司</p>
+				<p *ngIf="IsEasternCard">提供個人資料予聯名/認同卡之聯名/認同機構(東森全球事業股份有限公司及悠遊卡股份有限公司)</p>
+			</div>
+			<div id="terms6-lbox" class="terms-lbox">
+				<h3>共同行銷/合作推廣個人資料</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.CoMarketingPersonalDataTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeAllCompany: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeAllCompany: false})">不同意</a>
+				</div>
+				<div *ngIf="!cardinfo.IsShopCard" class="extra-remind">
+					<p class="red">下述所有公司(如點選同意者，始構成共同行銷/合作推廣之同意)，未點選同意者，表示不同意</p>
+					<p>
+						<span>A.永豐金證券股份有限公司</span>
+						<br>
+						<span>B.永豐金租賃股份有限公司</span>
+						<br>
+						<span>C.永豐證券投資信託股份有限公司</span>
+						<br>
+						<span>D.永豐期貨股份公司</span>
+						<br>
+						<span>E.永豐創業投資股份有限公司</span>
+						<br>
+						<span>F.永豐證券投資顧問股份有限公司</span>
+					</p>
+				</div>
+			</div>
+			<div id="terms7-lbox" class="terms-lbox">
+				<h3>第三人行銷之個人資料使用同意條款</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.ThirdPartyMarketingTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeThirdParty: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeThirdParty: false})">不同意</a>
+				</div>
+				<p>{{cardinfo?.IsShopCard && !cardinfo?.IsIpassCard ? "不" : ""}}提供個人資料予與永豐銀行有特約合作關係之第三人(安達國際人壽保險股份有限公司、保誠人壽保險股份有限公司)，申請人若未勾選視為不同意，將無法獲得上開公司之相關優惠活動或行銷訊息。日後申請人如不同意上述資料之提供，得隨時電話通知永豐銀行客服中心(02)2528-7776 取消。</p>
+			</div>
+      <div id="terms10-lbox" class="terms-lbox">
+				<h3>行動電話號碼辦理身分驗證服務之使用者約定條款及隱私權告知條款</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.MobileVerificationServicesUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({MobileVerificationServices: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({MobileVerificationServices: false})">不同意</a>
+				</div>
+        <div class="center">(未勾選視為不同意)</div>
+			</div>
+			<div id="terms8-lbox" class="terms-lbox">
+				<h3>虛擬卡約定條款同意事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.VirtualCardTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="#" class="nbtn focus close">關閉</a>
+				</div>
+			</div>
+			<div id="PriorActivateTerms-lbox" class="terms-lbox">
+				<h3>優先啟用碼同意事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo.AgreePriorActivateCardTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="#" class="nbtn focus close">關閉</a>
+				</div>
+			</div>
+			<div id="terms9-lbox" class="terms-lbox">
+				<h3>DAWHO現金回饋信用卡自動扣繳注意事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.DawhoAuthDebitAgreementUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeDawhoAuthDebit: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeDawhoAuthDebit: false})">不同意</a>
+				</div>
+			</div>
+			<div id="AuthDebitAgreement-lbox" class="terms-lbox">
+				<h3>信用卡自動扣繳注意事項</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.AuthDebitAgreementUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeTwdAuthDebit: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeTwdAuthDebit: false})">不同意</a>
+				</div>
+			</div>
+			<div id="terms-other-lbox" class="terms-lbox">
+				<h3>{{cardinfo?.IsDualCurrencyCard ? "幣倍卡特別約定條款暨其他條款" : "其他條款"}}</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.OtherTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="#" class="nbtn focus close">關閉</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

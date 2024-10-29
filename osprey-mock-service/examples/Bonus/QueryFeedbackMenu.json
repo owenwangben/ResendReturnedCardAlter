@@ -1,0 +1,25 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "CardName": "現金回饋卡現金回饋查詢",
+                "CardGroupCode": "CA"
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

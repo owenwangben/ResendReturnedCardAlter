@@ -1,0 +1,21 @@
+{
+    "Result": {
+        "ApproveCode": "146893",
+        "ResponseCode": "00",
+        "ResponseMsg": "成功交易(卡號確認)"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "06",
+    "ResultMessage": "",
+    "Error": null
+}

@@ -1,0 +1,67 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" >
+<!-- TemplateBeginEditable name="doctitle" -->
+<title>永豐銀行信用卡-行動電子帳單</title>
+<!-- TemplateEndEditable -->
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+<link href="../css/reset.css" rel="stylesheet" type="text/css">
+<link href="../css/style.css" rel="stylesheet" type="text/css">
+<!-- TemplateBeginEditable name="head" -->
+<!-- TemplateEndEditable -->
+</head>
+
+<body>
+<div class="wrapper">
+  <header>
+    <div class="container"><a href="../index.html"><i class="fas fa-home"></i></a><!-- TemplateBeginEditable name="EditRegionTitle" --><a href="../index.html" class="logo" target="_blank"><span>信用卡服務網</span></a><!-- TemplateEndEditable --></div>
+  </header>
+  <!-- TemplateBeginEditable name="EditRegion" -->
+  <main>
+    <div class="container">
+      <h1>最新訊息</h1>
+      <ul class="listNews">
+        <li><a href="">用卡安全宣導</a></li>
+        <li><a href="">【Display Card 3D網路交易驗證服務通知】</a></li>
+        <li><a href="">【Display Card網路交易安全驗證服務通知】2018/4/24起採用「簡訊傳送動態密碼」方式</a></li>
+        <li><a href="">永豐悠遊HiCard權益通知</a></li>
+        <li><a href="">【公告】107/1/27 (六) 08:00-12:00 永豐信用卡服務網維護通知</a></li>
+        <li><a href="">永豐信用卡服務網-服務整合通知</a></li>
+        <li><a href="">用卡安全宣導</a></li>
+        <li><a href="">【Display Card 3D網路交易驗證服務通知】</a></li>
+        <li><a href="">【Display Card網路交易安全驗證服務通知】2018/4/24起採用「簡訊傳送動態密碼」方式</a></li>
+        <li><a href="">永豐悠遊HiCard權益通知</a></li>
+        <li><a href="">【公告】107/1/27 (六) 08:00-12:00 永豐信用卡服務網維護通知</a></li>
+        <li><a href="">永豐信用卡服務網-服務整合通知</a></li>
+      </ul>
+    </div>
+  </main>
+  <nav>
+    <div class="container">
+      <ul class="L6">
+        <li><a href=""><i class="fas fa-wallet"></i><br>
+          帳務<br>
+          資訊</a></li>
+        <li><a href="details.html"><i class="fas fa-clipboard-list"></i><br>
+          消費<br>
+          明細</a></li>
+        <li class="active"><a href="../message.html"><i class="fas fa-envelope"></i><br>
+          最新<br>
+          訊息</a></li>
+        <li><a href=""><i class="fas fa-gift"></i><br>
+          紅利<br>
+          回饋</a></li>
+        <li><a href="apply.html"><i class="fas fa-shopping-cart"></i><br>
+          我要<br>
+          申請</a></li>
+        <li><a href=""><i class="fas fa-user-tie"></i><br>
+          客戶<br>
+          服務</a></li>
+      </ul>
+    </div>
+  </nav>
+  <!-- TemplateEndEditable --></div>
+</body>
+</html>

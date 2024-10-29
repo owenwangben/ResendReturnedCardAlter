@@ -1,0 +1,240 @@
+@charset "utf-8";
+
+/* ----------------
+   general
+   ----------------*/
+html,body{margin:0; padding:0; height:100%;}
+
+.sinopac_web{
+	min-height:100%;
+	font-size:16px; line-height:1.5; font-family:arial,sans-serif; color:#333;
+	background-color:#d2f3ff;
+	background-image: url(bg_phone.png), url(bg.png);
+	background-repeat:no-repeat, repeat-x;
+	background-position: -18px 0px, 0 0;
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+.sinopac_web img { border: 0;  -ms-interpolation-mode: bicubic; }
+.sinopac_web p{ margin:0;}
+.sinopac_web h1, .sinopac_web h2,.sinopac_web h3 { font-weight:normal;}
+
+.sinopac_web .clear{clear:both;}
+
+.sinopac_web .ico{display:inline-block; background:url(ico.png) no-repeat; vertical-align:middle;}
+.sinopac_web .ico.ico_promo, .sinopac_web .ico.ico_mb{width:18px; height:18px;}
+.sinopac_web .ico.ico_promo{ background-position:0 0;}
+.sinopac_web .ico.ico_mb{background-position:0 -20px; }
+.sinopac_web .ico.ico_ar_dwn{background-position:0 -40px; width:18px; height:12px;}
+.sinopac_web .ico.ico_prev , .sinopac_web  .ico.ico_next{ width:18px; height:20px; margin:0;}
+.sinopac_web .ico.ico_prev{background-position:0 -60px;}
+.sinopac_web .ico.ico_next{background-position:0 -80px; margin-left:8px;}
+.sinopac_web .ico.ico_week, .sinopac_web .ico.ico_month{width:30px; height:25px; margin-right:5px; margin-top:-8px;}
+.sinopac_web .ico.ico_week{background-position:0 -100px;}
+.sinopac_web .ico.ico_month{background-position:0 -125px;}
+.sinopac_web .ico.ico_new{ background-position:0 -150px; width:35px; height:25px;}
+
+.sinopac_web .main{padding:10px 10px 5px;}
+.sinopac_web .btn{text-decoration:none;-webkit-box-sizing:border-box; -moz-box-sizing:border-box;box-sizing:border-box;}
+.sinopac_web .btn_new {
+	-moz-box-shadow:0 1px #718bba;
+	-webkit-box-shadow:0 1px #718bba;
+	box-shadow:0 1px #718bba;
+	background:#de0006 url(bg_btn_new.png) repeat-x center center;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;	
+	border:1px solid #920000;
+	display:block;
+	color:#fff;
+	padding:0 8px;
+	height:29px;
+	line-height:26px;
+	font-size:93.333%;
+}
+.sinopac_web .ellipsis{ text-overflow:ellipsis; white-space:nowrap; }
+
+
+/* ----------------
+   for iPad app
+   ----------------*/
+
+@media only screen and (min-width : 720px) {
+	.sinopac_web{
+		background-color:#b8ddfc;
+		background-image: url(bg_ipad.png), url(bg_ipad2.png);
+		background-repeat: repeat, repeat-x;
+		font-size:18px;
+		line-height:1.7333;
+	}
+	.sinopac_web .title{ font-weight:bold;}
+	.sinopac_web .main{ padding:15px;}
+	.sinopac_web .nav ul li a{font-weight:bold;}
+	.sinopac_web .news_wrap .btns_wrap a{width:48.8%;font-weight:bold;}
+	.sinopac_web .news_wrap .ad_box img{
+		border-radius:10px; 
+		-webkit-border-radius:10px; 
+		-moz-border-radius:10px;
+	}
+	.sinopac_web .subbar{
+		border:#4f6a9c solid 1px;
+		border-bottom:#39568b solid 1px;
+		border-radius:10px; 
+		-webkit-border-radius:10px; 
+		-moz-border-radius:10px;
+		margin:0 15px;
+	}
+	.sinopac_web .push_top{ padding-top:15px;}
+}
+
+/* ----------------
+   Retina Display
+   ----------------*/
+@media 
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and (-o-min-device-pixel-ratio: 2/1),
+only screen and (min-device-pixel-ratio: 2),
+only screen and (min-resolution: 192dpi),
+only screen and (min-resolution: 2dppx) { 
+ 	.sinopac_web {background-image: url(bg_phone.png), url(bg.png); background-size:235px 235px, 10px 480px;}
+	.sinopac_web .ico{ background-image:url(ico@2x.png); background-size:35px 175px; }
+	.sinopac_web .promo_list .banner_box .time_box_top, .sinopac_web .promo_list .banner_box .time_box{background-image:url(promo_time_bg@2x.png); background-size:110px 300px;}
+	.sinopac_web .btn_new{background-image:url(bg_btn_new@2x.png); background-size:5px 29px}
+	.sinopac_web .news_wrap .btns_wrap a{background-image:url(bg_btn_b@2x.png); background-size:5px 52px}
+	.sinopac_web .news_list a{background-image:url(cell_arw@2x.png); background-size:20px 18px}
+	.sinopac_web .news_list a.date{background-image:url(bg_date@2x.png); background-size:35px 60px;}
+}
+
+
+
+/* 
+ * ============================================================
+ * card contentflow
+ * ============================================================
+ */
+
+.ContentFlow .title{ 
+	font-size:22px;
+	font-weight:bold;
+	display:block;
+	margin:1em auto .7em;
+	text-align:center;
+}
+
+.ContentFlow .flow .item canvas.content {
+	height: 100%;
+	width: 100%
+}
+.ContentFlow .flow .item.active { cursor: pointer }
+.ContentFlow .flow .item .caption {
+	font-size: 100%;
+	font-weight: 700;
+	text-align: center;
+	color: #000;
+	max-height: 30%;
+	bottom: 10%;
+	width: 100%;
+	position: absolute;
+	display: none
+}
+
+.ContentFlow .scrollbar {
+	width: 50%;
+	height: 16px;
+	overflow: visible;
+	position: relative;
+	z-index: 1;
+	visibility: hidden;
+	margin: 10px auto 0
+}
+.ContentFlow .scrollbar .slider {
+	width: 16px;
+	height: 16px;
+	cursor: move;
+	position: absolute
+}
+
+.ContentFlow .scrollbar .slider .position {
+	top: 120%;
+	font-size: 16px;
+	font-weight: 700;
+	color: silver;
+	position: absolute;
+	text-align: center
+}
+.ContentFlow .globalCaption {
+	text-align: center;
+	font-weight:bold;
+	color: #000;
+	font-size: 18px;
+	height: 20px;
+	position: relative;
+	z-index: 1;
+	margin: 1em auto;
+}
+.ContentFlow .loadIndicator {
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	background: #000;
+	position: absolute;
+	z-index: 65000
+}
+.ContentFlow .loadIndicator .indicator {
+	width: 100%;
+	height: 100%
+}
+
+.ContentFlow {
+	position: relative;
+	overflow: hidden
+}
+.ContentFlow * {
+	margin: 0;
+	padding: 0
+}
+.ContentFlow img { -ms-interpolation-mode: bicubic }
+.ContentFlow .mouseoverCheckElement {
+	position: absolute;
+	width: 0;
+	height: 0;
+	left: 0;
+	visibility: hidden
+}
+.ContentFlow:hover .mouseoverCheckElement { left: 1px }
+.ContentFlow .flow {
+	position: relative;
+	z-index: 0;
+	visibility: hidden;
+	width: 100%;
+	margin: 0 auto
+}
+
+
+.ContentFlow .flow.hidden { visibility: hidden }
+.ContentFlow .flow .item {
+	position: absolute;
+	visibility: hidden;
+	top: 0;
+	left: 0;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+.ContentFlow .flow .item div.content {
+	width: 100%;
+	height: 100%
+}
+.ContentFlow .flow .item .label { display: none }
+.ContentFlow .flow .item canvas.reflection { margin-top: -1px }
+.ContentFlow .flow .item img.content, .ContentFlow .flow .item img.reflection, .ContentFlow .flow .item canvas.reflection { width: 100% }
+.ContentFlow .flow .item .caption a, .ContentFlow .flow .item .caption a:link, .ContentFlow .flow .item .caption a:visited, .ContentFlow .flow .item .caption a:active, .ContentFlow .flow .item .caption a:hover, .ContentFlow .globalCaption .caption a, .ContentFlow .globalCaption .caption a:link, .ContentFlow .globalCaption .caption a:visited, .ContentFlow .globalCaption .caption a:active, .ContentFlow .globalCaption .caption a:hover {
+	color: #FFF;
+	font-size: 0.8em;
+	font-style: italic;
+	text-decoration: none
+}
+.ContentFlow .flow .item .caption a:hover, .ContentFlow .globalCaption .caption a:hover { text-decoration: underline }
+.ContentFlow .flow .item .content, .ContentFlow .flow .item .reflection { display: block }
+

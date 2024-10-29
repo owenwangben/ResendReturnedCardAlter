@@ -1,0 +1,20 @@
+﻿<section class="trans-content">
+  <div class="prfy">
+    <p class="title red">※ 注意事項：</p>
+    <ol class="decimal">
+      <li>為保障您的用卡安全，優先啟用碼自核卡日起有效期間<span id="expDate"></span>天，請於收到實體卡立即開卡並於卡片背面簽名。</li>
+      <li>啟用完成後，即可立即綁定行動支付(Apple Pay、Google Pay..等)進行感應式交易或指定商店的一般及分期付款網路交易。</li>
+      <li>申請人同意妥善保管優先啟用碼，如有遺失、被竊、盜用情事時，請儘速以電話方式通知本行，掛失手續費依規定辦理收費，因可歸責於申請人之事由致啟用碼外洩時申請人自負冒用損失。</li>
+      <li>若您無立即刷卡需求，請勿完成啟用程序，收到實體卡片後再開卡使用。</li>
+      <li>如有任何使用疑問，請致電02-2528-7776轉接專人為您辦理。</li>
+    </ol>
+  </div>
+</section>
+<script>
+  var url = new URL(document.location.href);
+  var path = url.pathname;
+  var params = path.split('/').filter(segment => segment);
+  var lastParam = params[params.length - 1];
+  var expDate = document.getElementById('expDate');
+  expDate.innerText = lastParam == '428001' || lastParam == '428178' ? '60' : '30';
+</script>

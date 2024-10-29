@@ -1,0 +1,99 @@
+@charset "UTF-8";
+.stepsboard > .steps {
+  position: relative; }
+  .stepsboard > .steps.on {
+    color: #d00f24; }
+    .stepsboard > .steps.on:before {
+      background-color: #D00F24 !important; }
+  .stepsboard > .steps:not(.step) > span {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 24px;
+    height: 24px;
+    color: white;
+    font-size: 18px;
+    font-weight: bolder;
+    text-align: center;
+    line-height: 1.4; }
+  .stepsboard > .steps:not(.step):before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 0;
+    width: 24px;
+    height: 24px;
+    background: #DDD;
+    border-radius: 5px;
+    margin-right: 5px; }
+
+.rnotes span {
+  font-weight: bold;
+  color: #d00f24; }
+  .rnotes span.transaction_number {
+    position: relative;
+    display: inline-block;
+    right: 0; }
+
+.text-right {
+  text-align: right !important; }
+
+.text-left {
+  text-align: left !important; }
+
+.text-center {
+  text-align: center !important; }
+
+.num-align {
+  text-align: right !important; }
+
+.drop-zone:after {
+  content: url("/mma8/card/images/upgrade-lbox.png") !important; }
+
+.ntable th, .ntable td {
+  padding: 15px 10px 10px 10px !important;
+  border-radius: 0px !important; }
+
+.ntable.cols {
+  /*第一欄第一列：左上*/
+  /*最後欄第一列：右上*/
+  /*第一欄最後列：左下*/
+  /*最後欄第一列：右下*/ }
+  .ntable.cols tr:first-child th:first-child {
+    border-top-left-radius: 8px !important; }
+  .ntable.cols tr:first-child td:last-child {
+    border-top-right-radius: 8px !important; }
+  .ntable.cols tr:last-child th:first-child {
+    border-bottom-left-radius: 8px !important; }
+  .ntable.cols tr:last-child td:last-child {
+    border-bottom-right-radius: 8px !important; }
+
+.ntable:not(.cols) {
+  /*第一欄第一列：左上*/
+  /*最後欄第一列：右上*/
+  /*第一欄最後列：左下*/
+  /*最後欄第一列：右下*/ }
+  .ntable:not(.cols) tr:first-child th:first-child {
+    border-top-left-radius: 8px !important; }
+  .ntable:not(.cols) tr:first-child th:last-child {
+    border-top-right-radius: 8px !important; }
+  .ntable:not(.cols) tr:last-child td:first-child {
+    border-bottom-left-radius: 8px !important; }
+  .ntable:not(.cols) tr:last-child td:last-child {
+    border-bottom-right-radius: 8px !important; }
+
+button {
+  cursor: pointer; }
+
+ul.ntabs li {
+  cursor: pointer; }
+
+.web-hide {
+  display: none; }
+
+div.scrollbar {
+  height: 310px;
+  width: 100%;
+  overflow-y: scroll; }

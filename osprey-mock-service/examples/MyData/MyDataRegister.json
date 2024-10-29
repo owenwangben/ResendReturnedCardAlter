@@ -1,0 +1,28 @@
+{
+    "Result": {
+        "TXID": "EWEB27e7d432738cb4c698007577214bce0bd",
+        "Portal": "EWEB2",
+        "ServerDateTime": "20230816112528",
+        "ErrCode": "0000",
+        "ErrMsg": "交易成功",
+        "AtmNo": "76825",
+        "VerifyURL": "https://webatm.sinopac.com/IdentityService/P2566/Icc2566Verify?PORTAL=EWEB2&TXID=EWEB27e7d432738cb4c698007577214bce0bd"
+    },
+    "Header": {
+        "SessionID": "3nyfkeitkmkqp1e1u53sry45",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "f6a48d86-f083-4d30-b2a3-ae4a9641353c",
+        "UserID": "F154845239",
+        "RequestTime": "2023-08-16T11:25:28.7281979+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.135",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": "",
+        "ClientRefNo": "d5e1a3e1fa4f49d78d2ef7600a802d39",
+        "ClientTimestamp": "2023-08-16T11:25:28.053+08:00"
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

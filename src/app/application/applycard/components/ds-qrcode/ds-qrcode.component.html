@@ -1,0 +1,128 @@
+<div class="wrapper">
+	<div class="cover"></div>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a target="_blank" href="https://bank.sinopac.com/bsp/index/index.asp" title="永豐銀行首頁">
+					<img class="hidden-min" src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" />
+					<img class="hidden-max" src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行">
+				</a>
+			</div>
+			<div class="master-title">{{pageinfo.name}}</div>
+		</div>
+	</header>
+	<div class="outer_container">
+		<div class="container no-breadcrumbs">
+			<form [formGroup]="form">
+				<div class="outer_container">
+					<div class="container no-breadcrumbs">
+						<div class="content transparent">
+							<h2 class="title-with-icon">
+								<i class="icon-auth"></i>{{pageinfo.name}}</h2>
+						</div>
+						<div class="content">
+								<section class="trans-content">
+							<input type="radio" id="type1" name="type" [value]="1" checked="checked" (click)="onChangType($event.target.value)">
+							<label for="type1">信用卡直效行銷業務人員專用</label>
+							<input type="radio" id="type2" name="type" [value]="2" (click)="onChangType($event.target.value)">
+							<label for="type2">其他適用銀行/證券通路</label>
+							</section>
+						</div>
+						<div class="content full-content">
+							<section class="trans-content">
+								<table class="new-datatable">
+									<tbody>
+										<tr *ngIf="type === 1">
+											<th>
+												<p><span class="red">*</span>業務人員編號</p>
+											</th>
+											<td>
+												<input type="text" class="artfld col-all-min col-4" formControlName="DSNO" maxlength="6" placeholder="請輸入業務人員編號">
+											</td>
+										</tr>
+										<tr *ngIf="type === 2">
+											<th>
+												<p><span class="red">*</span>推薦人員員工編號</p>
+											</th>
+											<td>
+												<input type="text" class="artfld col-all-min col-4" formControlName="Referrer" maxlength="10"
+													placeholder="請輸入推薦人員員工編號">
+											</td>
+										</tr>
+										<tr *ngIf="type === 2">
+											<th>
+												<p>推薦人員歸屬單位</p>
+											</th>
+											<td>
+												<input type="text" class="artfld col-all-min col-4" formControlName="Branch" placeholder="請輸入推薦人員歸屬單位">
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2">
+												<div class="btn-zone flex-inline-min">
+													<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">確認</a>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</section>
+						</div>
+						<div class="content full-content" *ngIf="qrcode">
+							<table class="new-datatable">
+								<tbody>
+									<tr>
+										<th>
+											<p>專屬線上辦卡網址</p>
+										</th>
+										<td>
+											<input type="text" class="artfld col-all-min col-8" readonly [value]="url" id="url">
+										</td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<div class="btn-zone flex-inline-min center">
+												<a href="javascript:void(0)" class="nbtn focus" (click)="onCopyUrl()">複製</a>
+											</div>
+										</td>
+									</tr>
+									<tr class="line">
+										<td colspan="2"></td>
+									</tr>
+									<tr>
+										<td colspan="2">
+											<section class="trans-content">
+												<div class="center">
+													<img width="75%" src="data:image/jpeg;base64,{{qrcode}}" />
+												</div>
+												<div class="btn-zone flex-inline-min">
+													<a href="data:image/jpeg;base64,{{qrcode}}" download="qrcode.png" class="nbtn focus">下載</a>
+												</div>
+											</section>
+
+										</td>
+									</tr>
+								</tbody>
+							</table>
+
+						</div>
+					</div>
+				</div>
+			</form>
+			<br class="hidden-min">
+		</div>
+	</div>
+	<footer>
+		<div class="copyright hidden-min">
+			<p>©版權所有永豐銀行 建議瀏覽器IE11.0以上/解析度1024*768
+				<a class="go2cs" target="_blank" href="https://bank.sinopac.com/MMA8/bank/service/service-index.html">客服中心</a>
+			</p>
+		</div>
+		<div class="copyright hidden-max">
+			<p>© 版權所有 永豐銀行
+			<!-- <br>24小時服務專線：02-25059999 0203-08989</p> -->
+		</div>
+	</footer>
+</div>
+
+

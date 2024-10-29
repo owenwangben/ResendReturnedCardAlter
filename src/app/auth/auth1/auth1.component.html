@@ -1,0 +1,94 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="submit();">
+					<div class="formblock" *ngIf="isSelectedAuthMethod">
+						<table class="new-datatable mobile-col-12">
+							<tr>
+								<th class="mobile-col-4">
+									<span>身分證字號</span>
+								</th>
+								<td>
+									<input type="text" class="artfld col-3 mobile-col-12" formControlName="idNumber" maxlength=10 placeholder="請輸入身分證字號">
+									<span class="mobile-hide">(請輸入申辦信用卡本人身分證號碼，連同英文字母共十碼)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>出生年月日</span>
+								</th>
+								<td>
+									<input type="text" formControlName="birthday" class="autofocus artfld col-2 mobile-col-10" datepicker [defDate]="defDate" maxlength="8" placeholder="例:20141113">
+									<span class="spanbox mobile-span">(日期填寫方式︰2014年11月13日請填寫20141113)</span>
+								</td>
+							</tr>
+							<tr>
+								<th>
+									<span>驗證碼</span>
+								</th>
+								<td>
+									<app-vcaptcha formControlName="captcha"></app-vcaptcha>
+								</td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>
+									<input type="checkbox" class="artfld" id="r2" formControlName="agree" />
+									<label for="r2">
+										<span>
+											<span class="getCheck"></span>
+										</span>
+										<font class="red left fs15">申請人聲明已審閱
+											<a target="_blank" href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=mma" *ngIf="!isMobile">
+												MMA金融交易網服務約定書
+											</a>
+											<a target="_blank" href="https://bank.sinopac.com/SearchMB/docdownload/sectionlist.aspx?sid=MMA" *ngIf="isMobile">
+												MMA金融交易網服務約定書
+											</a>
+											內容且已充分瞭解並確認同意遵守。
+										</font>
+									</label>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div class="btn-zone" *ngIf="isSelectedAuthMethod">
+						<button type="reset" class="nbtn">清除</button>
+						<button type="submit" class="nbtn focus">送出查詢</button>
+					</div>
+					<div *ngIf="!isSelectedAuthMethod">
+						<!-- <br>
+						<h3 style="margin-left:12px;">請選擇認證方式</h3> -->
+						<table class="new-datatable mobile-col-12">
+							<tr>
+									<td></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td>請選擇認證方式</td>
+							</tr>
+						</table>
+						<div class="auth-method-block">
+							<div class="btn-zone">
+								<a href="javascript:void(0)" class="nbtn focus" (click)="auth('MMA')">我是MMA金融交易網網銀會員
+								</a>
+								<p></p>
+								<a href="javascript:void(0)" class="nbtn focus" (click)="auth('Card')">我不是MMA金融交易網網銀會員
+								</a>
+							</div>
+						</div>
+						<table class="new-datatable mobile-col-12" *ngIf="isShowOtherLinks">
+							<tr>
+								<td></td>
+							<td>※{{queryStatusMemoText}}，請登入MMA金融交易網<a href="{{queryStatusUrl}}">網路銀行查詢</a>，如非網路銀行會員請點此<a href="{{registerMemberUrl}}">立即註冊</a>。</td>
+							</tr>
+						</table>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,47 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="new-datatable mobile-col-12">
+			<tr>
+				<th class="mobile-col-2">
+					<span>卡號</span>
+				</th>
+				<td class="mobile-col-10">
+					<app-card-number-input formControlName="cardNo"></app-card-number-input>
+					<span class="mobile-span">依序輸入卡號16碼(美國運通卡15碼)</span>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span>有效期限</span>
+				</th>
+				<td>
+					<app-expirydate-selector formControlName="expiryDate"></app-expirydate-selector>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span>出生年月日</span>
+				</th>
+				<td>
+					<input type="text" formControlName="birthday"
+						class="autofocus artfld col-2 mobile-col-10"
+						datepicker [defDate]="defDate" maxlength="8" placeholder="YYYYMMDD">
+					<span class="mobile-span">例:1980年1月1日請填寫為19800101</span>
+				</td>
+			</tr>
+			<tr>
+				<th>
+					<span>驗證碼</span>
+				</th>
+				<td>
+					<app-vcaptcha formControlName="captcha"></app-vcaptcha>
+				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<!-- <a class="nbtn" href="/Shared/HomePageTwd.aspx?CH=card&ID=1">取消</a> -->
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">確認送出</button>
+	</div>
+</form>

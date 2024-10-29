@@ -1,0 +1,39 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "CardNo": "4705720200018201",
+                "Name": "永豐信用卡",
+                "CardTypeCode": "SP",
+                "CardTypeDesc": "主卡",
+                "CardFace": "066",
+                "ProductCode": "479",
+                "ExpDate": "1225"
+            },
+            {
+                "CardNo": "5452030001018604",
+                "Name": "永豐信用卡",
+                "CardTypeCode": "SP",
+                "CardTypeDesc": "主卡",
+                "CardFace": "066",
+                "ProductCode": "272",
+                "ExpDate": "1225"
+            }
+        ],
+        "IsGreePassCustomer": true
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

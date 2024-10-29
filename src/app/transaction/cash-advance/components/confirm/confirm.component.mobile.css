@@ -1,0 +1,44 @@
+:host form {
+	display: flex;
+	flex-direction: column;
+}
+
+:host form app-cash-advance-display {
+	order: 2;
+}
+
+
+:host form div#cash-advance-pwd {
+	order: 1;
+	background: #E3E3E3;
+	padding: 16px;
+}
+:host form div#cash-advance-opt {
+	order: 1;
+	background: #E3E3E3;
+	padding: 16px;
+}
+
+:host form div#cash-advance-pwd:before {
+	content: '預借現金密碼(4碼)';
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.4em;
+	padding-bottom: 16px;
+}
+:host form div#cash-advance-opt:before {
+	content: '簡訊動態密碼(6碼)';
+	display: block;
+	text-align: center;
+	width: 100%;
+	font-weight: bold;
+	font-size: 1.4em;
+	padding-bottom: 16px;
+}
+
+
+:host form div.btn-zone {
+	order: 3;
+}

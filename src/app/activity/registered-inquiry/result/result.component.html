@@ -1,0 +1,35 @@
+<table class="ntable table-striped">
+	<thead>
+		<tr>
+			<th class="mobile-col-5">活動名稱</th>
+			<th class="mobile-col-4">登錄時間</th>
+			<th class="mobile-col-3">登錄排序</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of model?.Items">
+			<td>{{item.Name}}</td>
+			<td>{{item.AddDateTime | date:'y/MM/dd HH:mm:ss'}}</td>
+			<td>{{item.SNO}}</td>
+		</tr>
+		<tr *ngIf="!model?.Items?.length">
+			<td colspan="3">查無資料！</td>
+		</tr>
+	</tbody>
+</table>
+<div class="btn-zone">
+	<button type="button" class="nbtn" (click)="goPrev()">重新查詢</button>
+</div>
+<div *ngIf="model.IsApplyElectronicBill == 0" class="billSet {{isMobile ? '':'billSetFullWidth'}}">
+  <div class="billSet__text">
+    <img
+      class="hidden-min"
+      src="/mma8/card/images/Energysaving.svg"
+    />
+    <p>
+      立即申請電子/行動帳單，<br>隨時隨地輕鬆查看消費紀錄。
+    </p>
+  </div>
+  <button class="billSet__button" (click)="redirectToEStatementChange()">前往設定</button>
+</div>
+

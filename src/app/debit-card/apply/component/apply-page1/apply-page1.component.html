@@ -1,0 +1,108 @@
+<div class="content" id='mainForm1'>
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>簽帳金融卡寄送地址</legend>
+			<div class="switch-block wrap">
+				<div class="switch-content active">
+					<div class="switch-wrap">
+						<div class="text full">
+							<p>卡片將寄送現居通訊地址：</p><br class="hidden-max">
+						</div>
+						<div class="line-block"><span id="addr-text">{{Address}}</span></div>
+						<p class="red full">如您需要更改寄送地址，請先洽客服中心 (02)2528-7776，待資料更新後再進行申請。</p><br>
+						<p class="red full">如您同時持有本行信用卡，我們會同步將您留存於本行存款帳戶的地址、email、手機號碼等資訊更新到信用卡系統上，
+							如需調整歡迎事後致電信用卡客服申請變更您的信用卡資料。</p>
+					</div>
+				</div>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<form [formGroup]="form" id='mainForm2' style="margin-top: 35px;">
+	<div class="content nopad">
+		<table class="form-table">
+			<caption><span>選擇換發簽帳金融卡帳號</span></caption>
+			<tbody>
+				<tr>
+					<th><span class="red">*</span>永豐臺幣帳號</th>
+					<td>
+						<div class="art-select">
+							<select id="select-card-num" formControlName="AccountNo" (change)="CheckForeignAccount()">
+								<option [ngValue]="null" [disabled]="true">請選擇</option>
+								<option *ngFor="let actno of Accounts" [value]="actno">
+									{{ actno }}
+								</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table><br>
+	</div>
+	<div class="content" *ngIf="CanActiveForeignAccount && !checkArcId(custId)">
+		<section class="trans-content"><span class="red">*</span><span>啟用多幣別功能</span>
+			<ul class="ctrl-block">
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="EnableMultiCurrencyFeature" [value]="true"><i
+							class="tickr"><span>預設開啟</span></i>
+					</label>
+				</li>
+				<li>
+					<label class="form-radio surround">
+						<input type="radio" formControlName="EnableMultiCurrencyFeature" [value]="false" (click)="clearForeignAccount()"><i
+							class="tickr"><span>預設關閉</span></i>
+					</label>
+				</li>
+			</ul>
+		</section>
+	</div>
+	<div class="content nopad" *ngIf="form.value.EnableMultiCurrencyFeature">
+		<table class="form-table">
+			<caption> <span>選擇換發簽帳金融卡外幣帳號</span></caption>
+			<tbody>
+				<tr>
+					<th>永豐外幣帳號</th>
+					<td>
+						<div class="art-select">
+							<select id="select-card-num" formControlName="ForeignAccountNo">
+								<option [ngValue]="null" [disabled]="true">請選擇</option>
+								<option *ngFor="let actno of ForeignAccounts" [value]="actno">
+									{{ actno }}
+								</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="switch-wrap hidden-min" style="padding: 0px 40px 25px 40px;">
+			<p  class=" red full">提醒您，若您所選擇的外幣組合存款帳戶已經綁定於另外一張簽帳金融卡，選定後，原簽帳金融卡之多幣別功能將立即停用。</p>
+		</div>
+		<div class="hidden-max">
+			<p  class="red full">提醒您，若您所選擇的外幣組合存款帳戶已經綁定於另外一張簽帳金融卡，選定後，原簽帳金融卡之多幣別功能將立即停用。</p>
+		</div>
+	</div>
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th style="padding: 2vw;">
+							<span class="red">*</span>英文姓名
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="EName"
+								placeholder="請參照護照上的英文姓名" maxlength="20">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div class="content transparent">
+		<div class="btn-block center">
+			<button class="btn" id="send-data" (click)="submit()">下一步</button>
+		</div>
+	</div>
+</form>

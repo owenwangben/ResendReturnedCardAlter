@@ -1,0 +1,10 @@
+<div class="rnotes full-size center" *ngIf="isMobile">
+	<p>請確認以下資料</p>
+</div>
+
+<app-display></app-display>
+
+<div class="btn-zone">
+	<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+	<button type="button" class="nbtn focus" appPreventDoubleClick (throttledClick)="onSubmit()">再次確認</button>
+</div>

@@ -1,0 +1,77 @@
+<div class="wrapper">
+	<div class="cover"></div>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a target="_blank" href="https://bank.sinopac.com/bsp/index/index.asp" title="永豐銀行首頁">
+					<img class="hidden-min" src="/mma8/card/images/sinopac_logo.png" alt="永豐銀行" />
+					<img class="hidden-max" src="/mma8/card/images/sinopac_logo-min.png" alt="永豐銀行">
+				</a>
+			</div>
+		</div>
+	</header>
+	<div class="outer_container">
+		<div class="container no-breadcrumbs">
+			<div class="content">
+				<section class="trans-content">
+					<h3 class="title">永豐漢神巨蛋聯名卡合約到期重要訊息公告</h3>
+<form [formGroup]="form">
+	<div class="formblock">
+		<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable">
+			<tbody>
+				<tr>
+					<th><span class="red">永豐漢神巨蛋聯名卡合約到期重要訊息</span></th>
+					<td>
+					</td>
+				</tr>
+				<tr>
+					<th class="vtop">信用卡持卡人身分證字號</th>
+					<td>
+						<input type="text" class="artfld col-all-min" formControlName="id" placeholder="身分證字號" maxlength="10">
+						<br class="hidden-min">
+						<span class="note">(漢神巨蛋聯名卡正卡人身分證字號)</span>
+					</td>
+				</tr>
+				<tr>
+					<th>驗證碼</th>
+					<td class="flex-min">
+						<div>
+							<input type="text" class="artfld col-1-s1 col-all-min" formControlName="captcha" placeholder="驗證碼" maxlength="6">
+						</div>
+						<div class="captcha">
+							<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+						</div>
+						<div>
+							<a href="javascript:void(0)" class="reload-captcha" (click)="changeVcaptcha()">重新產生</a>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">確定送出</a>
+	</div>
+</form>
+				</section>
+				<br class="hidden-middle">
+				<div class="warnings">
+					<p>謹慎理財 信用至上</p>
+					<p>24小時服務專線：(02)2528-7776/0800-058-888 (限市話) 郵政信箱：100臺北重南郵局第88號信箱
+						<br>循環信用利率5%~15% (基準日2023/3/3)；預借現金手續費：預借現金金額X3.5%+指定金額(100元新臺幣/3.5美元/350日圓/3歐元)</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="copyright hidden-min">
+			<p>©版權所有永豐銀行 建議瀏覽器IE11.0以上/解析度1024*768
+				<a class="go2cs" target="_blank" href="https://bank.sinopac.com/MMA8/bank/service/service-index.html">客服中心</a>
+			</p>
+		</div>
+		<div class="copyright hidden-max">
+			<p>© 版權所有 永豐銀行
+			<!-- <br>24小時服務專線：02-25059999 0203-08989</p> -->
+		</div>
+	</footer>
+</div>

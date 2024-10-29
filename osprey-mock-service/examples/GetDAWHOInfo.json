@@ -1,0 +1,22 @@
+{
+    "Result": {
+        "Status": "失敗",
+        "TaiwanDepositAccount": "06801800020411",
+        "ForeignDepositAccount": "06800800020418"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "fdf1e5d9-423d-4426-aa84-90aa6bc11f0d",
+        "UserID": "L156095295",
+        "RequestTime": "2020-04-09T10:39:46.6503372+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.41",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

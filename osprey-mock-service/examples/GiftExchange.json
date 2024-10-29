@@ -1,0 +1,77 @@
+{
+    "Result": {
+        "Success": false,
+        "IsApplyElectronicBill":0,
+        "Items": [
+            {
+                "Item": {
+                    "ProjCode": "509002",
+                    "ProdCode": "2071",
+                    "Quantity": 1,
+                    "EndTime": "2017-12-31T00:00:00",
+                    "Description": "萬寶龍紳仕短夾",
+                    "TotalPoints": 37920
+                },
+                "ErrorMessage": "兌換失敗",
+                "IsExchangeSuccess": false,
+                "IsExchangeable": false
+            },
+            {
+                "Item": {
+                    "ProjCode": "510002",
+                    "ProdCode": "1310",
+                    "Quantity": 1,
+                    "EndTime": "2017-12-31T00:00:00",
+                    "Description": "Glasslock強化玻璃保鮮盒組",
+                    "TotalPoints": 12800
+                },
+                "ErrorMessage": "",
+                "IsExchangeSuccess": true,
+                "IsExchangeable": false
+            },
+            {
+                "Item": {
+                    "ProjCode": "509002",
+                    "ProdCode": "2790",
+                    "Quantity": 1,
+                    "EndTime": "2017-12-31T00:00:00",
+                    "Description": "米雅可樂活環保餐具套裝禮盒",
+                    "TotalPoints": 9700
+                },
+                "ErrorMessage": "兌換失敗",
+                "IsExchangeSuccess": false,
+                "IsExchangeable": false
+            },
+            {
+                "Item": {
+                    "ProjCode": "509002",
+                    "ProdCode": "3170",
+                    "Quantity": 1,
+                    "EndTime": "2017-12-31T00:00:00",
+                    "Description": "3M 即淨長效濾水壺超值組合",
+                    "TotalPoints": 726400
+                },
+                "ErrorMessage": "兌換失敗",
+                "IsExchangeSuccess": false,
+                "IsExchangeable": false
+            },
+            {
+                "Item": {
+                    "ProjCode": "513003",
+                    "ProdCode": "2510",
+                    "Quantity": 1,
+                    "EndTime": "2017-12-31T00:00:00",
+                    "Description": "聲寶負離子吹風機",
+                    "TotalPoints": 1
+                },
+                "ErrorMessage": "兌換失敗",
+                "IsExchangeSuccess": false,
+                "IsExchangeable": false
+            }
+        ]
+    },
+    "Header": { },
+    "ResultCode": "00",
+    "ResultMessage": "您目前無任何可交易有效信用卡，請洽客服人員。[03]",
+    "Error": null
+}

@@ -1,0 +1,42 @@
+<div class="wrapper-container">
+	<div class="wrapper">
+		<div class="wrapper-mask"></div>
+		<header>
+			<div class="header-top">
+				<div class="container">
+					<div class="logo">
+						<a href="https://bank.sinopac.com/" title="永豐銀行首頁"><img class="hidden-min"
+								src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" /><img class="hidden-max"
+								src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行" /></a>
+					</div>
+					<h1 class="master-title">{{pageinfo.name}}</h1>
+				</div>
+			</div>
+		</header>
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content transparent step-panel-block">
+					<div class="step">
+						<ul class="list-step list-step--gray">
+							<li class="list-step__item " [class.list-step__item--current]="step == 0" [class.list-step__item--active]="step > 0">
+								<span class="list-step__item-num"></span>
+								<span class="list-step__item-title">填寫資料</span>
+							</li>
+							<li class="list-step__item" [class.list-step__item--current]="step == 1" [class.list-step__item--active]="step > 1">
+								<span class="list-step__item-num"></span>
+								<span class="list-step__item-title">確認資料</span>
+							</li>
+							<li class="list-step__item" [class.list-step__item--current]="step == 2">
+								<span class="list-step__item-num"></span>
+								<span class="list-step__item-title">申請結果</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<app-wizard [(current)]="current" [steps]="steps" [hidden]="true"
+					(currentChange)="onWizardCurrentChange($event)"></app-wizard>
+			</div>
+		</div>
+		<app-rwd-footer></app-rwd-footer>
+	</div>
+</div>

@@ -1,0 +1,43 @@
+<app-applycard-intl-step-indicator [step]="2" [type]="flag > 0 ? 0 : 1"></app-applycard-intl-step-indicator>
+<div class="content full-content">
+	<section class="trans-content">
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td>
+						<div class="success">
+							<i class="icon-tick"></i>
+							<p *ngIf="flag === 0"><span class="en">{{message?.Upload.UploadSuccess}}</span>您已上傳成功！</p>
+							<p *ngIf="flag > 0"><span class="en en-title">{{message?.ApplyCard.ApplySuccess}}</span>感謝您申請永豐信用卡！</p>
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr>
+					<td *ngIf="flag === 0" class="reminds notice">
+						<p><span class="en">{{message?.Upload.HelpCont}}</span>若有任何需服務之處，請聯絡客服專線 02-2528-7776。</p>
+					</td>
+					<td *ngIf="flag > 0" class="reminds  notice">
+						<p class="pink2 en">{{message?.ApplyCard.Notic}}<br class="hidden-max">{{message?.ApplyCard.ApplyNotComplete}}</p>
+						<p>{{message?.ApplyCard.Procedures}}</p>
+						<ol class="decimal en">
+							<li>{{message?.ApplyCard.Procedures1_1}}<span class="red">{{message?.ApplyCard.Procedures1_2}}</span></li>
+							<li>{{message?.ApplyCard.Procedures2}}</li>
+						</ol>
+						<p class="pink2">提醒您：<br class="hidden-max">申請尚未完成，請協助進行以下事項以完成</p><br class="hidden-max">
+						<p>流程 :</p>
+						<ol class="decimal">
+							<li>本行將寄出申請書 PDF 至您所填寫的 Email 信箱供您備查，<span class="red">請妥善保存，無須寄回</span>。</li>
+							<li>若您尚未上傳居留證、護照、勞動契約或在職證明及財力證明文件，請備妥資料拍照上傳；或以傳真的方式將文件傳真至02-8253-8074。</li>
+						</ol>
+						<br>
+						<p class="en">{{message?.ApplyCard.SecurityNotic1}}<span class="red">{{message?.ApplyCard.SecurityNotic2}}</span>{{message?.ApplyCard.SecurityNotic3}}</p>
+						<p>為維護您的個人資料安全，<span class="red">本行設定您(居留証字號為加密密碼)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776。</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>

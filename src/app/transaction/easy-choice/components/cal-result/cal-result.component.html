@@ -1,0 +1,29 @@
+﻿<form (ngSubmit)="onSubmit()" ngNativeValidate>
+	<app-easy-choice-display></app-easy-choice-display>
+	<div class="formblock">
+		<p>試算結果</p>
+		<table class="ntable table-striped">
+			<tr>
+				<th>期數</th>
+				<th>本金</th>
+				<th>利息</th>
+				<th>每月應付本息金額</th>
+			</tr>
+			<tr *ngFor="let item of calCycleFeeResultModel?.Items">
+				<td>{{item.SEQ}}</td>
+				<td>${{item.PrincipalAmount | number}}</td>
+				<td>${{item.Interest | number}}</td>
+				<td>${{item.MonthPayment | number}}</td>
+			</tr>
+		</table>
+	</div>
+	<div class="red text-left fs15">
+		提醒您！您透過網路線上申請之預借現金分期「易通財」預借現金核准/未核准通知將email至您指定的電子郵件信箱：{{email | mask:'1-' + ((email || '').indexOf('@') - 1):'*'}}；
+		若上述電子郵件 信箱有誤或可能無法收信，請至<a class="link" routerLink="/Application/EStatementChange">電子帳單/通知設定</a>變更電子郵件信箱。
+	</div>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">我要申請</button>
+	</div>
+	<div loadHtml="/mma8/card/htmls/預借現金分期注意事項.html"></div>
+</form>

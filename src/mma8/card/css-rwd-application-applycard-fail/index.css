@@ -1,0 +1,15 @@
+@import url('/mma8/card/css-eweb/site.css');
+@import 'styles.css';
+
+.swalCancelClass {
+    background-color: #C00000 !important;
+    color: white !important;
+}
+
+.swalConfirmClass {
+    background-color: #F5F5F5 !important;
+    color: #6C6C6C !important;
+    border-color: #B8B8B8 !important;
+    border-width: thin !important;
+    border-style: solid !important;
+}

@@ -1,0 +1,77 @@
+<div>
+	<div class="row" *ngIf="IsSinoPacAccountAvailable">
+		<input type="radio" class="artfld circle" id="r1"
+			name="IsSinoPacAccountSelected"
+			[(ngModel)]="IsSinoPacAccountSelected"
+			(ngModelChange)="IsSinoPacAccountSelectedChange($event)"
+			[value]="true"/>
+		<label for="r1">
+			<span><span class="getCheck"></span></span>
+			自行帳戶
+		</label>
+		<div *ngIf="TransferAccounts?.length" class="artfld select col-3">
+			<select [(ngModel)]="account" [disabled]="!IsSinoPacAccountSelected">
+				<option value="" disabled>請選擇</option>
+				<option *ngFor="let item of TransferAccounts" [value]="item.AccountNo">
+					{{ item.AccountNo }}
+				</option>
+			</select>
+		</div>
+	</div>
+	<div class="row">
+		<div>
+			<span *ngIf="IsSinoPacAccountAvailable">
+				<input type="radio" class="artfld circle" id="r2"
+					name="IsSinoPacAccountSelected"
+					[(ngModel)]="IsSinoPacAccountSelected"
+					(ngModelChange)="IsSinoPacAccountSelectedChange($event)"
+					[value]="false"/>
+				<label for="r2">
+					<span><span class="getCheck"></span></span>
+					他行帳戶
+				</label>
+			</span>
+			<span class="artfld select col-3">
+				<select [(ngModel)]="bankType" (ngModelChange)="bankTypeChanged($event)" [disabled]="IsSinoPacAccountSelected">
+					<option value="" disabled>請選擇</option>
+					<option *ngFor="let item of BankTypes" [value]="item.Type">
+						{{ item.TypeName }}
+					</option>
+				</select>
+			</span>
+			<span class="artfld select col-3">
+				<div *ngIf="!IsSinoPacAccountSelected; else BankDisabled">
+					<select [(ngModel)]="bank" [disabled]="IsSinoPacAccountSelected || !bankType">
+						<option value="" disabled>請選擇銀行</option>
+						<option *ngFor="let item of Banks" [value]="item.BankCode"
+							[hidden]="item.Type != bankType || (item.BankCode == sinoPacBankCode && IsSinoPacAccountAvailable)">
+							{{ item.BankName }}
+						</option>
+					</select>
+				</div>
+				<ng-template #BankDisabled>
+					<select disabled><option value="" selected>請選擇銀行</option></select>
+				</ng-template>
+			</span>
+		</div>
+		<div style="margin-top: 10px">
+			<span *ngIf="IsSinoPacAccountAvailable" style="margin-right: 112px"></span>
+			<span class="artfld select col-3">
+				<select [(ngModel)]="branch" [disabled]="IsSinoPacAccountSelected || !bank">
+					<option value="" disabled>請選擇分行</option>
+					<option *ngFor="let item of Branches" [value]="item.BranchCode">
+						{{ item.FullName }}
+					</option>
+				</select>
+			</span>
+			<span style="margin-left: 10px"></span>
+			<span *ngIf="!IsSinoPacAccountSelected && !!branch; else AccountDisabled">
+				<input type="text" [(ngModel)]="account" class="artfld col-3"
+					placeholder="請輸入轉入帳號" numberOnly maxlength=16/>
+			</span>
+			<ng-template #AccountDisabled>
+				<input type="text" class="artfld col-3"	placeholder="請輸入轉入帳號" disabled/>
+			</ng-template>
+		</div>
+	</div>
+</div>

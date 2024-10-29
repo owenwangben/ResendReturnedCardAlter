@@ -1,0 +1,29 @@
+{
+    "Result": {
+        "TXID": "EWEB2af10a2d4bca94662acf759d25f4806c4",
+        "Portal": "EWEB2",
+        "ServerDateTime": "20230816113218",
+        "ErrCode": "0000",
+        "ErrMsg": "交易成功",
+        "FunctionCode": 2,
+        "Birthday": "19900713",
+        "Email": ""
+    },
+    "Header": {
+        "SessionID": "3nyfkeitkmkqp1e1u53sry45",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "486f431c-c8bd-4c5a-9f40-671e32075d33",
+        "UserID": "F154845239",
+        "RequestTime": "2023-08-16T11:33:05.8264071+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.135",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": "",
+        "ClientRefNo": "175d008c3ffe4c10b0ea60b2d1ce4f92",
+        "ClientTimestamp": "2023-08-16T11:33:05.165+08:00"
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

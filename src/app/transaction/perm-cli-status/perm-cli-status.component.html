@@ -1,0 +1,50 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">額度申請查詢</h2>
+
+				<div class="abgne_tab">
+					<ul class="ntabs">
+						<li routerLink="/Transaction/TempCLIStatus" routerLinkActive="active"><a href="javascript:void(0)">臨時額度調整</a></li>
+						<li class="active"><a href="javascript:void(0)">永久額度調整</a></li>
+					</ul>
+					<div class="tab-container">
+						<div class="tab-content">
+							<div class="formblock">
+								<div class="rowElem"><p>額度申請調整紀錄</p></div>
+								<table class="ntable table-border table-striped">
+									<thead>
+										<tr>
+											<th class="mobile-col-4">申請開始日</th>
+											<!-- <th>提高之信用額度</th> -->
+											<th class="mobile-col-8">申請狀態</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr *ngFor="let record of Records;">
+											<td>{{record.ApplyDate}}</td>
+											<!-- <td style="text-align:right">{{record.TCLimit}}</td> -->
+											<td>{{record.Status}}</td>
+										</tr>
+										<tr *ngIf="!Records?.length">
+											<td colspan="2">查無資料！</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+
+							<!-- <div class="btn-zone">
+								<button type="button" class="nbtn">近期帳單</button>
+								<button type="submit" class="nbtn focus">申請進度查詢</button>
+							</div> -->
+
+						</div>
+					</div>
+				</div>
+				<div loadHtml="/mma8/card/htmls/信用卡永久額度申請查詢注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>

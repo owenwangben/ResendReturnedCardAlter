@@ -1,0 +1,188 @@
+<div class="big-container">
+	<div class="wrapper">
+		<div class="wrapper_1"></div>
+		<div class="mobile-menu">
+			<header>
+				<div class="header-top">
+					<div class="container">
+						<div class="left-pane">
+							<div class="logo">
+								<a href="index.html" title="永豐銀行首頁">
+									<img src="/mma8/card/images/sinopac_logo_320.png" alt="永豐銀行">
+								</a>
+							</div>
+							<h1 class="header-title">房貸評估家</h1>
+							<div class="clearfix"></div>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+			</header>
+			<div class="nav-block">
+				<nav class="main-menu">
+					<ul class="nav-lv1">
+						<li id="home">
+							<a href="index.html" title="首頁">首頁</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<header>
+			<div class="header-top">
+				<div class="container">
+					<div class="left-pane">
+						<div class="logo">
+							<a target="_blank" href="https://bank.sinopac.com/bsp/index/index.asp" title="永豐銀行首頁">
+								<img class="hidden-min" src="/mma8/card/images/sinopac_logo.png" alt="永豐銀行" />
+								<img class="hidden-max" src="/mma8/card/images/sinopac_logo_320.png" alt="永豐銀行">
+							</a>
+						</div>
+						<h1 class="header-title">線上申請</h1>
+					</div>
+					<div class="right-pane hidden-min">
+						<div class="main-func">
+							<ul class="dynlast">
+								<li>
+									<a target="_blank" class="icon icon-service" href="https://bank.sinopac.com/MMA8/bank/service/service-index.html"
+									 title="客服中心">客服中心</a>
+								</li>
+								<li>
+									<a target="_blank" class="icon icon-branch" href="https://mma.sinopac.com/MMA7txt/CustomerService/BranchService/mma_branch.html"
+									 title="營業據點">營業據點</a>
+								</li>
+								<li>
+									<a target="_blank" class="icon icon-search" href="https://bank.sinopac.com/search/SearchIndex.aspx" title="搜尋">搜尋</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="clearboth"></div>
+				</div>
+			</div>
+			<div class="mobile-nav-toggle">
+				<div class="navbar">
+					<span></span>
+				</div>
+				<div class="navbar">
+					<span></span>
+				</div>
+				<div class="navbar">
+					<span></span>
+				</div>
+			</div>
+		</header>
+		<div class="body-container online-apply">
+			<div class="container">
+				<section class="apply">
+					<div class="p1">
+						<h3>線上留言申辦</h3>
+						<form [formGroup]="form">
+							<div class="form-block half apply-form">
+								<div class="title">選擇申請項目</div>
+								<div class="ct">
+									<input class="artfld circle" type="radio" id="r11" formControlName="product" value="信用卡">
+									<label for="r11"><span><span class="getCheck"></span></span>信用卡</label>
+									<input class="artfld circle" type="radio" id="r12" formControlName="product" value="易通財">
+									<label for="r12"><span><span class="getCheck"></span></span>預借現金分期（易通財）</label>
+									<input class="artfld circle" type="radio" id="r13" formControlName="product" value="信貸">
+									<label for="r13"><span><span class="getCheck"></span></span>信貸</label>
+								</div>
+								<table class="v2">
+									<tbody>
+										<tr class="hidden-min">
+											<td colspan="2"></td>
+										</tr>
+										<tr *ngIf="form.value.product == '信用卡'">
+											<th>希望申辦卡別</th>
+											<td>
+												<div class="artfld select">
+													<select formControlName="cardname">
+														<option [value]="null" disabled>請選擇卡別</option>
+														<option *ngFor="let CName of cardnames" [value]="CName">{{CName}}</option>
+													</select>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>姓名
+												<span class="hidden-max-inline red">*必填</span>
+											</th>
+											<td>
+												<input type="text" class="artfld col-3" formControlName="name" maxlength="33">
+												<span class="red hidden-min">*必填</span>
+											</td>
+										</tr>
+										<tr>
+											<th>聯絡電話(日)</th>
+											<td>
+												<input type="text" class="artfld col-3" formControlName="tel" maxlength="10">
+											</td>
+										</tr>
+										<tr>
+											<th>行動電話
+												<span class="hidden-max-inline red">*必填</span>
+											</th>
+											<td>
+												<input type="text" class="artfld col-3" formControlName="mobile" maxlength="10">
+												<span class="red hidden-min">*必填</span>
+											</td>
+										</tr>
+										<tr>
+											<th>是否為卡友</th>
+											<td>
+												<div>
+													<input class="artfld circle" type="radio" id="r21" formControlName="cardHolder" [value]="true">
+													<label for="r21"><span><span class="getCheck"></span></span>是</label>
+													<input class="artfld circle" type="radio" id="r22" formControlName="cardHolder" [value]="false">
+													<label for="r22"><span><span class="getCheck"></span></span>否</label>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>
+												<span>驗證碼</span>
+											</th>
+											<td>
+												<input type="text" class="artfld col-2 col-min-captcha" formControlName="captcha" maxlength=6>
+												<a class="vcaptcha" href="javascript:void(0)" (click)="changeVcaptcha()">
+													<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" alt="">
+												</a>
+												<span class="small-fs">(按圖更換驗證碼)</span>
+											</td>
+										</tr>
+                    <tr>
+                      <td colspan="2">
+                        <div>
+                          <input class="artfld circle" type="checkbox" formControlName="checkAgreement" [value]="false" id="Terms">
+                          <label for="Terms" class="fs-14">
+                            <span>
+                              <span class="getCheck"></span></span>
+                            本人同意將本人於線上留言申辦所填寫之資料交付予永豐銀行，永豐銀行將依本人所填寫之聯絡或行動電話指派專人與本人聯繫。本人並已詳閱<a class="underline" href="{{personalDataTermsUrl}}" target="_blank"
+                              rel="noopener noreferrer">「永豐銀行個人資料蒐集、處理及利用告知義務內容」</a>，已清楚瞭解永豐銀行蒐集、處理或利用本人個人資料之目的及用途。
+                          </label>
+                        </div>
+                      </td>
+                    </tr>
+									</tbody>
+								</table>
+								<div class="btn-zone specm">
+									<a id="next-eva" href="javascript:void(0)" class="nbtn prev wide include-load" (click)="reset()">
+										<span>重填</span>
+									</a>
+									<a id="next-eva" href="javascript:void(0)" class="nbtn focus wide include-load" (click)="submit()">
+										<span>送出</span>
+										<i class="loading">
+											<img src="/mma8/card/images/loading.gif" alt="">
+										</i>
+									</a>
+								</div>
+							</div>
+						</form>
+					</div>
+				</section>
+			</div>
+		</div>
+		<app-rwd-footer></app-rwd-footer>
+	</div>
+</div>

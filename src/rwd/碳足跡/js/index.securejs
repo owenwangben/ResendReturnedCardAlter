@@ -1,0 +1,2 @@
+"use strict";$(function(){!function(){function t(){1==e?$("#inputRule").attr("disabled",!1):$("#inputRule").attr("disabled",!0)}var e=0,i=$(".terms-container").innerHeight(),r=$(".terms-content").innerHeight();$("#exampleModal").on("shown.bs.modal",function(n){i=$(".terms-container").innerHeight(),(r=$(".terms-content").innerHeight())<=i&&(e=1,t())}),$(".terms-container").on("scroll",function(){var n=$(".terms-container").scrollTop();i=$(".terms-container").innerHeight(),r=$(".terms-content").innerHeight(),e=n/(r-i),t()})}()});
+//# sourceMappingURL=index.securejs.map

@@ -1,0 +1,51 @@
+{
+    "Result": {
+        "TotalAmt": "4,000",
+        "Items": [
+			{
+				"TXDATE": "20200402",
+				"MEMO": "CHINA ROSE               MILPITAS     US",
+				"TX_AMT": "1,725"
+			},
+			{
+				"TXDATE": "20200402",
+				"MEMO": "IN-N-OUT BURGER #240     SAN JOSE     US",
+				"TX_AMT": "205"
+			},
+			{
+				"TXDATE": "20200402",
+				"MEMO": "HARRY CHAN OD            FREMONT      US",
+				"TX_AMT": "2,476"
+			},
+			{
+				"TXDATE": "20200402",
+				"MEMO": "EVA AIR     6957900174142EL SEGUNDO   US",
+				"TX_AMT": "7,573"
+			},
+			{
+				"TXDATE": "20200402",
+				"MEMO": "CHINA ROSE               MILPITAS     US",
+				"TX_AMT": "3,349"
+			},
+			{
+				"TXDATE": "20200402",
+				"MEMO": "DTV*DIRECTV SERVICE      800-347-3288 US",
+				"TX_AMT": "2,050"
+			}
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

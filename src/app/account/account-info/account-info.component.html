@@ -1,0 +1,174 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div class="formblock">
+					<div class="rowElem fs15">
+						<span class="fwb">帳單金額</span>
+						<span class="red spanbox pull-right">繳款截止日：{{model?.BaseData.DUEDATE}}</span>
+						<span class="red spanbox pull-right">結帳日：{{model?.BaseData.STMTDATE}}</span>
+						<div *ngIf="model?.BaseData.IntRate && model?.BaseData.IntDate">
+							<span class="red spanbox pull-right">• 適用截止年月：{{model?.BaseData.IntDate}}</span>
+							<span class="red spanbox pull-right">• 循環利率：{{model?.BaseData.IntRate}}</span>
+						</div>
+					</div>
+					<table class="ntable">
+						<tr>
+							<th>幣別</th>
+							<th>上期應繳<br>總金額</th>
+							<th>-已繳款金額<br>{{lineCRColName}}</th>
+							<th>+本期<br>新增款項</th>
+							<th>+循環利息</th>
+							<th>+違約金</th>
+							<th>=本期應繳<br>總金額</th>
+							<th>=本期最低<br>應繳金額</th>
+							<th>本期累計已繳金額</th>
+						</tr>
+						<tr *ngFor="let item of model?.BillAmounts">
+							<td>{{item.CurrencyName}}</td>
+							<td class="num-align">{{item.PREVBAL}}</td>
+							<td class="num-align">{{item.PREVPAYAMT}}</td>
+							<td class="num-align">{{item.NEWADDAMT}}</td>
+							<td class="num-align">{{item.FINCHARGE}}</td>
+							<td class="num-align">{{item.LATECHARGE}}</td>
+							<td class="num-align">{{item.CURRBAL}}</td>
+							<td class="num-align">{{item.DUEAMT}}</td>
+							<td class="num-align">
+								<a *ngIf="item.TotalPaymentAmt!='-';else anotherWord" class="underline open-lbox" href="javascript:void(0)" (click)="showPaymentRecords(item)">{{item.TotalPaymentAmt}}</a>
+								<ng-template #anotherWord>{{item.TotalPaymentAmt}}</ng-template>
+							</td>
+						</tr>
+					</table>
+					<div class="notification" *ngIf="model?.BillDeductMsgs.length > 0">
+						<ol>
+							<li *ngFor="let msg of model?.BillDeductMsgs">{{msg}}</li>
+						</ol>
+					</div>
+				</div>
+				<div class="formblock" *ngIf="!model?.IsCompanyUser">
+					<div class="rowElem fs15 fwb">紅利享樂回饋計畫</div>
+					<table class="ntable">
+						<tbody>
+							<tr>
+								<th>本期消費新增點數</th>
+								<th>活動調整點數</th>
+								<th>本期兌換點數</th>
+								<th>累計可用點數</th>
+								<th>本年度到期點數</th>
+							</tr>
+							<tr>
+								<td class="num-align">{{model?.Reward.AddPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.AdjustPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.ExchangePoint | number}}</td>
+								<td class="num-align">{{model?.Reward.TotalPoint | number}}</td>
+								<td class="num-align">{{model?.Reward.ExpiringPoint | number}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="formblock">
+					<div class="rowElem fs15">
+						<span class="fwb">可用額度查詢</span>
+						<span class="red pull-right">資料日期：{{today | date:"yyyy/MM/dd"}}</span>
+					</div>
+					<table class="ntable">
+						<tbody>
+							<tr>
+								<th>您的信用額度</th>
+								<th>可用信用額度</th>
+								<th>預借現金額度</th>
+								<th>可用預借現金額度</th>
+								<th>MMA網站預借現金額度</th>
+								<th>已刷卡未請款金額</th>
+							</tr>
+							<tr>
+								<td class="num-align">{{model?.CashAdvanceInfo.CreditCardLimit | number}}</td>
+								<td class="num-align">{{model?.CashAdvanceInfo.CreditAvailable | number}}</td>
+								<td class="num-align">{{model?.CashAdvanceInfo.CashLimit | number}}</td>
+								<td class="num-align">{{model?.CashAdvanceInfo.CashAvailable | number}}</td>
+								<td class="num-align">{{model?.CashAdvanceInfo.CashAvailable | number}}</td>
+								<td class="num-align">{{model?.CashAdvanceInfo.AuthAmount | number}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="btn-zone">
+					<app-link-button type="payment1" *ngIf="!model?.IsCompanyUser">網銀轉帳繳卡費</app-link-button>
+					<app-link-button type="payment3" *ngIf="!model?.IsCompanyUser">活存帳戶繳卡費</app-link-button>
+					<!-- <app-link-button type="payment2" *ngIf="!model?.IsCompanyUser">網銀預約轉帳繳卡費</app-link-button> -->
+					<a *ngIf="ebillType === 0" class="nbtn" routerLink="/Application/EStatementChange">設定行動/電子帳單</a>
+					<app-stmt-pdf-button [StmtMonth]="model?.BaseData.BillDate">下載當期帳單PDF</app-stmt-pdf-button>
+					<app-stmt-rte-button *ngIf="!model?.IsCompanyUser">申請帳單分期</app-stmt-rte-button>
+				</div>
+				<div class="credit_ad" *ngIf="msg">
+					<div class="credit_content">
+						<div class="credit_name">
+							<p>{{msg[0]}}</p>
+							<p>{{msg[1]}}</p>
+						</div>
+						<div class="credit_bg">
+							<p>{{msg[2]}}</p>
+							<p class="Afont">{{msg[3]}}</p>
+						</div>
+						<div class="credit_bg">
+							<p>{{msg[6]}}</p>
+							<p class="Afont">{{msg[7]}}</p>
+						</div>
+						<div class="credit_text">
+							<p>
+								<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+								<span>{{msg[4]}}</span>
+							</p>
+							<p>
+								<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+								<span>{{msg[8]}}</span>
+							</p>
+
+						</div>
+						<div class="credit_text">
+							<p>
+								<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+								<span>{{msg[9]}}</span>
+							</p>
+							<p>
+								<img src="/MMA8/mma/images/tickicon.png" alt="" srcset="" class="tickicon">
+								<span>{{msg[5]}}</span>
+							</p>
+						</div>
+						<div class="credit-zone">
+							<a href="{{msgUrl}}" class="credit_btn" target="_blank">立即申請</a>
+						</div>
+					</div>
+				</div>
+				<div loadHtml="/mma8/card/htmls/帳務資訊注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>
+<div class="lboxed">
+    <div class="close"></div>
+    <div class="lbox-block">
+		<div id="term" class="popuptrans popupbox mb20 termserv">
+		<h3>繳款紀錄</h3>
+		<table cellspacing="0" cellpadding="0" align="center" class="ntable">
+			<tbody>
+			<tr>
+				<th>交易日期</th>
+				<th>入帳日期</th>
+				<th>消費說明</th>
+				<th>{{currencyName}}金額</th>
+			</tr>
+			<tr *ngFor="let item of paymentList">
+				<td>{{item.TXDATE}}</td>
+				<td>{{item.DEDATE}}</td>
+				<td>{{item.MEMO}}</td>
+				<td>{{item.AMT}}</td>
+			</tr>
+			</tbody>
+		</table>
+		<div class="btn-zone"><a href="#" class="nbtn close">確認</a></div>
+		</div>
+    </div>
+  </div>

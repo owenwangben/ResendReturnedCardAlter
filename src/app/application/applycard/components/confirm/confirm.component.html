@@ -1,0 +1,298 @@
+<app-applycard-step-indicator [step]="1"></app-applycard-step-indicator>
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>申請卡別</legend>
+			<div class="confirm-data-block">
+				<span>{{cardinfo?.CardFullName}}</span>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div *ngIf="cardinfo?.IsHiCard" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>HiCard 指定通路</legend>
+			<div [ngSwitch]="applyinfo.HiCardChannel" class="confirm-data-block">
+				<span *ngSwitchCase="1">Hi購物</span>
+				<span *ngSwitchCase="2">Hi娛樂</span>
+				<span *ngSwitchCase="3">Hi美食</span>
+				<span *ngSwitchCase="4">Hi旅遊</span>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div *ngIf="cardinfo?.IsEasyCard" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>悠遊卡自動加值功能設定</legend>
+			<div class="confirm-data-block">
+				<span>{{applyinfo.NotAutoBonus ? "預設關閉" : "預設開啟"}}</span>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>您的個人資料</legend>
+			<div class="confirm-data-block">
+				<table>
+					<tr>
+						<th>中文姓名：</th>
+						<td>{{applyinfo.Name}}</td>
+					</tr>
+					<tr *ngIf="applyinfo.EnglishName">
+						<th>英文姓名：</th>
+						<td>{{applyinfo.EnglishName}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>出生年月日：</th>
+						<td>{{applyinfo.Birthday}}</td>
+					</tr>
+					<tr>
+						<th>身分證字號：</th>
+						<td>{{applyinfo.IDNumber}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>發證日期：</th>
+						<td>民國 {{applyinfo.IdCardIssueDateYYY}} 年 {{applyinfo.IdCardIssueDateMM}} 月 {{applyinfo.IdCardIssueDateDD}} 日</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>發證地點：</th>
+						<td>{{applyinfo.IdCardIssueLocation}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>領換補類別：</th>
+						<td>{{applyinfo.IdCardIssueType}}</td>
+					</tr>
+					<tr>
+						<th>行動電話：</th>
+						<td>{{applyinfo.Mobile}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.Phone">
+						<th>現居電話：</th>
+						<td>{{applyinfo.Phone}}</td>
+					</tr>
+
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>現居地址：</th>
+						<td>{{applyinfo.ZipCode}} {{applyinfo.Address}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>戶籍地址：</th>
+						<td *ngIf="!applyinfo.IsResidenceAddressIsHomeAddress">{{applyinfo.ResidenceZipCode}} {{applyinfo.ResidenceAddress}}</td>
+						<td *ngIf="applyinfo.IsResidenceAddressIsHomeAddress">同現居地址</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && (applyinfo.IsCompanyAddressSameAsHomeAddress || applyinfo.CompanyAddress)">
+						<th>公司地址：</th>
+						<td *ngIf="!applyinfo.IsCompanyAddressSameAsHomeAddress">{{applyinfo.CompanyZipCode}} {{applyinfo.CompanyAddress}}</td>
+						<td *ngIf="applyinfo.IsCompanyAddressSameAsHomeAddress">同現居地址</td>
+					</tr>
+					<tr>
+						<th>{{applyinfo.IsCardMember ? "卡片寄送及通訊地址" : "卡片寄送地址"}}：</th>
+						<td *ngIf="applyinfo.ReceiveAddressType == 1">現居地址<br>{{applyinfo.ZipCode}} {{applyinfo.Address}}</td>
+						<td *ngIf="applyinfo.ReceiveAddressType == 2">戶籍地址<br>{{applyinfo.ResidenceZipCode}} {{applyinfo.ResidenceAddress}}</td>
+						<td *ngIf="applyinfo.ReceiveAddressType == 3">公司地址<br>{{applyinfo.CompanyZipCode}} {{applyinfo.CompanyAddress}}</td>
+					</tr>
+					<tr>
+						<th>電子郵件：</th>
+						<td>{{applyinfo.Email}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.DsNo">
+						<th>推薦人：</th>
+						<td>{{applyinfo.Referrer}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsShopCard">
+						<th *ngIf="cardinfo.IsShopCard">美安優惠顧客編號：</th>
+						<td>C{{applyinfo.ShopCardCustId}}</td>
+					</tr>
+					<tr *ngIf="IsEasternCard">
+						<th *ngIf="IsEasternCard">加盟/實習店主代碼：</th>
+						<td>{{applyinfo.ShopCardCustId}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsShopEasyTitaniumCard">
+						<th>美安悠遊鈦金卡無法核發作業：</th>
+						<td *ngIf="!applyinfo.ShopCardUnableIssue || applyinfo.ShopCardUnableIssue == 1">取消申請</td>
+						<td *ngIf="applyinfo.ShopCardUnableIssue == 2">同意改申辦美安鈦金卡</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsMctBrandedCard">
+						<th>台綜保(軍)公教悠遊鈦金卡無法核發作業：</th>
+						<td *ngIf="!applyinfo.MctBrandedCardUnableIssue || applyinfo.MctBrandedCardUnableIssue == 1">取消申請</td>
+						<td *ngIf="applyinfo.MctBrandedCardUnableIssue == 2">同意改申辦台綜保(軍)公教鈦金卡</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>職業類型：</th>
+						<td>{{applyinfo.JobCategory}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.JobTitle">
+						<th>職業名稱：</th>
+						<td>{{applyinfo.JobTitle}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember">
+						<th>教育程度：</th>
+						<td>{{educationGrade}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.Company">
+						<th>公司名稱：</th>
+						<td>{{applyinfo.Company}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.CompanyPhoneAreaCode && applyinfo.CompanyPhone">
+						<th>公司電話：</th>
+						<td>{{applyinfo.CompanyPhoneAreaCode + "-" + applyinfo.CompanyPhone + (applyinfo.CompanyPhoneEx ? "#" + applyinfo.CompanyPhoneEx : "")}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.AnnualSalary">
+						<th>年薪(新臺幣)：</th>
+						<td>{{applyinfo.AnnualSalary | number}}萬元</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.IsStudent">
+						<th>父母或法定代理人中文姓名：</th>
+						<td>{{applyinfo.LegalName}}</td>
+					</tr>
+					<tr *ngIf="!applyinfo.IsCardMember && applyinfo.IsStudent">
+						<th>父母或法定代理人連絡電話：</th>
+						<td>{{applyinfo.LegalPhone}}</td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div *ngIf="(cardinfo.IsDualCurrencyCard || cardinfo.IsComboCard || cardinfo.ShowDawhoAuthDebitUI || applyinfo.AgreeTwdAuthDebit === true || applyinfo.AgreeTwdAuthDebitReserved === 'Y') && !quickaccount" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>您的申請資料</legend>
+			<div class="confirm-data-block">
+				<table>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard">
+						<th>外幣帳款自動扣繳帳號：</th>
+						<td>{{applyinfo.ForeignDepositAccount}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard">
+						<th>外幣授權扣繳金額：</th>
+						<td>{{applyinfo.ForeignAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+					<tr *ngIf="applyinfo.AgreeTwdAuthDebit && applyinfo.AgreeTwdAuthDebitReserved !== 'Y'">
+						<th>臺幣帳款自動扣繳帳號：</th>
+						<td>{{applyinfo.TaiwanDepositAccount}}</td>
+					</tr>
+					<tr *ngIf="!cardinfo.IsDualCurrencyCard && (applyinfo.AgreeTwdAuthDebit || applyinfo.AgreeTwdAuthDebitReserved === 'Y')">
+						<th>臺幣授權扣繳金額：</th>
+						<td>{{applyinfo.TwdAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard && applyinfo.TaiwanDepositAccount">
+						<th>臺幣授權扣繳金額：</th>
+						<td>{{applyinfo.ForeignAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsComboCard && !cardinfo.IsDualCurrencyCard">
+						<th>連結臺幣帳號：</th>
+						<td>{{applyinfo.ComboDepositAccount}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsComboCard">
+						<th>開啟國際金融卡功能：</th>
+						<td>{{applyinfo.ComboInternationalCardFeatures == 1 ? "申請" : "註銷"}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsComboCard">
+						<th>開啟金融卡消費扣款功能：</th>
+						<td>{{applyinfo.ComboIsApplyDebitFunction ? "申請" : "不申請"}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsComboCard">
+						<th>申請/變更帳號轉帳功能：</th>
+						<td [ngSwitch]="applyinfo.ComboTransferFunction">
+							<div *ngSwitchCase="1">{{"不限約定帳號轉帳"}}</div>
+							<div *ngSwitchCase="2">{{"限約定帳號轉帳"}}</div>
+							<div *ngSwitchCase="3">{{"僅提領現金"}}</div>
+						</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsComboCard">
+						<td colspan="2">
+							<span class="pink2">*本人於{{applyinfo.ReviewTime}}攜回審閱金融卡使用說明，並確認上述【金融信用卡功能申請】均正確無誤且已詳閱並同意【國際金融卡功能注意事項】</span>
+						</td>
+					</tr>
+					<tr *ngIf="cardinfo.ShowDawhoAuthDebitUI">
+						<th>永豐信用卡授權自動扣繳：</th>
+						<td>{{+applyinfo.DawhoAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div *ngIf="quickaccount" class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>您的申請資料</legend>
+			<div class="confirm-data-block">
+				<table>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard">
+						<th>外幣帳款自動扣繳帳號：</th>
+						<td>{{applyinfo.ForeignDepositAccount}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard">
+						<th>外幣授權扣繳金額：</th>
+						<td>{{applyinfo.ForeignAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard && +applyinfo.AgreeTWAutoWithholding == 1">
+						<th>臺幣帳款自動扣繳帳號：</th>
+						<td>{{applyinfo.TaiwanDepositAccount}}</td>
+					</tr>
+					<tr *ngIf="cardinfo.IsDualCurrencyCard && applyinfo.TaiwanDepositAccount && +applyinfo.AgreeTWAutoWithholding == 1">
+						<th>臺幣授權扣繳金額：</th>
+						<td>{{applyinfo.ForeignAuthDebitAmount == 1 ? "應繳總金額" : "最低應繳金額"}}</td>
+					</tr>
+				</table>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>您的聲明與同意事項</legend>
+			<div class="confirm-data-block">
+				<p>
+					<span class="pink2 fwb">本人已閱讀且同意：</span>
+					<span style="display:block">個人網路銀行服務條款</span>
+					<span style="display:block">永豐銀行個人資料蒐集、處理及利用告知義務內容</span>
+					<span style="display:block">信用卡申請書同意條款暨約定事項</span>
+					<span *ngIf="(applyinfo.AgreeDawhoAuthDebit || applyinfo.AgreeTwdAuthDebit) && applyinfo.AgreeTwdAuthDebitReserved !== 'Y'" style="display:block">永豐信用卡自動扣繳申請及注意事項</span>
+					<span *ngIf="applyinfo.AgreeTwdAuthDebitReserved === 'Y'" style="display:block">預設申請自動轉帳扣繳及注意事項</span>
+					<span *ngIf="cardinfo.IsBrandedCard" style="display:block">聯名卡/認同機構之個人資料使用同意條款</span>
+					<span *ngIf="applyinfo.ShareHoldingFlag === 'Y'" style="display:block">資料共享服務同意書及告知事項</span>
+					<span *ngIf="applyinfo.AgreeAllCompany && !(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)" style="display:block">共同行銷/合作推廣個人資料</span>
+					<span *ngIf="applyinfo.AgreeThirdParty && !(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)" style="display:block">{{cardinfo.IsShopCard && !cardinfo.IsIpassCard ? "不提供個人資料予第三人行銷條款" : "第三人行銷個人資料同意條款"}}</span>
+          <span *ngIf="MobileVerificationServices" style="display:block" >行動電話號碼辦理身分驗證服務之使用者約定條款及隱私權告知條款</span>
+					<span *ngIf="cardinfo.IsElasticLimit && applyinfo.IsElasticLimit" style="display:block" >開啟鈦豐金融信用卡彈性額度功能</span>
+					<span *ngIf="applyinfo.DeliverPassword" style="display:block">核卡後主動寄發預借現金密碼函</span>
+					<span *ngIf="applyinfo.EmailSendContract" style="display:block">以電子郵件寄送信用卡契約</span>
+					<span style="display:block">寄送{{applyinfo.StmtDeliverWay == 1 ? "行動帳單" : "電子帳單"}}</span>
+					<span *ngIf="!applyinfo.IsCardMember && applyinfo.AgreeInspectLandRegisterDoc" style="display:block">委託永豐商業銀行代為調閱不動產謄本作為申辦信用卡財力證明文件之一</span>
+					<span *ngIf="cardinfo.IsDualCurrencyCard && applyinfo.IsAgreeForeignCurrencyAuthDebit" style="display:block">外幣帳款自動扣繳</span>
+					<span *ngIf="cardinfo.IsDualCurrencyCard && applyinfo.AgreeForeignAutoWithholding" style="display:block">外幣帳款自動扣繳</span>
+					<span *ngIf="cardinfo.IsDualCurrencyCard && IsShowTWAutoWithholding" style="display:block">臺幣帳款自動扣繳</span>
+					<span *ngIf="cardinfo.IsDualCurrencyCard && applyinfo.IsAgreeAuthDebit" style="display:block">幣倍卡自動換匯扣款功能</span>
+					<span *ngIf="applyinfo.AgreeVirtualCard" style="display:block">虛擬卡約定條款</span>
+					<span *ngIf="applyinfo.AgreePriorActivateCard" style="display:block">優先啟用碼同意事項</span>
+				</p>
+				<p>
+					<span class="pink2 fwb">本人已閱讀且不同意：</span>
+					<span *ngIf="applyinfo.AgreeTwdAuthDebit === false && !applyinfo.AgreeTwdAuthDebitReserved" style="display:block">永豐信用卡自動扣繳申請及注意事項</span>
+					<span *ngIf="applyinfo.AgreeTwdAuthDebitReserved && applyinfo.AgreeTwdAuthDebitReserved === 'N'" style="display:block">預設申請自動轉帳扣繳及注意事項</span>
+					<span *ngIf="applyinfo.ShareHoldingFlag === 'N'" style="display:block">資料共享服務同意書及告知事項</span>
+					<span *ngIf="!applyinfo.AgreeAllCompany && !(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)" style="display:block" >共同行銷/合作推廣個人資料</span>
+					<span *ngIf="!applyinfo.AgreeThirdParty && !(cardinfo?.IsShopCard && !cardinfo?.IsIpassCard)" style="display:block" >第三人行銷個人資料同意條款</span>
+          <span *ngIf="!MobileVerificationServices" style="display:block" >行動電話號碼辦理身分驗證服務之使用者約定條款及隱私權告知條款</span>
+					<span *ngIf="cardinfo.IsElasticLimit && !applyinfo.IsElasticLimit" style="display:block" >開啟鈦豐金融信用卡彈性額度功能</span>
+					<span *ngIf="!applyinfo.IsFarmerCard && !applyinfo.DeliverPassword" style="display:block" >核卡後主動寄發預借現金密碼函</span>
+					<span *ngIf="!applyinfo.EmailSendContract" style="display:block">以電子郵件寄送信用卡契約</span>
+					<span *ngIf="!applyinfo.IsCardMember && !applyinfo.AgreeInspectLandRegisterDoc" style="display:block">委託永豐商業銀行代為調閱不動產謄本作為申辦信用卡財力證明文件之一</span>
+					<span *ngIf="cardinfo.IsDualCurrencyCard && !IsShowTWAutoWithholding" style="display:block">臺幣帳款自動扣繳</span>
+				</p>
+			</div>
+		</fieldset>
+	</section>
+</div>
+<div class="btn-zone flex-inline-min">
+	<a href="javascript:void(0)" class="nbtn" (click)="goPrev()">上一步</a>
+	<a href="javascript:void(0)" class="nbtn focus" appPreventDoubleClick (throttledClick)="submit()">送出申請</a>
+</div>

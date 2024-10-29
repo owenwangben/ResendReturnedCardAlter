@@ -1,0 +1,41 @@
+<div class="formblock">
+	<ul class="accordion2">
+		<li>
+			<a href="javascript:void(0)" class="atitle highlight">最新消費紀錄(授權金額)</a>
+		</li>
+	</ul>
+</div>
+<div class="rowElem red" style="font-size:13px">最新消費紀錄為21天內簽帳金融卡交易紀錄，實際金額以商家請款金額為準。</div>
+<table class="new-datatable" width="100%">
+	<tr>
+		<td class="mobile-col-3 text-right" style="font-weight:bold">幣別</td>
+		<td>
+			<div class="artfld select mobile-col-10">
+				<select [(ngModel)]="currency" mweb-select="請選擇幣別">
+					<option *ngFor="let item of currencyList" [value]="item.CurrencyEName">{{item.CurrencyCName}}{{item.CurrencyEName}}</option>
+				</select>
+			</div>
+		</td>
+	</tr>
+</table>
+<table class="ntable table-striped" width="100%">
+	<thead>
+		<tr>
+			<th class="mobile-col-3">授權日期<br>授權時間</th>
+			<th class="mobile-col-4">消費類別/<br>商店名稱</th>
+			<th class="mobile-col-5">授權金額<br>卡片末四碼</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of records">
+			<td>{{item.AuthDate | date:'y/MM/dd'}}<br>{{item.AuthTime}}</td>
+			<td>{{item.Memo}}</td>
+			<td>{{item.AuthAmt}}<br>{{item.CardNo}}</td>
+		</tr>
+		<tr *ngIf="!records?.length">
+			<td colspan="4">查無資料！</td>
+		</tr>
+	</tbody>
+</table>
+<div class="rowElem" loadHtml="/mma8/card/htmls/202209/Debit卡授權交易明細注意事項.html"></div>

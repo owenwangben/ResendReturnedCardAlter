@@ -1,0 +1,68 @@
+<div class="formblock">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="data-table forvd">
+		<tr>
+			<th class="mobile-col-4">
+				<div class="rowElem text-right">快速查詢</div>
+			</th>
+			<td class="mobile-col-8">
+				<div class="rowElem rowinline">
+					<ul>
+						<li *ngFor="let option of fastQueryOptions;">
+							<a href="javascript:void(0)"
+								(click)="onClickMonthLink(option.Value);">{{option.DisplayName}}</a>
+						</li>
+					</ul>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<th style="border-bottom: none;">
+				<div class="rowElem inner-th">查詢期間</div>
+			</th>
+			<td style="border-bottom: none;">
+				<div class="rowElem">
+					<div class="artfld select col-2">
+						<select [(ngModel)]="start">
+							<option *ngFor="let option of dropdownOptions" [value]=option.Value>{{option.DisplayName}}
+							</option>
+						</select>
+					</div>
+					<span class="spanbox">到</span>
+					<div class="artfld select col-2">
+						<select [(ngModel)]="end">
+							<option *ngFor="let option of dropdownOptions" [value]=option.Value>{{option.DisplayName}}
+							</option>
+						</select>
+					</div>
+					<div class="btn-zone inline ml10">
+						<button type="button" class="nbtn" (click)="onSearch()">查詢</button>
+					</div>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div class="formblock">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="data-table forvd">
+		<tr *ngIf="cardtypeOptions.length > 1">
+			<th>
+				<div class="rowElem inner-th">卡別</div>
+			</th>
+			<td>
+				<div class="artfld select col-5 rowElem">
+					<select [(ngModel)]="cardtype" (ngModelChange)="onSelectCardtypeChange($event)">
+						<option value="-1">全部卡別</option>
+						<option *ngFor="let option of cardtypeOptions" [value]=option.Value>{{option.DisplayName}}
+						</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div *ngIf="!subtotal" class="rowElem center fs15 red">無消費資料</div>
+				<app-pie-chart *ngIf="subtotal" [data]="Records" display="CategoryName" quantity="Subtotal" color="Color"></app-pie-chart>
+			</td>
+		</tr>
+	</table>
+</div>

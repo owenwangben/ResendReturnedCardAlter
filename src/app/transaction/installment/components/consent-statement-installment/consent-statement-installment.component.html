@@ -1,0 +1,15 @@
+﻿<form [formGroup]="form" (ngSubmit)="submit()">
+	<div class="scrollbar" loadHtml={{RegulationUrl}}></div>
+	<div style="margin-top: 10px">
+		<input type="checkbox" class="artfld" formControlName="consent" id="consent"/>
+		<label for="consent">
+			<span><span class="getCheck"></span></span>
+			<font class="red left fs15">本人已詳閱並同意上列帳單分期付款注意事項</font>
+		</label>
+	</div>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">同意並確定申請</button>
+	</div>
+</form>
+

@@ -1,0 +1,168 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+		<div class="container">
+			<div *ngIf="showSelectMonth">
+				<h1>{{messages?.SelectMonth}}</h1>
+				<ul class="list-group" *ngFor="let month of billMonths">
+					<li class="list-group-item center" (click)="onSelectMonth(month)">{{month}}</li>
+				</ul>
+			</div>
+			<div *ngIf="showConfirmMonth" style="width: 75%; margin: auto;">
+				<div class="row" style="padding-bottom: 1em;">
+					<div class="col center"  style="padding-right: 5px; padding-left: 5px;">
+						<h3>{{messages?.SelectMonthConfirmText1}}</h3>
+						<p style="font-size: 14px; margin-top: 10px;">{{messages?.SelectMonthConfirmText2}}</p>
+					</div>
+				</div>
+				<div class="row" style="margin-top: 160px;">
+					<div class="col">
+						<input type="button" value="{{button?.OK}}" (click)="onConfirmMonth()">
+					</div>
+					<div class="col">
+						<input type="button" value="{{button?.Cancel}}" (click)="showConfirmMonth=false">
+					</div>
+				</div>
+			</div>
+			<div *ngIf="!showSelectMonth && !showConfirmMonth">
+				<div *ngIf="!detail">
+					<div>
+						<div class="right mb10" *ngIf="localCurrencyList">{{messages?.currency}}
+							<select [(ngModel)]="currency" (ngModelChange)="currencyChange($event)">
+								<option *ngFor="let item of localCurrencyList" [value]="item.Value">{{item.Text}}</option>
+							</select>
+						</div>
+						<table style="margin-bottom: 30px;table-layout: fixed; width: 100%;">
+							<thead>
+								<tr>
+									<th [ngStyle]="messages?.ColumnHeader1Style">
+										<p>{{messages?.DEDATE}}</p>
+										<p>{{messages?.TXDATE}}</p>
+									</th>
+									<th>{{messages?.MEMO}}</th>
+									<th  [ngStyle]="messages?.ColumnHeader3Style" [innerHTML]="localeCurrencyAmtText | safeHtml">
+										<p>{{currency}}</p>
+										<p>{{messages?.AMT}}</p>
+									</th>
+									<th style="width: 20px;"></th>
+								</tr>
+							</thead>
+							<tbody *ngIf="records">
+								<tr *ngFor="let item of records">
+									<td align="center">
+										<p>{{item.DEDATE}}</p>
+										<p>{{item.TXDATE}}</p>
+									</td>
+									<td style="word-wrap: break-word;">{{item.MEMO}}</td>
+									<td align="right">{{item.AMT}}</td>
+									<td style="margin-right: 5px">
+										<i *ngIf="item.TXDATE" class="fas fa-angle-right link" (click)="onShowDetail(item)"></i>
+									</td>
+								</tr>
+								<tr></tr>
+							</tbody>
+							<tbody *ngIf="!records">
+								<tr>
+									<td colspan="5">
+										<p class="center">{{messages?.NoData}}</p>
+									</td>
+								</tr>
+								<tr></tr>
+							</tbody>
+						</table>
+					</div>
+					<nav style="bottom: 65px; background: #fff;">
+						<div class="container row">
+							<div class="col" *ngIf="billMonths?.length" [ngStyle]="messages?.BtnStyle">
+								<input type="button" value="{{messages?.SelectMonthBtn}}" (click)="showSelectMonth=true">
+							</div>
+							<div class="col" *ngIf="records" [ngStyle]="messages?.BtnStyle">
+								<input type="button" value="{{messages?.DownloadPdfBtn}}" (click)="onDownloadPDF()">
+							</div>
+						</div>
+					</nav>
+				</div>
+				<div *ngIf="detail">
+					<div [ngStyle]="{height: tableHeight}" style="overflow-y:scroll;">
+						<div class="right mb10" *ngIf="localCurrencyList">{{messages?.currency}}
+							<select [(ngModel)]="currency" (ngModelChange)="currencyChange($event)">
+								<option *ngFor="let item of localCurrencyList" [value]="item.Value">{{item.Text}}</option>
+							</select>
+						</div>
+						<table>
+							<tbody>
+								<tr></tr>
+								<tr>
+									<td>{{messages?.DEDATE}}</td>
+									<td align="right">{{detail.DEDATE}}</td>
+								</tr>
+								<tr>
+									<td>{{messages?.TXDATE}}</td>
+									<td align="right">{{detail.TXDATE}}</td>
+								</tr>
+								<tr>
+									<td>{{messages?.CardNoLast4}}</td>
+									<td align="right">{{detail.CardNo}}</td>
+								</tr>
+								<tr>
+									<td>{{messages?.MEMO}}</td>
+									<td align="right">{{detail.MEMO}}</td>
+								</tr>
+								<tr>
+									<td [innerHTML]="detailLocaleCurrencyAmtText | safeHtml"></td>
+									<td align="right">{{detail.AMT}}</td>
+								</tr>
+								<tr>
+									<td>{{detail.CurrencyName == "臺幣" ? messages?.FOREIGN_CURDATE : messages?.CURDATE}}</td>
+									<td align="right">{{detail.CURDATE}}</td>
+								</tr>
+								<ng-template [ngIf]="detail.CurrencyName == '臺幣'" [ngIfElse]="ForeignCurRecord">
+									<tr>
+										<td>{{messages?.ForeignTXAMT}}</td>
+										<td align="right">{{detail.TXAMT}}</td>
+									</tr>
+									<tr>
+										<td>{{messages?.INST_RATE}}</td>
+										<td align="right">{{detail.INST_RATE}}</td>
+									</tr>
+									<tr>
+										<td>{{messages?.INST_AMT}}</td>
+										<td align="right">{{detail.INST_AMT}}</td>
+									</tr>
+								</ng-template>
+								<ng-template #ForeignCurRecord>
+									<tr>
+										<td>{{messages?.COUNTRY}}</td>
+										<td align="right">{{detail.COUNTRY}}</td>
+									</tr>
+									<tr>
+										<td>{{messages?.TXCUR}}</td>
+										<td align="right">{{detail.TXCUR}}</td>
+									</tr>
+									<tr>
+										<td>{{messages?.TXAMT}}</td>
+										<td align="right">{{detail.TXAMT}}</td>
+									</tr>
+								</ng-template>
+
+								<tr></tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="row">
+						<div class="col">
+							<input type="button" (click)="onPrev(detail)" value="{{messages?.PrevBtn}}">
+						</div>
+						<div class="col">
+							<input type="button" (click)="onNext(detail)" value="{{messages?.NextBtn}}">
+						</div>
+						<div class="col">
+							<input type="button" (click)="onShowDetail(null)" value="{{messages?.BackBtn}}">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	<app-mobile-statement-nav [Index]="1" [Token]="token"></app-mobile-statement-nav>
+</div>

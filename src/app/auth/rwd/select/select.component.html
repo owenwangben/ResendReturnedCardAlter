@@ -1,0 +1,35 @@
+<div class="wrapper">
+	<div class="cover"></div>
+	<header>
+		<div class="container">
+			<div class="logo">
+				<a>
+					<img class="hidden-min" src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" />
+					<img class="hidden-max" src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行">
+				</a>
+			</div>
+			<div class="master-title">{{pageinfo.name}}</div>
+		</div>
+	</header>
+	<div class="outer_container apply">
+		<div class="container no-breadcrumbs">
+			<div style="height:65vh;"></div>
+			<app-auth-warning></app-auth-warning>
+		</div>
+	</div>
+	<app-auth-footer></app-auth-footer>
+</div>
+<div class="lboxed">
+    <div class="lbox-block">
+        <div id="choose-auth-method" class="choose-auth-method">
+            <h3>請選擇認證方式</h3>
+            <div class="auth-method-block">
+                <div class="btn-zone">
+                    <a href="javascript:void(0)" class="nbtn focus" (click)="submit('MMA')">MMA 網銀會員</a>
+                    <a href="javascript:void(0)" class="nbtn focus" (click)="submit('Card')">本行信用卡卡友</a>
+                    <a href="javascript:void(0)" class="nbtn focus" (click)="submit('Account')">本行存款戶</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

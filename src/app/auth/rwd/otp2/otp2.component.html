@@ -1,0 +1,67 @@
+<div class="wrapper">
+	<app-auth-header></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content">
+					<section class="trans-content">
+						<fieldset class="fieldset-block pink-legend">
+							<legend>傳送簡訊動態密碼</legend>
+							<div class="send-sms-block style2">
+								<div class="text">
+									<p>系統將傳送簡訊動態密碼到您的手機</p>
+								</div>
+								<table class="new-datatable">
+									<tbody>
+										<tr>
+											<th>
+												<p>手機號碼</p>
+											</th>
+											<td>
+												<input type="text" class="artfld col-all-min col-4" formControlName="mobileNo" maxlength="10" numberOnly pattern="^09[0-9]{8}$" [readonly]="countdown" placeholder="請輸入手機號碼 10 碼">
+												<div class="btn-zone inline">
+													<button id="send-sms" class="nbtn focus" (click)="generateOTP()">傳送密碼</button>
+												</div>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div>
+								<p class="pink2">※重新產生簡訊驗證碼超過5次，系統將自動暫停傳送密碼，隔日再開放。</p>
+                <p class="pink2">※若未收到簡訊，請留意收訊是否良好，或將手機關機重開後操作，避免造成簡訊動態密碼多次輸入錯誤。</p>
+							</div>
+						</fieldset>
+					</section>
+				</div>
+
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p>驗證簡訊動態密碼</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="OTP" placeholder="請輸入簡訊動態密碼">
+									</td>
+								</tr>
+								<tr *ngIf="countdown">
+									<td colspan="2" class="reminds">
+										<span class="pink2">※動態密碼有效時限尚餘{{countdown | number_to_hms}}，逾時未輸入，視同取消認證。</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">驗證簡訊動態密碼</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+	</form>
+</div>

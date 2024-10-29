@@ -1,0 +1,80 @@
+<div class="content steps-outer">
+	<section class="trans-content">
+	  <ul class="steps-block">
+		<li class="active"><span> <i>選擇卡片</i></span></li>
+		<li><span>  <i>再次確認</i></span></li>
+		<li><span> <i>申請結果</i></span></li>
+	  </ul>
+	</section>
+  </div>
+  <div class="content nopad">
+	<table class="form-table">
+	  <caption> <span>請選擇您要掛失的卡片</span></caption>
+	  <tbody>
+		<tr>
+		  <td>
+			<div class="card-lost-block confirm-ready">
+			  <div class="card-holder">
+				<div class="card"><img src="{{SelectedCard?.CardFaceUrl}}" alt=""></div>
+				<div class="desc">
+				  <p>{{SelectedCard?.Name}}</p>
+				  <p>{{SelectedCard?.CardBrand}}</p>
+				  <p>正卡：<span>{{SelectedCard?.PrimaryCardCount}}</span>&nbsp;張</p>
+				  <p *ngIf="SelectedCard?.SupplmentaryCardCount > 0">附卡：<span>{{SelectedCard?.SupplmentaryCardCount}}</span>&nbsp;張</p>
+				</div>
+			  </div>
+			  <div class="card-descriptions">
+				<div class="primary"><b>正卡</b>
+				  <ul class="card-list style1">
+					<li *ngFor="let item of PrimaryCard; let idx = index">
+					  <div class="card-num"><span>{{item.CardNo | creditcard}}</span><span>{{item.CardHolderName}}</span></div>
+					  <div class="actions">
+						<label class="check-form only-check">
+						  <input type="checkbox" data-primary="true" [(ngModel)]="item.IsSelected"><span class="check" (click)="onCheckPrimaryCard(idx)"></span>
+						</label>
+					  </div>
+					</li>
+				  </ul>
+				  <p class="red" *ngIf="SelectedCard?.SupplmentaryCardCount > 0">若您欲掛失正卡，所有附卡將一併掛失</p>
+				</div>
+				<div class="additional" *ngIf="SelectedCard?.SupplmentaryCardCount > 0"><b>附卡</b>
+				  <ul class="card-list style1">
+					<li *ngFor="let item of SupplmentaryCard">
+					  <div class="card-num"><span>{{item.CardNo | creditcard}}</span><span>{{item.CardHolderName}}</span></div>
+					  <div class="actions">
+						<label class="check-form only-check">
+						  <input type="checkbox" [(ngModel)]="item.IsSelected"><span class="check" ></span>
+						</label>
+					  </div>
+					</li>
+				  </ul>
+				</div>
+			  </div>
+			</div>
+		  </td>
+		</tr>
+		<tr>
+		  <td>
+			<div class="card-lost-block">
+			  <div class="notice-block"><b class="active" (click)="toggle($event)">注意事項</b>
+				<div class="notice-desc">
+				  <ol class="disc">
+					<li>上列為以您正卡人身份登錄名下之所屬信用卡(含正附卡)，若您持有卡為他人之附卡，則需請該正卡人本人登錄網銀進行信用卡掛失。</li>
+					<li>正卡辦理掛失時，該同卡別之附卡亦連 帶一併掛失；惟附卡辦理掛失時，正卡仍得繼續使用。</li>
+					<li>如掛失之卡片為金融信用卡，於掛失作業確定成功時，卡片之金融端功能亦一併停用。</li>
+					<li>欲申請補發新卡，請電洽本行客服專線02-25287776辦理;附卡之申請補發，須由主卡人來電辦理。</li>
+				  </ol>
+				</div>
+			  </div>
+			</div>
+		  </td>
+		</tr>
+	  </tbody>
+	</table>
+  </div>
+  <div class="content transparent">
+	<div class="btn-block center">
+	  <button class="btn cancel" (click)="goPrev()">上一步</button>
+	  <button class="btn" (click)="submit()">確認</button>
+	</div>
+  </div>

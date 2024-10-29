@@ -1,0 +1,194 @@
+<div class="outer_container">
+	<div class="container no-breadcrumbs">
+		<div class="content transparent step-panel-block">
+			<div class="step">
+			<ul class="list-step list-step--gray">
+				<li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">設定資料</span></li>
+				<li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">再次確認</span></li>
+				<li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">確認結果</span></li>
+			</ul>
+			</div>
+		</div>
+		<div *ngIf="!FirstFlag && secondapply" class="content full-content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>設定本期信用卡自動扣繳金額</legend>
+			</fieldset>
+			<table [formGroup]="form" class="new-datatable">
+				<tbody>
+				<tr>
+					<th>自動扣繳帳號 </th>
+					<td>{{oldaccounts}}</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2">   </td>
+				</tr>
+				<tr>
+					<th>信用卡扣款方式</th>
+					<td>{{oldpaymenttypeview}}</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2">   </td>
+				</tr>
+				<tr>
+					<th>帳單資訊</th>
+					<td>
+					<div class="bill-block">
+						<table class="ntable">
+						<tbody>
+							<tr>
+							<th>本期帳單<br class="hidden-max">應繳金額</th>
+							<th>本期最低<br class="hidden-max">應繳金額</th>
+							<th>繳款<br class="hidden-max">截止日</th>
+							</tr>
+							<tr>
+							<td>{{TotalAmt}}</td>
+							<td>{{MinAmt}}</td>
+							<td>{{DueDate}}</td>
+							</tr>
+						</tbody>
+						</table>
+					</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2">   </td>
+				</tr>
+				<tr>
+					<th>本期扣款金額</th>
+					<td>
+					<input class="artfld col-all-min col-4" type="number" formControlName="AutoDeductAmt" placeholder="請輸入本期扣款金額"><span class="remark red dis-inline">(您設定之本期扣款金額不得大於本期帳單應繳金額且不得小於本期最低應繳金額。)</span>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</section>
+		</div>
+		<div *ngIf="!FirstFlag && !secondapply" class="content full-content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>信用卡自動扣繳變更設定</legend>
+			</fieldset>
+			<table [formGroup]="form" class="new-datatable">
+				<tbody>
+				<tr>
+					<th>目前自動扣繳帳號</th>
+					<td>{{oldaccounts}}</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>信用卡目前扣款方式</th>
+					<td>{{oldpaymenttypeview}}</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>
+					<p><span>自動扣繳帳號變更</span></p>
+					</th>
+					<td>
+					<div class="artfld select col-4 col-all-min">
+						<select formControlName="AccountNo">
+							<option *ngFor="let account of accounts" [value]="account">{{account}}</option>
+						</select>
+					</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>
+					<p><span>扣款方式變更</span></p>
+					</th>
+					<td>
+					<ul class="flex-max flex-start">
+						<li>
+						<input class="artfld tickr" id="a1_" type="radio" formControlName="PaymentType" [value]="2">
+						<label for="a1_"> <span><span class="getCheck"></span></span>
+							<p class="dis-inline">當期應繳全額</p>
+						</label>
+						</li>
+						<li>
+						<input class="artfld tickr" id="a2_" type="radio" formControlName="PaymentType" [value]="1">
+						<label for="a2_"> <span><span class="getCheck"></span></span>
+							<p class="dis-inline">最低應繳金額</p>
+						</label>
+						</li>
+					</ul>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</section>
+		</div>
+		<div *ngIf="FirstFlag" class="content full-content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>信用卡自動扣繳申請</legend>
+			</fieldset>
+			<table [formGroup]="form" class="new-datatable">
+				<tbody>
+				<tr>
+					<th>
+					<p><span>自動扣繳帳號</span></p>
+					</th>
+					<td>
+					<div class="artfld select col-4 col-all-min">
+						<select formControlName="AccountNo">
+							<option *ngFor="let account of accounts" [value]="account">{{account}}</option>
+						</select>
+					</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>
+					<p><span>預計扣款方式</span></p>
+					</th>
+					<td>
+					<ul class="flex-max flex-start">
+						<li >
+						<input class="artfld tickr" id="a1_" type="radio" formControlName="PaymentType" [value]="2">
+						<label for="a1_"> <span><span class="getCheck"></span></span>
+							<p class="dis-inline">當期應繳全額</p>
+						</label>
+						</li>
+						<li >
+						<input class="artfld tickr" id="a2_" type="radio" formControlName="PaymentType" [value]="1">
+						<label for="a2_"> <span><span class="getCheck"></span></span>
+							<p class="dis-inline">最低應繳金額</p>
+						</label>
+						</li>
+					</ul>
+					</td>
+				</tr>
+				</tbody>
+			</table>
+			</section>
+		</div>
+		<div class="content">
+			<section class="trans-content">
+			<div class="prfy">
+				<p class="title">※ 注意事項：
+				<ol *ngIf="!FirstFlag && secondapply"  class="decimal">
+					<li>本服務限本行存款帳戶扣繳本行信用卡應繳款項。</li>
+					<li>本交易僅限修改本期帳單扣款金額，如下期您未設定，則將依原始自動扣繳之設定扣帳。</li>
+					<li>本交易應於本期帳單繳款截止日前一個營業日17:00前完成變更，始生效力。</li>
+				</ol>
+				<ol *ngIf="FirstFlag || (!FirstFlag && !secondapply)" class="decimal">
+					<li>本服務限本行存款帳戶扣繳本行信用卡應繳款項。</li>
+					<li>本交易於營業日17:00以前完成，將於次營業日生效；若於營業日17:00以後完成，將於次營業日之下一營業日生效。</li>
+					<li>本交易若為由其他行庫變更為本行自動扣繳，本次變更將於次期帳單生效，請以帳單顯示之扣款帳號為準。</li>
+				</ol>
+			</div>
+			</section>
+		</div>
+		<div class="btn-zone flex-inline-min"><a class="nbtn" (click)="returnstep()">取消</a><a class="nbtn focus" (click)="submit()">下一步</a></div>
+	</div>
+</div>

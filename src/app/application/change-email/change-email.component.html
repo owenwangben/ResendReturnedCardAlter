@@ -1,0 +1,42 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="onSubmit()">
+					<div class="formblock">
+						<table class="new-datatable mobile-col-12">
+							<tbody>
+								<tr>
+									<th colspan="2">
+										<div class="red fwb fs15">
+											若您同時持有信用卡/Debit卡，則此變更將同步更新至信用卡電子帳單寄送信箱/Debit卡交易明細寄送信箱，謝謝。
+										</div>
+									</th>
+								</tr>
+								<tr>
+									<th>電子郵件信箱</th>
+									<td>
+										<input type="text" class="artfld col-5 mobile-col-12" formControlName="Email" placeholder="請輸入電子郵件信箱" cannotPaste>
+									</td>
+								</tr>
+								<tr>
+									<th>確認電子郵件信箱</th>
+									<td>
+										<input type="text" class="artfld col-5 mobile-col-12" formControlName="ConfirmEmail" placeholder="再次輸入電子郵件信箱" cannotPaste>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="btn-zone">
+						<app-link-button type="cancel" *ngIf="!returnUrl">取消</app-link-button>
+						<a class="nbtn" href="javascript:void(0)" *ngIf="returnUrl" (click)="onCancel()">取消</a>
+						<button type="submit" class="nbtn focus">確認送出</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

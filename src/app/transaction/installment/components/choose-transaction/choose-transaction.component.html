@@ -1,0 +1,52 @@
+<div class="formblock">
+	<p>選擇目前可設定分期的消費項目</p>
+	<p class="red">國外交易需於商店請款後方可申辦</p>
+	<table *ngIf="!isMobile" class="ntable">
+		<tbody>
+			<tr>
+				<th>交易日期</th>
+				<th>入帳日期</th>
+				<th>交易金額(臺幣)</th>
+				<th>交易明細</th>
+				<th>分期狀態</th>
+				<th>申請分期</th>
+			</tr>
+			<tr *ngFor="let transaction of transactions; let idx = index;">
+				<td>{{transaction?.TransactionDate | date:'y/MM/dd'}}</td>
+				<td>{{transaction?.DeDate | date:'y/MM/dd'}}</td>
+				<td class="num-align">{{ transaction?.Amount | number}}</td>
+				<td>{{transaction?.Memo }}</td>
+				<td>{{transaction?.IsAlreadyInstallment ? transaction?.InstallmentStatus : '未申請分期'}}</td>
+				<td>
+					<a href="javascript:void(0);" (click)="OnApply(transaction);" *ngIf="transaction.IsAlreadyInstallment === false">申請
+					</a>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<table *ngIf="isMobile" class="ntable table-striped">
+		<thead>
+			<tr>
+				<th class="mobile-col-1">交易日<br>入帳日</th>
+				<th class="mobile-col-6">交易明細</th>
+				<th class="mobile-col-4">金額<br>狀態</th>
+				<th class="mobile-col-1"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let transaction of transactions; let idx = index;" (click)="OnApply(transaction);">
+				<td>
+					{{transaction.TransactionDate | date:'y/MM/dd'}}<br>{{transaction.DeDate | date:'y/MM/dd'}}
+				</td>
+				<td>{{transaction.Memo}}</td>
+				<td>
+					{{transaction.Amount | number}}<br>{{transaction?.IsAlreadyInstallment ? transaction?.InstallmentStatus : '未申請分期'}}
+				</td>
+				<td>
+					<i class="right-arrow" *ngIf="transaction.IsAlreadyInstallment === false"></i>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+<div class="rowElem" loadHtml="/mma8/card/htmls/20240227/單筆交易分期服務說明.html"></div>

@@ -1,0 +1,26 @@
+{
+    "Result": {
+		"Flag": "Y",
+		"BankCode":"822",
+		"Account":"10300420007356",
+		"PaymentType":"1",
+		"TotalAmt":"5,000",
+		"MinAmt": "1,200",
+		"DueDate":"2022/6/15",
+		"EffectDate":"2022/6/10"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

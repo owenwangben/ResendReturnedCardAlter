@@ -1,0 +1,103 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "project": {
+    "name": "mma-card"
+  },
+  "apps": [
+    {
+      "name": "web",
+      "root": "src",
+      "outDir": "dist",
+      "assets": [
+		"mma8",
+		"MMA8",
+        "assets",
+        "favicon.ico",
+		"JavaScript"
+      ],
+      "index": "index.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+		"styles.scss",
+		"../node_modules/sweetalert2/dist/sweetalert2.css",
+		"../node_modules/devextreme/dist/css/dx.common.css",
+		"../node_modules/devextreme/dist/css/dx.light.css"
+      ],
+	  "stylePreprocessorOptions": {
+		  "includePaths": [
+		  ]
+	  },
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.ts",
+        "prod": "environments/environment.prod.ts"
+      }
+    },
+    {
+      "name": "mobile",
+      "root": "src",
+      "outDir": "dist-mobile",
+      "assets": [
+        "mma8",
+		"MMA8",
+        "assets",
+        "favicon.ico",
+		"JavaScript"
+      ],
+      "index": "index.m.html",
+      "main": "main.ts",
+      "polyfills": "polyfills.ts",
+      "test": "test.ts",
+      "tsconfig": "tsconfig.app.json",
+      "testTsconfig": "tsconfig.spec.json",
+      "prefix": "app",
+      "styles": [
+		"styles.m.scss",
+		"../node_modules/sweetalert2/dist/sweetalert2.css",
+		"../node_modules/devextreme/dist/css/dx.common.css",
+		"../node_modules/devextreme/dist/css/dx.light.css"
+	  ],
+	  "stylePreprocessorOptions": {
+		  "includePaths": [
+		  ]
+	  },
+      "scripts": [],
+      "environmentSource": "environments/environment.ts",
+      "environments": {
+        "dev": "environments/environment.mobile.ts",
+        "prod": "environments/environment.mobile.prod.ts"
+      }
+    }
+  ],
+  "e2e": {
+    "protractor": {
+      "config": "./protractor.conf.js"
+    }
+  },
+  "lint": [
+    {
+      "project": "src/tsconfig.app.json"
+    },
+    {
+      "project": "src/tsconfig.spec.json"
+    },
+    {
+      "project": "e2e/tsconfig.e2e.json"
+    }
+  ],
+  "test": {
+    "karma": {
+      "config": "./karma.conf.js"
+    }
+  },
+  "defaults": {
+    "styleExt": "css",
+    "component": {}
+  }
+}

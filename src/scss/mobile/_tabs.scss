@@ -1,0 +1,28 @@
+ul.ntabs {
+	display: flex;
+	margin-top: 5px;
+	margin-bottom: 5px;
+	justify-content: center;
+
+	li {
+		display: inline-block;
+		width: 100%;
+		text-align: center;
+		border: 1px solid #b9160f;
+		padding: 5px;
+		&.active {
+			background: #b9160f;
+			a {
+				color: white;
+				display: block;
+			}
+		}
+		// &:first-child {
+		// 	border-radius: 5px 0 0 5px;
+		// }
+
+		// &:last-child {
+		// 	border-radius: 0 5px 5px 0;
+		// }
+	}
+}

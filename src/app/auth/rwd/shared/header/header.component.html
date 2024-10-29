@@ -1,0 +1,12 @@
+<div class="cover"></div>
+<header *ngIf="!IsApp">
+	<div class="container">
+		<div class="logo">
+			<a>
+				<img class="hidden-min" src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" />
+				<img class="hidden-max" src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行">
+			</a>
+		</div>
+		<div class="master-title"><span class="en" *ngIf="MasterTitleIntl">{{MasterTitleIntl}}</span>{{pageinfo.name}}</div>
+	</div>
+</header>

@@ -1,0 +1,48 @@
+<app-applycard-intl-step-indicator [step]="0" [type]="1"></app-applycard-intl-step-indicator>
+<form [formGroup]="form">
+	<div class="content full-content">
+		<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend><span class="en">{{message?.title}}</span>上傳缺補文件</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="en" style="white-space:pre-wrap;"><span class="red">*</span>{{message?.ARC_Number}}</span>統一證號</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="ARCNumber" maxlength="10" oninput="this.value = this.value.toUpperCase()">
+						</td>
+						<td><span class="red">{{message?.ARC_NumberNotice}}<br>原申請信用卡之統一證號</span></td>
+					</tr>
+					<tr class="line">
+						<td colspan="3"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.VerCode}}</span>驗證碼</p>
+						</th>
+						<td>
+							<div class="captcha-block flex-box flex-vcenter">
+								<input type="tel" class="artfld col-all-min col-2" formControlName="Captcha" placeholder="驗證碼" maxlength="6">
+								<div class="captcha"><img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()"></div>
+							</div>
+						</td>
+						<td>
+							<div class="captcha-block flex-box flex-vcenter">
+								<div>
+									<a href="javascript:void(0)" class="reload-captcha" (click)="changeVcaptcha()">{{message?.Update}} 重新產生</a>
+								</div>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span
+				class="en">{{btnMessage?.Continue}}</span>下一步</a>
+	</div>
+</form>

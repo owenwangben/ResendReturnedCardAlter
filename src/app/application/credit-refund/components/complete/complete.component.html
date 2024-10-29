@@ -1,0 +1,26 @@
+<div class="content full-content">
+	<section class="trans-content">
+	<table class="new-datatable">
+		<tbody>
+		<tr>
+			<td>
+			<div class="success"><i class="icon-tick"></i>
+				<p>您已申請完成</p>
+			</div>
+			</td>
+		</tr>
+		<tr class="line">
+			<td></td>
+		</tr>
+		<tr>
+			<td class="reminds">
+			<div class="prfy">
+				<p *ngIf="accountType == 1" class="center">退款作業將依本行電腦系統計算之實際餘額為準，預計3個工作日後匯入本次申請您所選擇之帳號。</p>
+				<p *ngIf="accountType !== 1" class="center">退款作業將依本行電腦系統計算之實際餘額為準，預計3個工作日後匯入本次申請您所選擇之帳號<span class="red">(匯入金額將扣除匯款手續費30元)</span>。</p>
+			</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+	</section>
+</div>

@@ -1,0 +1,20 @@
+{
+    "Result": {
+        "Success": true,
+		"ArcIsExpired":false
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

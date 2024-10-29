@@ -1,0 +1,34 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-details">
+        <h2 class="title">{{pageinfo.name}}</h2>
+        <table class="ntable">
+          <tr>
+            <th>卡別<br>卡號</th>
+            <th>起算月份</th>
+            <th>到期月份</th>
+            <th>累積年消費金額</th>
+            <th>累積年消費次數</th>
+            <th>收取年費年月</th>
+            <th>達免年費資格</th>
+          </tr>
+          <tr *ngFor="let item of model?.Items">
+            <td>{{item.CARD_TYPE}}<br>{{item.CARD | creditcard}}</td>
+            <td>{{item.BEGIN_YM}}</td>
+            <td>{{item.END_YM}}</td>
+            <td class="num-align">{{item.TAMT | number}}</td>
+            <td class="num-align">{{item.TTIMES}}</td>
+            <td>{{item.CARD_FEE_DT?.substring(0,6)}}</td>
+            <td>{{item.FREE_MARK}}</td>
+          </tr>
+          <tr *ngIf="!(model?.Items)">
+            <td colspan="7">查無資料!</td>
+          </tr>
+		</table>
+		<div loadHtml="/mma8/card/htmls/年費資格查詢注意事項.html"></div>
+      </section>
+    </div>
+  </div>
+</div>

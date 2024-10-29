@@ -1,0 +1,176 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "CardFlag": "1",
+        "CardNo": "9101",
+        "IsMobileCard": true,
+        "AuthDate": "2017-07-24T00:00:00+08:00",
+        "AuthTime": "18:21:09",
+        "Memo": "百貨公司",
+		"AuthAmt": 3580,
+		"AuthAmtDesc": "3,580",
+        "CountryCode": "TW",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "1",
+        "CardNo": "9101",
+        "IsMobileCard": true,
+        "AuthDate": "2017-07-24T00:00:00+08:00",
+        "AuthTime": "18:21:10",
+        "Memo": "百貨公司",
+		"AuthAmt": -1000,
+		"AuthAmtDesc": "負一千",
+        "CountryCode": "TW",
+        "AuthResult": "取消交易"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      },
+      {
+        "CardFlag": "2",
+        "CardNo": "2068",
+        "IsMobileCard": false,
+        "AuthDate": "2017-07-26T00:00:00+08:00",
+        "AuthTime": "10:58:43",
+        "Memo": "雄獅旅行社",
+		"AuthAmt": 15000,
+		"AuthAmtDesc": "15,000",
+        "CountryCode": "HK",
+        "AuthResult": "成功"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

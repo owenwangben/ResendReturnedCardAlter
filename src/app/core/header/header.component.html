@@ -1,0 +1,2 @@
+<div *ngIf="isMWeb" class="wrapper mobile-web" [hidden]="hidden"><header><div id="global"></div></header></div>
+<app-load-script *ngIf="url" [src]="url" [loadCSS]="false" (complete)="LoadComplete()" [hidden]="hidden"></app-load-script>

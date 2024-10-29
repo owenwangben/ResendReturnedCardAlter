@@ -1,0 +1,63 @@
+{
+  "Result": {
+    "CREDIT_AVAILABLE": "10000",
+    "Items": [
+      {
+        "TXDATE": "20161204",
+        "TXSOURCE": "中油—安順站（Ｄ４３７Ｘ）",
+        "TDAMT": "78",
+        "TXAMT": "0",
+        "MEMO": ""
+      },
+      {
+        "TXDATE": "20161209",
+        "TXSOURCE": "樂兒屋—中華店",
+        "TDAMT": "199",
+        "TXAMT": "0",
+        "MEMO": ""
+      },
+      {
+        "TXDATE": "20161218",
+        "TXSOURCE": "永豐GIFT卡臨櫃儲值金",
+        "TDAMT": "0",
+        "TXAMT": "2000",
+        "MEMO": ""
+      },
+      {
+        "TXDATE": "20161223",
+        "TXSOURCE": "千越加油站實業股份有限公司",
+        "TDAMT": "65",
+        "TXAMT": "0",
+        "MEMO": ""
+      },
+      {
+        "TXDATE": "20161228",
+        "TXSOURCE": "亞太電信股份有限公司",
+        "TDAMT": "256",
+        "TXAMT": "0",
+        "MEMO": ""
+      },
+      {
+        "TXDATE": "20161228",
+        "TXSOURCE": "千越加油站—海佃站",
+        "TDAMT": "32",
+        "TXAMT": "0",
+        "MEMO": ""
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

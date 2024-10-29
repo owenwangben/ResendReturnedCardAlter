@@ -1,0 +1,30 @@
+<nav>
+	<div class="container">
+		<ul class="L6">
+			<li [class.active]="Index == 0" class="link" [routerLink]="['/MobileStatement/Bill',Token]">
+				<i class="fas fa-wallet"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.Bill | safeHtml"></span>
+			</li>
+			<li [class.active]="Index == 1" class="link" [routerLink]="['/MobileStatement/BillDetail',Token]">
+				<i class="fas fa-clipboard-list"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.BillDetail | safeHtml"></span>
+			</li>
+			<li [class.active]="Index == 2" class="link" [routerLink]="['/MobileStatement/Message',Token]">
+				<i class="fas fa-envelope"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.Message | safeHtml"></span>
+			</li>
+			<li [class.active]="Index == 3" class="link" [routerLink]="['/MobileStatement/Bonus',Token]">
+				<i class="fas fa-gift"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.Bonus | safeHtml"></span>
+			</li>
+			<li [class.active]="Index == 4" class="link" [routerLink]="['/MobileStatement/Apply',Token]">
+				<i class="fas fa-shopping-cart"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.Apply | safeHtml"></span>
+			</li>
+			<li [class.active]="Index == 5" class="link" [routerLink]="['/MobileStatement/CustomerService',Token]">
+				<i class="fas fa-user-tie"></i><br>
+				<span [ngStyle]="menuTextStyles" [innerHTML]="messages?.CustomerService | safeHtml"></span>
+			</li>
+		</ul>
+	</div>
+</nav>

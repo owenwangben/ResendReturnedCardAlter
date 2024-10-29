@@ -1,0 +1,62 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<!-- <app-period-query [fastQueryOptions]="fastQueryOptions" [(start)]="start" [(end)]="end" [showPeriod]=false (search)="onSearch();"></app-period-query> -->
+				<table class="ntable table-striped">
+					<thead>
+						<tr>
+							<th>申請日期</th>
+							<th>帳單總應繳金額</th>
+							<th>帳單最低應繳金額</th>
+							<th>可分期金額</th>
+							<th>分期利率</th>
+							<th>手續費</th>
+							<th>首期月付金</th>
+							<th>分期期數</th>
+							<th>申請狀態</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr *ngFor="let record of records;">
+							<td>{{ record.ApplyDate | date:'y/MM/dd' }}</td>
+							<td class="num-align">{{ record.StmtAmt | number }}</td>
+							<td class="num-align">{{ record.StmtMinAmt | number }}</td>
+							<td class="num-align">{{ record.InstallmentAmt | number }}</td>
+							<td class="num-align">{{+record.Rate}}%</td>
+							<td class="num-align">{{ record.Fee | number }}</td>
+							<td class="num-align">{{ record.FirstPeriodAmt | number }}</td>
+							<td class="num-align">{{ record.Period }}</td>
+							<td>{{ record.Status }}</td>
+						</tr>
+						<tr *ngIf="!records?.length">
+							<td colspan="9">查無資料！</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="ntable table-striped">
+					<tbody>
+						<tr>
+							<th class="mobile-col-3">訂單狀態</th>
+							<th class="mobile-col-9">申辦進度說明</th>
+						</tr>
+						<tr>
+							<td>已完成</td>
+							<td style="text-align:left">您的帳單分期己完成申辦！</td>
+						</tr>
+						<tr>
+							<td>處理中</td>
+							<td style="text-align:left">繳款資料比對中。提醒您務必於本月繳款截止日前繳足最低應繳金額，以利後續作業。</td>
+						</tr>
+						<tr>
+							<td>申請失敗</td>
+							<td style="text-align:left">很抱歉，由於您尚未於本月繳款截止日前繳足最低應繳金額，故本月帳單分期無法完成設定！如有問題，請洽本行客服中心。</td>
+						</tr>
+						<tbody>
+				</table>
+			</section>
+		</div>
+	</div>
+</div>

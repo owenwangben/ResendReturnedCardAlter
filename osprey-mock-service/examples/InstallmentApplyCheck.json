@@ -1,0 +1,56 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "ProgramCode": "ABC",
+        "ProductCode": "01",
+        "Period": 3,
+        "Rate": 0.15,
+        "Program": "ABC",
+        "FirstAmt": "100",
+        "Desc": ""
+      },
+      {
+        "ProgramCode": "ABC",
+        "ProductCode": "02",
+        "Period": 6,
+        "Rate": 0.20,
+        "Program": "ABC",
+        "FirstAmt": "100",
+        "Desc": ""
+      },
+      {
+        "ProgramCode": "ABC",
+        "ProductCode": "03",
+        "Period": 9,
+        "Rate": 0.25,
+        "Program": "ABC",
+        "FirstAmt": "100",
+        "Desc": ""
+      },
+      {
+        "ProgramCode": "ABC",
+        "ProductCode": "04",
+        "Period": 12,
+        "Rate": 0.30,
+        "Program": "ABC",
+        "FirstAmt": "100",
+        "Desc": ""
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

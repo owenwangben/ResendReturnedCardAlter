@@ -1,0 +1,116 @@
+<div class="wrapper">
+	<app-auth-header></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content">
+					<section class="trans-content">
+						<fieldset class="fieldset-block pink-legend">
+							<legend>傳送簡訊動態密碼</legend>
+							<div class="send-sms-block">
+								<div class="text">
+									<p>系統將傳送簡訊動態密碼到您的手機 (
+									<span>{{mobileNo | mobile}}</span>){{notice}}</p>
+								</div>
+								<div class="btn-zone" *ngIf="enableOTP">
+									<a href="javascript:void(0)" class="nbtn focus" (click)="generateOTP()">傳送密碼</a>
+								</div>
+							</div>
+
+							<div *ngIf="!isbankuser || ( isbankuser && isdualcurrencycard ) || ( isbankuser && authtype ) ">
+								<p>※重新產生簡訊驗證碼超過5次，系統將自動暫停傳送密碼，隔日再開放。
+									<span *ngIf="code == 1">或直接點選<a href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=creditcard&menu=1" >【下載申請書】</a>進行申請。</span>
+									<span *ngIf="code == 6">或改由專人以一般流程為您服務:
+										<a class="hidden-min" target="_blank" href="https://mma.sinopac.com/Share/HouseLoan/ApplyHouseLoanComTM.aspx?ProjectID=M03&stage=0302">與我聯絡</a>
+										<a class="hidden-max" target="_blank" href="https://m.sinopac.com/m/share/houseLoan/m_ApplyHouseLoanTM.aspx?ProjectID=M04&Stage=0302">與我聯絡</a>
+									</span>
+								</p>
+                <p>※若未收到簡訊，請留意收訊是否良好，或將手機關機重開後操作，避免造成簡訊動態密碼多次輸入錯誤。</p>
+							</div>
+							<div  *ngIf="isbankuser && !isdualcurrencycard && !authtype ">
+								<p>
+									※如無法收取簡訊動態密碼，請改用<a href="javascript:void(0)" class="nbtn focus" (click)="openlbox('#cardmember-lbox')">【其他驗證方式】</a>。<br>
+									※重新產生簡訊驗證碼超過5次，系統將自動暫停傳送密碼，隔日再開放。或直接點選<a href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=creditcard&menu=1" >【下載申請書】</a>進行申請。<br>
+                  ※若未收到簡訊，請留意收訊是否良好，或將手機關機重開後操作，避免造成簡訊動態密碼多次輸入錯誤。
+								</p>
+							</div>
+						</fieldset>
+					</section>
+				</div>
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p>驗證簡訊動態密碼</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="OTP" placeholder="請輸入簡訊動態密碼" numberOnly maxlength="6">
+									</td>
+								</tr>
+								<tr *ngIf="countdown">
+									<td colspan="2" class="reminds">
+										<span class="pink2">※您的動態密碼有效時限尚餘{{countdown | number_to_hms}}，逾時未輸入，視同取消認證。</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+
+				<div class="btn-zone flex-inline-min" *ngIf="enableOTP">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">驗證簡訊動態密碼</a>
+				</div>
+
+				<div class="lboxed">
+					<div class="close"></div>
+					<div class="lbox-block">
+						<div id="error3-lbox" class="error-msg">
+							<h3>您目前尚無法申請好房卡額度資格!</h3>
+							<div>
+								<p>很抱歉，經核對身分資料您目前尚無法申請好房卡額度資格!請改申請本行一般信用卡或留下聯絡資訊。我們將會致電與您聯繫，謝謝!</p>
+								<div class="btn-zone">
+									<a href="javascript:void(0)" routerLink="/Application/ApplyCard" class="nbtn focus close">申請一般信用卡</a>
+									<a href="https://mma.sinopac.com/Share/HouseLoan/ApplyHouseLoanComTM.aspx?ProjectID=M03&stage=0303" class="hidden-min nbtn">留下聯絡資訊</a>
+									<a href="https://m.sinopac.com/m/share/houseLoan/m_ApplyHouseLoanTM.aspx?ProjectID=M03&stage=0303" class="hidden-max nbtn">留下聯絡資訊</a>
+								</div>
+							</div>
+						</div>
+						<div id="error6-lbox" class="error-msg">
+							<h3>目前並無適合您的好房卡額度可申請調整!</h3>
+							<div>
+								<p>很抱歉，目前並無適合您的好房卡額度可申請調整。您可改為申請一般調額或留下聯絡資訊，我們將指派專人與您聯繫，謝謝!</p>
+								<div class="btn-zone">
+									<a href="javascript:void(0)" routerLink="/Transaction/PermCLI" class="nbtn focus close">一般信用卡額度調整</a>
+									<a href="https://mma.sinopac.com/Share/HouseLoan/ApplyHouseLoanComTM.aspx?ProjectID=M03&stage=0303" class="hidden-min nbtn">留下聯絡資訊</a>
+									<a href="https://m.sinopac.com/m/share/houseLoan/m_ApplyHouseLoanTM.aspx?ProjectID=M03&stage=0303" class="hidden-max nbtn">留下聯絡資訊</a>
+								</div>
+							</div>
+						</div>
+						<div id="cardmember-lbox" class="choose-auth-method">
+							<h3>請選擇認證方式</h3>
+							<div>
+								<div class="btn-zone">
+									<a href="javascript:void(0)" class="nbtn focus" (click)="otherSubmit('OtherCard')">
+										<span>他行信用卡驗證申請</span>
+										<br><br>
+										<span class="sub">線上申請免郵寄</span>
+									</a>
+
+									<a href="javascript:void(0)" class="nbtn focus" (click)="otherSubmit('OtherBank')">
+										<span>他行臺幣帳戶驗證申請</span>
+										<br><br>
+										<span class="sub">線上申請免郵寄</span>
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

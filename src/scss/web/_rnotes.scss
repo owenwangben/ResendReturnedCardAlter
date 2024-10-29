@@ -1,0 +1,11 @@
+.rnotes {
+	span {
+		font-weight: bold;
+		color: #d00f24;
+		&.transaction_number {
+			position: relative;
+			display: inline-block;
+			right: 0;
+		}
+	}
+}

@@ -1,0 +1,23 @@
+{
+    "Result": {
+        "Accounts":  [
+            "12100400672076"
+        ],
+        "Balance": 12345,
+        "Name": "王o明"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

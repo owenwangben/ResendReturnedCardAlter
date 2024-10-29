@@ -1,0 +1,54 @@
+{
+  "Result": {
+    "CardList": [
+      {
+        "CardNo": "4637111122223333",
+        "Name": "MITSUI OUTLET PARK御璽聯名卡",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "111",
+        "ProductCode": "222"
+      },
+      {
+        "CardNo": "5588111122223333",
+        "Name": "日圓雙幣卡",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "222",
+        "ProductCode": "333"
+      }
+    ],
+    "BankList": [
+      {
+        "Id": "000",
+        "Name": "000 中央銀行",
+        "AccountLength": 14
+      },
+      {
+        "Id": "001",
+        "Name": "001 中央信託局",
+        "AccountLength": 14
+      }
+    ],
+    "CashAvailable": 20000,
+    "CashLimit": 120000,
+    "AuthAmount": 0,
+    "CreditAvailable": 1000,
+	"CreditCardLimit": 60000,
+	"IsChangeMobileNo": false
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

@@ -1,0 +1,42 @@
+<div class="wrapper-container">
+  <div class="wrapper">
+    <div class="wrapper-mask"></div>
+    <header>
+      <div class="header-top">
+        <div class="container">
+          <div class="logo"><a href="https://bank.sinopac.com/" title="永豐銀行首頁">
+              <img class="hidden-min" src="/mma8/card/images/sinopac-logo.svg" alt="永豐銀行" />
+              <img class="hidden-max" src="/mma8/card/images/sinopac-logo-min.svg" alt="永豐銀行"></a>
+          </div>
+          <h1 class="master-title">信用卡優先啟用</h1>
+        </div>
+      </div>
+    </header>
+    <div class="outer_container">
+      <div class="container no-breadcrumbs">
+        <div class="content transparent step-panel-block">
+          <div class="step">
+            <ul class="list-step list-step--gray">
+              <li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span
+                  class="list-step__item-title">身分確認</span></li>
+              <li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span
+                  class="list-step__item-title">OTP驗證</span></li>
+              <li class="list-step__item list-step__item--{{current == 0 ? 'current' : 'active'}}"><span
+                  class="list-step__item-num"></span><span class="list-step__item-title">卡片啟用</span></li>
+              <li class="list-step__item" [ngClass]="{'list-step__item--current': current == 1}"><span
+                  class="list-step__item-num"></span><span class="list-step__item-title">啟用結果</span></li>
+            </ul>
+          </div>
+        </div>
+        <app-wizard [(current)]="current" [steps]="steps" [hidden]="true"></app-wizard>
+      </div>
+    </div>
+    <app-rwd-footer [ieBrowser]="false"></app-rwd-footer>
+  </div>
+</div>
+<div class="overlay" id="popup-copied">
+  <div class="popup copied center">
+    <div class="icon-block"> <i class="icon icon-success-w"> </i></div>
+    <p>複製成功</p>
+  </div>
+</div>

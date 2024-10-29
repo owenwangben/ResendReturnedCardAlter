@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="format-detection" content="telephone=no">
+    <meta property="og:title" content="" />
+    <meta property="og:image" content=""/>
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    <meta name="keywords" content=""/>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <link rel="shortcut icon" href="https://mma.sinopac.com/images/favicon.ico" />
+    <link href="css/reset.css" rel="stylesheet" type="text/css">
+    <link href="https://mma.sinopac.com/MMA8/mma/css/site.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="css/owl.min.css">
+    <script src="https://mma.sinopac.com/MMA8/mma/js/jquery-latest.min.securejs" type="text/javascript"></script>
+    <script src="js/jquery.lightbox_me.securejs"></script>
+    <script src="js/owl.carousel.min.securejs"></script>
+    <script src="js/scripts.securejs" type="text/javascript"></script>
+    <link rel="stylesheet" href="css/animatemin.css" />
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="cover"></div>
+
+      <header>
+        <div class="container">
+          <div class="logo">
+            <a target="_blank" href="https://bank.sinopac.com/bsp/index/index.asp" title="永豐銀行首頁">
+              <img class="hidden-min" src="images/sinopac-logo.svg" alt="永豐銀行"/>
+              <img class="hidden-max" src="images/sinopac-logo-min.svg" alt="永豐銀行">
+            </a>
+          </div>
+          <div class="master-title">線上辦卡</div>
+        </div>
+      </header>
+  <div class="outer_container">
+    <div class="container no-breadcrumbs">
+
+      <div class="content">
+        <section class="trans-content">
+          <fieldset class="fieldset-block pink-legend">
+            <legend>傳送簡訊動態密碼</legend>
+            <div class="send-sms-block style2">
+              <div class="text">
+                <p>系統將傳送簡訊動態密碼到您的手機</p>
+              </div>
+              <table class="new-datatable">
+                <tbody>
+                  <tr>
+                    <th>
+                      <p>手機號碼</p>
+                    </th>
+                    <td>
+                      <input id="input-phone" type="number" class="artfld col-all-min col-4" placeholder="請輸入手機號碼 10 碼">
+                      <div class="btn-zone inline">
+                        <button id="send-sms" class="nbtn focus">傳送密碼</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div>
+              <p class="pink2">※重新產生簡訊驗證碼超過5次，將會鎖住此功能，若有任何問題，請洽客服專線 02-2528-7776</p>
+            </div>
+          </fieldset>
+        </section>
+      </div>
+            
+      <div class="content full-content">
+        <section class="trans-content">
+          <table class="new-datatable">
+            <tbody>
+              <tr>
+                <th>
+                  <p>驗證簡訊動態密碼</p>
+                </th>
+                <td>
+                  <input type="text" class="artfld col-all-min col-4" placeholder="請輸入簡訊動態密碼">
+                </td>
+              </tr>
+              <tr>
+                <td colspan="2" class="reminds">
+                  <span class="pink2">※動態密碼有效時限為 <span>100</span> 秒，逾時未輸入，視同取消認證。</span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </section>
+      </div>
+      
+      <div class="btn-zone flex-inline-min">
+        <a href="#" class="nbtn focus">驗證簡訊動態密碼</a>
+      </div>
+      <br class="hidden-min">
+      <div class="warnings">
+        <p>謹慎理財 信用至上</p>
+        <p>24小時服務專線：(02)2528-7776/0800-058-888 (限市話)<br class="hidden-max">郵政信箱：100台北郵局39-88號信箱<br>循環信用利率年息2.74%~15% (基準日2015/8/3)，<br class="hidden-max">預借現金手續費：預借現金金額X3.5%+NT$100</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="lboxed">
+      <div class="close"></div>
+      <div class="lbox-block">
+        <div id="error-1" class="error-msg">
+          <h3>格式錯誤！</h3>
+          <div>
+            <p>請正確填寫 10 碼手機號碼且不得為空。</p>
+            <div class="btn-zone">
+              <a href="#" class="nbtn focus close">確定</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <script>
+    $('#send-sms').click(function(){
+      if ($('#input-phone').val().length != 10) {
+        openlbox('#error-1');
+      }
+    });
+  </script>
+<footer>
+  <div class="container">
+    <div class="copyright">
+      <p>©版權所有 永豐銀行</p>
+      <p class="hidden-min">建議瀏覽器設定IE11.0以上/解析度1024*768</p>
+    </div>
+    <div class="copyright">
+      <p>
+        <a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a>
+        <a href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html" target="_blank">網路安全說明</a>
+        <a href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank">隱私權保護聲明</a>
+      </p>
+    </div>
+  </div>
+</footer>    </div>
+  </body>
+</html>
+   

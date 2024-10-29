@@ -1,0 +1,114 @@
+<div class="outer_container">
+	<div class="container no-breadcrumbs">
+		<div class="content transparent step-panel-block">
+			<div class="step">
+			<ul class="list-step list-step--gray">
+				<li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span class="list-step__item-title">設定資料</span></li>
+				<li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">再次確認</span></li>
+				<li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">確認結果</span></li>
+			</ul>
+			</div>
+		</div>
+		<div *ngIf="(FlagResponse && FirstFlag) || (!FirstFlag && !SecondApply)" class="content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>信用卡自動扣繳變更設定</legend>
+				<div class="confirm-data-block">
+				<table>
+					<tbody>
+					<tr>
+						<th>自動扣繳帳號 </th>
+						<td>{{ (Account === OldAccount) ? OldAccount:Account}}</td>
+					</tr>
+					<tr>
+						<th>信用卡扣款方式</th>
+						<td>{{PaymentTypeView}}</td>
+					</tr>
+					</tbody>
+				</table>
+				</div>
+				<hr class="line">
+				<div *ngIf="FlagResponse && FirstFlag" class="reminds"> <span class="red">本次變更將於次期帳單生效，請以帳單顯示之扣款帳號為準。</span>如有任何問題，歡迎來您來電本行信用卡客服專線：(02)2528-7776</div>
+				<div *ngIf="!FirstFlag && !SecondApply" class="reminds"> <span class="red">本次變更將於{{EffectDate}}生效，若本次設定生效日已超過當期繳款截止日仍請您依原設定於本行方式繳款。</span>如有任何問題，歡迎來您來電本行信用卡客服專線：(02)2528-7776</div>
+			</fieldset>
+			</section>
+		</div>
+		<div *ngIf="!FlagResponse && FirstFlag" class="content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>信用卡自動扣繳申請</legend>
+				<div class="confirm-data-block">
+				<table>
+					<tbody>
+					<tr>
+						<th>自動扣繳帳號</th>
+						<td>{{Account}}</td>
+					</tr>
+					<tr>
+						<th>信用卡扣款方式</th>
+						<td>{{PaymentTypeView}}</td>
+					</tr>
+					</tbody>
+				</table>
+				</div>
+				<hr class="line">
+				<div class="reminds"><span class="red">本次變更將於{{EffectDate}}生效，若本次設定生效日已超過當期繳款截止日仍請您依原設定於本行方式繳款。</span>此次設定生效後，系統將自動發送訊息至您留存於本行信用卡之手機號碼通知。如有任何問題，歡迎來您來電本行信用卡客服專線：(02)2528-7776</div>
+			</fieldset>
+			</section>
+		</div>
+		<div *ngIf="!FirstFlag && SecondApply" class="content">
+			<section class="trans-content">
+			<fieldset class="fieldset-block pink-legend">
+				<legend>設定本期信用卡自動扣繳金額</legend>
+				<div class="confirm-data-block">
+				<table>
+					<tbody>
+					<tr>
+						<th>自動扣繳帳號</th>
+						<td>{{OldAccount}}</td>
+					</tr>
+					<tr>
+						<th>信用卡扣款方式</th>
+						<td>{{OldPaymentTypeView}}</td>
+					</tr>
+					<tr>
+						<th>本期的扣款金額</th>
+						<td>{{AutoDeductAmt}} <span class="remark red dis-inline">(本次變更將於{{EffectDate}}生效。)</span></td>
+					</tr>
+					<tr>
+						<th>帳單資訊</th>
+						<td>
+						<div class="bill-block">
+							<table class="ntable">
+							<tbody>
+								<tr>
+								<th>本期帳單<br class="hidden-max">應繳金額</th>
+								<th>本期最低<br class="hidden-max">應繳金額</th>
+								<th>繳款<br class="hidden-max">截止日</th>
+								</tr>
+								<tr>
+								<td>{{TotalAmt}}</td>
+								<td>{{MinAmt}}</td>
+								<td>{{DueDate}}</td>
+								</tr>
+							</tbody>
+							</table>
+						</div>
+						</td>
+					</tr>
+					</tbody>
+				</table>
+				</div>
+			</fieldset>
+			<hr class="mt1 mb2">
+			<div class="prfy">
+				<p class="title">※ 注意事項：
+				<ol class="decimal">
+					<li>本交易應於本期帳單繳款截止日前一個營業日17:00前完成變更，始生效力。</li>
+				</ol>
+			</div>
+			</section>
+		</div>
+		<div class="btn-zone flex-inline-min" id="btnzone"><a class="nbtn" (click)="prestep()">上一步</a><a class="nbtn focus" appPreventDoubleClick (throttledClick)="submit()">確認送出</a></div>
+	</div>
+</div>

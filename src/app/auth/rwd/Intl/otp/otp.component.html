@@ -1,0 +1,65 @@
+<div class="wrapper">
+	<app-auth-header [MasterTitleIntl]="MasterTitle"></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content">
+					<section class="trans-content">
+						<fieldset class="fieldset-block pink-legend">
+							<legend><span class="en">{{message?.SendSMSOTP}}</span>傳送簡訊動態密碼</legend>
+							<div class="send-sms-block style2">
+								<div class="text">
+									<span class="en">{{message?.SendSMSOTPNotice}}(<span>{{mobileNo | mobile}}</span>)</span>
+									<p>系統將傳送簡訊動態密碼到您的手機(<span>{{mobileNo | mobile}}</span>)</p>
+								</div>
+								<div class="btn-zone">
+									<a href="javascript:void(0)" class="nbtn focus" (click)="generateOTP()">
+										<span class="en">{{btnMessage?.SendSMSOTP}}</span>
+										<br class="hidden-min">
+										傳送密碼</a>
+								</div>
+							</div>
+							<div>
+								<p><span class="en">{{message?.OTPUpdateNotice1}}</span></p>
+								<p>※重新產生簡訊驗證超過5次，系統將自動暫停傳送密碼，隔日再開放。</p>
+                <p>※若未收到簡訊，請留意收訊是否良好，或將手機關機重開後操作，避免造成簡訊動態密碼多次輸入錯誤。</p>
+							</div>
+						</fieldset>
+					</section>
+				</div>
+
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p><span class="en">{{message?.VerSMSOTP}}</span>
+											驗證簡訊動態密碼</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="OTP" numberOnly maxlength="6"
+											placeholder="SMS One Time Password">
+									</td>
+								</tr>
+								<tr *ngIf="countdown">
+									<td colspan="2" class="reminds">
+										<span class="pink2"	*ngIf="message.CountdownNotice1 && message.CountdownNotice2">
+											{{message.CountdownNotice1}}{{countdown | number_to_hms}}{{message.CountdownNotice2}}</span><br>
+										<span class="pink2">※您的動態密碼有效時限尚餘{{countdown | number_to_hms}}，逾時未輸入，視同取消認證。</span>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span
+							class="en">Submit</span>確定</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

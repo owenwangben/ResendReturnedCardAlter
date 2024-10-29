@@ -1,0 +1,39 @@
+
+.stepsboard {
+	> .steps {
+		position: relative;
+		&.on {
+			color: #d00f24;
+			&:before {
+				background-color: #D00F24 !important;
+			}
+		}
+		&:not(.step) {
+			&>span {
+				display: block;
+				position: absolute;
+				left: 0;
+				top: 10px;
+				width: 24px;
+				height: 24px;
+				color: white;
+				font-size: 18px;
+				font-weight: bolder;
+				text-align: center;
+				line-height: 1.4;
+			}
+		}
+		&:not(.step):before {
+			content: '';
+			display: block;
+			position: absolute;
+			top: 10px;
+			left: 0;
+			width: 24px;
+			height: 24px;
+			background: #DDD;
+			border-radius: 5px;
+			margin-right: 5px;
+		}
+	}
+}

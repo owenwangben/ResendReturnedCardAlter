@@ -1,0 +1,44 @@
+{
+  "Result": {
+    "Items": [
+        {
+            "SeqNo": 7,
+            "PID": "A171577581 ",
+            "TX_DATE": "2018/01/02",
+            "MEMO": "HOTELS.COM144239111774   ZH.HOTELS.COMGB          ",
+            "TX_AMT": 7250,
+            "SAL_POINT": 1
+        },
+        {
+            "SeqNo": 8,
+            "PID": "A171577581 ",
+            "TX_DATE": "2018/01/02",
+            "MEMO": "HOTELS.COM144239224905   ZH.HOTELS.COMGB          ",
+            "TX_AMT": 7944,
+            "SAL_POINT": 1
+        },
+        {
+            "SeqNo": 9,
+            "PID": "A171577581 ",
+            "TX_DATE": "2018/01/02",
+            "MEMO": "HOTELS.COM144240117851   TW.HOTELS.COMGB          ",
+            "TX_AMT": 9226,
+            "SAL_POINT": 1
+        }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

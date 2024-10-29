@@ -1,0 +1,27 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<form [formGroup]="form" (ngSubmit)="onSubmit($event);">
+					<div class="formblock">
+						<section>
+							<p>{{pageinfo.name}}</p>
+							<textarea loadHtml={{Regulation}} readonly></textarea>
+							<input type="checkbox" class="artfld" formControlName="IsSignedInstallmentAgreement" id="consent"/>
+							<label for="consent">
+								<span><span class="getCheck"></span></span>
+								<font class="red fs15">本人已閱讀及了解本服務條款，並請勾選，已表示同意申請本服務並遵守全部服務條款內容及依相關規範使用本服務。</font>
+							</label>
+						</section>
+					</div>
+					<div class="btn-zone">
+						<app-link-button type="cancel">取消</app-link-button>
+						<button type="submit" class="nbtn focus">確認且同意</button>
+					</div>
+				</form>
+			</section>
+		</div>
+	</div>
+</div>

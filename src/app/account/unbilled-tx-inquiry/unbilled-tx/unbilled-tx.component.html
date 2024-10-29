@@ -1,0 +1,90 @@
+﻿<div class="btn-zone" style="text-align:left">
+	<ul class="ntabs" style="height: 36px;">
+		<li [class.active]="requestModel.IsExcludePaidUp" (click)="getData(true)"><a href="javascript:void(0)">扣除已繳款金額</a></li>
+		<li [class.active]="!requestModel.IsExcludePaidUp" (click)="getData(false)"><a href="javascript:void(0)">全部顯示</a></li>
+		<a *ngIf="showRTE" class="nbtn focus" routerLink="/Transaction/RTE" style="margin-top: 0;float:right;">申辦單筆分期</a>
+	</ul>
+</div>
+<div>
+	<table class="ntable fs15">
+		<tr>
+			<th>幣別</th>
+			<th>目前已請款消費筆數</th>
+			<th>累計已請款金額</th>
+		</tr>
+		<tr *ngFor="let item of resultModel?.SubTotal">
+			<td>{{item.CurrencyName}}</td>
+			<td>{{item.Count}}</td>
+			<td class="num-align">{{item.SubTotalAmt}}</td>
+		</tr>
+		<tr *ngIf="!resultModel?.SubTotal?.length">
+			<td colspan="3">查無資料！</td>
+		</tr>
+	</table>
+
+	<div class="formblock" *ngIf="!resultModel?.IsCompanyUser">
+		<div class="rowElem fs18 fwb">消費明細</div>
+		<ul class="accordion">
+			<li #tables *ngFor="let item of detailClassifyModel;">
+				<a href="javascript:void(0)" class="atitle">{{item[0].CurrencyName}}</a>
+				<div class="acontent">
+					<table class="ntable fs15">
+						<thead>
+							<tr>
+								<th class="th">交易日期</th>
+								<th class="th">入帳日期</th>
+								<th class="th">卡號末四碼</th>
+								<th class="th">消費說明</th>
+								<th class="th">{{item[0].CurrencyName}}金額</th>
+								<th class="th">幣別</th>
+								<th class="th">消費金額</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let record of item">
+								<td>{{record.TXDATE}}</td>
+								<td>{{record.DEDATE}}</td>
+								<td>{{record.CardLast4}}</td>
+								<td>{{record.MEMO}}</td>
+								<td class="num-align">{{record.AMT}}</td>
+								<td>{{record.TXCUR}}</td>
+								<td class="num-align">{{record.TXAMT}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+		</ul>
+		<div class="btn-zone" *ngIf="detailClassifyModel?.length">
+			<a class="nbtn" href="javascript:void(0)" (click)="downloadPDF()">下載PDF</a>
+		</div>
+	</div>
+	<div class="formblock" *ngIf="resultModel?.IsCompanyUser">
+		<div class="rowElem fs18 fwb">消費明細</div>
+		<table class="ntable fs15">
+			<thead>
+				<tr>
+					<th class="th">交易日期</th>
+					<th class="th">入帳日期</th>
+					<th class="th">卡號末四碼</th>
+					<th class="th">消費說明</th>
+					<th class="th">臺幣金額</th>
+					<th class="th">幣別</th>
+					<th class="th">消費金額</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td colspan="7">
+						<span class="red fs15">已請款消費明細請下載PDF</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		<div class="btn-zone">
+			<a class="nbtn" href="javascript:void(0)" (click)="downloadPDF()">下載PDF</a>
+		</div>
+	</div>
+</div>
+<div class="rowElem" loadHtml="/mma8/card/htmls/已請款消費明細查詢注意事項.html"></div>
+

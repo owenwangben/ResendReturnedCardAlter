@@ -1,0 +1,57 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "CardNo": "1007",
+                "AuthDate": "2021/02/19",
+                "AuthTime": "14:33:22",
+                "Memo": "直銷                                      ",
+                "AuthAmt": "16,543",
+                "CountryCode": "US ",
+                "AuthResult": "成功",
+                "CurrencyCode": "901",
+                "CurrencyCName": "臺幣",
+                "CurrencyEName": "TWD"
+            },
+            {
+                "CardNo": "1007",
+                "AuthDate": "2021/02/19",
+                "AuthTime": "14:27:12",
+                "Memo": "直銷                                      ",
+                "AuthAmt": "162.75",
+                "CountryCode": "US ",
+                "AuthResult": "成功",
+                "CurrencyCode": "840",
+                "CurrencyCName": "美元",
+                "CurrencyEName": "USD"
+            },
+            {
+                "CardNo": "1007",
+                "AuthDate": "2021/02/19",
+                "AuthTime": "14:30:30",
+                "Memo": "直銷                                      ",
+                "AuthAmt": "23,367.75",
+                "CountryCode": "JP ",
+                "AuthResult": "成功",
+                "CurrencyCode": "392",
+                "CurrencyCName": "日圓",
+                "CurrencyEName": "JPY"
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "a26fc092-6306-4314-874c-b25d51fa3417",
+        "UserID": "D152790177",
+        "RequestTime": "2021-02-26T14:43:32.0167261+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.33.174",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

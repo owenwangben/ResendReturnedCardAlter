@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, Chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="消費碳足跡查詢 - 永豐銀行">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="">
+    <meta name="author" content="永豐銀行">
+    <meta name="copyright" content="永豐銀行">
+    <meta name="description" content="">
+    <title>消費碳足跡查詢 - 永豐銀行</title>
+    <link rel="shortcut icon" href="./images/favicon.ico">
+    <link rel="stylesheet" href="./css/bootstrap/custom.css">
+    <link rel="stylesheet" href="./css/slick/slick.css">
+    <link rel="stylesheet" href="./css/slick/slick-theme.css">
+    <link rel="stylesheet" href="./css/query.css">
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid bg-white">
+        <div class="container-fluid u-maxWidth-1024 p-0"> 
+          <div class="header-content d-flex justify-content-between align-items-center py-3"> <a class="logo d-flex align-items-center text-decoration-none" href="index.html"> <img class="d-block d-md-none" src="images/global/logo-mobile.svg" alt="永豐銀行"><img class="d-none d-md-block" src="images/global/logo-pc.svg" alt="永豐銀行">
+              <h1 class="text-superRed">消費碳足跡查詢</h1></a><a class="logout align-self-end text-decoration-none text-gray-700 u-font-weight-700" href="">登出</a></div>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="container-fluid u-maxWidth-1024 pt-3">
+        <h2 class="text-left my-4 u-font-weight-700 t-superTitle">消費碳足跡查詢</h2>
+        <div class="card card--shadow bg-light mb-4">
+          <div class="card-body"> 
+            <div class="row align-items-center mb-0">  
+              <div class="col-12 col-md-2 pt-2 align-self-start">交易時間</div>
+              <div class="col-12 col-sm-12 col-md-10 mt-2 mt-sm-0"> 
+                <ul class="nav nav-pills mb-1 mb-sm-0" id="pills-tab" role="tablist">
+                  <li class="nav-item mr-2 mb-2 mb-sm-0"><a class="nav-link active" id="" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="true">2022/07</a></li>
+                  <li class="nav-item mr-2 mb-2 mb-sm-0"><a class="nav-link" id="" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="false">2022/08</a></li>
+                  <li class="nav-item mr-2 mb-2 mb-sm-0"><a class="nav-link" id="" data-toggle="pill" href="#" role="tab" aria-controls="" aria-selected="false">2022/09</a></li>
+                  <li class="nav-item mb-2 mb-sm-0"><a class="nav-link" id="" data-toggle="pill" href="#" role="tab" aria-controls="custom" aria-selected="false">自訂</a></li>
+                </ul>
+                <div class="custom-date">
+                  <div class="row align-items-center form-date mt-3">
+                    <div class="col-6 col-sm-4">
+                      <input class="form-control" type="date" id="" placeholder="" data-date="" value="">
+                    </div>
+                    <div class="col-6 col-sm-4">
+                      <input class="form-control" type="date" id="" placeholder="" data-date="" value="">
+                    </div>
+                    <div class="col-12 col-sm-4"> 
+                      <p class="m-0 mt-2 mt-sm-0 text-gray-600 u-font-size-14">最多只能查詢 1 年內的帳單</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="custom-date">
+              <hr class="my-4 u-border-top-dashed">
+              <div class="d-flex justify-content-center align-items-center flex-wrap"> <a class="btn btn-primary btn-xs-block" href="#">查詢</a></div>
+            </div>
+          </div>
+        </div>
+        <div class="card card--shadow mb-4 query-result">
+          <div class="card-header border-0 bg-aliceblue"> 
+            <p class="m-0">查詢期間 : 2022/07/05-2022/07/08</p>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-center align-items-center"> 
+              <figure> <img class="img-fluid" src="images/query/figure-1.png" alt=""></figure>
+              <div class="ml-4">
+                <div class="d-flex align-items-center"> 
+                  <p class="m-0 u-font-weight-700">碳足跡</p><a class="d-inline-flex" href="#" data-toggle="modal" data-target="#exampleModal"><span class="icon icon-information-gray"></span></a>
+                </div>
+                <h3>156.2 kg</h3>
+                <p class="text-gray-600 u-font-size-14">CO<sub>2</sub>排放量以Kg計</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card card--shadow mb-4 query-result">
+          <div class="card-header border-0 bg-aliceblue"> 
+            <p class="m-0">查詢期間 : 2022/07/05-2022/07/08</p>
+          </div>
+          <div class="card-body">
+            <div class="d-flex justify-content-center align-items-center"> 
+              <figure> <img class="img-fluid" src="images/query/figure-1.png" alt=""></figure>
+              <div class="ml-4">
+                <div class="d-flex align-items-center"> 
+                  <p class="m-0 u-font-weight-700">碳足跡</p><a class="d-inline-flex" href="#" data-toggle="modal" data-target="#exampleModal"><span class="icon icon-information-gray"></span></a>
+                </div>
+                <h3 class="text-primary">1,599.1 kg</h3>
+                <p class="text-gray-600 u-font-size-14">CO<sub>2</sub>排放量以Kg計</p>
+              </div>
+            </div>
+            <div class="card-footer border-0 rounded bg-cornsilk"> 
+              <p class="m-0 text-left text-sm-center text-peru u-font-size-14">提醒您！您的消費碳足跡已超過國人平均值，請一同減碳愛地球。</p>
+            </div>
+          </div>
+        </div>
+        <ul class="nav nav-tabs nav-fill mb-4">
+          <li class="nav-item"><a class="nav-link active" href="query.html">總覽</a></li>
+          <li class="nav-item"><a class="nav-link" href="query-detail.html">明細</a></li>
+        </ul>
+        <div class="row align-items-center mb-4"> 
+          <div class="col-6 col-md-4">
+            <select class="form-control" id="inputState">
+              <option selected>DAWHO信金回饋信用卡(6523) </option>
+            </select>
+          </div>
+        </div>
+        <div class="overview">
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-royalblue mr-2"></i>
+                <p class="m-0">餐廳飲食</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-royalblue" role="progressbar" style="width: 90%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-skyblue mr-2"></i>
+                <p class="m-0">交通運輸</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-skyblue" role="progressbar" style="width: 80%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-orangered mr-2"></i>
+                <p class="m-0">購物消費</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-orangered" role="progressbar" style="width: 70%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-gold mr-2"></i>
+                <p class="m-0">家庭開銷</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-gold" role="progressbar" style="width: 60%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-rebeccapurple mr-2"></i>
+                <p class="m-0">金融服務</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-rebeccapurple" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-hotpink mr-2"></i>
+                <p class="m-0">其他消費</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-hotpink" role="progressbar" style="width: 40%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom"> 
+            <div class="overview-title flex-grow-0 flex-shrink-0">
+              <div class="d-flex align-items-center"><i class="dot dot-yellowgreen mr-2"></i>
+                <p class="m-0">休閒旅遊</p>
+              </div>
+            </div>
+            <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+              <div class="progress rounded-0">
+                <div class="progress-bar bg-yellowgreen" role="progressbar" style="width: 30%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+            </div>
+            <div class="overview-amount flex-grow-0">
+              <div class="d-flex justify-content-end align-items-center">
+                <p class="m-0">90.6Kg</p><a class="d-inline-flex" href="query-detail.html"><span class="icon icon-page-next ml-2"></span></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content pt-2">
+              <div class="modal-header px-0 border-bottom-0"> 
+                <h5 class="mb-3 font-weight-bold t-subtitle">永豐銀行碳足跡計算器服務</h5>
+              </div>
+              <div class="modal-body"> 
+                <p class="m-0">永豐銀行與萬事達卡(Mastercard)合作，推出碳足跡計算器，系統將使用您購買的交易資訊，如商店的類別、消費金額等，透過奧蘭指數(Åland Index)的運算技術估算您每一筆消費的碳排放量，讓您了解您的消費碳足跡。</p>
+              </div>
+              <div class="modal-footer py-3 border-top-0 justify-content-center"> <a class="btn btn-outline-primary btn-md-block" href="#" data-dismiss="modal">了解更多</a><a class="btn btn-primary btn-md-block" href="#" data-dismiss="modal">我知道了</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div class="footer-notice">
+    </div>
+    <footer> 
+      <div class="container-fluid bg-gray-700">
+        <div class="container-fluid u-maxWidth-1024 p-0"> 
+          <div class="contact">
+            <div class="d-flex justify-content-center justify-content-lg-between align-items-center">
+              <div class="contact-info d-flex align-items-start align-items-lg-center">
+                <p class="m-0 pr-2 pr-lg-3 text-white">銀行客服：02-2505-999</p>
+                <p class="m-0 pl-2 pl-lg-3 text-white">信用卡客服：02-2528-7776</p>
+              </div>
+              <div class="d-none d-lg-flex">
+                <div class="contact-link d-flex align-items-center"><a class="text-white text-decoration-none" href="#">客服中心 </a></div>
+              </div><a class="back-to-top bg-gray-400 d-flex justify-content-center align-items-center" href="#"> <img class="img-fluid" src="images/icon/back-to-top.svg" alt=""></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid bg-gray-900">
+        <div class="container-fluid u-maxWidth-1024 p-0"> 
+          <div class="copyright py-3 d-flex flex-column flex-lg-row justify-content-between align-items-center">
+            <div class="copyright-link d-flex flex-wrap"> <a class="my-1 px-2 text-gray-400 text-decoration-none" href="#">著作權說明</a><a class="my-1 px-2 text-gray-400 text-decoration-none" href="#">隱私權保護聲明</a><a class="my-1 px-2 text-gray-400 text-decoration-none" href="#">法定公開揭露事項</a><a class="my-1 px-2 text-gray-400 text-decoration-none" href="#">網站導覽</a><a class="my-1 px-2 text-gray-400 text-decoration-none" href="#">網路安全說明</a></div>
+            <p class="mt-2 mb-0 m-lg-0 text-gray-400">©永豐商業銀行股份有限公司</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <div class="modal fade" id="loading" tabindex="-1" aria-labelledby="loadingLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pt-2 bg-transparent border-0"> 
+          <div class="modal-body"></div>
+        </div>
+      </div>
+    </div>
+    <script src="./js/vendor/jquery-3.3.1.min.securejs"></script>
+    <script src="./js/vendor/jquery-migrate-1.4.1.min.securejs"></script>
+    <script src="./js/vendor/bootstrap.min.securejs"></script>
+    <script src="./js/vendor/slick.min.securejs"></script>
+    <script src="./js/vendor/moment.min.securejs"></script>
+    <script src="./js/script.securejs"> </script>
+    <script src="./js/query.securejs"> </script>
+  </body>
+</html>

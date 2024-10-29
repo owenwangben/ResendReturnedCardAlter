@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>MMA金融交易網(行動網頁版)</title>
+    <link href="/App_Themes/mobile/googlemap/mma_branch_style.css" rel="stylesheet" type="text/css" /><!--版型-->
+    <script type="text/javascript" src="/MMA7txt/JavaScript/JQuery/jquery-1.8.3.min.js"></script><!--抓取後台資料-->
+    <script type="text/javascript" src="/MMA7txt/JavaScript/mobile/googlemap/MapShared.js"></script><!--地圖共用function-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script><!--Google map api 版本-->
+    <script type="text/javascript" src="/MMA7txt/JavaScript/commonScripts.js"></script><!--phone_appVersion-->
+    <script src="/MMA7txt/JavaScript/mobile/googlemap/jquery.nicescroll.js"></script>
+    <meta id="viewport" name="viewport" content="width=device-width, user-scalable=no">
+    <script>
+        (function(doc) {
+            var viewport = document.getElementById('viewport');
+             if ( navigator.userAgent.match(/iPad/i) ) {
+                doc.getElementById("viewport").setAttribute("content", "width=954px, user-scalable=no");
+            }
+        }(document));
+    </script>
+
+    <script>
+      var map, places, infoWindow;
+      var markers = [];
+      var directionsDisplay;
+      var directionsService = new google.maps.DirectionsService();
+      var results;
+      var AREA;
+      var rescountry;
+      var resDIST;
+      
+      /*取得使用者目前位置 開始*/
+      function Locate(Locate_value,branch_value) {
+        phone_appVersion();
+        searchArea();
+        Location(Locate_value,branch_value);
+        document.getElementById('Transport').style.display = 'none';
+      }
+      /*取得使用者目前位置 結束*/
+      
+      /*Map畫布預設開始*/
+      function initialize(latitude, longitude,branch_value) {
+        setMapOptions(latitude, longitude, branch_value);//Map畫布預設
+        BusName(); //右下角資料來源
+        var myLatLng=new google.maps.LatLng(latitude,longitude);
+        search(myLatLng,branch_value);
+      }
+      /*Map畫布預設結束*/
+
+      /*發ajax詢問後台分行資料開始*/
+      function search(myLatLng,branch_value) {
+        $.ajax({
+             url: "/Share/CustomerService/BranchListJson.ashx",
+                        type: "GET",
+                        dataType: 'json',
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              results=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+        document.getElementById("first_myLatLng").value = myLatLng;
+        clearResults();//清除右邊分行列表資料
+        clearMarkers();//清除左邊地圖資料
+        search_branch(myLatLng,branch_value);//搜尋分行資料
+      }
+      /*發ajax詢問後台分行資料結束*/
+
+      /*搜尋國籍 資料開始*/
+      function searchArea() {
+		  var AREA;
+        $.ajax({
+             url: "/Share/CustomerService/BranchListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"4"},
+                        dataType: 'text',                        
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              AREA=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+          addAREA(AREA);
+      }
+      /*國籍 詳細資料*/      
+      function addAREA(value) {
+        var AREA = document.getElementById('AREA').value;
+        if(AREA==""){
+          var aryAREA = value.split("&&");
+          for (var i = 0; i < aryAREA.length; i++) {
+            if (aryAREA[i].length>0) {
+              $("#AREA").append($("<option></option>").attr("value", aryAREA[i]).text(aryAREA[i]));
+            }
+          }
+          var AREA = document.getElementById('AREA').value;
+          searchCounty(AREA);
+        }
+        else{
+          searchCounty(AREA);
+        }
+        $('#AREA').change(function () { searchCounty(); });
+      }
+      //搜尋縣市資料
+       function searchCounty() {
+        var AREA=(document.getElementById('AREA').value);
+        clearCounty();
+        $.ajax({
+             url: "/Share/CustomerService/BranchListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"2",AREA:AREA},
+                        dataType: 'text',                        
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              rescountry=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+          addCounty(rescountry);
+      }
+      //縣市下拉選單
+      function addCounty(rescountry) {
+        var arycountry = rescountry.split("&&");
+        for (var i = 0; i < arycountry.length; i++) {
+           if (arycountry[i].length>0) {
+              $("#country").append($("<option></option>").attr("value", arycountry[i]).text(arycountry[i]));
+            }
+        }
+        var country = document.getElementById('country').value;
+        searchDIST(country);
+        $('#country').change(function () { searchDIST(); });
+      }
+      /*清除縣市 資料*/
+      function clearCounty() {
+        var country = document.getElementById('country');
+        while (country.childNodes[0]) {
+          country.removeChild(country.childNodes[0]);
+        }
+      }
+      
+       function searchDIST(country) {
+        country=(document.getElementById('country').value);
+        clearDIST();
+        $.ajax({
+             url: "/Share/CustomerService/BranchListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"3",country:country},
+                        dataType: 'text',                        
+              async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              resDIST=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+          addDIST(resDIST);
+      }
+      /*發ajax詢問後台區資料結束*/
+      /*收取ajax資料後進行下拉式選單匯入開始*/
+      function addDIST(resDIST) {
+        var DIST = document.getElementById('DIST').value;
+        var aryDIST = resDIST.split("&&");
+        //alert(aryDIST);
+        for (var i = 0; i < aryDIST.length; i++) {
+          if (aryDIST[i].length>0) {
+            $("#DIST").append($("<option></option>").attr("value", aryDIST[i]).text(aryDIST[i]));
+          }
+        }
+      }
+      /*收取ajax資料後進行下拉式選單匯入結束*/
+      /*清除區 資料*/
+      function clearDIST() {
+        var DISTs = document.getElementById('DIST');
+        while (DISTs.childNodes[0]) {
+          DISTs.removeChild(DISTs.childNodes[0]);
+        }
+      }
+
+      //搜尋縣市區資料
+      function address_select() {
+        var AREA=document.getElementById('AREA').value;
+        var country=document.getElementById('country').value;
+        var DIST=document.getElementById('DIST').value;
+		$('.message').css('display','none');
+		$('#resultsTable').css('display','');
+        if(country=="請選擇"||DIST=="請選擇"){
+          //alert("很抱歉！您尚未選擇縣市區域！");
+		  $('#resultsTable').css('display','none');
+		  $('.message').css('display','block').html("很抱歉， 找不到符合條件的分行， 請您重新設定搜尋條件，謝謝。");
+          return;
+        }
+        document.getElementById('listing').style.display = '';
+        document.getElementById('directions-panel').style.display = 'none';
+        document.getElementById('Transport').style.display = 'none';
+
+        
+        $.ajax({
+             url: "/Share/CustomerService/BranchListJson.ashx",
+                        type: "POST",
+                        data: {QueryType:"1",AREA:AREA,country:country,DIST:DIST},
+                        dataType: 'json',
+                        async:   false,
+                        controller: this,
+                        success: function(responseData) {
+                            if (responseData != null) {
+                              results=responseData;
+                            }
+                        },
+                        error: function(aXMLHttpRequest, textStatus, errorTown) {
+                            alert(responseData.data);
+                        }
+        });
+        myLatLng = document.getElementById("first_myLatLng").value;
+        clearResults();//清除右邊分行列表資料
+        clearMarkers();//清除左邊地圖資料
+        search_branch(myLatLng,"mma_branch_area");//搜尋分行資料
+        var search_Lat = document.getElementById("search_Lat").value;
+        var search_Lng = document.getElementById("search_Lng").value;
+        var myLatLng=new google.maps.LatLng(search_Lat,search_Lng);
+
+        var myOptions = {
+          zoom: 15,
+          center: myLatLng,
+          /*Map 佈景*/
+          mapTypeControl: false,
+          /*Map 方向盤*/
+          panControl: false,
+          /*Map 方向盤*/
+          zoomControl: false,
+          /*Map 縮放控制*/
+          scaleControl: false,
+          /*Map 街景*/
+          streetViewControl: false
+      	
+        };
+      
+        //map = new google.maps.Map(document.getElementById('map-canvas'), myOptions);
+        $("#listing div.list").first().trigger("click");  /*假裝有對左邊選單的第一個選項做CLICK的動作，因此地圖會自動帶到左選單第一個點*/
+      }
+
+    </script>
+	<script type="text/javascript">
+	$( document ).ready(function() {
+		$('#Search_branch_map').click(function() {
+			$('#Transport a').removeClass('on').css('border','');
+			$('#Transport a').first().addClass('on');
+		});		
+	$("#Transport a").click(function() {
+			$('#Transport a').removeClass('on').css('border','');
+			$(this).addClass('on');
+			if ($('#Transport .walking').hasClass('on')) {
+				$('#Transport .walking').css('border','#c6c6c6 1px solid');
+				$('#Transport .transit').css({'border':'#dcdcdc 1px solid','border-left':'#f8f8f8 1px solid'});
+				$('#Transport .driving').css({'border':'#dcdcdc 1px solid','border-right':'#f8f8f8 1px solid'});
+				}
+			if ($('#Transport .driving').hasClass('on')) {
+				$('#Transport .driving').css({'border':'#c6c6c6 1px solid','border-right':'#eeeeee 1px solid'});
+				$('#Transport .walking').css({'border':'#dcdcdc 1px solid','border-left':'#c6c6c6 1px solid'});
+				$('#Transport .transit').css({'border':'#dcdcdc 1px solid','border-left':'#f8f8f8 1px solid'});
+				}	
+			if ($('#Transport .transit').hasClass('on')) {
+				$('#Transport .transit').css({'border':'#c6c6c6 1px solid','border-left':'#eeeeee 1px solid'});
+				$('#Transport .driving').css({'border':'#dcdcdc 1px solid','border-right':'#f8f8f8 1px solid'});
+				$('#Transport .walking').css({'border':'#dcdcdc 1px solid','border-right':'#c6c6c6 1px solid'});
+				}	
+				
+		});
+	});	
+    </script>
+  </head>
+  <body style="margin:0px; padding:0px;" onload="Locate('','mma_first')">
+  <div class="header"><img src="/MMA7txt/CustomerService/images/banksinopac.png" alt="永豐銀行" /></div>
+      <div id="listing">
+        <div id="mma_Search_all">
+          <a href="mma_branch.html" class="branch_on">找分行</a>
+          <a href="mma_ATM.html" class="atm">找ATM</a>
+        </div>
+        <div class="nicescroll">
+          <table id="resultsTable">
+            <tbody id="results"></tbody>
+          </table>
+          <div class="message" style="display:none;"></div>
+        </div>
+      </div>
+    <div id="directions-panel" class="directions-panel" style="display:none">
+       <div id="close" onclick="close_Route();">返回列表</div>
+       <div id="Transport">
+        <a onclick="calcRoute('DRIVING');" class="driving on"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="開車" /></a><a onclick="calcRoute('WALKING');" class="walking"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="走路" /></a><a onclick="calcRoute('TRANSIT');" class="transit"><img src="/MMA7txt/CustomerService/images/blank.gif" alt="大眾運輸" /></a>
+      </div>
+    </div>
+    <div id="map-canvas"></div>
+    <div id="address-zone">
+      <select id="AREA"></select><select id="country"></select><select id="DIST"></select>
+      <input onclick="address_select();" type="image" value="搜尋" src="/MMA7txt/CustomerService/images/search_btn2.png" />
+    </div>
+
+    
+    <div id="close_StreetView" style="display:none" onclick="close_StreetView();">返回</div>
+    <div id="info-content" style="display:none">
+      <table>
+        <tr id="iw-url-row" class="iw_table_row">
+          <td id="iw-url"></td>
+          <td id="iw-distance" align="right" nowrap></td>
+        </tr>
+        <tr id="iw-address-row" class="iw_table_row">
+          <td id="iw-address" colspan="2"></td>
+        </tr>
+        <tr id="iw-ENG_adress-row" class="iw_table_row">
+          <td id="iw-ENG_adress" colspan="2"></td>
+        </tr>
+        <tr id="iw-phone-row" class="iw_table_row">
+          <td class="iw_attribute_name" colspan="2"><b>Tel：</b><span id="iw-phone"></span><b class="fax">Fax：</b><span id="iw-fax"></span></td>
+        </tr>
+        <tr id="iw-offtime-row" class="iw_table_row">
+          <td class="iw_attribute_name" colspan="2"><b>服務時間：</b>週一至週五&nbsp;<span id="iw-offtime"></span></td>
+        </tr>
+        <tr id="iw-Business_Services-row" class="iw_table_row">
+          <td colspan="2"><div id="iw-Business_Services"></div></td>
+        </tr>
+        <tr id="iw-Route-row" class="iw_table_row">
+            <td class="maproute" align="right" colspan="2">
+                <div id="StreetView_branch_map" onclick="setStreetView();">街景模式</div>
+                <div id="Search_branch_map" onclick="calcRoute('DRIVING');">路線規劃</div>
+            </td>    
+        </tr>
+      </table>
+    </div>
+    <input type="hidden" id="first_myLatLng" value="">
+    <input type="hidden" id="branch_Latlng" value="">
+    <input type="hidden" id="latitude" value="">
+    <input type="hidden" id="longitude" value="">
+    <input type="hidden" id="Classification" value="mma_branch">
+    <input type="hidden" id="Route_km" value="">
+    <input type="hidden" id="branch_Lat" value="">
+    <input type="hidden" id="branch_Lng" value="">
+    <input type="hidden" id="search_Lat" value="">
+    <input type="hidden" id="search_Lng" value="">
+    <div class="footer">©版權所有。 永豐銀行，24小時客服專線：02-2505-9999 / 0203-08989</div>
+  </body>
+</html>

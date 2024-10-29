@@ -1,0 +1,48 @@
+::ng-deep .ngx-pagination {
+	padding-left: 0px !important;
+}
+
+::ng-deep .ngx-pagination .current {
+	border-radius: 0.25rem !important;
+	color: #e54646 !important;
+	background-color: #fff3f3 !important;
+	font-size: 16px !important;
+	padding: 8px 12px !important;
+	margin: 0px 0px 0px -1px !important;
+}
+
+::ng-deep .ngx-pagination a,
+.ngx-pagination button {
+	color: #0000;
+	background-color: #ffffff;
+	border-radius: 0.25rem !important;
+	font-size: 16px !important;
+	padding: 8px 12px !important;
+	margin: 0px 0px 0px -1px !important;
+}
+
+::ng-deep .ui-datepicker td a {
+	width: auto !important;
+}
+.footer-notice {
+	margin-bottom: 6rem !important;
+}
+
+.form-control {
+	display: inline !important;
+}
+
+.contact {
+	margin-left: 4%;
+}
+
+.Erroricon {
+	display: inline-block !important;
+	width: 4rem !important;
+	height: 4rem !important;
+	margin: 0 0.25rem !important;
+	background-repeat: no-repeat !important;
+	background-position: center center !important;
+	background-size: contain !important;
+	margin-bottom: 1rem !important;
+}

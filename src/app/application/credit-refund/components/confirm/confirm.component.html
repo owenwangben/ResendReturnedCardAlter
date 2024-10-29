@@ -1,0 +1,36 @@
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+		<legend>資料確認</legend>
+		<div class="confirm-data-block">
+			<table>
+			<tbody>
+				<tr>
+				<th>銀行</th>
+				<td>{{applyinfo.TransBankName + ' ' + applyinfo.TransBranchName}}</td>
+				</tr>
+				<tr>
+				<th>戶名</th>
+				<td>{{model.Name}}</td>
+				</tr>
+				<tr>
+				<th>帳號</th>
+				<td>{{applyinfo.TransAccount}}</td>
+				</tr>
+			</tbody>
+			</table>
+		</div>
+		</fieldset>
+	</section>
+</div>
+<div class="content">
+	<section class="trans-content">
+		<div class="prfy">
+		<p>您的溢繳款餘額為<span class="red">NT${{model.RefundAMT | number}}{{this.applyinfo.TransBankCode == '807' ? '' : '(已扣除匯款手續費30元)'}}</span>，本行將依據電腦系統內計算實際餘額進行退款作業，逕匯入本次申請所填之帳號</p>
+		</div>
+	</section>
+</div>
+<div class="btn-zone flex-inline-min">
+	<button class="nbtn" (click)="goPrev()">上一步</button>
+	<button class="nbtn focus" id="checkRequirment" type="submit" (click)="submit()">送出</button>
+</div>

@@ -1,0 +1,357 @@
+<form [formGroup]="form">
+	<app-applycard-intl-step-indicator [step]="0"></app-applycard-intl-step-indicator>
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.ARCInfo.UI_Number}}</span>居留證統一證號
+							</p>
+						</th>
+						<td>
+							{{idNumber}}
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.ARCInfo.DateOfIssue}}</span>居留證核發日期
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="DateOfIssueARC" placeholder="YYYYMMDD" numberOnly>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.ARCInfo.PerOfStay}}</span>居留期限</p>
+						</th>
+						<td>
+							{{arcExpireDate}}
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.ARCInfo.BarCodeMumber}}</span>條碼號碼
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="BarCodeNumARC">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.EName}}</span>英文姓名</p>
+						</th>
+						<td class="subNotice">
+							<input type="text" class="artfld col-all-min col-4" formControlName="EName">
+							<span class="red">
+								<span class="en">{{message?.ENameNotic}}</span>
+								請參考護照上英文姓名
+							</span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.DOB}}</span>出生年月日</p>
+						</th>
+						<td>
+							{{birthday}}
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.DomicileStatus}}</span>現居地址狀態</p>
+						</th>
+						<td>
+							<div class="artfld select col-3 col-all-min">
+								<select formControlName="HomeStatus">
+									<option [ngValue]="undefined" disabled>Select</option>
+									<option *ngFor="let status of homeStatusIntl" [ngValue]="status.key">{{status.value}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.AddrNow}}</span>現居地址</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-all-min col-3 reverse-margin">
+								<li>
+									<input type="checkbox" id="a21" class="artfld surround check-disabled" formControlName="IsAddressUploadLater">
+									<label for="a21"><small
+											class="en enSmall">{{btnMessage?.RadioButton.UploadLater}}</small>稍後上傳</label>
+								</li>
+							</ul>
+							<input type="text" class="artfld col-all-min col-7" *ngIf="!form.value.IsAddressUploadLater" formControlName="Address">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.TelOfDomicile}}
+								</span>現居電話</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="tel" class="artfld col-all-min col-1 area-code center" formControlName="Phone1" maxlength="4"
+									placeholder="區碼" (input)="Phone1onChange($event.target.value)" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-3 number-code" formControlName="Phone2" maxlength="8"
+									placeholder="例：25287776" (input)="Phone2onChange($event.target.value)" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.AddrOfDomicile}}</span>戶藉地址</p>
+						</th>
+						<td class="check-disabled-group">
+							<ul class="ctrl-block col-all-min col-3 reverse-margin">
+								<li>
+									<input type="checkbox" id="a31" class="artfld surround check-disabled"
+										formControlName="IsResidenceAddressIsHomeAddress" [(ngModel)]="checkboxDefault" (change)="defaultTrue()">
+									<label for="a31">
+										<small class="en enSmall">{{btnMessage?.RadioButton.SameAddrOfDomicile}}</small>同現居地址</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.TelOfDomicile}}</span>戶藉電話</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="tel" class="artfld col-all-min col-1 area-code center" formControlName="ResidencePhone_1" maxlength="4"
+									placeholder="區碼" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-3 number-code" formControlName="ResidencePhone_2" maxlength="8"
+									placeholder="例：25287776" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.AddrOfCom}}</span>公司地址</p>
+						</th>
+						<td class="check-disabled-group">
+							<ul class="ctrl-block col-all-min col-3 reverse-margin col-2-li">
+								<li>
+									<input type="checkbox" id="a41" class="artfld surround " formControlName="IsCompanyAddressSameAsHomeAddress"
+										#a41 (click)="CompanyAddrSwitch('a41',a41,a42)">
+									<label for="a41"><small
+											class="en enSmall">{{btnMessage?.RadioButton.SameAddrOfDomicile}}</small>同現居/通訊地址</label>
+								</li>
+								<li>
+									<input type="checkbox" id="a42" class="artfld surround" formControlName="IsCompanyAddressUploadLater" #a42
+										(change)="CompanyAddrSwitch('a42',a41,a42)">
+									<label for="a42"><small class="en enSmall">{{btnMessage?.RadioButton.UploadLater}}</small>稍後上傳</label>
+								</li>
+							</ul>
+							<input type="text" class="artfld col-all-min col-7" formControlName="CompanyAddress"
+								*ngIf="!a41.checked && !a42.checked">
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title"><span class="red">*</span><span class="en">{{message?.AddrOfMailing}}</span>
+					卡片寄送地址</span>
+				<ul class="ctrl-block col-2-li">
+					<li>
+						<input type="radio" id="a51" class="artfld surround" formControlName="ReceiveAddressType" [value]="1">
+						<label for="a51"><small
+								class="en enSmall">{{btnMessage?.RadioButton.SameAddrOfDomicile}}</small>同現居地址</label>
+					</li>
+					<li>
+						<input type="radio" id="a52" class="artfld surround" formControlName="ReceiveAddressType" [value]="2">
+						<label for="a52"><small
+								class="en enSmall">{{btnMessage?.RadioButton.SameAddrOfCom}}</small>同公司地址</label>
+					</li>
+				</ul>
+				<p class="red"><span class="en">{{message?.AddrOfMailingNotic}}</span>
+					提醒您!勾選之卡片寄送地址將作為留存銀行的通訊資料，供爾後銀行寄送書面資料使用，包含電子/行動帳單傳送失敗時，將補寄紙本帳單至此地址。</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.EduLvl}}</span>您的教育程度</p>
+						</th>
+						<td>
+							<div class="artfld select col-all-min">
+								<select formControlName="Education">
+									<option [ngValue]="undefined" disabled>Select</option>
+									<option *ngFor="let grade of educationGradesIntl" [ngValue]="grade.key">{{grade.value}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.NameOfCom}}</span> 公司名稱</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="Company">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.ComTel}}</span>公司電話</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="tel" class="artfld col-all-min col-1 area-code center" formControlName="CompanyPhoneAreaCode" maxlength="4"
+									placeholder="區碼" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-2 number-code" formControlName="CompanyPhone" maxlength="8"
+									placeholder="25287776" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-18 ext-code" formControlName="CompanyPhoneEx" maxlength="8"
+									placeholder="分機" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.AnnualSalary}}</span>年薪(新臺幣)</p>
+						</th>
+						<td>
+							<input class="artfld col-all-min col-4" type="text" formControlName="AnnualSalary" maxlength="6" numberOnly><span
+								class="unit">{{message?.ThousandDollars}}<span> 萬元</span></span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span
+									class="en">{{message?.NameOfManpowerBrokerCom1}}<br>{{message?.NameOfManpowerBrokerCom2}}</span>人力仲介公司名稱
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="NameOfManpowerBrokerCom">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span
+									class="en">{{message?.TelOfManpowerBrokerCom1}}<br>{{message?.TelOfManpowerBrokerCom2}}</span>人力仲介公司電話
+							</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="tel" class="artfld col-all-min col-1 area-code center" formControlName="TelOfManpowerBrokerComAreaCode" maxlength="4"
+									placeholder="區碼" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-2 number-code" formControlName="TelOfManpowerBrokerComPhone" maxlength="8"
+									placeholder="25287776" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span
+									class="en">{{message?.ManagerNameOfManpowerBrokerCom1}}<br>{{message?.ManagerNameOfManpowerBrokerCom2}}</span>管理師/翻譯師姓名
+							</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="ManagerNameOfManpowerBrokerCom">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span
+									class="en">{{message?.ManagerTelOfManpowerBrokerCom1}}<br>{{message?.ManagerTelOfManpowerBrokerCom2}}</span>管理師/翻譯師電話
+							</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="tel" class="artfld col-all-min col-1 area-code center" formControlName="ManagerTelOfManpowerBrokerCommAreaCode" maxlength="4" placeholder="區碼" numberOnly>
+								<span>-&nbsp;<span class="hidden-min">&nbsp;&nbsp;</span></span>
+								<input type="tel" class="artfld col-all-min col-2 number-code" formControlName="ManagerTelOfManpowerBrokerComPhone" maxlength="8"
+									placeholder="25287776" numberOnly>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()"><span class="en">{{btnMessage?.Back}}</span>上一步</a>
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span
+				class="en">{{btnMessage?.Continue}}</span>下一步</a>
+	</div>
+
+</form>

@@ -1,0 +1,79 @@
+<!-- <app-period-query
+	[fastQueryOptions]="fastQueryOptions"
+	[(start)]="start"
+	[(end)]="end"
+	[showPeriod]=false
+	(search)="onSearch();">
+</app-period-query> -->
+<table *ngIf="!record" class="table-striped">
+	<thead>
+		<tr>
+			<th>申請日期</th>
+			<th>分期金額<br>分期期數</th>
+			<th colspan="2">分期利率<br>申請狀態</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let record of records;" (click)="showDetail(record);">
+			<td class="mobile-col-1">
+				{{ record.ApplyDate | date:'y/MM/dd' }}
+			</td>
+			<td class="mobile-col-5">
+				{{ record.InstallmentAmt | number }}<br>{{ record.Period }}
+			</td>
+			<td class="mobile-col-5">
+				{{+record.Rate}}%<br>{{ record.Status }}
+			</td>
+			<td class="mobile-col-1">
+				<i class="right-arrow"></i>
+			</td>
+		</tr>
+		<tr *ngIf="!records?.length">
+			<td colspan="3">查無資料！</td>
+		</tr>
+	</tbody>
+</table>
+<div *ngIf="record">
+	<table class="table-striped two-cols-list">
+		<tr>
+			<th class="mobile-col-6">申請日期</th>
+			<td>{{ record.ApplyDate | date:'y/MM/dd' }}</td>
+		</tr>
+		<tr>
+			<th>帳單總應繳金額</th>
+			<td>{{ record.StmtAmt | number }}</td>
+		</tr>
+		<tr>
+			<th >帳單最低應繳金額</th>
+			<td>{{ record.StmtMinAmt | number }}</td>
+		</tr>
+		<tr>
+			<th>可分期金額</th>
+			<td>{{ record.InstallmentAmt | number }}</td>
+		</tr>
+		<tr>
+			<th>分期利率</th>
+			<td>{{+record.Rate}}%</td>
+		</tr>
+		<tr>
+			<th>手續費</th>
+			<td>{{ record.Fee | number }}</td>
+		</tr>
+		<tr>
+			<th>首期月付金</th>
+			<td>{{ record.FirstPeriodAmt | number }}</td>
+		</tr>
+		<tr>
+			<th>分期期數</th>
+			<td>{{ record.Period }}</td>
+		</tr>
+		<tr>
+			<th>申請狀態</th>
+			<td>{{ record.Status }}</td>
+		</tr>
+	</table>
+	<div class="btn-zone">
+		<button type="button" class="nbtn mobile-col-5" (click)="onPrev(record)">上一筆</button>
+		<button type="button" class="nbtn mobile-col-5" (click)="onNext(record)">下一筆</button>
+	</div>
+</div>

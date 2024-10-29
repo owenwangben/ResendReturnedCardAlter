@@ -1,0 +1,121 @@
+<div class="wrapper">
+	<app-auth-header [MasterTitleIntl]="MasterTitle"></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content transparent">
+					<h2 class="title-with-icon">
+						<i class="icon-auth"></i>
+						<p><span class="en">{{message?.Breadcrumb}}</span>永豐存戶身分認證 </p>
+					</h2>
+				</div>
+
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.UI_Number}}</span>居留證統一證號</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="ID"
+											maxlength="10">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.DOB}}</span>出生年月日</p>
+									</th>
+									<td>
+										<input type="tel" class="artfld col-all-min col-4" formControlName="DOB"
+											maxlength="8" numberOnly placeholder="YYYYMMDD">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.PeriodOfStay}}</span>居留期限</p>
+									</th>
+									<td>
+										<input type="tel" class="artfld col-all-min col-4"
+											formControlName="PeriodOfStay" maxlength="8" numberOnly
+											placeholder="YYYYMMDD">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.VerCode}}</span>驗證碼</p>
+									</th>
+									<td>
+										<div class="captcha-block flex-box flex-vcenter">
+											<input type="tel" class="artfld col-all-min col-2" formControlName="Captcha"
+												placeholder="驗證碼" maxlength="6" numberOnly>
+											<div class="captcha">
+												<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+											</div>
+											<div>
+												<a href="javascript:void(0)" class="reload-captcha"
+													(click)="changeVcaptcha()">Update</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+				<div class="content">
+					<section class="trans-content">
+						<div class="prfy">
+							<span class="title en">{{message?.TermsOfPersonalInfoTitle}}</span>
+							<span class="en">{{message?.TermsOfPersonalInfoNotic1}}
+								<a href="javascript:void(0)" class="udline open-lbox"
+									(click)="openlbox('#terms3-lbox')">{{message?.TermsOfPersonalInfoNotic2}}</a>{{message?.TermsOfPersonalInfoNotic3}}</span>
+						</div>
+						<div class="prfy">
+							<span class="title">個人資料同意使用條款</span><br>
+							<span>為了提供您後續商品電話服務，於您按下「確認」時，您所填寫的資料將會交付永豐銀行，並由永豐銀行人員與您聯絡。永豐銀行必將保護
+								您個人資料安全，且於法令許可及行銷永豐信用卡目的範圍內，於國內外蒐集、處理、利用您的個人資料。</span>
+							<span>本人特此聲明已詳細閱讀「<a href="javascript:void(0)" class="udline open-lbox"
+									(click)="openlbox('#terms3-lbox')">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>」並同意個人資料蒐集處理及利用條款。
+							</span>
+						</div>
+					</section>
+				</div>
+
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span
+							class="en">{{btnMessage?.Submit}}</span>確認</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+		<div class="lboxed">
+			<div class="close"></div>
+			<div class="lbox-block">
+				<div id="terms3-lbox" class="terms-lbox">
+					<h3>永豐銀行個人資料蒐集、處理及利用告知義務內容</h3>
+					<h3>Contents of Bank SinoPac’s Obligation to Inform Regarding the Collecting, Processing and Use of Personal Data</h3>
+					<div class="terms-block">
+						<div class="wrapper">
+							<p><span loadHtml="{{personalDataTermsUrl}}"></span></p>
+						</div>
+					</div>
+					<div class="btn-zone flex-inline-min">
+						<a href="javascript:void(0)" class="nbtn focus close">{{btnMessage?.Close}}<br>關閉</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

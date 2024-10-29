@@ -1,0 +1,44 @@
+<form [formGroup]="form">
+	<div class="formblock auth">
+		<p class="title">請輸入您的資料，進行身分驗證</p>
+		<table>
+			<tr>
+				<th>身分證字號</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" class="artfld" formControlName="idNumber" placeholder="例：A223456789" maxlength="10">
+				</td>
+			</tr>
+			<tr>
+				<th>出生月日</th>
+			</tr>
+			<tr>
+				<td>
+					<input type="text" class="artfld" formControlName="birthday" placeholder="例：0216" maxlength="4" numberOnly>
+				</td>
+			</tr>
+			<tr>
+				<th>驗證碼</th>
+			</tr>
+			<tr>
+				<td class="captcha-block">
+					<div>
+						<input type="text" class="artfld" formControlName="captcha" placeholder="驗證碼" maxlength="6" numberOnly>
+					</div>
+					<div class="captcha">
+						<a href="javascript:void(0)"><img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()"></a>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<div class="btn-block">
+						<input type="button" class="btn full" value="確定" (click)="submit()">
+					</div>
+				</td>
+			</tr>
+		</table>
+	</div>
+</form>
+

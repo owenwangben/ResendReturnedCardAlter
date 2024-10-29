@@ -1,0 +1,46 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "CardName": "虛擬世界卡",
+                "CardTypeName": "MasterCard世界卡",
+                "CardNo": "4705720200018201",
+                "ExpDate": "1225",
+                "CVV2": "188",
+                "CName": "A133621449",
+                "EName": "LIN HSIAO--TZU",
+                "PermanentCreditLimit": 60000,
+                "CreditLimit": 50000,
+                "IsActived": false,
+                "CreditAvailable": 0
+			},
+            {
+                "CardName": "虛擬無限卡",
+                "CardTypeName": "VISA無限卡",
+                "CardNo": "5452030001018604",
+                "ExpDate": "1225",
+                "CVV2": "188",
+                "CName": "A133621449",
+                "EName": "LIN HSIAO--TZU",
+                "PermanentCreditLimit": 60000,
+                "CreditLimit": 50000,
+                "IsActived": true,
+                "CreditAvailable": 52500
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

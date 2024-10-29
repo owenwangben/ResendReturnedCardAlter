@@ -1,0 +1,27 @@
+{
+  "Result": {
+    "Email": "bu*******@gmail.com",
+    "BillMonth": [
+      "2018-01-01T00:00:00+08:00",
+      "2018-02-01T00:00:00+08:00",
+      "2018-03-01T00:00:00+08:00",
+      "2018-04-01T00:00:00+08:00",
+      "2018-05-01T00:00:00+08:00",
+      "2018-06-01T00:00:00+08:00"
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB2",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

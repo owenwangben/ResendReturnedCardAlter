@@ -1,0 +1,27 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-content">
+		<h2 class="title">{{pageinfo.name}}</h2>
+		<br>
+        <div class="abgne_tab">
+          <ul class="ntabs">
+            <li [class.active]="route.children[0].routeConfig.path === 'Category'" routerLink="Category">
+			  <a href="javascript:void(0)">消費類別分析</a>
+			</li>
+      <li [class.active]="route.children[0].routeConfig.path === 'Month'" routerLink="Month">
+			  <a href="javascript:void(0)">消費金額分析</a>
+			</li>
+		  </ul>
+		  <div class="tab-container">
+			  <div class="tab-content">
+				  <router-outlet></router-outlet>
+			  </div>
+		  </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>
+

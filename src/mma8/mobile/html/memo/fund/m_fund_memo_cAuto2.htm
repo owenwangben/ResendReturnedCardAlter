@@ -1,0 +1,322 @@
+﻿<!--基金交易查詢_基金下單_定時定額申購-->
+<head>
+<link href="/App_Themes/Default/Default.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/MMA8/mobile/css/notes.css">
+<style type="text/css">
+.style1 {color: #FF0000}
+body {background:#fff;font-family: CustomFont, sans-serif;微軟正黑體;}
+#risk-notice{color:#6e6e6e;}
+#risk-notice ol li { margin-left: 27px;}
+#risk-notice ol ul{margin-bottom: 10px;margin-left: -10px;}
+#risk-notice ol ul li {margin-left: 5px;}
+column35-2, .column35-00 {  width: 30%;}
+.column20-0{width: 20%;}
+.column20-00{width: 12.2%;}
+.cs-level-column3, .cs-level-column3-end {width: 48.5%;}
+.cs-level-column1-end{width:24.5%;}
+</style>
+</head>
+<body>
+<div id="risk-notice" style="border:0;margin: -5px 0 0 -45px;">
+	  <ol>
+	    <li type="1" value="1">交易時間</li>
+			<ul><li type="I" value="1" >定時定額約定扣款，須於約定扣款日之「前一營業日」15：30前辦理申請，始為當月有效，逾時則為次月扣款。（例如：定時定額約定扣款日為11/26(一)，若欲此筆交易於當月扣款，則需於11/23(五)15：30前辦理申請，若逾時則為次月扣款）。
+	          </li></ul>
+	        <ul><li type="I" value="2" >如欲刪除「新申購但尚未執行扣款之定時定額基金交易」，須於定時定額扣款日「前一營業日」21：00前刪除該筆交易。（上述21：00將依本行系統實際處理時間而定，可能會有些許時間落差，故建議您儘早處理您的交易，避免影響個人權益）。例如：新申購但尚未執行扣款之定時定額基金交易預定於11/26(一)扣款，若欲刪除此筆交易需於11/23(五)21：00前刪除，若逾時則無法刪除該筆交易。 </li></ul>
+	        <ul><li type="I" value="3" >如遇天災等不可抗力因素，致交易無法執行時【如：因颱風來襲，經主管機關公告台北市不上班】，「交易生效日」將自動遞延至次一辦理基金業務之營業日，請您自行確認交易是否成功，本行將不另行通知。</li>
+</ul>
+	    <li type="1" value="2">淨值適用日</li>
+	      <ul><li style="list-style-type: none;">基金申購淨值、單位數，須待基金公司將相關資料回報後，才能提供正確資料供查詢，國內基金約需3~10個工作天，境外基金約需7~14個工作天，申購適用淨值以基金公司回報的資料為準。
+	      <br>＊上述分配回報期間僅供參考，若因基金公司作業或各基金另有規定，則不在此限。 </li></ul>
+	    <li type="1" value="3">最低申購金額</li>
+	      <table width="95%" border="0" cellspacing="1" class="mt" style="margin-left: 10px;">
+            <tr>
+              <td width="25%" height="30" class="bsc10" style="padding:5px">項目</td>
+              <td width="25%" class="bsc10" style="padding:5px">幣別</td>
+              <td width="24%" class="bsc10" style="padding:5px">定時定額</td>
+              <td width="26%" class="bsc10" style="padding:5px">百元基金專案適用限定商品</td>
+              </tr>
+            <tr>
+              <td class="bwc10">新臺幣信託</td>
+              <td class="bwc10">NTD</td>
+              <td class="bwc10 style1">3,000</td>
+              <td class="bwc10 style1">V(新臺幣100元)</td>
+              </tr>
+            <tr>
+              <td rowspan="12" class="bwc10">外幣信託<br /></td>
+              <td class="bwc10">USD</td>
+              <td class="bwc10 style1">120</td>
+              <td class="bwc10 style1">V(美元100元)</td>
+              </tr>
+            <tr>
+              <td class="bwc10">EUR</td>
+              <td class="bwc10 style1">90</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">JPY</td>
+              <td class="bwc10 style1">12,000</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">GBP</td>
+              <td class="bwc10 style1">60</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">HKD</td>
+              <td class="bwc10 style1">900</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">AUD</td>
+              <td class="bwc10 style1">150</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CAD</td>
+              <td class="bwc10 style1">120</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CHF</td>
+              <td class="bwc10 style1">120</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">SGD</td>
+              <td class="bwc10 style1">180</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">ZAR</td>
+              <td class="bwc10 style1">900</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">NZD</td>
+              <td class="bwc10 style1">150</td>
+              <td class="bwc10 style1">&nbsp;</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CNY/CNH</td>
+              <td class="bwc10 style1">600</td>
+              <td class="bwc10 style1">V(人民幣100元)</td>
+              </tr>
+          </table>
+	      	 <p style="width:270px;margin:10px;">※為符合利安系列基金公開說明書最低申購金額之規定，利安系列基金<span class="ColorR"><b>最低申購金額為新臺幣5,000元、美元200元及新加坡幣300元。</b></span><br />
+        ※外幣申購境外基金時，基金結匯幣別須與扣款帳號之幣別相同。<br />
+        ※外幣申購境外基金之<span class="ColorR"><b>手續費</b></span>一律由<span class="ColorR"><b>外幣帳戶</b></span>收取。<br /> 
+        <span class="ColorR"><b>※「百元基金專案」僅適用於限定商品，其定時定額/定時不定額適用之幣別為新臺幣、美元及人民幣，最低申購金額分別為新臺幣100元、美元100元及人民幣100元，適用商品依本行於MMA金融交易網公告者為準。</b></span><p>
+	    <li type="1" value="4">定時定額交易注意事項</li>
+			<ul><li type="I" value="1">委託人以定時定額／定時不定額投資時，應於前一營業日確認約定扣款帳戶內有足够之金額可供扣款（含信託本金及手續費），若因餘額不足導致扣款失敗，則視為該次不委託投資；倘委託人有二筆以上投資標的，因帳戶餘額不足時，委託人同意以受託人扣帳作業之先後順序為準，委託人不得指定或異議。 </li></ul>
+	    <ul><li type="I" value="2">基金定時定額扣款，自第一次委託扣款日起連續三個扣款日扣款失敗者，視同終止該筆信託契約，本行將不再繼續扣款；另外，若扣款成功信託契約成立後，連續三個扣款日扣款失敗，該筆交易將自動暫停扣款，惟委託人仍可申請恢復扣款。</li></ul>
+	    <ul><li type="I" value="3">就個別之定時定額／定時不定額信託契約，委託人如欲贖回已扣款之全部投資本金，需另行向受託人指示該筆信託契約於贖回後(1)終止信託契約且不再繼續扣款；或(2)維持原定時定額／定時不定額約定繼續扣款。   </li></ul>
+	    <ul><li type="I" value="4">定時定額／定時不定額基金贖回當日，遇該筆基金已扣款，在基金公司(包括但不限於以下機構：證券投資信託事業、期貨信託事業、境外基金總代理人、境外基金(管理)機構等)尚未將所有扣款交易回報時，若要終止該筆定時定額契約不再扣款，則剩餘「未回報」的投資本金，得臨櫃向受託人辦理預約贖回，本行將於基金公司回報單位數隔日自動贖回至全數庫存均結清為止。
+	          </li></ul>
+	    <ul><li type="I" value="5">如遇基金清算時，受託人得自動終止委託人之定時定額／定時不定額扣款。如遇基金合併時，受託人仍將維持原定時定額／定時不定額扣款，並於合併後以存續基金為扣款標的，惟合併前後基金公司有暫停交易之情形，則從其規定。信託資金以外幣收付者（1）合併前後之扣款基金為不同計價幣別，委託人應重新約定扣款帳號及扣款金額，若未重新約定扣款帳號，則以原基金扣款帳號扣款；另若未重新約定扣款金額，則以存續基金所屬計價幣別規定之最低扣款金額為準。（2）定時不定額之加減碼金額及相關設定應重新約定，否則即視為定時定額交易。
+	          </li></ul>
+	    <ul><li type="I" value="6">定時不定額係指當基金淨值與平均申購淨值相比之漲／跌幅大於或等於客戶設定之漲跌幅時，扣款金額將依客戶所約定之加碼／減碼金額而調整。
+	          </li></ul>
+	    <ul><li type="I" value="7">定時不定額淨值漲跌幅計算方式=『〈扣款日前一營業日系統最新淨值／「平均申購淨值」-1〉 *100』，無條件捨去取至整數位。平均申購淨值依本行系統計算為準。
+	          </li></ul>
+	    <ul><li type="I" value="8">定時不定額首次扣款金額為原始約定之扣款金額；後續之扣款金額=原定時定額憑證「約定扣款金額」+「加／減碼金額」。「約定扣款金額」+「加／減碼金額」之金額，須大於或等於該基金定時定額／定時不定額規定之最低投資金額，若低於最低投資金額時，則以該檔基金規定之最低投資金額為扣款金額。
+	          </li></ul>
+	    <ul><li type="I" value="9">帳戶扣款或以永豐銀行信用卡扣款之定時定額交易，1~31日皆可選擇且不限扣款天數，約定扣款日遇例假日，則順延至下一個營業日扣款；若遇當月無該約定扣款日【EX：2月份無30/31日】，則當月不執行該筆約定扣款；已申請之定時定額交易，皆可變更為不限扣款天數。
+	          </li></ul>
+	    <ul><li type="I" value="10">『動用額度』指委託人就指定之本金或手續費扣款帳戶有貸款額度(含定存質借金額)可動支，當帳戶存款餘額不足時，是否須動用貸款額度；僅適用於定時定額/定時不定額投資。</li></ul>
+
+	    <li type="1" value="5"><span class="ColorR"><b>收費標準及信託報酬、種類、計算方法</b></span>
+			
+			<ul><li type="I" value="1">基金業務<span class="ColorR"><strong>收費標準</strong></span>請參照「<a href="https://bank.sinopac.com/GCSDsp/DspDocDownload.aspx?item=mma" target="_blank">客服中心→文件下載→永豐商業銀行各項收費標準及公告事項→特定金錢信託投資國內外有價證券業務</a>」。<br />
+            </li></ul>
+			<ul>
+                <li type="I" value="2"><span class="ColorR"><b>信託報酬、種類、計算方式</b></span></li>
+				<li  style="list-style-type: none;"><span class="ColorR"><b>委託人瞭解並同意受託人辦理特定金錢信託之相關交易時，於法令許可之範圍內，自交易對手或基金公司取得之報酬、費用、折讓等各項利益，得做為受託人收取之信託報酬。</b></span></li>
+			</ul>	
+			<ul><li style="list-style-type: none;"><span class="ColorR"><b>(一)申購手續費</b></span><span class="style1"></span> (後收型基金不適用)：
+                  <ul>
+                    <li  style=" margin-left: -30px;  list-style-type: none;"> 1.報酬標準：<span class="ColorR"><b>費率不超過3.0%</b></span>。</li>
+                    <li  style=" margin-left: -30px;  list-style-type: none;"> 2.計算方法：<span class="ColorR"><b>以信託本金乘上費率計算之</b></span>。</li>
+                    <li  style=" margin-left: -30px;  list-style-type: none;"> 3.支付時間及方法：<span class="ColorR"><b>於申購時由委託人一次給付予受託人</b></span>。<br />
+                      保德信高成長基金、保德信金滿意基金、保德信亞太基金等三檔基金，其申購手續費分前收型及後收型，若選擇後收型則申購手續費於贖回時計收，計收標準如下；且其贖回之申請，僅能於受託人營業單位臨櫃辦理。
+					  <div class="table-outline" style="margin-left:-50px;width:117%;" >
+                       <div class="column65-1">持有期間</div>
+                       <div class="column35-2" style=" width: 30%;">遞延手續費率</div>
+                       <div class="column65-1">一年以下</div>
+                       <div class="column35-2" style=" width: 30%;"><span lang="EN-US">1.5%</span></div>
+                       <div class="column65-1">一年（含）以上，二年以下</div>
+                       <div class="column35-2" style=" width: 30%;"><span lang="EN-US">1%</span></div>
+                       <div class="column65-1">二年（含）以上，三年以下</div>
+                       <div class="column35-2" style=" width: 30%;"><span lang="EN-US">0.5%</span></div>
+                       <div class="column65-0">三年（含）以上<span lang="EN-US"> </span></div>
+                       <div class="column35-00" style=" width: 30%;"><span lang="EN-US">0</span></div>
+					  </div>
+					</li></ul>   
+	        <ul><li style="list-style-type: none;margin-left: -50px;"><span class="ColorR"><b>(二)信託管理費</b></span>
+                <p>i. 報酬標準：<span class="ColorR"><b>年費率0.2%</b></span>。<br />
+                   ii. 計算方法：<span class="ColorR"><b>依每筆信託本金，分別依其實際持有期間，乘上年費率計算之</b></span>。<br />
+                   iii.支付時間及方法：<span class="ColorR"><b>由委託人給付受託人，於委託人要求贖回時，由受託人逕自返還信託本益中扣收。但依前述計算方式所取得之費用未達最低收費標準時，則以最低收費標準扣收。最低收費標準如下：</b></span></p>
+			 <div class="table-outline" style="margin-left: -32px;width: 110%;">
+                    <div class="column40-1" style="width: 33.2%;  line-height: 21px;">項目</div>              
+                    <div class="column20-1">幣別</div>
+                    <div class="column20-1">單筆</div>
+                    <div class="column20-2">定時定額</div>
+                    <div class="column20-0-2r2" style=" width: 13%;line-height: 13px;padding-top: 1px;">新臺幣信託 </div>
+                    <div class="column20-1">國內基金</div>
+                    <div class="column20-1 ">NTD </div>
+                    <div class="column20-2 ">100 </div>
+                    <div class="column20-2 "> </div>
+                    <div class="column20-1">境外基金  </div>
+                    <div class="column20-1 ">NTD </div>
+                    <div class="column20-1 ">500  </div>
+                    <div class="column20-2 ">200 </div>
+                    <div class="column20-00" style=" width: 12.2%;"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">USD  </div>
+                    <div class="column20-1">15 </div>
+                    <div class="column20-2">6 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">EUR  </div>
+                    <div class="column20-1">15 </div>
+                    <div class="column20-2">6 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">JPY  </div>
+                    <div class="column20-1">2,000  </div>
+                    <div class="column20-2">800 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 "> </div>
+                    <div class="column20-1">GBP  </div>
+                    <div class="column20-1">11  </div>
+                    <div class="column20-2">4 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">HKD </div>
+                    <div class="column20-1">120 </div>
+                    <div class="column20-2">50 </div>
+                    <div class="column20-00">外幣<br>信託 </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">AUD  </div>
+                    <div class="column20-1">15  </div>
+                    <div class="column20-2">6 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 ">  </div>
+                    <div class="column20-1">CAD  </div>
+                    <div class="column20-1">20  </div>
+                    <div class="column20-2">8 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 "></div>
+                    <div class="column20-1">CHF  </div>
+                    <div class="column20-1">15  </div>
+                    <div class="column20-2">6 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 ">  </div>
+                    <div class="column20-1">SGD  </div>
+                    <div class="column20-1">25  </div>
+                    <div class="column20-2">10 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 ">  </div>
+                    <div class="column20-1">ZAR </div>
+                    <div class="column20-1">125  </div>
+                    <div class="column20-2">50 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0 ">  </div>
+                    <div class="column20-1">NZD  </div>
+                    <div class="column20-1">20  </div>
+                    <div class="column20-2">8 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-0">CNY/CNH</div>
+                    <div class="column20-0">100</div>
+                    <div class="column20-00">40 </div>
+                    </div>
+					※ 委託人於贖回前已申請定時定額「終止扣款」者，則比照「單筆申購」之收費標準。
+	        </li></ul>
+			<ul><li style="list-style-type: none;margin-left: -50px;"><span class="ColorR"><b>(三)轉換手續費(後收型基金不適用)</b></span>：<br>
+                i. 報酬標準：<span class="ColorR"><b>委託人每次申請轉換投資至同一基金公司之其他基金時，依該基金公司規定扣收轉換手續費。惟受託人分別依境外基金、國內基金每筆計收新臺幣500元、新臺幣50元。</b></span><br>
+                ii. 計算方法：<span class="ColorR"><b>於每次基金轉換時逐次收取</b></span>。<br>
+                iii.支付時間及方法：<span class="ColorR"><b>應支付予基金公司者，分別依該基金公司規定由受託人代為扣收或由基金公司自轉換總額中扣收；應支付予受託人者，由委託人給付予受託人，於辦理轉換時由受託人額外一次收取。轉換手續費一律由新臺幣帳戶收取，每筆是指單一投資標的轉換至單一投資標的為原則。</b></span>
+              </li></ul>
+	        <ul><li style="list-style-type: none;margin-left: -50px;"><span class="ColorR"><b>(四)申購時之通路服務費</b></span>：<br>
+                i. 報酬標準：<span class="ColorR"><b>費率0%至1%；或新臺幣0~200元</b></span>。<br />
+                ii. 計算方法：<span class="ColorR"><b>以信託本金乘上費率計算之；非以信託本金計算者以新臺幣0～200元收取</b></span>。<br />
+                iii. 支付時間及方法：<span class="ColorR"><b>由交易對手或基金公司給付予受託人，支付方式依各基金公司而有所不同，可能採取月、季、半年、年度支付方式為之；此服務費如係已包含於基金公開說明書所規定之費用，將由基金公司逕自各基金之每日淨資產價值中扣除</b></span>。</li></ul>
+	        
+			<ul><li style="list-style-type: none;margin-left: -50px;"><span class="ColorR"><b>(五)持有期間之通路服務費</b></span>：
+              <br>
+                i. 報酬標準：<span class="ColorR"><b>年費率0%至1.0%</b></span>。<br />
+                ii. 計算方法：<span class="ColorR"><b>以受託人於交易對手或基金公司之淨資產價值乘上年費率計算之</b></span>。<br />
+                iii. 支付時間及方法：<span class="ColorR"><b>由交易對手或基金公司給付予受託人，支付方式依各基金公司而有所不同，可能採取月、季、半年、年度支付方式為之；此服務費係已包含於基金公司公開說明書所規定之費用，由基金公司逕自各基金之每日淨資產價值中扣除</b></span>。</li></ul>
+
+	        <ul><li style="list-style-type: none;margin-left: -50px;"><span class="ColorR"><b>(六)轉換時之通路服務費</b></span>：
+              <br>
+                i. 報酬標準：<span class="ColorR"><b>費率0%至0.5%</b></span>。<br /> 
+                ii. 計算方法：<span class="ColorR"><b>以轉換當時交易對手或基金公司所提供之轉出基金淨資產價值乘上費率計算之</b></span>。<br />
+                iii. 支付時間及方法：<span class="ColorR"><b>此服務費係已包含於基金公司規定扣收之轉換手續費，由交易對手或基金公司給付予受託人，支付方式依各基金公司而有所不同，可能採取月、季、半年、年度支付方式為之。</b></span> </li></ul>
+		<ul><li style="list-style-type: none;margin-left: -50px;"><b><span class="ColorR"><b>(七) 因本約定書或信託資金之運用而發生之國內外相關費用，例如：稅賦、贖回手續費、仲介商之交易佣金、基金經理人之管理費、郵電費、保管機構管理費、利息費用、簽證機構之簽證費、或其他依慣例應由客戶負擔之費用，悉由客戶負擔。其他按國際金融市場慣例或投資指定標的註冊地法令規定而增加之費用或稅賦亦同。
+	        </b></span></li></ul>
+		<ul><li style="list-style-type: none;margin-left: -50px;"><b><span class="ColorR"><b>(八)委託人了解本條之信託手續費、管理費及相關費用會因投資標的發行機構之規定，受託人之營運成本等因素而調整，客戶同意並接受之。</b></span>
+		  </li></ul>
+	</ul>
+		 <li type="1" value="6">有關基金應負擔之費用（含分銷費用）已揭露於基金公開說明書及投資人須知，投資人可至境外基金資訊觀測站（<a href="http://www.fundclear.com.tw" target="new">http://www.fundclear.com.tw</a>）下載，或至基金公司網站查閱。</li>     
+         <li type="1" value="7">匯率計算方式</li>
+                    <ul><li type="I" value="1">信託資金係以新臺幣收付且投資外國有價證券或國內投信發行之外幣計價商品者，信託資金之收受或本益之返還，其幣值之兌換，除另有約定或受託人另有較優之規定外，依受託人於合理期間內實際買匯或賣匯之匯率計算。</li></ul>
+                    <ul><li type="I" value="2">信託資金因兌換所產生之匯率風險悉由委託人負擔。</li></ul>
+					<ul><li type="I" value="3">投資標的轉換時，其不同幣別間之兌換，係以發行機構（包括但不限於經紀商、承銷商或基金經理公司）之作業規定所訂匯率為準。</li></ul> 
+					<ul><li type="I" value="4">外幣信託不同幣別轉換時，信託本金依受託人最新之匯率計算。 </li></ul>
+                    <ul><li type="I" value="5">信託資金投資外國有價證券若屬外幣計價之投資產品，委託人以非該有價證券計價幣別申購者，須先兌換為該有價證券之計價幣別；轉換至非本有價證券計價幣別資產時，可能產生低於投資本金之匯率風險。委託人亦須承受非本有價證券計價幣別之連結標的所衍生之匯率風險。</li></ul>
+        <li type="1" value="8">短線交易</li>
+                    <ul><li type="I" value="1">境外基金於公開說明書及投資人須知中詳載有短線交易之規定。倘委託人違反相關短線交易之規定，境外基金機構將保留拒絕接受委託人交易之權利，或將收取較高之手續費及轉換費。</li></ul>
+                    <ul><li type="I" value="2">國內基金之短線交易規定於經主管機關核准後實施。倘委託人違反相關短線交易之規定，基金公司將保留拒絕接受委託人交易之權利，或將收取較高之手續費及轉換費。委託人應詳閱基金公開說明書所載相關詳細內容。</li></ul>
+                    <ul><li type="I" value="3">委託人同意，若遭境外基金機構認定有涉及短線交易時，受託人得提供委託人姓名、身分證字號等相關資料予該境外基金機構及其總代理人，俾符合境外基金註冊地之要求。</li></ul> 
+                    <ul><li type="I" value="4"><a href="https://mma.sinopac.com/MMA7txt/news/vin126_mma7.html" target="_blank">國內外基金「短線交易」規定</a></li></ul>
+        <li type="1" value="9">投資風險揭露及預告</li>
+                    <ul><li type="I" value="1">「信託資金」係指委託人為具體特定之運用指示受託人投資國內外標的而交付之信託款項，不同於委託人之存款，並不受存款保險條例、保險安定基金或其他保障機制之保障範圍。</li></ul>
+					<ul><li type="I" value="2">投資基金並非存款，受託人除應盡善良管理人之注意義務外，並不保證本信託資金盈虧及最低收益，委託人投資標的及投資地區可能產生之風險，包括但不限於類股過度集中風險、產業景氣循環風險、流動性風險、市場風險(投資地區政治及經濟變動、外匯管制及匯率變動、社會變動、利率、股價、指數或其他標的資產價格波動）、信用風險、投資結構式商品之風險、證券相關商品交易及其他投資標的或特定投資策略等風險，因上述風險致委託人大量贖回或基金暫停計算贖回價格等因素，或有延遲給付贖回價金之可能，委託人皆不得以任何理由要求受託人分擔損失。</li></ul>
+					<ul><li type="I" value="3">部份基金公司為保護投資人權益，設有公平價格調整機制或反稀釋機制。當市場發生高波動或低流通性事件，或基金經理人需買賣有價證券以因應投資人大量申購或贖回，為保護持有該基金投資人的權益，基金公司將啟動公平價格調整機制或反稀釋機制，對基金淨值進行調整，調整幅度將依各基金公司的規定而有不同。</li></ul>
+					<ul><li type="I" value="4">高收益債券基金（本類基金主要係投資於非投資等級之高風險債券且配息來源可能為本金）雖經金融監督管理委員會（以下稱金管會）核准，惟不表示絕無風險。由於高收益債券之信用評等未達投資等級或未經信用評等，且對利率變動的敏感度甚高，故基金可能會因利率上升、市場流動性下降，或債券發行機構違約不支付本金、利息或破產而蒙受虧損。投資人應審慎評估。高收益債券基金不適合無法承擔相關風險之投資人，較適合投資屬性為穩健型等級以上之投資人，且以高收益債券為訴求之基金不宜占其投資組合過高之比重。</li></ul>
+					<ul><li type="I" value="5">投資新興市場可能比投資已開發國家有較大之價格波動及流動性較低之風險，委託人應慎選投資標的。</li></ul>
+					<ul><li type="I" value="6">「復華南非幣長期收益基金」經理費率為1.2%、「復華南非幣短期收益基金」經理費率為1%。 前述基金以南非幣計價，如投資人以新臺幣或其他非前述基金計價幣別之貨幣換匯後投資本基金者，須自行承擔匯率變動之風險，當南非幣相對其他貨幣貶值時，將產生匯兌損失。「復華南非幣短期收益基金」與「復華南非幣長期收益基金」可能會持有非基金計價幣別的投資標的，當不同幣別間之匯率產生較大變化時，將會影響前述基金以南非幣計算之淨資產價值。投資於南非必須承受當地政治、經濟、法規制度、金融市場、社會情勢可能之變動，將可能對前述基金所投資之市場與投資工具之報酬造成直接或間接之影響。如南非因政經因素實施外匯管制，可能致使投資資金無法變現或匯回，將造成前述基金無法處分資產或支付贖回款項。</li></ul>
+					<ul><li type="I" value="7">投資於中國之基金應依中華民國相關法令之規定，境外基金投資大陸地區證券市場上市有價證券之總金額不得超過該境外基金淨資產價值之10%，並非完全投資於大陸地區有價證券；國內投信基金投資大陸地區有價證券雖可包括其集中交易市場交易之股票、存託憑證或符合一定信用評等之債券等，且法令並無限制投資總金額比例，惟仍應符合信託契約、基金公開說明書、證券投資信託基金管理辦法等相關規定，同時須受基金公司QFII(合格境外機構投資者)額度之限制，因此亦非全部投資於大陸地區有價證券。另投資人申購時應留意中國市場政府政策、法令與會計稅務制度、經濟與相關市場變動所可能衍生之投資風險。</li></ul>
+					<ul><li type="I" value="8">基金的配息可能由基金的收益或本金中支付。任何涉及由本金支出的部份，可能導致原始投資金額減損。另基金進行配息前可能未先扣除應負擔之相關費用。</li></ul>
+					<ul><li type="I" value="9">委託人在申購前，應確實詳閱各開立帳戶總約定書、風險預告、基金公開說明書及投資人須知；並瞭解可能產生之風險，其中最大可能損失為損失所有本金及可能之配息。委託人因投資時間不同，投資績效表現亦有差異，過往之績效並不代表未來投資績效表現之保證。基金雖經金管會核准或同意生效，惟不表示絕無風險。基金經理公司以往之績效亦不保證經理基金之最低投資收益，基金經理公司除盡善良管理人之注意義務外，不負責基金之盈虧。本行受託投資之基金，已備妥基金公開說明書或投資人須知，委託人可至受託人營業處所索取或至基金公司網站或基金資訊觀測站 (http://www.fundclear.com.tw)下載。</li></ul>
+					<ul><li type="I" value="10">基金總報酬率包含淨值報酬率與配息率，基金配息率並不等同基金報酬率，且過去配息率不代表未來配息率；基金淨值除可能因市場因素而上下波動外，尚可能因配息政策而有所變動。</li></ul>
+					<ul><li type="I" value="11">本風險揭露及預告僅列舉重要部份，無法對於所有基金投資風險及影響市場因素全部詳述，委託人於投資前須詳加研讀本風險揭露及預告，確實作好財務規劃與風險評估，並應審慎詳閱本行受託投資各基金所備之公開說明書及投資人須知，以免遭到難以承受之損失。 </li></ul>
+        <li type="1" value="10">委託人持有信託資金之投資標的及單位數，以本行帳載資料為準；就各別信託資金運用情形，包括申購、轉換及贖回，本行將定期編製對帳單送交委託人。</li>
+        <li type="1" value="11">客戶投資屬性與適合的商品風險等級如下：</li>	      
+        <div class="table-outline-popup"  style=" margin-left: 5px;width: 97%;">
+        <div class="cs-level-column1">投資屬性 </div>
+        <div class="popup-column60-1">意義 </div>
+        <div class="cs-level-column3">建議商品風險等級 </div>
+        <div class="cs-level-column1-end ">第一級 </div>
+        <div class="popup-column60-1-r5">保守型</div>
+        <div class="cs-level-column3-end">RR1 </div>
+        <div class="cs-level-column1-end ">第二級  </div>
+        <div class="popup-column60-1-r5">安穩型</div>
+        <div class="cs-level-column3-end">RR1、RR2</div>
+        <div class="cs-level-column1-end">第三級 </div>
+        <div class="popup-column60-1-r5">穩健型 </div>
+        <div class="cs-level-column3-end">RR1、RR2、RR3</div>
+        <div class="cs-level-column1-end">第四級</div>
+        <div class="popup-column60-1-r5">成長型</div>
+        <div class="cs-level-column3-end">RR1、RR2、RR3、RR4</div>
+        <div class="cs-level-column1-end">第五級 </div>
+        <div class="popup-column60-1-r5">積極型</div>
+        <div class="cs-level-column3-end ">RR1、RR2、RR3、RR4、RR5</div>
+        <div class="cs-level-column1-end">第六級 </div>
+        <div class="popup-column60-1-r5">挑戰型 </div>
+        <div class="cs-level-column3-end ">RR1、RR2、RR3、RR4、RR5、RR6</div>
+       </div>
+     <p style="margin-left: 8px;"><b>12. 以上相關規定以本行或基金公司之規定及實際作業為準。</b></p>
+	 </ol>
+	 <p class="ColorR"><b style="margin-left: 47px;">申訴管道：</b><br />
+            <b style="margin-left: 47px;">免付費申訴專線：0800-088-111</b><br />
+            <b style="margin-left: 47px;">其他服務電話：（02）2505-9999</b><br />
+            <b style="margin-left: 47px;">傳真：（02）2191-1009</b><br />
+            <b style="margin-left: 47px;">電子郵件信箱E-MAIL：<a href="mailto:callcenter@sinopac.com">callcenter@sinopac.com</a>
+			</b></p>
+			<br>
+	   </div>
+</body>

@@ -1,0 +1,29 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "CardNo": "1111222233334444"
+      },
+	  {
+        "CardNo": "2222333344441111"
+      },
+	  {
+        "CardNo": "3333444411112222"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

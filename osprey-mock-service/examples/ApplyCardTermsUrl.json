@@ -1,0 +1,20 @@
+{
+    "Result": {
+        "BankServiceTermsUrl": "/mma8/card/documents/applycard/en/個人網路銀行服務條款.htm",
+        "PersonalDataTermsUrl": "/mma8/card/documents/applycard/202308/永豐銀行個人資料蒐集、處理及利用告知義務內容.htm"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

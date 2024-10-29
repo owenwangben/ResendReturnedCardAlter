@@ -1,0 +1,3395 @@
+@import "reset.css";
+@import "font.css";
+.clearfix {
+}
+.clearfix::before, .clearfix::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.clearfix::after {
+    clear: both;
+}
+.vertical-align {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.vertical-align-parent {
+    transform-style: preserve-3d;
+}
+body {
+    font-family: CustomFont,sans-serif;
+    font-size: 16px;
+    line-height: 1.3em;
+    word-spacing: 0.125em;
+}
+body p {
+    line-height: 1.3em;
+}
+body a, body a:active {
+    color: #000000;
+    min-height: 0;
+}
+.wrapper {
+    margin: auto;
+    max-width: 960px;
+}
+.wrapper header {
+    background: none repeat scroll 0 0 #fff;
+    border-bottom: 1px solid #b9160f;
+    max-width: 960px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1999;
+}
+.wrapper header::before, .wrapper header::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.wrapper header::after {
+    clear: both;
+}
+.wrapper header #global {
+    height: 40px;
+    padding: 4px 13px;
+    position: relative;
+}
+.wrapper header #global::before, .wrapper header #global::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.wrapper header #global::after {
+    clear: both;
+}
+.wrapper header #global h1 {
+    float: left;
+    font-size: 1.125em;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    width: 70%;
+}
+.wrapper header #global h1#sinopac {
+    background-position: center center;
+    height: 32px;
+    overflow: hidden;
+    text-indent: -9999em;
+}
+.wrapper header #global .nav {
+    float: left;
+    width: 15%;
+}
+.wrapper header #global .nav a {
+    display: block;
+    height: 32px;
+    overflow: hidden;
+    text-indent: -9999em;
+    width: 32px;
+}
+.wrapper header #global #home.nav a {
+}
+
+.wrapper header #global #back.nav a {
+background: url("../images/nav/btn_back@2x.png") no-repeat scroll center center / 32px 32px rgba(0, 0, 0, 0);
+}
+.wrapper header #global .logout {
+    float: right;
+    overflow: visible;
+    text-align: right;
+    width: 15%;
+}
+.wrapper header #global .logout a {
+    color: #6e6e6e;
+    display: inline-block;
+    height: 32px;
+    line-height: 32px;
+    position: relative;
+    width: 2em;
+}
+.wrapper header #global .logout a::before {
+    content: "";
+    height: 30px;
+    left: -35px;
+    position: absolute;
+    top: 0;
+    width: 30px;
+}
+.red {
+    color: #b9160f;
+}
+.wrapper header ul.steps {
+    background: none repeat scroll 0 0 #b9160f;
+    border-top: 1px solid #b9160f;
+    color: #fff;
+}
+.wrapper header ul.steps::before, .wrapper header ul.steps::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.wrapper header ul.steps::after {
+    clear: both;
+}
+.wrapper header ul.steps li {
+    color: #464646;
+    float: left;
+    position: relative;
+    text-align: center;
+    width: 33%;
+}
+.wrapper header ul.steps li:first-of-type {
+    width: 34%;
+}
+.wrapper header ul.steps li div {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    font-size: 0.875em;
+    font-weight: bold;
+    height: 32px;
+    line-height: 32px;
+    padding-left: 12px;
+    vertical-align: middle;
+}
+.wrapper header ul.steps li div span {
+    color: #ffa9a6;
+    font-size: 1.875em;
+    font-weight: normal;
+    margin-right: 4px;
+    position: relative;
+    top: 2px;
+    vertical-align: middle;
+}
+.wrapper header ul.steps li div::after {
+    border-bottom: 16px solid transparent;
+    border-left: 16px solid #ffffff;
+    border-top: 16px solid transparent;
+    content: "";
+    position: absolute;
+    right: -16px;
+    top: 0;
+    z-index: 2;
+}
+.wrapper header ul.steps li div::before {
+    border-bottom: 16px solid transparent;
+    border-left: 16px solid #b9160f;
+    border-top: 16px solid transparent;
+    content: "";
+    left: 0;
+    padding: 0 10px 0 16px;
+    position: absolute;
+    top: 0;
+}
+.wrapper header ul.steps li:first-child div::before {
+    display: none;
+}
+.wrapper header ul.steps li:last-child {
+    margin-right: 0;
+}
+.wrapper header ul.steps li:last-child div::after {
+    display: none;
+}
+.wrapper header ul.steps li.current div {
+    background: none repeat scroll 0 0 #b9160f;
+    color: #fff;
+}
+.wrapper header ul.steps li.current div span {
+    color: #ffa9a6;
+    margin-right: 4px;
+}
+.wrapper header ul.steps li.current div::after {
+    border-left: 20px solid #b9160f;
+}
+.main {
+    padding-bottom: 20px;
+    padding-top: 40px;
+}
+.main .title {
+    font-size: 1em;
+    font-weight: bold;
+    padding-top: 16px;
+    text-align: center;
+}
+.main .titleRed {
+    color: #b9160f;
+    font-size: 1em;
+    font-weight: bold;
+    padding-top: 16px;
+    text-align: center;
+}
+.main_iframe {
+    height: 1000px;
+    padding-top: 40px;
+    width: 100%;
+}
+.main_c {
+    padding-bottom: 0;
+    padding-top: 40px;
+}
+.main_c .title {
+    font-size: 1em;
+    font-weight: bold;
+    padding-top: 16px;
+    text-align: center;
+}
+.main_voice {
+    padding-left: 60px;
+    padding-right: 60px;
+}
+.main_voice > h4 {
+    color: #b9160f;
+    font-size: 1em;
+    font-weight: normal;
+    height: 24px;
+    line-height: 40px;
+}
+.main_voice > h2 {
+    color: #6e6e6e;
+    font-size: 1.5em;
+    font-weight: normal;
+    height: 160px;
+    line-height: 40px;
+    padding-left: 20px;
+}
+.main.withSteps {
+    padding-top: 74px;
+}
+.main > h2 {
+    background: none repeat scroll 0 0 #b9160f;
+    border-bottom: 2px solid #b9160f;
+    color: #fff;
+    font-weight: normal;
+    height: 32px;
+    line-height: 32px;
+    padding: 0 15px;
+    text-align: center;
+}
+.menu li {
+    border-bottom: 1px solid #d2d3d6;
+    color: #000000;
+    line-height: 42px;
+}
+.menu > li {
+}
+.menu > li.withSubmenu {
+}
+.menu > li.actived {
+}
+.menu a {
+    display: block;
+    height: 42px;
+    padding: 0 52px;
+}
+.menu li.withSwitch {
+    display: table;
+    padding: 0;
+    position: relative;
+    width: 100%;
+}
+.menu li.withSwitch a {
+    display: table-cell;
+    line-height: normal;
+    vertical-align: middle;
+}
+.menu li.withSwitch a .remark {
+    padding: 0;
+}
+.menu li.withSwitch .switch {
+    position: absolute;
+    right: 3%;
+    top: 7px;
+    width: 52px;
+}
+.menu li.withSwitch .switch input[type="checkbox"] {
+    display: none;
+}
+.menu li.withSwitch .switch input[type="checkbox"] + label {
+    cursor: pointer;
+    font-size: 1em;
+}
+.menu li.withSwitch .switch input[type="checkbox"] + label {
+    background-color: #fafbfa;
+    border-radius: 50px;
+    display: inline-block;
+    height: 28px;
+    padding: 9px;
+    position: relative;
+    transition: all 0.1s ease-in 0s;
+    width: 53px;
+}
+.menu li.withSwitch .switch input[type="checkbox"] + label::after {
+    border-radius: 100px;
+    box-shadow: 0 0 0 0 #eeeeee inset, 0 0 1px #b9160f;
+    content: " ";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 0.1s ease-in 0s;
+    width: 100%;
+}
+.menu li.withSwitch .switch input[type="checkbox"] + label::before {
+    background: none repeat scroll 0 0 white;
+    border-radius: 100px;
+    box-shadow: 0 3px 1px rgba(0, 0, 0, 0.05), 0 0 1px rgba(0, 0, 0, 0.3);
+    content: " ";
+    height: 26px;
+    left: 1px;
+    position: absolute;
+    top: 1px;
+    transition: all 0.1s ease-in 0s;
+    width: 26px;
+    z-index: 999999;
+}
+.menu li.withSwitch .switch input[type="checkbox"]:active + label::after {
+    box-shadow: 0 0 0 20px #eee inset, 0 0 1px #eee;
+}
+.menu li.withSwitch .switch input[type="checkbox"]:active + label::before {
+    width: 37px;
+}
+.menu li.withSwitch .switch input[type="checkbox"]:checked:active + label::before {
+    left: 15px;
+    width: 37px;
+}
+.menu li.withSwitch .switch input[type="checkbox"] + label:active {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1) inset;
+}
+.menu li.withSwitch .switch input[type="checkbox"]:checked + label::before {
+    border-radius: 100px;
+    content: " ";
+    left: 26px;
+    position: absolute;
+}
+.menu li.withSwitch .switch input[type="checkbox"]:checked + label::after {
+    background: none repeat scroll 0 0 #b9160f;
+    box-shadow: 0 0 1px #b9160f;
+    content: " ";
+    font-size: 1.5em;
+    position: absolute;
+}
+.menu li .submenu {
+    background: none repeat scroll 0 0 #dbdbdb;
+    position: relative;
+}
+.menu li .submenu::after {
+    content: "";
+    display: block;
+    height: 5px;
+    position: absolute;
+    right: 5%;
+    top: -1px;
+    width: 17px;
+}
+.menu li.mLMenu {
+    display: table;
+    width: 100%;
+}
+.menu li.mLMenu a {
+    display: table-cell;
+    line-height: normal;
+    vertical-align: middle;
+    width: 100%;
+}
+.menu li.mLMenu a .remark {
+    padding: 0;
+}
+#index header {
+    border-bottom: medium none;
+}
+#index header #setting a {
+    background: url("../images/index/setting.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+#index .main {
+    padding-bottom: 10px;
+}
+#index ul#category {
+    background: none repeat scroll 0 0 #ededed;
+}
+#index ul#category::before, #index ul#category::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+#index ul#category::after {
+    clear: both;
+}
+#index ul#category li {
+    border-bottom: 4px solid #d8d8d8;
+    float: left;
+    text-align: center;
+    width: 50%;
+}
+#index ul#category li.actived {
+    border-bottom: 4px solid #b9160f;
+}
+#index ul#category li a {
+    display: block;
+    font-weight: bold;
+    padding: 15px 15px 5px;
+}
+#index nav ul {
+    padding: 20px 15px 0;
+}
+#index nav ul::before, #index nav ul::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+#index nav ul::after {
+    clear: both;
+}
+#index nav ul li {
+    float: left;
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    text-align: center;
+    width: 30%;
+}
+#index nav ul li:nth-child(3n) {
+    margin-right: 0;
+}
+#index nav ul li a {
+    display: block;
+    padding-top: 90%;
+}
+#index nav ul li a#nav_currency {
+    background: url("../images/index/currency@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_fund {
+    background: url("../images/index/fund@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_card {
+    background: url("../images/index/card@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_gold {
+    background: url("../images/index/gold@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_mobile {
+    background: url("../images/index/mobile@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_exchange {
+    background: url("../images/index/exchange@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_brunch {
+    background: url("../images/index/brunch@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_information {
+    background: url("../images/index/information@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index nav ul li a#nav_bonus {
+    background: url("../images/index/bonus@2x.png") no-repeat scroll center top / 80% auto rgba(0, 0, 0, 0);
+}
+#index ul#functions {
+    padding: 46px 15px 0;
+}
+#index ul#functions::before, #index ul#functions::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+#index ul#functions::after {
+    clear: both;
+}
+#index ul#functions li {
+    background: url("../images/index/func_bg@2x.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    float: left;
+    font-weight: bold;
+    margin-bottom: 5%;
+    margin-right: 5%;
+    position: relative;
+    text-align: center;
+    width: 30%;
+}
+#index ul#functions li::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+#index ul#functions li:nth-child(3n) {
+    margin-right: 0;
+}
+#index ul#functions li.customized a {
+    color: #b9160f;
+}
+#index ul#functions li a {
+    bottom: 0;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-style: preserve-3d;
+}
+#index ul#functions li a span {
+    display: block;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+#index .othersFuncs {
+    border-bottom: 4px solid #b9160f;
+    padding-bottom: 10px;
+    position: relative;
+    width: 100%;
+}
+#index .othersFuncs a {
+    overflow: hidden;
+    text-indent: -9999em;
+}
+#index .othersFuncs a#nav_voice {
+    background: url("../images/index/voice@2x.png") no-repeat scroll center center / 100% auto rgba(0, 0, 0, 0);
+    display: block;
+    margin: 0 auto;
+    width: 30%;
+}
+#index .othersFuncs a#nav_voice::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+#index .othersFuncs a#nav_qr, #index .othersFuncs a#nav_search {
+    bottom: 15px;
+    height: 31px;
+    position: absolute;
+    width: 33px;
+}
+#index .othersFuncs a#nav_qr {
+    background: url("../images/index/qr.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    left: 13px;
+}
+#index .othersFuncs a#nav_search {
+    background: url("../images/index/search.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    right: 13px;
+}
+.content {
+    padding: 0 16px;
+}
+.content > p {
+    font-size: 0.875em;
+    margin-bottom: 24px;
+}
+.button {
+    background: linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #969696;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: CustomFont,sans-serif;
+    font-size: 1em;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+.button.card {
+    background: linear-gradient(to bottom, #959595 0%, #767676 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 2px solid #767676;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: CustomFont,sans-serif;
+    font-size: 0.9em;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+.button.red {
+    background: linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 2px solid #b9160f;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    font-family: CustomFont,sans-serif;
+    font-size: 1em;
+    height: 40px;
+    line-height: 36px;
+    margin: 0 auto;
+    text-align: center;
+    width: 80%;
+}
+.button.disabled {
+    color: #b7b7b7;
+}
+.btnSet {
+}
+.btnSet::before, .btnSet::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.btnSet::after {
+    clear: both;
+}
+.btnSet a {
+    background: linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    border: 1px solid #969696;
+    color: #fff;
+    cursor: pointer;
+    display: block;
+    float: left;
+    font-family: CustomFont,sans-serif;
+    font-size: 1em;
+    height: 40px;
+    line-height: 40px;
+    margin: 0 auto;
+    text-align: center;
+    width: 49%;
+}
+.btnSet a.disabled {
+    color: #b7b7b7;
+}
+.btnSet a:first-of-type {
+    margin-right: 2%;
+}
+.btnGroup a {
+    margin-top: 10px;
+}
+.btnGroup a:first-of-type {
+    margin-top: 0;
+}
+.save span {
+    background: url("../images/btn_ic/ic_save.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    padding-left: 36px;
+}
+.re span {
+    background: url("../images/btn_ic/ic_re.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.balance span {
+    background: url("../images/btn_ic/ic_balance.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.detail_1 span {
+    background: url("../images/btn_ic/ic_detail.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.pay span {
+    background: url("../images/btn_ic/ic_pay.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.again span {
+    background: url("../images/btn_ic/ic_again.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.gold span {
+    background: url("../images/btn_ic/ic_gold.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.login_card span {
+    background: url("../images/btn_ic/ic_login_card.png") no-repeat scroll left center, linear-gradient(to bottom, #959595 0%, #767676 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    color: #fff;
+    display: inline-block;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 36px;
+}
+.nRec span {
+    background: url("../images/btn_ic/ic_nRec.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.rec span {
+    background: url("../images/btn_ic/ic_rec.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.recStop span {
+    background: url("../images/btn_ic/ic_recStop.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.delRec span {
+    background: url("../images/btn_ic/ic_delRec.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+.playRec span {
+    background: url("../images/btn_ic/ic_playRec.png") no-repeat scroll left center, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 rgba(0, 0, 0, 0);
+    display: inline-block;
+    height: 28px;
+    line-height: 28px;
+    padding-left: 36px;
+}
+ul.tab {
+    background: none repeat scroll 0 0 #b9160f;
+    border: 1px solid #b9160f;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+ul.tab::before, ul.tab::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.tab::after {
+    clear: both;
+}
+ul.tab li {
+    float: left;
+    text-align: center;
+}
+ul.tab li a {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    font-weight: bold;
+    height: 26px;
+    line-height: 26px;
+}
+ul.tab li.actived a {
+    background: none repeat scroll 0 0 #b9160f;
+    color: #fff;
+}
+.acctInfo {
+    font-weight: bold;
+}
+.acctInfo .acctType {
+    font-size: 1em;
+    padding-bottom: 8px;
+}
+.acctInfo .bal {
+    color: #b9160f;
+    font-size: 1.2em;
+    margin-left: 0;
+}
+.acctInfo span {
+    margin-left: 16px;
+}
+.expenses {
+    color: #ff6000;
+}
+.income {
+    color: #009a12;
+}
+ol.acctList {
+    padding: 16px 0;
+}
+ol.acctList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ol.acctList li a {
+    background: url("../images/ind_arrow_right.png") no-repeat scroll 95% center rgba(0, 0, 0, 0);
+    display: block;
+    padding: 16px;
+}
+ol.acctList .nd {
+    display: block;
+    padding: 16px;
+}
+div.acct {
+    padding: 16px 10px 0;
+}
+div.acct .acctInfo {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+div.acct ul.tab li {
+    border-right: 1px solid #b9160f;
+    width: 33%;
+}
+div.acct ul.tab li:first-child {
+    width: 34%;
+}
+div.acct ul.tab li:last-child {
+    border-right: medium none;
+}
+div.acct ol {
+    padding: 0 12px;
+}
+div.acct ol li {
+    border-top: 1px solid #efefef;
+    height: 36px;
+    line-height: 36px;
+    padding: 15px 0;
+}
+div.acct_2 {
+    padding: 16px 10px 0;
+}
+div.acct_2 .acctInfo {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+div.acct_2 ul.tab li {
+    width: 50%;
+}
+div.acct_2 ul.tab li:first-child {
+    width: 50%;
+}
+div.acct_2 ul.tab li:last-child {
+    border-right: medium none;
+}
+div.acct_2 ol {
+    padding: 0 12px;
+}
+div.acct_2 ol li {
+    border-top: 1px solid #efefef;
+    height: 36px;
+    line-height: 36px;
+    padding: 15px 0;
+}
+div.acct_21 {
+    padding: 0 10px;
+}
+div.acct_21 .acctInfo {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+div.acct_21 ul.tab li {
+    width: 50%;
+}
+div.acct_21 ul.tab li:first-child {
+    width: 50%;
+}
+div.acct_21 ul.tab li:last-child {
+    border-right: medium none;
+}
+div.acct_21 ol {
+    padding: 0 12px;
+}
+div.acct_21 ol li {
+    border-top: 1px solid #efefef;
+    height: 36px;
+    line-height: 36px;
+    padding: 15px 0;
+}
+div.acct_1 {
+    padding: 0 10px;
+}
+div.acct_1 .acctInfo {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 16px;
+}
+div.acct_1 ul.tab li {
+    border-right: 1px solid #b9160f;
+    width: 33%;
+}
+div.acct_1 ul.tab li:first-child {
+    width: 34%;
+}
+div.acct_1 ul.tab li:last-child {
+    border-right: medium none;
+}
+div.acct_1 ol {
+    padding: 0 12px;
+}
+div.acct_1 ol li {
+    border-top: 1px solid #efefef;
+    height: 36px;
+    line-height: 36px;
+    padding: 15px 0;
+}
+ul.loginList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.loginList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.loginList li a {
+    background-image: url("../images/ind_arrow_right.png");
+    background-position: right 6px center;
+    background-repeat: no-repeat;
+    background-size: 8px 13px;
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.loginList li a::before, ul.loginList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.loginList li a::after {
+    clear: both;
+}
+ul.loginList li a div {
+    float: left;
+    text-align: center;
+}
+ul.loginList li a div:nth-child(1) {
+    padding-top: 10px;
+    width: 20%;
+}
+ul.loginList li a div:nth-child(2) {
+    width: 40%;
+}
+ul.loginList li a div:nth-child(3) {
+    padding-top: 10px;
+    width: 40%;
+}
+ul.loginList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+    text-align: center;
+}
+ul.loginList li.head::before, ul.loginList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.loginList li.head::after {
+    clear: both;
+}
+ul.loginList li.head div {
+    float: left;
+}
+ul.loginList li.head div:nth-child(1) {
+    padding-top: 10px;
+    width: 20%;
+}
+ul.loginList li.head div:nth-child(2) {
+    width: 40%;
+}
+ul.loginList li.head div:nth-child(3) {
+    padding-top: 10px;
+    width: 40%;
+}
+ul.detailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.detailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.detailList li a {
+    background-image: url("../images/ind_arrow_right.png");
+    background-position: right 6px center;
+    background-repeat: no-repeat;
+    background-size: 8px 13px;
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.detailList li a::before, ul.detailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.detailList li a::after {
+    clear: both;
+}
+ul.detailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.detailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.detailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.detailList li a div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.detailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+    text-align: center;
+}
+ul.detailList li.head::before, ul.detailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.detailList li.head::after {
+    clear: both;
+}
+ul.detailList li.head div {
+    float: left;
+}
+ul.detailList li.head div:nth-child(1) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.detailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.detailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.lopDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.lopDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.lopDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.lopDetailList li a::before, ul.lopDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.lopDetailList li a::after {
+    clear: both;
+}
+ul.lopDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.lopDetailList li a div:nth-child(1) {
+    width: 20%;
+}
+ul.lopDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.lopDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 40%;
+}
+ul.lopDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.lopDetailList li.head::before, ul.lopDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.lopDetailList li.head::after {
+    clear: both;
+}
+ul.lopDetailList li.head div {
+    float: left;
+}
+ul.lopDetailList li.head div:nth-child(1) {
+    width: 20%;
+}
+ul.lopDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.lopDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 40%;
+}
+ul.loDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.loDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.loDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.loDetailList li a::before, ul.loDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.loDetailList li a::after {
+    clear: both;
+}
+ul.loDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.loDetailList li a div:nth-child(1) {
+    width: 20%;
+}
+ul.loDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.loDetailList li a div:nth-child(3) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.loDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.loDetailList li.head::before, ul.loDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.loDetailList li.head::after {
+    clear: both;
+}
+ul.loDetailList li.head div {
+    float: left;
+}
+ul.loDetailList li.head div:nth-child(1) {
+    width: 20%;
+}
+ul.loDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.loDetailList li.head div:nth-child(3) {
+    padding-top: 10px;
+    text-align: right;
+    width: 40%;
+}
+ul.fcDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.fcDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.fcDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.fcDetailList li a::before, ul.fcDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.fcDetailList li a::after {
+    clear: both;
+}
+ul.fcDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.fcDetailList li a div:nth-child(1) {
+    width: 20%;
+}
+ul.fcDetailList li a div:nth-child(2) {
+    width: 40%;
+}
+ul.fcDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 40%;
+}
+ul.fcDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.fcDetailList li.head::before, ul.fcDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.fcDetailList li.head::after {
+    clear: both;
+}
+ul.fcDetailList li.head div {
+    float: left;
+}
+ul.fcDetailList li.head div:nth-child(1) {
+    width: 20%;
+}
+ul.fcDetailList li.head div:nth-child(2) {
+    width: 40%;
+}
+ul.fcDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 40%;
+}
+ul.inDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.inDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.inDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.inDetailList li a::before, ul.inDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.inDetailList li a::after {
+    clear: both;
+}
+ul.inDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.inDetailList li a div:nth-child(1) {
+    width: 30%;
+}
+ul.inDetailList li a div:nth-child(2) {
+    width: 20%;
+}
+ul.inDetailList li a div:nth-child(3) {
+    width: 25%;
+}
+ul.inDetailList li a div:nth-child(4) {
+    text-align: right;
+    width: 25%;
+}
+ul.inDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.inDetailList li.head::before, ul.inDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.inDetailList li.head::after {
+    clear: both;
+}
+ul.inDetailList li.head div {
+    float: left;
+}
+ul.inDetailList li.head div:nth-child(1) {
+    width: 30%;
+}
+ul.inDetailList li.head div:nth-child(2) {
+    width: 20%;
+}
+ul.inDetailList li.head div:nth-child(3) {
+    width: 25%;
+}
+ul.inDetailList li.head div:nth-child(4) {
+    width: 25%;
+}
+ul.cCardDetail {
+    margin-bottom: 16px;
+    margin-top: 15px;
+}
+ul.cCardDetail li {
+    padding: 13px;
+}
+ul.cCardDetail li::before, ul.cCardDetail li::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.cCardDetail li::after {
+    clear: both;
+}
+ul.cCardDetail li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.cCardDetail li div {
+    float: left;
+    width: 50%;
+}
+ul.cCardDetail li div:nth-child(2n) {
+    text-align: right;
+}
+ul.cCardDetail + .btnSet {
+    padding: 0 13px;
+}
+ul.cDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.cDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.cDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.cDetailList li a::before, ul.cDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.cDetailList li a::after {
+    clear: both;
+}
+ul.cDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.cDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.cDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 45%;
+}
+ul.cDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 30%;
+}
+ul.cDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.cDetailList li.head::before, ul.cDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.cDetailList li.head::after {
+    clear: both;
+}
+ul.cDetailList li.head div {
+    float: left;
+}
+ul.cDetailList li.head div:nth-child(1) {
+    width: 25%;
+}
+ul.cDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 45%;
+}
+ul.cDetailList li.head div:nth-child(3) {
+    padding-top: 10px;
+    text-align: right;
+    width: 30%;
+}
+ul.cnDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.cnDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.cnDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.cnDetailList li a::before, ul.cnDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.cnDetailList li a::after {
+    clear: both;
+}
+ul.cnDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.cnDetailList li a div:nth-child(1) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.cnDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 45%;
+}
+ul.cnDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 30%;
+}
+ul.cnDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.cnDetailList li.head::before, ul.cnDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.cnDetailList li.head::after {
+    clear: both;
+}
+ul.cnDetailList li.head div {
+    float: left;
+}
+ul.cnDetailList li.head div:nth-child(1) {
+    width: 25%;
+}
+ul.cnDetailList li.head div:nth-child(2) {
+    width: 45%;
+}
+ul.cnDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 30%;
+}
+ul.scDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.scDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.scDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.scDetailList li a::before, ul.scDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.scDetailList li a::after {
+    clear: both;
+}
+ul.scDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.scDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.scDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.scDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.scDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.scDetailList li.head::before, ul.scDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.scDetailList li.head::after {
+    clear: both;
+}
+ul.scDetailList li.head div {
+    float: left;
+}
+ul.scDetailList li.head div:nth-child(1) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.scDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.scDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.sDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.sDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.sDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.sDetailList li a::before, ul.sDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.sDetailList li a::after {
+    clear: both;
+}
+ul.sDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.sDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.sDetailList li a div:nth-child(2) {
+    width: 25%;
+}
+ul.sDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.sDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.sDetailList li.head::before, ul.sDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.sDetailList li.head::after {
+    clear: both;
+}
+ul.sDetailList li.head div {
+    float: left;
+}
+ul.sDetailList li.head div:nth-child(1) {
+    padding: 10px;
+    width: 25%;
+}
+ul.sDetailList li.head div:nth-child(2) {
+    width: 25%;
+}
+ul.sDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.slDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.slDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.slDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.slDetailList li a::before, ul.slDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.slDetailList li a::after {
+    clear: both;
+}
+ul.slDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.slDetailList li a div:nth-child(1) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.slDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.slDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.slDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.slDetailList li.head::before, ul.slDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.slDetailList li.head::after {
+    clear: both;
+}
+ul.slDetailList li.head div {
+    float: left;
+}
+ul.slDetailList li.head div:nth-child(1) {
+    padding-top: 20px;
+    width: 25%;
+}
+ul.slDetailList li.head div:nth-child(2) {
+    padding-top: 12px;
+    width: 25%;
+}
+ul.slDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.fuDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.fuDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.fuDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.fuDetailList li a::before, ul.fuDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.fuDetailList li a::after {
+    clear: both;
+}
+ul.fuDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.fuDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.fuDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.fuDetailList li a div:nth-child(3) {
+    padding-top: 10px;
+    text-align: right;
+    width: 50%;
+}
+ul.fuDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.fuDetailList li.head::before, ul.fuDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.fuDetailList li.head::after {
+    clear: both;
+}
+ul.fuDetailList li.head div {
+    float: left;
+}
+ul.fuDetailList li.head div:nth-child(1) {
+    width: 25%;
+}
+ul.fuDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.fuDetailList li.head div:nth-child(3) {
+    padding: 10px;
+    text-align: right;
+    width: 50%;
+}
+ul.gDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.gDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.gDetailList li a {
+    background-image: url("../images/ind_arrow_right.png");
+    background-position: right 6px center;
+    background-repeat: no-repeat;
+    background-size: 8px 13px;
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.gDetailList li a::before, ul.gDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.gDetailList li a::after {
+    clear: both;
+}
+ul.gDetailList li a div {
+    float: left;
+    text-align: center;
+}
+ul.gDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.gDetailList li a div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.gDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.gDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+    text-align: center;
+}
+ul.gDetailList li.head::before, ul.gDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.gDetailList li.head::after {
+    clear: both;
+}
+ul.gDetailList li.head div {
+    float: left;
+}
+ul.gDetailList li.head div:nth-child(1) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.gDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.gDetailList li.head div:nth-child(3) {
+    text-align: right;
+    width: 50%;
+}
+ul.irDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.irDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.irDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.irDetailList li a::before, ul.irDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irDetailList li a::after {
+    clear: both;
+}
+ul.irDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+}
+ul.irDetailList li a div:nth-child(1) {
+    text-align: left;
+    width: 50%;
+}
+ul.irDetailList li a div:nth-child(2) {
+    width: 25%;
+}
+ul.irDetailList li a div:nth-child(3) {
+    width: 25%;
+}
+ul.irDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.irDetailList li.head::before, ul.irDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irDetailList li.head::after {
+    clear: both;
+}
+ul.irDetailList li.head div {
+    float: left;
+}
+ul.irDetailList li.head div:nth-child(1) {
+    text-align: left;
+    width: 50%;
+}
+ul.irDetailList li.head div:nth-child(2) {
+    width: 25%;
+}
+ul.irDetailList li.head div:nth-child(3) {
+    width: 25%;
+}
+ul.irIDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.irIDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.irIDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.irIDetailList li a::before, ul.irIDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIDetailList li a::after {
+    clear: both;
+}
+ul.irIDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+}
+ul.irIDetailList li a div:nth-child(1) {
+    width: 50%;
+}
+ul.irIDetailList li a div:nth-child(2) {
+    width: 25%;
+}
+ul.irIDetailList li a div:nth-child(3) {
+    width: 25%;
+}
+ul.irIDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.irIDetailList li.head::before, ul.irIDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIDetailList li.head::after {
+    clear: both;
+}
+ul.irIDetailList li.head div {
+    float: left;
+}
+ul.irIDetailList li.head div:nth-child(1) {
+    width: 50%;
+}
+ul.irIDetailList li.head div:nth-child(2) {
+    width: 25%;
+}
+ul.irIDetailList li.head div:nth-child(3) {
+    width: 25%;
+}
+ul.irIIDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.irIIDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.irIIDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.irIIDetailList li a::before, ul.irIIDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIIDetailList li a::after {
+    clear: both;
+}
+ul.irIIDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+ul.irIIDetailList li a div:nth-child(1) {
+    width: 50%;
+}
+ul.irIIDetailList li a div:nth-child(2) {
+    text-align: right;
+    width: 25%;
+}
+ul.irIIDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 25%;
+}
+ul.irIIDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.irIIDetailList li.head::before, ul.irIIDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIIDetailList li.head::after {
+    clear: both;
+}
+ul.irIIDetailList li.head div {
+    float: left;
+}
+ul.irIIDetailList li.head div:nth-child(1) {
+    width: 50%;
+}
+ul.irIIDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.irIIDetailList li.head div:nth-child(3) {
+    padding-top: 10px;
+    width: 25%;
+}
+ul.irIIIDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.irIIIDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.irIIIDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.irIIIDetailList li a::before, ul.irIIIDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIIIDetailList li a::after {
+    clear: both;
+}
+ul.irIIIDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+}
+ul.irIIIDetailList li a div:nth-child(1) {
+    width: 25%;
+}
+ul.irIIIDetailList li a div:nth-child(2) {
+    width: 25%;
+}
+ul.irIIIDetailList li a div:nth-child(3) {
+    width: 25%;
+}
+ul.irIIIDetailList li a div:nth-child(4) {
+    width: 25%;
+}
+ul.irIIIDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.irIIIDetailList li.head::before, ul.irIIIDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.irIIIDetailList li.head::after {
+    clear: both;
+}
+ul.irIIIDetailList li.head div {
+    float: left;
+}
+ul.irIIIDetailList li.head div:nth-child(1) {
+    width: 25%;
+}
+ul.irIIIDetailList li.head div:nth-child(2) {
+    width: 25%;
+}
+ul.irIIIDetailList li.head div:nth-child(3) {
+    width: 25%;
+}
+ul.irIIIDetailList li.head div:nth-child(4) {
+    width: 25%;
+}
+ul.crDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.crDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.crDetailList li a {
+    background-image: url("../images/ind_arrow_right.png");
+    background-position: right 6px center;
+    background-repeat: no-repeat;
+    background-size: 8px 13px;
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.crDetailList li a::before, ul.crDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.crDetailList li a::after {
+    clear: both;
+}
+ul.crDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: left;
+    vertical-align: middle;
+}
+ul.crDetailList li a div:nth-child(1) {
+    width: 40%;
+}
+ul.crDetailList li a div:nth-child(2) {
+    text-align: right;
+    width: 30%;
+}
+ul.crDetailList li a div:nth-child(3) {
+    text-align: right;
+    width: 30%;
+}
+ul.crDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+    text-align: center;
+}
+ul.crDetailList li.head::before, ul.crDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.crDetailList li.head::after {
+    clear: both;
+}
+ul.crDetailList li.head div {
+    float: left;
+}
+ul.crDetailList li.head div:nth-child(1) {
+    width: 40%;
+}
+ul.crDetailList li.head div:nth-child(2) {
+    width: 30%;
+}
+ul.crDetailList li.head div:nth-child(3) {
+    width: 30%;
+}
+ul.reDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.reDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.reDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.reDetailList li a::before, ul.reDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.reDetailList li a::after {
+    clear: both;
+}
+ul.reDetailList li a div {
+    display: table-cell;
+    float: left;
+    text-align: center;
+    vertical-align: middle;
+}
+ul.reDetailList li a div:nth-child(1) {
+    width: 10%;
+}
+ul.reDetailList li a div:nth-child(2) {
+    text-align: left;
+    width: 30%;
+}
+ul.reDetailList li a div:nth-child(3) {
+    text-align: left;
+    width: 30%;
+}
+ul.reDetailList li a div:nth-child(4) {
+    text-align: left;
+    width: 30%;
+}
+ul.reDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.reDetailList li.head::before, ul.reDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.reDetailList li.head::after {
+    clear: both;
+}
+ul.reDetailList li.head div {
+    float: left;
+}
+ul.reDetailList li.head div:nth-child(1) {
+    width: 10%;
+}
+ul.reDetailList li.head div:nth-child(2) {
+    padding-top: 10px;
+    text-align: left;
+    width: 30%;
+}
+ul.reDetailList li.head div:nth-child(3) {
+    text-align: left;
+    width: 30%;
+}
+ul.reDetailList li.head div:nth-child(4) {
+    text-align: left;
+    width: 30%;
+}
+ul.gpDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.gpDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.gpDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.gpDetailList li a::before, ul.gpDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.gpDetailList li a::after {
+    clear: both;
+}
+ul.gpDetailList li a div {
+    display: table-cell;
+    float: left;
+    line-height: normal;
+    text-align: center;
+    vertical-align: middle;
+}
+ul.gpDetailList li a div:nth-child(1) {
+    width: 50%;
+}
+ul.gpDetailList li a div:nth-child(2) {
+    width: 25%;
+}
+ul.gpDetailList li a div:nth-child(3) {
+    width: 25%;
+}
+ul.gpDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.gpDetailList li.head::before, ul.gpDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.gpDetailList li.head::after {
+    clear: both;
+}
+ul.gpDetailList li.head div {
+    float: left;
+}
+ul.gpDetailList li.head div:nth-child(1) {
+    padding-top: 10px;
+    width: 50%;
+}
+ul.gpDetailList li.head div:nth-child(2) {
+    width: 25%;
+}
+ul.gpDetailList li.head div:nth-child(3) {
+    width: 25%;
+}
+ul.vDetailList {
+    font-size: 0.875em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.vDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.vDetailList li a {
+    background-image: url("../images/ind_arrow_right.png");
+    background-position: right 6px center;
+    background-repeat: no-repeat;
+    background-size: 8px 13px;
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.vDetailList li a::before, ul.vDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.vDetailList li a::after {
+    clear: both;
+}
+ul.vDetailList li a div {
+    float: left;
+}
+ul.vDetailList li a div:nth-child(1) {
+    text-align: center;
+    width: 20%;
+}
+ul.vDetailList li a div:nth-child(2) {
+    width: 20%;
+}
+ul.vDetailList li a div:nth-child(3) {
+    width: 60%;
+}
+ul.vDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+}
+ul.vDetailList li.head::before, ul.vDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.vDetailList li.head::after {
+    clear: both;
+}
+ul.vDetailList li.head div {
+    float: left;
+}
+ul.vDetailList li.head div:nth-child(1) {
+    text-align: center;
+    width: 20%;
+}
+ul.vDetailList li.head div:nth-child(2) {
+    width: 20%;
+}
+ul.vDetailList li.head div:nth-child(3) {
+    width: 60%;
+}
+ul.vPresetlList {
+    font-size: 1em;
+    margin-bottom: 16px;
+    margin-top: 15px;
+    padding-bottom: 8px;
+}
+ul.vPresetlList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.vPresetlList li a {
+    display: block;
+    padding: 15px 25px 15px 15px;
+}
+ul.vPresetlList li a::before, ul.vPresetlList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.vPresetlList li a::after {
+    clear: both;
+}
+ul.vPresetlList li a div {
+    float: left;
+}
+ul.vPresetlList li a div:nth-child(1) {
+    text-align: right;
+    width: 40%;
+}
+ul.vPresetlList li a div:nth-child(2) {
+    text-align: center;
+    width: 10%;
+}
+ul.vPresetlList li a div:nth-child(3) {
+    width: 50%;
+}
+ul.vPresetlList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 25px 6px 15px;
+}
+ul.vPresetlList li.head::before, ul.vPresetlList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.vPresetlList li.head::after {
+    clear: both;
+}
+ul.vPresetlList li.head div {
+    float: left;
+}
+ul.vPresetlList li.head div:nth-child(1) {
+    text-align: right;
+    width: 40%;
+}
+ul.vPresetlList li.head div:nth-child(2) {
+    text-align: center;
+    width: 10%;
+}
+ul.vPresetlList li.head div:nth-child(3) {
+    width: 50%;
+}
+ul.pmDetailList {
+    font-size: 1em;
+    margin-bottom: 16px;
+    margin-top: 0;
+    padding-bottom: 8px;
+}
+ul.pmDetailList li:nth-child(2n+1) {
+    background: none repeat scroll 0 0 #f1f1f1;
+}
+ul.pmDetailList li a {
+    display: block;
+    padding: 15px;
+}
+ul.pmDetailList li a::before, ul.pmDetailList li a::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.pmDetailList li a::after {
+    clear: both;
+}
+ul.pmDetailList li a div {
+    float: left;
+}
+ul.pmDetailList li a div:nth-child(1) {
+    width: 10%;
+}
+ul.pmDetailList li a div:nth-child(2) {
+    width: 90%;
+}
+ul.pmDetailList li.head {
+    background: none repeat scroll 0 0 #cecece;
+    padding: 6px 15px;
+    text-align: center;
+}
+ul.pmDetailList li.head::before, ul.pmDetailList li.head::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ul.pmDetailList li.head::after {
+    clear: both;
+}
+ul.pmDetailList li.head div {
+}
+ul.pmDetailList li.head div:nth-child(1) {
+    width: 100%;
+}
+ul.pmDetailList li.head div:nth-child(2) {
+    width: 0;
+}
+.remark {
+    color: #b9160f;
+    font-size: 0.8em;
+    padding-top: 5px;
+}
+.warning {
+    color: #b9160f;
+    font-size: 0.875em;
+    text-align: center;
+}
+.sum {
+    font-size: 1em;
+}
+.sum::before, .sum::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+.sum::after {
+    clear: both;
+}
+.sum .period {
+    color: #e43f37;
+    padding-right: 10px;
+}
+.sum div {
+    float: left;
+}
+.singleLine {
+    height: 36px;
+    line-height: 36px;
+}
+.search {
+    border: 1px solid #b9160f;
+    font-size: 0.875em;
+    padding: 2px 10px 2px 35px;
+    position: relative;
+}
+.search #searchBtn {
+    background: url("../images/btn_search.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    border: medium none;
+    height: 20px;
+    left: 8px;
+    position: absolute;
+    top: 10px;
+    width: 20px;
+}
+.search input[type="text"] {
+    border: medium none;
+    color: #6e6e6e;
+    display: block;
+    font-size: 1em;
+    height: 36px;
+    width: 100%;
+}
+.search input[type="text"]:focus {
+    outline: 0 none;
+}
+.label {
+    color: #000000;
+    font-weight: bold;
+    height: 36px;
+    line-height: 36px;
+}
+.label.mLLebel {
+    line-height: normal;
+    padding-top: 3px;
+}
+.label.mLLebel .currency {
+    color: #6e6e6e;
+    display: block;
+    font-size: 0.6875em;
+    padding: 5px 0;
+}
+.slTxt {
+    height: 36px;
+    line-height: 36px;
+    padding-left: 10px;
+}
+.slTxt .red {
+    color: #b9160f;
+}
+.slTxt_red {
+    color: #b9160f;
+    height: 36px;
+    line-height: 36px;
+    padding-left: 10px;
+}
+.slTxt_ml {
+    line-height: normal;
+    padding-left: 10px;
+    padding-top: 3px;
+}
+.select {
+    background: none repeat scroll 0 0 #f3f3f3;
+    display: table;
+    padding: 8px 10px;
+    position: relative;
+    width: 100%;
+}
+.select .selected {
+    cursor: pointer;
+    display: table-cell;
+    vertical-align: middle;
+}
+.select .dropdownIcon {
+    background: url("../images/ind_select.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    height: 18px;
+    margin-top: -10px;
+    position: absolute;
+    right: 7px;
+    top: 21px;
+    width: 6px;
+}
+.select.mLSelect {
+    height: 42px;
+    padding: 1px 10px;
+}
+.select.mLSelect .selected {
+    font-size: 0.95em;
+}
+.select.disabled {
+    cursor: auto;
+}
+.select.disabled .dropdownIcon {
+    background: url("../images/ind_select_disabled.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+}
+.options {
+    display: none;
+    left: 50%;
+    margin-left: -45%;
+    max-height: 90%;
+    max-width: 960px;
+    overflow: auto;
+    position: fixed;
+    top: 50%;
+    width: 90%;
+    z-index: 1000;
+}
+.options p {
+    background: none repeat scroll 0 0 #b9160f;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+.options ul {
+    background: none repeat scroll 0 0 #fff;
+    padding-top: 0;
+}
+ol.list .options ul li {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 10px;
+    text-align: center;
+}
+ol.list .options ul li:nth-child(2n) {
+    background: none repeat scroll 0 0 #f3f3f3;
+}
+ol.list .options ul li span {
+    display: inline-block;
+    text-align: left;
+}
+.options1 {
+    display: none;
+    left: 50%;
+    margin-left: -45%;
+    max-height: 90%;
+    max-width: 960px;
+    overflow: auto;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    width: 90%;
+    z-index: 1000;
+}
+.options1 p {
+    background: none repeat scroll 0 0 #b9160f;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+.options1 ul {
+    background: none repeat scroll 0 0 #f3f3f3;
+    padding-bottom: 10px;
+    padding-top: 10px;
+}
+ol.list .options1 ul li {
+    cursor: pointer;
+    margin-bottom: 0;
+    padding: 10px;
+    text-align: center;
+}
+ol.list .options1 ul li:nth-child(2n) {
+    background: none repeat scroll 0 0 #f3f3f3;
+}
+ol.list .options1 ul li span {
+    display: inline-block;
+    text-align: center;
+}
+.close {
+    background: url("../images/btn_close.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    cursor: pointer;
+    height: 22px;
+    overflow: hidden;
+    position: absolute;
+    right: 6px;
+    text-indent: -9999em;
+    top: 6px;
+    width: 22px;
+}
+.txtInput {
+    height: 36px;
+    line-height: 36px;
+    padding: 0;
+    width: 100%;
+}
+.txtInput input[type="text"] {
+    background: none repeat scroll 0 0 #f3f3f3;
+    border: medium none;
+    color: #6e6e6e;
+    display: block;
+    font-size: 1em;
+    height: 36px;
+    padding: 0 10px;
+    width: 100%;
+}
+.txtInput input[type="text"]:focus {
+    border: 1px solid #b9160f;
+    outline: 0 none;
+}
+.txtInput.redBorder input[type="text"] {
+    border: 1px solid #b9160f;
+}
+.checkbox {
+    font-size: 1em;
+    margin-bottom: 24px;
+}
+.checkbox span {
+    display: table-cell;
+    vertical-align: middle;
+}
+.checkbox input[type="checkbox"] {
+    height: 22px;
+    width: 23px;
+}
+.checkbox p {
+    display: table-cell;
+    vertical-align: middle;
+}
+.download {
+    font-size: 0.875em;
+}
+.download p {
+    margin-bottom: 15px;
+}
+.download .links a {
+    border-right: 1px solid #000000;
+    color: #0000ff;
+    padding: 0 8px;
+}
+.download .links a:last-child {
+    border-right: medium none;
+}
+.notes {
+    padding: 20px 16px;
+}
+.notesTitle {
+    color: #b9160f;
+    font-size: 1em;
+    padding-bottom: 10px;
+}
+.notesContent {
+    color: #6e6e6e;
+    font-size: 0.8em;
+}
+ol.list {
+    padding-bottom: 0;
+}
+ol.list > li {
+    border-bottom: 1px solid #efefef;
+    padding-bottom: 4px;
+    padding-top: 16px;
+}
+ol.list > li:last-child {
+    border-bottom: medium none;
+}
+ol.list > li ul li {
+    margin-bottom: 10px;
+}
+ol.list > li ul li::before, ol.list > li ul li::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ol.list > li ul li::after {
+    clear: both;
+}
+ol.list > li ul li > div {
+    float: left;
+    width: 100%;
+}
+ol.list > li ul li .title {
+    text-align: center;
+    width: 100%;
+}
+ol.list > li ul li .label {
+    margin-right: 1%;
+    width: 27%;
+}
+ol.list > li ul li .label + div {
+    color: #6e6e6e;
+    width: 72%;
+}
+ol.list > li ul li .label + div > a {
+    margin-top: 8px;
+    width: 100%;
+}
+ol.confirmList > li ul li .label + div .slTxt {
+    padding-left: 0;
+}
+ol.confirmList > li ul li .label + div p.remark {
+    padding: 0;
+}
+ol.formList > li ul li .label + div ul.tab {
+    margin-bottom: 10px;
+    margin-top: 4px;
+}
+ol.formList > li ul li .label + div ul.tab li {
+    margin-bottom: 0;
+    width: 50%;
+}
+ol.formList > li ul li .label + div ul li a {
+    width: 100%;
+}
+ol.formList > li ul li .label + div.multiInput {
+}
+ol.formList > li ul li .label + div.multiInput::before, ol.formList > li ul li .label + div.multiInput::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+ol.formList > li ul li .label + div.multiInput::after {
+    clear: both;
+}
+ol.formList > li ul li .label + div.multiInput > div {
+    float: left;
+}
+ol.formList > li ul li .label + div.multiInput .select {
+    margin-right: 1%;
+    width: 46%;
+}
+ol.formList > li ul li .label + div.multiInput .select .selected {
+    font-size: 0.82em;
+}
+ol.formList > li ul li .label + div.multiInput .txtInput {
+    font-size: 0.82em;
+    padding-right: 15px;
+    position: relative;
+    width: 52%;
+}
+ol.formList > li ul li .label + div.multiInput .txtInput span {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+ol.infoLbList li ul li .label {
+    padding-left: 20px;
+    width: 30%;
+}
+ol.infoLbList li ul li .label.info {
+    background: url("../images/ind_info.png") no-repeat scroll left center rgba(0, 0, 0, 0);
+}
+ol.infoLbList li ul li .label + div {
+    width: 69%;
+}
+#login p.warning {
+    margin: 30px 0 10px;
+    text-align: center;
+}
+#login ol li ul li .txtInput {
+    float: none;
+    position: relative;
+}
+#login ol li ul li .txtInput input[type="text"] {
+    text-align: center;
+}
+#login ol li ul li .txtInput .close {
+    position: absolute;
+    right: 6px;
+    top: 7px;
+}
+#login .button {
+    margin-top: 8px;
+    width: 100%;
+}
+.board {
+    background: none repeat scroll 0 0 #e3e3e3;
+    padding: 14px 13px;
+}
+.board ol {
+    padding-bottom: 0;
+}
+.board ol.confirmList li ul li .label, .board ol.confirmList li ul li .label + div .slTxt {
+    height: 20px;
+    line-height: 20px;
+}
+.confirm {
+    font-weight: bold;
+}
+.confirm h2 {
+    text-align: center;
+}
+.confirm p {
+    font-size: 0.875em;
+    margin: 7px auto;
+    max-width: 21em;
+    text-align: left;
+}
+.result h2 {
+    font-size: 1.5em;
+    text-align: center;
+}
+.result p {
+    margin-top: 15px;
+}
+.result.completed {
+    background: url("../images/img_success.png") no-repeat scroll right bottom, none repeat scroll 0 0 #e3e3e3;
+}
+.result.failed {
+    background: url("../images/img_failure.png") no-repeat scroll right bottom, none repeat scroll 0 0 #e3e3e3;
+}
+#transfer .completed + .content {
+    padding-bottom: 64px;
+}
+#transfer .completed + .content .btn_completed {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+}
+#transfer .completed + .content .btn_completed ul {
+    background: none repeat scroll 0 0 rgba(180, 50, 44, 0.9);
+    color: #fff;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 10px 20px;
+}
+#transfer .completed + .content .btn_completed ul::before, #transfer .completed + .content .btn_completed ul::after {
+    content: "";
+    display: table;
+    line-height: 0;
+}
+#transfer .completed + .content .btn_completed ul::after {
+    clear: both;
+}
+#transfer .completed + .content .btn_completed ul li {
+    float: left;
+    width: 25%;
+}
+#transfer .completed + .content .btn_completed ul li a {
+    background-position: center top;
+    background-repeat: no-repeat;
+    color: #fff;
+    display: block;
+    padding-top: 40px;
+    text-align: center;
+}
+#transfer .completed + .content .btn_completed .btn_transfer_sub {
+    display: none;
+}
+#transfer .completed + .content .btn_completed .btn_transfer_sub ul {
+    position: relative;
+}
+#transfer .completed + .content .btn_completed .btn_transfer_sub ul .back {
+    background: url("../images/btn_tm/btn_com_back.png") no-repeat scroll center center rgba(0, 0, 0, 0);
+    display: block;
+    height: 31px;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    text-indent: -9999em;
+    top: 10px;
+    width: 15px;
+}
+#transfer .completed + .content .btn_completed .more {
+    background-image: url("../images/btn_tm/btn_transfer.png");
+}
+#transfer .completed + .content .btn_completed .detail {
+    background-image: url("../images/btn_tm/btn_detail.png");
+}
+#transfer .completed + .content .btn_completed .voice {
+    background-image: url("../images/btn_tm/btn_voice.png");
+}
+#transfer .completed + .content .btn_completed .notify {
+    background-image: url("../images/btn_tm/btn_notify.png");
+}
+#transfer .completed + .content .btn_completed .ecard {
+    background-image: url("../images/btn_tm/btn_ecard.png");
+}
+#transfer .completed + .content .btn_completed .email {
+    background-image: url("../images/btn_tm/btn_email.png");
+}
+#transfer .completed + .content .btn_completed .sms {
+    background-image: url("../images/btn_tm/btn_sms.png");
+}
+#transfer .completed + .content .btn_completed .phone {
+    background-image: url("../images/btn_tm/btn_share.png");
+}
+.failed + .content {
+    padding-top: 28px;
+}
+.failed + .content p {
+    line-height: 1.5em;
+}
+.popup {
+    background: none repeat scroll 0 0 #fff;
+    border-radius: 10px;
+    display: none;
+    font-size: 1.125em;
+    left: 50%;
+    line-height: 1.3em;
+    padding: 30px 20px 10px;
+    position: fixed;
+    text-align: center;
+    top: 50%;
+    z-index: 9999;
+}
+#overlay {
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.7);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+#msgWarningOTP {
+    height: 220px;
+    margin-left: -145px;
+    margin-top: -100px;
+    width: 290px;
+}
+#msgWarning {
+    height: 252px;
+    margin-left: -150px;
+    margin-top: -120px;
+    text-align: left;
+    width: 300px;
+}
+#msgWarning p {
+    margin-bottom: 13px;
+}
+#statement {
+    background: none repeat scroll 0 0 #e3e3e3;
+    height: 366px;
+    margin-left: -145px;
+    margin-top: -183px;
+    width: 290px;
+}
+#statement p {
+    font-size: 0.875em;
+    margin-bottom: 13px;
+    text-align: left;
+}
+#msgSMS {
+    height: 92px;
+    left: 0;
+    padding: 0;
+    top: 0;
+    width: 100%;
+}
+#msgSMS header {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+#msgSMS header h1 {
+    font-size: 1.25em;
+    margin: 3px 0;
+}
+#msgSMS div.content {
+    overflow-y: scroll;
+    padding: 10px;
+}
+#msgSMS div.content ol {
+    left: 0;
+    list-style-position: outside;
+    list-style-type: upper-roman;
+    top: 0;
+}
+#msgSMS footer {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+#msgSMS footer .checkbox {
+    margin-bottom: 13px;
+}
+#goldConsent {
+    font-size: 0.8125em;
+    height: 415px;
+    margin-left: -145px;
+    margin-top: -207px;
+    padding: 0;
+    text-align: left;
+    width: 290px;
+}
+#goldConsent header {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+#goldConsent header h1 {
+    font-size: 1.25em;
+    margin: 3px 0;
+}
+#goldConsent div.content {
+    height: 220px;
+    overflow-y: scroll;
+    padding: 10px;
+}
+#goldConsent div.content ol {
+    list-style-position: outside;
+    list-style-type: upper-roman;
+    margin-top: 24px;
+    padding-left: 30px;
+}
+#goldConsent footer {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+#goldConsent footer .checkbox {
+    margin-bottom: 13px;
+}
+#fundConsent {
+    font-size: 0.8125em;
+    height: 415px;
+    margin-left: -145px;
+    margin-top: -207px;
+    padding: 0;
+    text-align: left;
+    width: 290px;
+}
+#fundConsent section:first-child h1 {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#fundConsent section h1 {
+    background: none repeat scroll 0 0 #e3e3e3;
+    padding: 15px 15px 5px;
+}
+#fundConsent section > div {
+    height: 134px;
+    overflow-y: auto;
+    padding: 10px 15px;
+}
+#fundConsent section > div ol {
+    list-style-type: cjk-ideographic;
+    padding-left: 30px;
+}
+#fundConsent section > div ol li ol {
+    list-style-type: decimal;
+    padding-left: 15px;
+}
+#fundConsent footer {
+    background: none repeat scroll 0 0 #e3e3e3;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding: 10px;
+}
+#fundConsent footer .checkbox {
+    margin-bottom: 13px;
+}
+#numPad {
+    bottom: 0;
+    display: none;
+    position: fixed;
+    width: 100%;
+}
+#numPad ul {
+    background: none repeat scroll 0 0 #989898;
+    padding: 10px 5px;
+}
+#numPad ul li {
+    background: none repeat scroll 0 0 #fff;
+    cursor: pointer;
+    float: left;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    margin-right: 0.5%;
+    margin-top: 0.5%;
+    text-align: center;
+    width: 33%;
+}
+#numPad ul li:nth-child(3n) {
+    margin-right: 0;
+}
+#numPad ul li.backspace {
+    background: url("../images/backspace.png") no-repeat scroll center center, none repeat scroll 0 0 #ffffff;
+}
+#scroll-wrap { position: absolute; z-index: 1; top: 41; bottom: 0; left: 0; width: 100%; overflow: auto; }
+#scroll-wrap-x { position: relative; top: 45px; padding-bottom: 45px; }
+
+.sinopac_web{
+	min-height:100%;
+	font-size:16px; line-height:1.5; font-family:arial,sans-serif; color:#333;
+    /*
+	background-color:#d2f3ff;
+	background-image: url(bg_phone.png), url(bg.png);
+	background-repeat:no-repeat, repeat-x;
+	background-position: -18px 45px, 0 0;
+    */
+	-webkit-tap-highlight-color: transparent;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+}
+
+.sinopac_web .ico{display:inline-block; background:url(ico.png) no-repeat; vertical-align:middle;}
+.sinopac_web .ico.ico_promo, .sinopac_web .ico.ico_mb{width:18px; height:18px;}
+.sinopac_web .ico.ico_promo{ background-position:0 0;}
+.sinopac_web .ico.ico_mb{background-position:0 -20px; }
+.sinopac_web .ico.ico_ar_dwn{background-position:0 -40px; width:18px; height:12px;}
+.sinopac_web .ico.ico_prev , .sinopac_web  .ico.ico_next{ width:18px; height:20px; margin:0;}
+.sinopac_web .ico.ico_prev{background-position:0 -60px;}
+.sinopac_web .ico.ico_next{background-position:0 -80px; margin-left:8px;}
+.sinopac_web .ico.ico_week, .sinopac_web .ico.ico_month{width:30px; height:25px; margin-right:5px; margin-top:-8px;}
+.sinopac_web .ico.ico_week{background-position:0 -100px;}
+.sinopac_web .ico.ico_month{background-position:0 -125px;}
+.sinopac_web .ico.ico_new{ background-position:0 -150px; width:35px; height:25px;}
+/* ----------------
+   promotion
+   ----------------*/
+.sinopac_web .promo_list{ display:block; margin:0; list-style:none; padding:15px 0; }/*2013.5.21*/
+.sinopac_web .promo_list .banner_box{display:block; position:relative;margin-top:5px; margin-right:auto; margin-left:auto;width:95%;padding-right:99px;}
+.sinopac_web .promo_list .banner_box:last-child{ margin-bottom:0;}
+.sinopac_web .promo_list .banner_box .img_box{display:block; background-color:#fff; border:#ebfaff solid 1px;border-right:0;-webkit-box-shadow: 0 0 10px 0 #859cc7;box-shadow: 0 0 10px 0 #859cc7; min-height:90px;}/*2013.5.21*/
+.sinopac_web .promo_list .banner_box .img_box img{ display:block; width:100%;}
+.sinopac_web .promo_list .banner_box .time_box_top, .sinopac_web  .promo_list .banner_box .time_box{ background-image:url(promo_time_bg.png); background-repeat:no-repeat;}
+.sinopac_web .promo_list .banner_box .time_box_top{ background-position:0 0; position:absolute; /*top:-7px;*/ right:-3px; width:110px; /*height:7px;background-size:cover;*/}
+.sinopac_web .promo_list .banner_box .time_box{background-position: 0 bottom; height:105%; width:110px; padding: 0 10px 10px 2px; position: absolute; top:-3px; right:-3px; color:#fff; font-size:15px; font-weight:700; margin-bottom:-15px; background-size:110px 100%;}
+.sinopac_web .promo_list .banner_box .time_box .inner{ display:table; height:inherit; text-align:center; width:inherit;}
+.sinopac_web .promo_list .banner_box .time_box .inner .mid_cell{ display:table-cell; vertical-align:middle;}
+.sinopac_web .promo_list .banner_box .time_box .inner .mid_cell .date{ display:block; width:100%; line-height:1; margin:0; vertical-align: middle; margin:0 auto; padding:8px 0;}
+.sinopac_web .promo_list .banner_box .time_box .inner .mid_cell .ico_ar_dwn{display:block; margin:0 auto; }
+/* ----------------
+   news
+   ----------------*/
+.sinopac_web .article_wrap{ background-color:#fff; padding:6px 10px; margin-bottom:10px; border:#b9160f solid 1px; -webkit-border-radius:10px; -moz-border-radius:10px;}
+.sinopac_web .article_wrap a{ text-decoration:none;}
+.sinopac_web .article_wrap .title{ font-size:100%; display:block; padding:0; margin:0 0 2px 0; text-align:left; }
+.sinopac_web .article_wrap .article_cont{ padding:0;overflow: hidden; margin:0 10px; text-align:left; }
+.sinopac_web .article_wrap .article_cont .image-article { text-align: center; margin:0 10px; }
+.sinopac_web .article_wrap .article_cont .image-article .pdf-img{ width:100%;max-width:720px; }
+.sinopac_web .article_wrap .article_cont a , .sinopac_web  .article_wrap .article_cont a:visited{ color:#333;}
+.sinopac_web .article_wrap .div_line{ margin:0 -10px; border-top:#fff solid 1px; border-bottom:#FCC7C6 solid 1px; margin-bottom:6px;}
+.sinopac_web .article_wrap .article_cont .newsDetail { text-align: center; margin:0 0 0 0; width:100%; }
+
+.sinopac_web .article_wrap.info .title{ color:#e40b0b;}
+.sinopac_web .article_wrap.info .title .ico{ background:#e40b0b; width:16px; height:16px; text-align:center; margin-right:5px; color:#fff; font-size:12px; font-weight:bold; line-height:16px; margin-top:-4px;}
+.sinopac_web .article_wrap.info .article_cont{ color:#777;}
+.sinopac_web .article_wrap.info .article_cont ol:first-child, .sinopac_web .article_wrap.info .article_cont ul:first-child{ margin:0; padding-left:28px;}
+
+.sinopac_web .article_wrap.detail{ font-size:112.5%;} 
+.sinopac_web .article_wrap.detail .title{ color:#CE355B; text-align:left; }
+.sinopac_web .article_wrap.detail .date{ font-size:100%; text-align:left; }
+.sinopac_web .msg_alert{ font-size:112.5%;}
+.sinopac_web .msg_alert .hg{ background:#e4000c; color:#fff; margin-bottom:10px; padding:6px 10px; border-radius:10px; -webkit-border-radius:10px; -moz-border-radius:10px; text-align:left;}
+.sinopac_web .msg_alert .hg .title{font-size:100%; display:block; padding:0; margin:0 0 4px 0;}
+.sinopac_web .msg_alert .div_line{ margin:0 -10px; border-top:#cd000b solid 1px; border-bottom:#e9333d solid 1px; margin-bottom:4px;}
+.sinopac_web .news_main{padding:10px 10px 5px;}
+.sinopac_web .article_wrap img.header_image { 
+		border-radius:10px; 
+		-webkit-border-radius:10px; 
+		-moz-border-radius:10px;
+        display:block; margin:0 auto; width:100%; max-width:754px; }
+.sinopac_web img.header_image { 
+		border-radius:10px; 
+		-webkit-border-radius:10px; 
+		-moz-border-radius:10px;
+        display:block; margin:0 auto 10px auto; width:100%; max-width:320px; }
+/* ----------------
+   nav
+   ----------------*/
+.sinopac_web .nav{ font-size:120%; height:45px;}
+.sinopac_web .nav ul{ display:block; padding:0; list-style:none; height:45px;margin-top: 40px;}
+.sinopac_web .nav ul li{ display:block;float:left;text-align:center;width:50%; overflow: hidden; white-space: nowrap;
+	/*border-top:#F96E48 solid 1px;
+	border-bottom:#DD5944 solid 1px;*/
+	background-color:#ED5F38;
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#CCC7C7), to(#999999)); 
+	background-image: -webkit-linear-gradient(top, #CCC7C7, #999999);
+	background-image: -moz-linear-gradient(center top , #CCC7C7, #999999);
+	background-image: -o-linear-gradient(top, #CCC7C7, #999999); 
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#99ACCD', endColorstr='#4264a4');
+	
+}
+.sinopac_web .nav ul li a{ display:block; height:43px; line-height:43px; text-decoration:none; color:#fff; text-shadow: 0 1px 1px #364869;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	box-sizing: border-box;
+    border-left-color:rgb(83,106,146);
+    border-right-color:rgb(125,148,191);
+	margin-top:-3px;
+}
+
+.sinopac_web .nav ul li a .ico{ margin-right:8px;} 
+.sinopac_web .nav ul li a.disabled {
+    color: #b7b7b7;
+}
+.sinopac_web .nav ul li.current{ border-top-color:#B9160F; border-bottom-color:#B9160F; background:#B9160F; filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#293d86', endColorstr='#293d86');}
+.sinopac_web .nav ul li.current a{ border-left-color:#202f65;border-right-color:#202f65; text-shadow: 0 1px 1px #141e40;}
+.sinopac_web .nav ul li:first-child a{ border-left:none;}
+.sinopac_web .nav ul li:last-child a{ border-right:none;}
+
+@media not all, (min-resolution: 192dpi) {
+header #global h1#sinopac {
+    background: url("../images/nav/SinoPac@2x.png") no-repeat scroll center center / 128px 32px rgba(0, 0, 0, 0);
+}
+header #global #home.nav a {
+    background: url("../images/nav/btn_home@2x.png") no-repeat scroll center center / 32px 32px rgba(0, 0, 0, 0);
+}
+header #global #back.nav a {
+    background: url("../images/nav/btn_back@2x.png") no-repeat scroll center center / 32px 32px rgba(0, 0, 0, 0);
+}
+.menu > li {
+    background: url("../images/menu/menu_bg@2x.png") no-repeat scroll 13px 10px / 20px 22px, none repeat scroll 0 0 / 100% 100% #f0f0f0;
+}
+.menu > li.withSubmenu {
+    background: url("../images/menu/menu_bg@2x.png") no-repeat scroll 13px 10px / 22px 22px, url("../images/menu/ind_arrow_down@2x.png") no-repeat scroll 95% 10px / 22px 22px, none repeat scroll 0 0 / 100% 100% #f0f0f0;
+}
+.menu li .submenu::after {
+    background: url("../images/menu/submenu_bg@2x.png") no-repeat scroll 0 0 / 16px 4px rgba(0, 0, 0, 0);
+}
+#index header #setting a {
+    background: url("../images/index/setting@2x.png") no-repeat scroll center center / 28px 28px rgba(0, 0, 0, 0);
+}
+#index .othersFuncs a#nav_qr {
+    background: url("../images/index/qr@2x.png") no-repeat scroll center center / 28px 28px rgba(0, 0, 0, 0);
+}
+#index .othersFuncs a#nav_search {
+    background: url("../images/index/search@2x.png") no-repeat scroll center center / 28px 28px rgba(0, 0, 0, 0);
+}
+.save span {
+    background: url("../images/btn_ic/ic_save@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.re span {
+    background: url("../images/btn_ic/ic_re@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.balance span {
+    background: url("../images/btn_ic/ic_balance@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.detail_1 span {
+    background: url("../images/btn_ic/ic_detail@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.again span {
+    background: url("../images/btn_ic/ic_again@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.gold span {
+    background: url("../images/btn_ic/ic_gold@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.pay span {
+    background: url("../images/btn_ic/ic_pay@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.nRec span {
+    background: url("../images/btn_ic/ic_nRec@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.rec span {
+    background: url("../images/btn_ic/ic_rec@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.recStop span {
+    background: url("../images/btn_ic/ic_recStop@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.delRec span {
+    background: url("../images/btn_ic/ic_delRec@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.playRec span {
+    background: url("../images/btn_ic/ic_playRec@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #9f9f9f 0%, #959595 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+.login_card span {
+    background: url("../images/btn_ic/ic_login_card@2x.png") no-repeat scroll left center / 28px 28px, linear-gradient(to bottom, #959595 0%, #767676 100%) repeat scroll 0 0 / 100% 100% rgba(0, 0, 0, 0);
+}
+ol.acctList li a, ul.detailList li a {
+    background: url("../images/ind_arrow_right@2x.png") no-repeat scroll 98% center / 8px 16px rgba(0, 0, 0, 0);
+}
+.search #searchBtn {
+    background: url("../images/btn_search@2x.png") no-repeat scroll center center / 16px 16px rgba(0, 0, 0, 0);
+}
+.select .dropdownIcon {
+    background: url("../images/ind_select@2x.png") no-repeat scroll center center / 6px 18px rgba(0, 0, 0, 0);
+}
+.select.disabled .dropdownIcon {
+    background: url("../images/ind_select_disabled@2x.png") no-repeat scroll center center / 6px 18px rgba(0, 0, 0, 0);
+}
+.close {
+    background: url("../images/btn_close@2x.png") no-repeat scroll center center / 22px 22px rgba(0, 0, 0, 0);
+}
+ol.infoLbList li ul li .label.info {
+    background: url("../images/ind_info@2x.png") no-repeat scroll left center / 16px 16px rgba(0, 0, 0, 0);
+}
+.result.completed {
+    background: url("../images/img_success@2x.png") no-repeat scroll right bottom / 86px 66px, none repeat scroll 0 0 / 100% 100% #e3e3e3;
+}
+.result.failed {
+    background: url("../images/img_failure@2x.png") no-repeat scroll right bottom / 86px 66px, none repeat scroll 0 0 / 100% 100% #e3e3e3;
+}
+#transfer .completed + .content .btn_completed .btn_transfer_sub ul .back {
+    background: url("../images/btn_tm/btn_com_back@2x.png") no-repeat scroll center center / 14px 36px rgba(0, 0, 0, 0);
+}
+#transfer .completed + .content .btn_completed .more {
+    background-image: url("../images/btn_tm/btn_transfer@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .detail {
+    background-image: url("../images/btn_tm/btn_detail@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .voice {
+    background-image: url("../images/btn_tm/btn_voice@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .notify {
+    background-image: url("../images/btn_tm/btn_notify@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .ecard {
+    background-image: url("../images/btn_tm/btn_ecard@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .email {
+    background-image: url("../images/btn_tm/btn_email@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .sms {
+    background-image: url("../images/btn_tm/btn_sms@2x.png");
+    background-size: 36px 36px;
+}
+#transfer .completed + .content .btn_completed .phone {
+    background-image: url("../images/btn_tm/btn_share@2x.png");
+    background-size: 36px 36px;
+}
+#numPad ul li.backspace {
+    background: url("../images/backspace@2x.png") no-repeat scroll center center / 32px 18px, none repeat scroll 0 0 / 100% 100% #ffffff;
+}
+
+.sinopac_web .promo_list .banner_box .time_box_top, .sinopac_web .promo_list .banner_box .time_box{background-image:url(promo_time_bg@2x.png); background-size:110px 100%; top:-8px;}
+.sinopac_web .nav ul li a{font-weight:bold;}
+ 
+}
+
+/* ----------------
+   for iPad app
+   ----------------*/
+
+@media only screen and (min-width : 720px) {
+ .sinopac_web img.header_image { 
+        max-width:480px;
+    }
+	}

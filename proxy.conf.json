@@ -1,0 +1,49 @@
+{
+	"/api/security/sso": {
+		"target": "http://localhost:3000"
+	},
+	"/api": {
+		"target": {
+			"host": "10.11.36.36",
+			"protocol": "http:",
+			"port": 80
+		},
+		"pathRewrite": {
+			"/api": "/SinoCard/api"
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/ValidateNumber.ashx": {
+		"target": {
+			"host": "sinopac.eweb.web",
+			"protocol": "http:",
+			"port": 80
+		},
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/MemberPortal": {
+		"target": "http://10.11.36.36",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/ws": {
+		"target": "http://10.11.36.36",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/Shared": {
+		"target": "http://10.11.36.36",
+		"secure": false,
+		"changeOrigin": true,
+		"logLevel": "debug"
+	},
+	"/m/member/login/m_menubar.aspx": {
+		"target": "http://10.11.36.66"
+	}
+}

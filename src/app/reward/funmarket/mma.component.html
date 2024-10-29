@@ -1,0 +1,11 @@
+<div class="litebox">
+	<p>請使用永豐網路銀行帳號進行身分驗證，驗證完成後可繼續使用。</p>
+	<div class="btn-zone">
+		<a class="nbtn focus" style="width:20%" routerLink="/Reward/FunMarketPoints"  [queryParams]="{ share: agreement }">MMA永豐網路銀行</a>
+	</div>
+	<!-- <hr/> -->
+	<div>
+		<input type="checkbox" id="agreement" [(ngModel)]="agreement"/>
+		<label for="agreement" class="note">我同意將紅利點數資訊提供於豐市集經營廠商，以便利進行紅利兌換作業。</label>
+	</div>
+</div>

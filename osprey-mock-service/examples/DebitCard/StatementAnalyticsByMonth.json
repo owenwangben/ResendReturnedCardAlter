@@ -1,0 +1,68 @@
+{
+  "Result": {
+    "Items": [
+        {
+            "Month": "201709",
+            "Amount": 6000
+        },
+        {
+            "Month": "201710",
+            "Amount": 5500
+        },
+        {
+            "Month": "201711",
+            "Amount": 5000
+        },
+        {
+            "Month": "201712",
+            "Amount": 4500
+        },
+        {
+            "Month": "201801",
+            "Amount": 4000
+        },
+        {
+            "Month": "201802",
+            "Amount": 3500
+        },
+        {
+            "Month": "201803",
+            "Amount": 3000
+        },
+        {
+            "Month": "201804",
+            "Amount": 2500
+        },
+        {
+            "Month": "201805",
+            "Amount": 2000
+        },
+        {
+            "Month": "201806",
+            "Amount": 1500
+        },
+        {
+            "Month": "201807",
+            "Amount": 1000
+        },
+        {
+            "Month": "201808",
+            "Amount": 500
+        }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB2",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

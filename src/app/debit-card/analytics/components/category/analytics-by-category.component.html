@@ -1,0 +1,57 @@
+<!-- <app-period-query [fastQueryOptions]="fastQueryOptions" [(start)]="start" [(end)]="end" (search)="onSearch();"></app-period-query> -->
+<div class="formblock">
+	<table class="data-table forvd" width="100%">
+		<tbody>
+			<tr>
+				<th class="mobile-col-4">
+					<div class="rowElem text-right">帳單月份</div>
+				</th>
+				<td class="mobile-col-8">
+					<div class="rowElem rowinline">
+						<ul>
+							<li *ngFor="let option of fastQueryOptions;">
+								<a href="javascript:void(0)" (click)="onClickMonthLink(option.Value);">{{option.DisplayName}}</a>
+							</li>
+						</ul>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th style="border-bottom: none;">
+					<div class="rowElem inner-th">查詢期間</div>
+				</th>
+				<td style="border-bottom: none;">
+					<div class="rowElem">
+						<div class="artfld select col-2">
+							<select [(ngModel)]="start">
+								<option *ngFor="let option of dropdownOptions" [value]=option.Value>{{option.DisplayName}}</option>
+							</select>
+						</div>
+						<span class="spanbox">到</span>
+						<div class="artfld select col-2">
+							<select [(ngModel)]="end">
+								<option *ngFor="let option of dropdownOptions" [value]=option.Value>{{option.DisplayName}}</option>
+							</select>
+						</div>
+						<div class="btn-zone inline ml10">
+							<button type="button" class="nbtn" (click)="onSearch()">查詢</button>
+						</div>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+<div *ngIf="!subtotal" class="rowElem center fs15 red">無消費資料</div>
+<div class="formblock" *ngIf="subtotal">
+	<table cellpadding="0" cellspacing="0" border="0" width="100%" class="data-table forvd">
+	  <tbody><tr>
+		<td colspan="2" style="border-bottom: none;">
+			<app-pie-chart [data]="Records" display="CategoryName" quantity="Subtotal" color="Color"></app-pie-chart>
+		</td>
+	</tr>
+  </tbody></table>
+</div>
+
+<div loadHtml="/mma8/card/htmls/每月消費分析注意事項.html"></div>

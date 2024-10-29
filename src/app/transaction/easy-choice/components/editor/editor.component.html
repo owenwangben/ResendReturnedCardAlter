@@ -1,0 +1,26 @@
+﻿<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<app-easy-choice-display></app-easy-choice-display>
+	<table class="new-datatable mobile-col-12">
+		<tbody>
+			<tr>
+				<th style="width:20%;vertical-align:top">
+					<div class="web-hide" style="height:8px"></div>
+					<div>轉入帳號</div>
+				</th>
+				<td style="width:70%">
+					<app-bank-account-selector
+						[T24Enabled]=false
+						formControlName="TransBankAccount"
+						(bankDisplayNameChange)="bankDisplayName = $event"
+						(branchDisplayNameChange)="branchDisplayName = $event"
+						[FunctionName]="FunctionName">
+					</app-bank-account-selector>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">確認送出</button>
+	</div>
+</form>

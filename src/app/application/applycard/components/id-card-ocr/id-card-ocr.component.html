@@ -1,0 +1,184 @@
+<app-applycard-step-indicator [step]="0"></app-applycard-step-indicator>
+<div class="content full-content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+			<legend>上傳證件</legend>
+		</fieldset>
+
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td>
+						<ul class="cardbox minwrap">
+							<li>
+								<div class="cardblock">
+									<p class="title left">請上傳身分證正面 </p>
+									<div class="imgupload-block idcard {{img_src[0] ? 'uploaded' : ''}}">
+										<input type="file" ng2FileSelect [uploader]="uploaders[0]" accept="image/jpeg,image/tiff,image/png"
+											id="id_upload0" name="upload_id1" class="artfld" (change)="readFile($event, 0, uploaders[0], false)" (click)="$event.target.value=null">
+										<label for="id_upload0"><span class="addfile">選擇檔案</span></label>
+										<div class="imgblock">
+											<img *ngIf="img_src[0]" [src]="img_src[0]" [alt]="img_fname[0]" style="width:100%;height:100%;">
+										</div>
+										{{ img_fname[0] }}
+									</div>
+								</div>
+							</li>
+							<li>
+								<div class="cardblock">
+									<p class="title left">請上傳身分證背面 </p>
+									<div class="imgupload-block idcard {{img_src[1] ? 'uploaded' : ''}}">
+										<input type="file" ng2FileSelect [uploader]="uploaders[1]" accept="image/jpeg,image/tiff,image/png"
+											id="id_upload1" name="upload_id2" class="artfld" (change)="readFile($event, 1, uploaders[1], false)" (click)="$event.target.value=null">
+										<label for="id_upload1"><span class="addfile">選擇檔案</span></label>
+										<div class="imgblock">
+											<img *ngIf="img_src[1]" [src]="img_src[1]" [alt]="img_fname[1]" style="width:100%;height:100%;">
+										</div>
+										{{ img_fname[1] }}
+									</div>
+								</div>
+							</li>
+						</ul>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr>
+					<td class="reminds">
+						<p class="title">注意事項：</p>
+						<ol class="decimal">
+							<li>檔案格式限 PNG、JPG、JPEG。</li>
+							<li>每一影像大小限 5MB 以下且 100KB 以上。</li>
+							<li>拍攝時請盡量讓鏡頭與證件垂直，並將證件擺正，手機拿「橫」拍。</li>
+							<li>請盡量保持拍攝背景乾淨，建議在您的證件後墊一張白紙再作拍攝。</li>
+							<li>請於光線充足處拍攝，並確認您上傳的影像是清晰的。</li>
+							<li>拍攝照片需避免反光，會影響辨識結果。 </li>
+						</ol>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()">上一步</a>
+	<a href="javascript:void(0)" class="nbtn" (click)="submit(true, false)">暫不上傳</a>
+	<a href="javascript:void(0)" class="nbtn {{ imgExists(0) && imgExists(1) ? 'focus' : 'disabled'}}" (click)="submit(false, imgExists(0) && imgExists(1))">確定上傳</a>
+</div>
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div class="upload-legend" id="upload-legend">
+			<h2 class="with-icon">證件照上傳 </h2>
+			<div class="upload-legend-block">
+				<div class="upload-legend-item">
+					<h4 class="o mgb10"> <i></i><span>正確拍攝方式</span></h4>
+					<ul class="decimal-arc mb38">
+						<li>請將證件擺正並「立」於桌面</li>
+						<li>手機請使用「橫向」拍攝以避免反光，並確認照片清晰</li>
+						<li>拍攝後，請將紅框對準證件的四個角進行裁切</li>
+					</ul>
+					<img class="mb38" src="/mma8/card/images/upload01-1.png">
+					<div class="btn-zone"><a class="nbtn focus close" href="javascript:void(0)">我了解了！<br
+								class="hidden-max">將依照指示上傳證件！</a></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="upload-legend" id="cutbox1">
+			<h2 class="with-icon">確認證件裁切範圍 </h2>
+			<div class="upload-legend-block">
+				<div class="upload-legend-item">
+					<h4 class="mb38">請手動將紅框線對進證件的四角</h4>
+					<div class="imgblock" style="text-align: center;" id="cutboxpreview">
+						<canvas id="canvas" style="width:inherit;height:inherit;"></canvas>
+					</div>
+					<div class="upload-card-tool">
+						<div class="docs-buttons">
+							<div class="btn-group">
+								<button class="btn btn-rotate btn-rotate_left" type="button" data-method="rotate"
+									data-option="-45" title="Rotate Left" (click)="RotateImage(false)"></button>
+								<button class="btn btn-rotate btn-rotate_right" type="button" data-method="rotate"
+									data-option="-45" title="Rotate Right" (click)="RotateImage(true)"></button>
+							</div>
+							<div class="btn-group">
+								<label class="btn-upload" for="inputImage" title="Upload image file">
+									<input ng2FileSelect [uploader]="uploaders[uploadindex]" class="sr-only"
+										id="inputImage" type="file" name="file" accept="image/jpeg,image/tiff,image/png"
+										(change)="readFile($event, uploadindex, uploaders[uploadindex],true)"><span
+										class="text-bold">重新上傳</span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="btn-zone upload-btn">
+						<a class="btn focus" href="javascript:void(0)" (click)="imgPerspectiveTransform()">確定</a><span></span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="upload-legend" id="upload-legend1">
+			<h2 class="with-icon">{{ uploadindex ==0? "身分證正面":"身分證背面"}}</h2>
+			<div class="upload-legend-block">
+				<div class="upload-legend-item">
+					<br>
+					<div class="upload-card-box">
+						<div class="card-photo" id="card-photo">
+							<canvas id="card-photo-preview" style="width:inherit;height:inherit;"></canvas>
+						</div>
+						<hr class="bg-grey">
+						<div class="card-note-list">
+							<p class="list-ttl">請確認你的照片</p>
+							<ul class="line-primary">
+								<li>資訊清晰且完整、未被部分裁切</li>
+								<li>大小比例適中可辨識</li>
+								<li>頭像清晰，不會反光、太暗或模糊</li>
+								<li>使用彩色照片</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="btn-zone upload-btn">
+						<a class="btn focus" href="javascript:void(0)" (click)="confirmimg()">確定</a>
+						<a class="udline close" href="javascript:void(0)" (click)="reupload()">重新上傳</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="upload-legend" id="upload-legend2">
+			<h2 class="with-icon">{{ uploadindex == 0? "身分證正面":"身分證背面"}}</h2>
+			<div class="upload-legend-block">
+				<div class="upload-legend-item">
+					<br>
+					<div class="upload-card-box invalid-error">
+						<div class="card-photo">
+							<div class="error-box">
+								<div class="text-note">照片內容不正確</div>
+								<div>檔案格式限PNG、JPG、JPEG</div>
+							</div>
+						</div>
+						<hr class="bg-grey">
+						<div class="card-note-list">
+							<p class="list-ttl">請確認你的照片</p>
+							<ul class="line-primary">
+								<li>資訊清晰且完整、未被部分裁切</li>
+								<li>大小比例適中可辨識</li>
+								<li>頭像清晰，不會反光、太暗或模糊</li>
+								<li>使用彩色照片</li>
+							</ul>
+						</div>
+					</div>
+
+					<div class="btn-zone upload-btn">
+						<a class="btn focus close" href="javascript:void(0)">確定</a>
+						<a class="udline close" href="javascript:void(0)" (click)="reupload()">重新上傳</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

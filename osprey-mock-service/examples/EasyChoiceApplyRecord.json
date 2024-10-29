@@ -1,0 +1,44 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "SeqNo": "1",
+        "ApplyChannel": "WEB01",
+        "ApplyDate": "2017/03/24",
+        "StatusDesc": "收到申請，處理中！",
+        "ApproveAmount": "1000",
+        "ApproveDate": "2017/03/25"
+      },
+      {
+        "SeqNo": "2",
+        "ApplyChannel": "WEB01",
+        "ApplyDate": "2017/02/23",
+        "StatusDesc": "未核准！",
+        "ApproveAmount": "1000",
+        "ApproveDate": "2017/02/26"
+      },
+      {
+        "SeqNo": "3",
+        "ApplyChannel": "WEB01",
+        "ApplyDate": "2017/01/10",
+        "StatusDesc": "匯款完成！",
+        "ApproveAmount": "1000",
+        "ApproveDate": "2017/01/11"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

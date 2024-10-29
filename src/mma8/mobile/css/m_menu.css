@@ -1,0 +1,41 @@
+﻿
+#nations{
+	position:absolute;
+	height:15%;
+	width:100%;
+	max-width: 960px;
+}
+#nations img{
+	position:absolute;
+	height:auto;
+	width:100%;
+	opacity:0;
+}
+.jqCycle{
+	height:10%;
+	width:100%;
+	max-width: 960px;
+	position: relative;
+}
+
+#jqCycle_pager { font-size: 0.1em; left:39%;position: relative;width: 66px;top: 6px;}
+#jqCycle_pager a, strong { margin: 7 5px; width:10px; height:10px;  background: #C0C0C0; border-radius:7px; float:left;}
+#jqCycle_pager a.activeSlide { background: #FF0000 }
+#jqCycle_pager a:focus { outline: none; }
+
+@media screen and (min-width: 321px) and (max-width: 411px) {
+   .jqCycle {height:10%;width:100%;}
+   #jqCycle_pager { font-size: 0.1em;left: 40%;position: relative;}
+}
+@media screen and (min-width: 412px) and (max-width: 736px) {
+   .jqCycle {height:10%;width:100%;}
+   #jqCycle_pager { font-size: 1.1em; left: 40%;position: relative; }
+}
+@media screen and (min-width: 737px) and (max-width: 1024px) {
+   .jqCycle {height:10%;width:100%;max-width: 960px;}
+   #jqCycle_pager { font-size: 0.1em; left: 40%;position: relative;}
+   }
+@media screen and (min-width:1025px) {
+   .jqCycle {height:10%;width:100%;max-width: 960px;}
+   #jqCycle_pager { font-size: 0.1em; max-width: 960px; width: 100%; bottom: 60px;}
+   }   

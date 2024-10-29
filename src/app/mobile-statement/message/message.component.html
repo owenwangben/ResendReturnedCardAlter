@@ -1,0 +1,38 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<div>
+		<dx-gallery [height]="206" [width]="width" [dataSource]="cards" [slideshowDelay]="5000" [loop]="true" [showNavButtons]="false" [showIndicator]="true">
+			<div *dxTemplate="let card of 'item'">
+				<a [href]="card.aHref"><img [src]="card.imgSrc" [style.width.px]="width"/></a>
+			</div>
+		</dx-gallery>
+	</div>
+	<main>
+		<div class="container">
+			<div>
+				<div>
+					<a href="https://bank.sinopac.com/sinopacBT/personal/credit-card/discount/list.html" class="btn">{{messages?.Benefits}}</a>
+					<input type="button" value="{{messages?.AccountingMessage}}" (click)="onShowActMsg(1)">
+					<input type="button" value="{{messages?.ExclusiveMessage}}" (click)="onShowActMsg(2)">
+					<input type="button" value="{{messages?.ActivitiesMessage}}" (click)="onShowActMsg(3)">
+				</div>
+				<div class="row">
+					<div class="col" style="padding-right: 5px;">
+						<a href="https://bank.sinopac.com/sinopacBT/about/introduction/announcement/legal-disclaimers/15ec14ed152000003534f0b3dfa4fadc.html"
+							class="btn" [ngStyle]="messages?.RelevantExpensesBtnStyle">{{messages?.RelevantExpenses}}</a>
+					</div>
+					<div class="col" style="padding-left: 5px;">
+						<a href="https://bank.sinopac.com/sinopacBT/personal/credit-card/payment.html"
+							class="btn"  [ngStyle]="messages?.PaymentMethodBtnStyle">{{messages?.PaymentMethod}}</a>
+					</div>
+				</div>
+				<div class="warnings" style="background-color: rgb(237, 237, 237); padding: 10px; margin-top: 10px;">
+					<p style="font-size: 6.25vw; text-align: center;">謹慎理財 信用至上</p>
+					<p style="font-size: 3.125vw; line-height: 4.688vw; margin: 10px 0;">24小時服務專線：(02)2528-7776/0800-058-888 (限市話)
+						<br>循環信用利率5%~15% (基準日2023/3/3)；預借現金手續費：預借現金金額X3.5%+指定金額(100元新臺幣/3.5美元/350日圓/3歐元)其他費用請上永豐銀行網站查詢</p>
+				</div>
+			</div>
+		</div>
+	</main>
+	<app-mobile-statement-nav [Index]="2" [Token]="token"></app-mobile-statement-nav>
+</div>

@@ -1,0 +1,26 @@
+<div class="formblock">
+	<p class="title">感謝您參與此次活動！
+		<br>截至目前為止您成功兌換的紀錄如下</p>
+	<table>
+		<thead>
+			<tr>
+				<th>兌換日期</th>
+				<th class="full">贈品</th>
+				<th>已兌換份數</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let record of records">
+				<td>{{record.ExChg_DT | date:'y/MM/dd'}}</td>
+				<td>{{record.ExChg_Gift_NM}}</td>
+				<td>{{record.ExChg_Num}}</td>
+			</tr>
+			<tr *ngIf="records.length === 0">
+				<td colspan="3">查無資料</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="btn-block">
+		<a class="btn" routerLink="/Reward/Bonus2018Q1">回首頁</a>
+	</div>
+</div>

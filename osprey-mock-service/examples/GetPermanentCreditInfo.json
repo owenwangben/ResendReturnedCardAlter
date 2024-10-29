@@ -1,0 +1,25 @@
+{
+  "Result": {
+    "Name": "王ＸＸ",
+    "Birthday": "19520516",
+    "OriginalCredit": 200000,
+    "PermanentAvailableCredit": 1000,
+    "IsSmsList": false,
+    "IsRequireFinancialProof": null,
+    "DefaultIncreaseCredit": null
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

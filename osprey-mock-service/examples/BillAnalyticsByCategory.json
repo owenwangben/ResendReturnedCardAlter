@@ -1,0 +1,78 @@
+{
+  "Result": {
+	"Items": [
+		{
+			"CardIdx": 0,
+			"Subtotal1": 6880,
+			"Subtotal2": 18162,
+			"Subtotal3": 6349,
+			"Subtotal4": 4999,
+			"Subtotal5": 2150,
+			"Subtotal6": 30000,
+			"Subtotal7": 987
+		},
+		{
+			"CardIdx": 1,
+			"Subtotal1": 1000,
+			"Subtotal2": 2000,
+			"Subtotal3": 3000,
+			"Subtotal4": 4000,
+			"Subtotal5": 5000,
+			"Subtotal6": 6000,
+			"Subtotal7": 7000
+		},
+		{
+			"CardIdx": 2,
+			"Subtotal1": 1200,
+			"Subtotal2": 2200,
+			"Subtotal3": 3200,
+			"Subtotal4": 4200,
+			"Subtotal5": 5200,
+			"Subtotal6": 6200,
+			"Subtotal7": 7200
+		},
+		{
+			"CardIdx": 3,
+			"Subtotal1": 1300,
+			"Subtotal2": 2300,
+			"Subtotal3": 3300,
+			"Subtotal4": 4300,
+			"Subtotal5": 5300,
+			"Subtotal6": 6300,
+			"Subtotal7": 7300
+		}
+	],
+	"Cards": [
+		{
+			"Index": 0,
+			"Name": "保倍卡(1234)"
+		},
+		{
+			"Index": 1,
+			"Name": "保倍卡(5678)附卡"
+		},
+		{
+			"Index": 2,
+			"Name": "DAWHO現金回饋卡(5566)"
+		},
+		{
+			"Index": 3,
+			"Name": "DAWHO現金回饋卡(0857)附卡"
+		}
+	]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

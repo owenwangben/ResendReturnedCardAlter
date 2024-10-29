@@ -1,0 +1,8 @@
+﻿<div class="rnotes full-size center">
+	<span class="red">設定完成</span>
+</div>
+<app-estatement-change-display></app-estatement-change-display>
+<div class="btn-zone" *ngIf="sso">
+	<a class="nbtn" routerLink="/Account/StatementInquiry">近期帳單查詢</a>
+	<a *ngIf="IsMobile" class="nbtn" href="https://linebc.sinopac.com/bcsweb/l/242#open-browser">綁定LINE個人化服務</a>
+</div>

@@ -1,0 +1,139 @@
+{
+  "Result": {
+    "Items": [
+        {
+            "Gift_No": "2018Q101",
+            "Gift_NM": "全家中杯熱美式咖啡*",
+            "Gift_Point": "2",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "60",
+            "Gift_Remain_Num": 999
+        },
+        {
+            "Gift_No": "2018Q102",
+            "Gift_NM": "全家早餐組合*",
+            "Gift_Point": "3",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "90",
+            "Gift_Remain_Num": 998
+        },
+        {
+            "Gift_No": "2018Q103",
+            "Gift_NM": "摩斯漢堡-火腿歐姆蛋堡+冰紅茶(L)兌換券*",
+            "Gift_Point": "4",
+			"Gift_PRICE": "120",
+            "Gift_Remain_Num": 500
+        },
+        {
+            "Gift_No": "2018Q104",
+            "Gift_NM": "肯德基卡啦脆雞C套餐兌換券*",
+            "Gift_Point": "6",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "180",
+            "Gift_Remain_Num": 500
+        },
+        {
+            "Gift_No": "2018Q105",
+            "Gift_NM": "美國Ball 梅森玻璃瓶(窄口)16oz",
+            "Gift_Point": "8",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "240",
+            "Gift_Remain_Num": 100
+        },
+        {
+            "Gift_No": "2018Q106",
+            "Gift_NM": "美國Ball 梅森玻璃瓶(窄口)32oz",
+            "Gift_Point": "10",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "300",
+            "Gift_Remain_Num": 100
+        },
+        {
+            "Gift_No": "2018Q107",
+            "Gift_NM": "戶外防潮加厚手提野餐墊(150*200)",
+            "Gift_Point": "12",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "360",
+            "Gift_Remain_Num": 100
+        },
+        {
+            "Gift_No": "2018Q108",
+            "Gift_NM": "太陽能手提手電筒露營燈",
+            "Gift_Point": "14",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "420",
+            "Gift_Remain_Num": 100
+        },
+        {
+            "Gift_No": "2018Q109",
+            "Gift_NM": "戶外休閒折疊桌",
+            "Gift_Point": "15",
+			"Gift_AMT": "0",
+			"Gift_PRICE": "450",
+            "Gift_Remain_Num": 100
+        },
+        {
+            "Gift_No": "2018Q110",
+            "Gift_NM": "戶外休閒折疊椅",
+            "Gift_Point": "16",
+			"Gift_AMT": "40000",
+			"Gift_PRICE": "480",
+            "Gift_Remain_Num": 50
+        },
+        {
+            "Gift_No": "2018Q111",
+            "Gift_NM": "山毛櫸圓盤(大)+下午茶匙、叉",
+            "Gift_Point": "18",
+			"Gift_AMT": "45000",
+			"Gift_PRICE": "540",
+            "Gift_Remain_Num": 50
+        },
+        {
+            "Gift_No": "2018Q112",
+            "Gift_NM": "加大款鋁合金保冰保溫野餐提籃",
+            "Gift_Point": "20",
+			"Gift_AMT": "50000",
+			"Gift_PRICE": "600",
+            "Gift_Remain_Num": 50
+        },
+        {
+            "Gift_No": "2018Q113",
+            "Gift_NM": "戶外休閒輕巧小冰箱",
+            "Gift_Point": "22",
+			"Gift_AMT": "55000",
+			"Gift_PRICE": "660",
+            "Gift_Remain_Num": 50
+        },
+        {
+            "Gift_No": "2018Q114",
+            "Gift_NM": "戶外自動速開沙灘帳篷",
+            "Gift_Point": "24",
+			"Gift_AMT": "60000",
+			"Gift_PRICE": "720",
+            "Gift_Remain_Num": 50
+        },
+        {
+            "Gift_No": "2018Q115",
+            "Gift_NM": "【PUSH!】安全承重100kg單人吊床",
+            "Gift_Point": "26",
+			"Gift_AMT": "65000",
+			"Gift_PRICE": "780",
+            "Gift_Remain_Num": 50
+        }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

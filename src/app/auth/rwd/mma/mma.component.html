@@ -1,0 +1,84 @@
+<div class="wrapper">
+	<app-auth-header></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content transparent">
+					<h2 class="title-with-icon">
+						<i class="icon-auth"></i>{{pageinfo.name}}</h2>
+				</div>
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p><span class="red">*</span>身分證字號</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="ID" maxlength="10" placeholder="請輸入身分證字號">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>使用者代碼</p>
+									</th>
+									<td>
+										<input type="password" class="artfld col-all-min col-4" formControlName="UserId" maxlength="20" placeholder="請輸入使用者代碼">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>網路密碼</p>
+									</th>
+									<td>
+										<input type="password" class="artfld col-all-min col-4" formControlName="UserPwd" maxlength="20" placeholder="請輸入網路密碼">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>驗證碼</p>
+									</th>
+									<td class="flex-min">
+										<div>
+											<input type="text" class="artfld col-2 col-all-min" formControlName="Captcha" placeholder="驗證碼" maxlength="6" numberOnly>
+										</div>
+										<div class="captcha">
+											<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+										</div>
+										<div>
+											<a href="javascript:void(0)" class="reload-captcha" (click)="changeVcaptcha()">重新產生</a>
+										</div>
+									</td>
+									<!-- <td>
+										<div class="captcha-block flex-box flex-vcenter">
+											<input type="text" class="artfld col-all-min col-2" formControlName="Captcha" maxlength="6" numberOnly placeholder="驗證碼">
+											<a class="captcha" href="javascript:void(0)" (click)="changeVcaptcha()">
+												<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" alt="">
+											</a>
+										</div>
+									</td> -->
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">確認</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

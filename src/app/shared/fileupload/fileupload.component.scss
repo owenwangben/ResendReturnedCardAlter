@@ -1,0 +1,23 @@
+label {
+  cursor: pointer;
+}
+.drop-zone {
+  display: block;
+  width: 400px;
+//   color: red;
+  position: relative;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 130px 10px 0;
+
+  &:after {
+	  content: '';
+	  position: absolute;
+	  top: 2px;
+	  left: 150px;
+  }
+}
+
+.file-over {
+  background-color: #ddd;
+}

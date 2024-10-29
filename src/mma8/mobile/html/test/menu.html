@@ -1,0 +1,104 @@
+﻿
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+	<meta name="format-detection" content="telephone=no">
+	<title>台/外幣 | 永豐銀行</title>
+	<link rel="stylesheet" href="/mma8/mobile/css/style.css">
+	<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="/mma8/mobile/js/m.sinopac.common.js"></script>
+	<script type="text/javascript" type="text/javascript">
+	var url = "/ws/shared/mobile/ws_mobilemenu.ashx";
+    var dataType = "json";
+    var MEMOURL = "";
+    var TimeoutMessage = "";
+	//var menuNum = <%= request["num"]%>
+	var menuNum = 0;
+	
+	$(document).ready(function(){
+	
+		//get menu JASON from main menu
+		var results = JSON.parse(localStorage.results);
+		if (results != null) {
+			var objServiceMenu=results;
+			for (i = 0; i < objServiceMenu.length; i++) { 
+				if(i == menuNum)
+					genMenu(objServiceMenu[i]);
+			}
+				
+			//animation
+			$( ".menu > li" ).has( ".submenu" ).addClass('withSubmenu');
+
+			var allPanels = $('.menu > li > .submenu');
+			allPanels.hide();
+			console.log(allPanels.length);
+
+			$('.menu > li > a').click(function() {
+				allPanels.slideUp();
+				allPanels.parent().removeClass('actived');
+				$(this).parent().addClass('actived');
+				$(this).next().slideDown();
+				return false;
+			});
+		}
+    });
+	
+	function genMenu(MenuObj){
+		//alert('genMenu');
+		var MenuTitle = MenuObj["Title"];
+		$("#m_div").append("<h2>"+MenuTitle+"</h2>");
+		$("#m_div").append("<ul id=\"m_ul\" class=\"menu\"></ul>")
+		var subMenu = MenuObj["SubMenu"];
+		if(subMenu != null){
+			for(j=0;j<subMenu.length;j++){
+				genSubMenu("m_ul",subMenu[j],j+1)
+			}
+		}
+		//alert('over');
+	}
+	
+	function genSubMenu(ulID,subMenuObj,count){
+		var subMenuTitle = subMenuObj["Title"];
+		var webUrl = "";
+		if(subMenuObj["WebUrl"] != null || subMenuObj["WebUrl"] != "")
+			webUrl = subMenuObj["WebUrl"];
+		var liID = ulID+"_li"+count;
+		
+		//subMenuTitle = subMenuTitle+"(id="+liID+")(webUrl="+webUrl+")";
+		
+		//make li tag
+		$("#" + ulID).append("<li id=\""+liID+"\" ></ul>");
+		
+		//li add herf tag
+		$("#" + liID).append("<a href=\""+webUrl+"\">"+subMenuTitle+"</a>");
+		
+		if(subMenuObj["SubMenu"] != null){
+			//recursion, to make sub menu
+			for(k=0;k<subMenuObj["SubMenu"].length;k++){
+				$("#" + liID).append("<ul id=\""+liID+"ul"+count+"\" class=\"submenu\"></ul>")
+				genSubMenu(liID+"ul"+count,subMenuObj["SubMenu"][k],k+1);
+			}
+		}
+	}
+	
+	</script>
+</head>
+<body>
+	<div class="wrapper">
+		<header>
+			<div id="global">
+				<span class="nav" id="home"><a href="main_021.html">Home</a></span>
+				<h1 id="sinopac">永豐銀行</h1>
+			</div>
+		</header> <!-- header end -->
+		<form id="m_menu" name="m_menu" >
+			<div id="m_div" class="main">
+				
+			</div> 
+		</form>
+		</div> <!-- main end -->
+	</div> <!-- wrapper end -->
+</body>
+</html>

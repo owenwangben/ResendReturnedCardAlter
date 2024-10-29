@@ -1,0 +1,48 @@
+{
+    "Result": {
+        "Items": [
+            {
+                "CategoryName": "餐廳飲食",
+                "Subtotal": 6880.00
+            },
+            {
+                "CategoryName": "購物消費",
+                "Subtotal": 18162.00
+            },
+            {
+                "CategoryName": "家庭開銷",
+                "Subtotal": 6349.00
+            },
+            {
+                "CategoryName": "休閒旅遊",
+                "Subtotal": 4999.00
+            },
+            {
+                "CategoryName": "交通運輸",
+                "Subtotal": 2150.00
+            },
+            {
+                "CategoryName": "金融服務",
+                "Subtotal": 30000.00
+            },
+            {
+                "CategoryName": "其他消費",
+                "Subtotal": 987.00
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

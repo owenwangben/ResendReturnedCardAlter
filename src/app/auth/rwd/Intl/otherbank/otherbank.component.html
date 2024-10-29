@@ -1,0 +1,290 @@
+<div class="wrapper">
+	<app-auth-header [MasterTitleIntl]="MasterTitle"></app-auth-header>
+	<form [formGroup]="form">
+		<div class="outer_container">
+			<div class="container no-breadcrumbs">
+				<div class="content transparent">
+					<h2 class="title-with-icon"><i class="icon-auth"></i>
+						<p><span class="en">{{message?.Breadcrumb}}</span>
+							他行臺幣存款帳戶認證</p>
+					</h2>
+					<span loadHtml="{{otherBankHtmlPath}}"></span>
+				</div>
+
+				<div class="content full-content">
+					<section class="trans-content">
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.UI_Number}}</span>居留證統一證號</p>
+									</th>
+									<td>
+										<input type="text" class="artfld col-all-min col-4" formControlName="ID" maxlength="10">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span><span class="en">{{message?.DOB}}</span>出生年月日</p>
+									</th>
+									<td>
+										<input type="tel" class="artfld col-all-min col-4" formControlName="DOB" maxlength="8"
+											numberOnly placeholder="YYYYMMDD">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>
+											<span class="en">{{message?.PeriodOfStay}}</span>居留期限
+										</p>
+									</th>
+									<td>
+										<input type="tel" class="artfld col-all-min col-4" formControlName="PeriodOfStay" maxlength="8"
+											placeholder="YYYYMMDD">
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p>
+											<span class="red">*</span>
+											<span class="en">{{message?.MobilePhone}}</span>
+											行動電話號碼
+										</p>
+									</th>
+									<td class="subNotice">
+										<input id="input-phone" type="text" class="artfld col-all-min col-4"
+											formControlName="MobileNo" numberOnly maxlength="10">
+										<span class="red en">
+											{{message?.MobilePhoneNotic}}
+											<br>
+											電話號碼需與他行留存一致，並確認可接收動態密碼。</span>
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+					<section class="trans-content">
+						<fieldset class="fieldset-block">
+							<legend>
+								<span class="en">{{message?.OtherBankDepositAccount}}</span>其他銀行臺幣存款帳戶
+							</legend>
+						</fieldset>
+						<table class="new-datatable">
+							<tbody>
+								<tr>
+									<th>
+										<p>
+											<span class="red">*</span>
+											<span class="en">{{message?.BankCode}}</span>
+											銀行代號
+										</p>
+									</th>
+									<td>
+										<div class="chain-phone with-qmark switch-input">
+											<div class="toggle-input-method">
+												<div class="artfld select col-all-min">
+													<select formControlName="BankCode">
+														<option value="" disabled>Select</option>
+														<option *ngFor="let item of Banks" [value]="item.BankCode">{{
+															item.BankName }}</option>
+													</select>
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>
+										<p>
+											<span class="red">*</span>
+											<span class="en">{{message?.DepositAccount}}
+											</span>
+											存款帳號
+										</p>
+									</th>
+									<td class="subNotice">
+										<input class="artfld col-all-min col-4" formControlName="DepositAccountNo" maxlength="14"
+											type="text">
+										<span class="red">
+											<span class="en">{{message?.DepositAccountNotice}}
+											</span>請注意！無法使用數位帳戶或外幣帳戶驗證。
+
+										</span>
+									</td>
+								</tr>
+								<tr class="line">
+									<td colspan="2"></td>
+								</tr>
+								<tr>
+									<th>
+										<p><span class="red">*</span>
+											<span class="en">{{message?.VerCode}}
+											</span>驗證碼
+										</p>
+									</th>
+									<td>
+										<div class="captcha-block flex-box flex-vcenter">
+											<input type="tel" class="artfld col-all-min col-2" formControlName="captcha" maxlength="6"
+												numberOnly>
+											<div class="captcha">
+												<img *ngIf="vcaptchaUrl" [src]="vcaptchaUrl" (click)="changeVcaptcha()">
+											</div>
+											<div>
+												<a class="reload-captcha" href="javascript:void(0)"
+													(click)="changeVcaptcha()">Update</a>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+				<div class="content">
+					<section class="trans-content">
+						<div class="prfy">
+							<span class="title ">{{message?.BankServiceTermsTitle}}</span><br>
+							<span>{{message?.BankServiceTermsNotic1}}</span>
+							<span><a href="javascript:void(0)" class="udline open-lbox"
+									(click)="openlbox('#terms3-lbox')">{{message?.BankServiceTermsNotic2}}</a>{{message?.BankServiceTermsNotic3}}</span>
+							<br>
+							<br>
+							<span class="title">個人資料同意使用條款</span><br>
+							<span>為了提供您後續商品電話服務，於您按下「我同意」時，您所填寫的資料將會交付永豐銀行，並由永豐銀行人員與您聯絡。永豐銀行必將保護您個人資料安全，且於法令許可及行銷永豐信用卡目的範圍內，於國內外蒐集、處理、利用您的個人資料。</span>
+							<span>本人特此聲明已詳細閱讀「<a href="javascript:void(0)" class="udline open-lbox"
+									(click)="openlbox('#terms3-lbox')">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>」並同意個人資料蒐集處理及利用條款。</span>
+							<ul class="ctrl-block center col-2-min terms2">
+								<li>
+									<input type="radio" id="a11" class="artfld surround" formControlName="PIIAgreement" [value]="true">
+									<label for="a11">
+										<small>{{btnMessage?.RadioButton.Agree}}</small><br>
+										我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="a12" class="artfld surround" formControlName="PIIAgreement" [value]="false">
+									<label for="a12">
+										<small>{{btnMessage?.RadioButton.Disagree}}</small>
+										<br>
+										我不同意</label>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+
+				<div class="content">
+					<section class="trans-content">
+						<div class="prfy"><span>{{message?.TermsOfPersonalInfoNotic1}}<a href="javascript:void(0)"
+									class="udline open-lbox" (click)="openlbox('#terms2-lbox')">{{message?.TermsOfPersonalInfoNotic2}}</a>{{message?.TermsOfPersonalInfoNotic3}}</span><br><br>
+							<span><span class="red">*</span>本人特此聲明已詳細閱讀「<a href="javascript:void(0)" class="udline open-lbox"
+									(click)="openlbox('#terms2-lbox')">個人網路銀行服務條款</a>」，其中以顯著字體表示之重要約定事項，
+									有疑問之處業經本人向 貴行提出詢問並經 貴行說明及解答，對重要約定事項已充分理解並同意遵守全部內容。</span>
+							<ul class="ctrl-block center col-2-min terms2">
+								<li>
+									<input type="radio" id="a51" class="artfld surround"
+										formControlName="IBankAgreement" [value]="true">
+									<label for="a51"><small>{{btnMessage?.RadioButton.Agree}}</small><br>我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="a52" class="artfld surround"
+										formControlName="IBankAgreement" [value]="false">
+									<label for="a52"><small>{{btnMessage?.RadioButton.Disagree}}</small>
+										<br>我不同意</label>
+								</li>
+							</ul>
+							<p class="red center req" *ngIf="form.value.IBankAgreement === false">
+								<span class="en">{{message?.PersonalInfoDisagreementNotic}}</span>很抱歉，如您不同意個人網路銀行服務條款，無法完成線上辦卡，如有任何疑問，歡迎您撥打 24 小時服務專線
+								02-2528-7776。
+							</p>
+						</div>
+					</section>
+				</div>
+
+
+				<div class="content">
+					<section class="trans-content">
+						<div class="prfy">
+							<span class="title">{{message?.AgreementForDataAuthNotic1}}</span><br>
+							<span>{{message?.AgreementForDataAuthNotic2}}</span>
+							<br>
+							<br>
+							<span class="title">同意資料驗證作業</span><br>
+							<span>貴行基於服務立場，得將申請人基本資料，如身分證編號、信用卡卡號、信用卡有效期間等資料，透過信用卡授權轉接處理中心（聯合信用卡中心或財金公司）傳輸至發卡機構進行身分驗證等相關作業。</span>
+							<ul class="ctrl-block center col-2-min terms2">
+								<li>
+									<input type="radio" id="a31" class="artfld surround" formControlName="OtherBankAuthAgreement"
+										[value]="true">
+									<label for="a31"><small>{{btnMessage?.RadioButton.Agree}}</small><br>我同意</label>
+								</li>
+								<li>
+									<input type="radio" id="a32" class="artfld surround" formControlName="OtherBankAuthAgreement"
+										[value]="false">
+									<label for="a32"><small>{{btnMessage?.RadioButton.Disagree}}</small>
+										<br>我不同意</label>
+								</li>
+							</ul>
+						</div>
+					</section>
+				</div>
+
+				<div class="btn-zone">
+					<p class="red remind">
+						<span class="en">{{message?.AllAgreeNotice}}
+						</span>以上條款皆須點選「我同意」方可申請辦卡。
+					</p>
+					<a id="order" href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span
+							class="en">{{btnMessage?.Submit}}
+						</span>立即辦卡</a>
+				</div>
+				<app-auth-warning></app-auth-warning>
+				<div class="lboxed">
+					<div class="close"></div>
+					<div class="lbox-block">
+						<div id="terms2-lbox" class="terms-lbox">
+							<h3>個人網路銀行服務條款</h3>
+							<div class="terms-block">
+								<div class="wrapper">
+									<p>
+										<span loadHtml="{{bankServiceTermsUrl}}"></span>
+									</p>
+								</div>
+							</div>
+							<div class="btn-zone flex-inline-min">
+								<a href="javascript:void(0)" class="nbtn focus close"
+									(click)="form.patchValue({IBankAgreement: true})">同意</a>
+								<a href="javascript:void(0)" class="nbtn close"
+									(click)="form.patchValue({IBankAgreement: false})">不同意</a>
+							</div>
+						</div>
+						<div id="terms3-lbox" class="terms-lbox">
+							<h3>永豐銀行個人資料蒐集、處理及利用告知義務內容</h3>
+							<div class="terms-block">
+								<div class="wrapper">
+									<p>
+										<span loadHtml="{{personalDataTermsUrl}}"></span>
+									</p>
+								</div>
+							</div>
+							<div class="btn-zone flex-inline-min">
+								<a href="javascript:void(0)" class="nbtn focus close">關閉</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+	<app-auth-footer></app-auth-footer>
+</div>

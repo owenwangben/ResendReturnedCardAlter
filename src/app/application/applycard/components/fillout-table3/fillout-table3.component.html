@@ -1,0 +1,471 @@
+<form [formGroup]="form">
+	<app-applycard-step-indicator [step]="0"></app-applycard-step-indicator>
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>身分證字號</th>
+						<td>{{idNumber}}</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<span class="red">*</span>發證日期</th>
+						<td>
+							民國
+							<input type="text" class="artfld col-all-min col-1" formControlName="IdCardIssueDateYYY" maxlength="3" numberOnly placeholder="">
+							年
+							<input type="text" class="artfld col-all-min col-1" formControlName="IdCardIssueDateMM" maxlength="2" numberOnly placeholder="">
+							月
+							<input type="text" class="artfld col-all-min col-1" formControlName="IdCardIssueDateDD" maxlength="2" numberOnly placeholder="">
+							日
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>發證地點</p>
+						</th>
+						<td>
+							<div class="artfld select col-2 col-all-min">
+								<select formControlName="IdCardIssueLocation">
+									<option [ngValue]="undefined" disabled>請選擇</option>
+									<option *ngFor="let location of idCardIssueLocations" [ngValue]="location">{{location}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>領換補類別</p>
+						</th>
+						<td>
+							<div class="artfld select col-2 col-all-min">
+								<select formControlName="IdCardIssueType">
+									<option [ngValue]="undefined" disabled>請選擇</option>
+									<option *ngFor="let issueType of idCardIssueTypes" [ngValue]="issueType">{{issueType}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p>英文姓名</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="EName" uppercase placeholder="請參照護照上的英文姓名" maxlength="20">
+
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds">
+							<span class="pink2">※若未填寫，則授權本行翻譯。為利卡體印製，以20個英文字元為限。</span>
+              <br>
+							<span class="pink2">※提醒若您有更名，請填寫您的新英文姓名。</span>
+              <br>
+							<span *ngIf="cardFace == '273088'" class="pink2">
+                ※提醒您永傳世界卡為限量金屬卡面，請您務必確認英文姓名正確(未填寫視同同意本行系統之英文姓名)，如須換發新卡者(包括但不限於因填寫錯誤或未填寫英文姓名)，將收取製卡工本費每卡NT$3,000。
+              </span>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>出生年月日</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4 ctrl-date" formControlName="DOB" maxlength="8" placeholder="例:19980109" numberOnly [readonly]="cminfo?.Birthday" cannotPaste>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p>現居地址狀態</p>
+						</th>
+						<td>
+							<div class="artfld select col-2 col-all-min">
+								<select formControlName="HomeStatus">
+									<option [ngValue]="undefined" disabled>請選擇</option>
+									<option *ngFor="let status of homeStatus" [ngValue]="status.key">{{status.value}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>現居地址</p>
+						</th>
+						<td>
+							<div class="inline-select">
+								<div class="artfld select col-2 col-all-min">
+									<select formControlName="Address1">
+										<option [ngValue]="undefined" disabled>請選擇</option>
+										<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+									</select>
+								</div>
+								<div class="artfld select col-2 col-all-min">
+									<select formControlName="ZipCodeId">
+										<option [ngValue]="undefined" disabled>請選擇</option>
+										<option *ngFor="let item of getAreas(form.value.Address1)" [ngValue]="item.Id">{{item.Area}}</option>
+									</select>
+								</div>
+							</div>
+							<input type="text" class="artfld col-all-min col-7" formControlName="Address3">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>現居電話</th>
+						<td>
+							<div class="chain-phone">
+								<input type="text" class="artfld col-all-min col-1 area-code" formControlName="Phone1" maxlength="4" placeholder="區碼" numberOnly>
+								<span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="text" class="artfld col-all-min col-3 number-code" formControlName="Phone2" maxlength="8" placeholder="例：25287776" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>戶籍地址</p>
+						</th>
+						<td class="check-disabled-group">
+							<ul class="ctrl-block col-all-min col-3 reverse-margin">
+								<li>
+									<input type="checkbox" id="a31" formControlName="IsResidenceAddressIsHomeAddress" class="artfld surround check-disabled">
+									<label for="a31">同現居地址</label>
+								</li>
+							</ul>
+							<div *ngIf="!form.value.IsResidenceAddressIsHomeAddress">
+								<div class="inline-select">
+									<div class="artfld select col-2 col-all-min">
+										<select formControlName="ResidenceAddress1">
+											<option [ngValue]="undefined" disabled>請選擇</option>
+											<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+										</select>
+									</div>
+									<div class="artfld select col-2 col-all-min">
+										<select formControlName="ResidenceZipCodeId">
+											<option [ngValue]="undefined" disabled>請選擇</option>
+											<option *ngFor="let item of getAreas(form.value.ResidenceAddress1)" [ngValue]="item.Id">{{item.Area}}</option>
+										</select>
+									</div>
+								</div>
+								<input type="text" class="artfld col-all-min col-7" formControlName="ResidenceAddress3">
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>戶籍電話</th>
+						<td>
+							<div class="chain-phone">
+								<input type="text" class="artfld col-all-min col-1 area-code center" formControlName="ResidencePhone_1" maxlength="4" placeholder="區碼" numberOnly>
+								<span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="text" class="artfld col-all-min col-3 number-code" formControlName="ResidencePhone_2" maxlength="8" placeholder="例：25287776" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p>公司地址</p>
+						</th>
+						<td class="check-disabled-group">
+							<ul class="ctrl-block col-all-min col-3 reverse-margin">
+								<li>
+									<input type="checkbox" id="a32" formControlName="IsCompanyAddressSameAsHomeAddress" class="artfld surround check-disabled">
+									<label for="a32">同現居地址</label>
+								</li>
+							</ul>
+							<div *ngIf="!form.value.IsCompanyAddressSameAsHomeAddress">
+								<div class="inline-select">
+									<div class="artfld select col-2 col-all-min">
+										<select formControlName="CompanyAddress1">
+											<option [ngValue]="undefined" disabled>請選擇</option>
+											<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+										</select>
+									</div>
+									<div class="artfld select col-2 col-all-min">
+										<select formControlName="CompanyZipCodeId">
+											<option [ngValue]="undefined" disabled>請選擇</option>
+											<option *ngFor="let item of getAreas(form.value.CompanyAddress1)" [ngValue]="item.Id">{{item.Area}}</option>
+										</select>
+									</div>
+								</div>
+								<input type="text" class="artfld col-all-min col-7" formControlName="CompanyAddress3">
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>卡片寄送地址</span>
+				<ul class="ctrl-block col-2-min">
+					<li>
+						<input type="radio" id="a51" formControlName="ReceiveAddressType" class="artfld surround" [value]="1">
+						<label for="a51">同現居地址</label>
+					</li>
+					<li *ngIf="!form.value.IsResidenceAddressIsHomeAddress">
+						<input type="radio" id="a52" formControlName="ReceiveAddressType" class="artfld surround" [value]="2">
+						<label for="a52">同戶籍地址</label>
+					</li>
+					<li *ngIf="!form.value.IsCompanyAddressSameAsHomeAddress && (form.value.CompanyAddress?.length >= 5 || (form.value.CompanyAddress1 && (form.value.CompanyZipCodeId != undefined) && form.value.CompanyAddress3?.length >= 5))">
+						<input type="radio" id="a53" formControlName="ReceiveAddressType" class="artfld surround" [value]="3">
+						<label for="a53">同公司地址</label>
+					</li>
+				</ul>
+				<span class="pink2 fwb">提醒您！勾選之卡片寄送地址將作為留存銀行的通訊資料，供爾後銀行寄送書面資料使用，<span style="text-decoration:underline;">包含電子/行動帳單傳送失敗時，將補寄紙本帳單至此地址</span>。</span>
+			</div>
+		</section>
+	</div>
+	<div class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span>您的教育程度</p>
+						</th>
+						<td>
+							<div class="artfld select col-all-min">
+								<select formControlName="Education">
+									<option [ngValue]="undefined" disabled>請選擇</option>
+									<option *ngFor="let grade of educationGrades" [ngValue]="grade.key">{{grade.value}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>您的職業類型</p>
+						</th>
+						<td>
+							<div class="artfld select col-all-min">
+								<select formControlName="JobCategoryIndex">
+									<option [value]="undefined" disabled>請選擇</option>
+									<option *ngFor="let job of jobCategories" [ngValue]="job.Index">{{job.Value}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+					<tr class="line" *ngIf="form.value.JobCategoryIndex !== '24' && form.value.JobCategoryIndex !== '25' && form.value.JobCategoryIndex !== '26'">
+						<td colspan="2"></td>
+					</tr>
+					<tr *ngIf="form.value.JobCategoryIndex !== '24' && form.value.JobCategoryIndex !== '25' && form.value.JobCategoryIndex !== '26'">
+						<th>
+							<p><span class="red">*</span>您的職業名稱</p>
+						</th>
+						<td>
+							<div class="artfld select col-all-min">
+								<select formControlName="JobTitle">
+									<option [value]="undefined" disabled>請選擇</option>
+									<option *ngFor="let title of jobTitles" [ngValue]="title">{{title}}</option>
+								</select>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div *ngIf="form.value.JobCategoryIndex !== '24' && form.value.JobCategoryIndex !== '25' && form.value.JobCategoryIndex !== '26'" class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span>公司名稱</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="Company">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>公司電話</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="text" class="artfld col-all-min col-1 area-code center" formControlName="CompanyPhoneAreaCode" maxlength="4" placeholder="區碼" numberOnly>
+								<span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="text" class="artfld col-all-min col-3 number-code" formControlName="CompanyPhone" maxlength="8" placeholder="例：25287776" numberOnly>
+								<span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="text" class="artfld col-all-min col-18 ext-code" formControlName="CompanyPhoneEx" maxlength="8" placeholder="分機" numberOnly>
+							</div>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>年薪(新臺幣)</p>
+						</th>
+						<td>
+							<div class="watermark">
+								<input type="text" class="artfld col-all-min col-4" maxlength="6" formControlName="AnnualSalary" numberOnly>
+								<span>萬元</span>
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div *ngIf="form.value.JobCategoryIndex === '24'" class="content full-content">
+		<section class="trans-content">
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>父母或法定代理人</th>
+						<td></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span>中文姓名</p>
+						</th>
+						<td>
+							<input type="text" class="artfld col-all-min col-4" formControlName="LegalName">
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<!-- <p><span class="red">*</span>父母或法定代理人<br class="hidden-min">連絡電話</p> -->
+							<p><span class="red">*</span>連絡電話</p>
+						</th>
+						<td>
+							<div class="chain-phone">
+								<input type="text" class="artfld col-all-min col-1 area-code center" formControlName="LegalPhone1" maxlength="4" placeholder="區碼" numberOnly>
+								<span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="text" class="artfld col-all-min col-3 number-code" formControlName="LegalPhone2" maxlength="8" placeholder="例：25287776" numberOnly>
+								<!-- <span>-&nbsp;
+									<span class="hidden-min">&nbsp;&nbsp;</span>
+								</span>
+								<input type="tel" class="artfld col-all-min col-18 ext-code" maxlength="8" placeholder="分機"> -->
+							</div>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="pink2 fwb">我名下持有不動產</span><span>，且願意委託永豐商業銀行代為調閱不動產謄本作為申辦信用卡財力證明文件</span>
+				</span>
+				<ul class="ctrl-block center col-2-min">
+					<li>
+						<input type="radio" id="a71" formControlName="AgreeInspectLandRegisterDoc" class="artfld surround" [value]="true">
+						<label for="a71">我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a72" formControlName="AgreeInspectLandRegisterDoc" class="artfld surround" [value]="false">
+						<label for="a72">我不同意</label>
+					</li>
+				</ul>
+				<div class="center">(未勾選視為不同意)</div>
+			</div>
+		</section>
+	</div>
+	<div class="content" *ngIf="form.value.AgreeInspectLandRegisterDoc">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title">
+					<span class="red">*</span>請選擇不動產謄本地址</span>
+				<ul class="ctrl-block col-2-min">
+					<li>
+						<input type="radio" id="a81" formControlName="LandRegisterAddressType" class="artfld surround" [value]="1">
+						<label for="a81">同現居地</label>
+					</li>
+					<li>
+						<input type="radio" id="a82" formControlName="LandRegisterAddressType" class="artfld surround" [value]="2">
+						<label for="a82">同戶籍地</label>
+					</li>
+					<li>
+						<input type="radio" id="a83" formControlName="LandRegisterAddressType" class="artfld surround" [value]="3">
+						<label for="a83">其他</label>
+					</li>
+				</ul>
+			</div>
+			<div *ngIf="form.value.LandRegisterAddressType == '3'">
+				<div class="inline-select">
+					<div class="artfld select col-2 col-all-min">
+						<select formControlName="LandRegisterAddress1">
+							<option [ngValue]="undefined" disabled>請選擇</option>
+							<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+						</select>
+					</div>
+					<div class="artfld select col-2 col-all-min">
+						<select formControlName="LandRegisterZipCodeId">
+							<option [ngValue]="undefined" disabled>請選擇</option>
+							<option *ngFor="let item of getAreas(form.value.LandRegisterAddress1)" [ngValue]="item.Id">{{item.Area}}</option>
+						</select>
+					</div>
+				</div>
+				<input type="text" class="artfld col-all-min col-7" formControlName="LandRegisterAddress3">
+			</div>
+		</section>
+	</div>
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()">上一步</a>
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()">下一步</a>
+	</div>
+</form>

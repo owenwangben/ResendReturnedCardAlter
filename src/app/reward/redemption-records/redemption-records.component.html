@@ -1,0 +1,46 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<div class="abgne_tab">
+					<ul class="ntabs">
+						<li routerLink="/Reward/AvailablePoints" routerLinkActive="active"><a href="javascript:void(0)">紅利點數查詢</a></li>
+						<li class="active"><a href="javascript:void(0)">紅利兌換紀錄</a></li>
+					</ul>
+				</div>
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div class="tab_container">
+					<div class="tab_content">
+						<app-period-query
+							[fastQueryOptions]="fastQueryOptions"
+							[(start)]="startDate"
+							[showPeriod]=false
+							(search)="getData();">
+						</app-period-query>
+						<table class="ntable table-striped">
+							<thead>
+								<tr>
+									<th class="mobile-col-3">兌換日期</th>
+									<th class="mobile-col-3">兌換點數</th>
+									<th class="mobile-col-6">兌換項目</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngFor="let item of model?.Items">
+									<td>{{item.DE_DATE}}</td>
+									<td class="num-align">{{item.TRA_POINT_TTL | number}}</td>
+									<td>{{item.MEMO}}</td>
+								</tr>
+								<tr *ngIf="!model?.Items.length">
+									<td colspan="7">查無資料!</td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="rowElem" loadHtml="/mma8/card/htmls/紅利兌換紀錄查詢注意事項.html"></div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

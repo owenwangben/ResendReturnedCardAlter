@@ -1,0 +1,62 @@
+<div class="formblock">
+	<table class="data-table table-striped" width="100%">
+		<tbody>
+			<tr>
+				<th class="mobile-col-5">原始信用額度</th>
+				<td class="mobile-col-7">
+					{{ data.OriginalCredit | number }}
+				</td>
+			</tr>
+			<tr>
+				<th>目前可用餘額</th>
+				<td>
+					{{ data.AvailableCredit | number }}
+				</td>
+			</tr>
+			<tr>
+				<th>申請增加信用額度</th>
+				<td>
+					{{ data.IncreaseCredit | number }}元
+				</td>
+			</tr>
+			<tr>
+				<th>提高後可用餘額</th>
+				<td>{{ getTotalCredit() | number}}</td>
+			</tr>
+			<tr>
+				<th>申請卡片</th>
+				<td>
+					<div *ngFor="let card of filterChecked(data.ApplyCards); let i = index">
+						<span class="text-left mobile-col-7">
+							{{ card.Name + "(" + card.CardTypeDesc + ")" }}
+						</span>
+						<span class="mobile-col-5">
+							{{ card.CardNo.substr(card.CardNo.length - 4 ) }}
+						</span>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th>申請起日</th>
+				<td>{{ data.ApplyPeriod.From | date:'y/MM/dd'}}</td>
+			</tr>
+			<tr>
+				<th>申請迄日</th>
+				<td>
+					<div>
+						{{ data.ApplyPeriod.To | date:'y/MM/dd' }}
+					</div>
+					<div class="red">臨調結束日最長為申請日後30天，若遇國定例假日則順延至下一工作日。臨調結束後於繳款入帳前可能會因超額無法刷卡，可致電客服由專人協助處理。</div>
+				</td>
+			</tr>
+			<tr>
+				<th>申請原因</th>
+				<td>{{ applyReasonDisplay }} {{ data.ReasonDesc }}</td>
+			</tr>
+			<tr>
+				<th>聯絡方式</th>
+				<td> {{ data.ContactType || (data.ContactMobile | mobile) }} </td>
+			</tr>
+		</tbody>
+	</table>
+</div>

@@ -1,0 +1,18 @@
+{
+    "Result": {
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "2019-06-19T14:29:32.5607308+08:00",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

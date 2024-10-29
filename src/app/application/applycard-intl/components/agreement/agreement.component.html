@@ -1,0 +1,276 @@
+<form [formGroup]="form">
+	<app-applycard-intl-step-indicator [step]="0"></app-applycard-intl-step-indicator>
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<p><span class="en">{{message?.OtherTermsNotice1}}<a href="javascript:void(0)" class="open-lbox"
+							(click)="openlbox('#terms-other-lbox')">{{message?.OtherTermsNotice2}}</a>{{message?.OtherTermsNotice3}}</span>以下條款勾選「同意」者，視為已詳閱且同意，並請詳閱「<a
+						href="javascript:void(0)" class="open-lbox" (click)="openlbox('#terms-other-lbox')">其他條款</a>」。</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title"><span class="red">*</span><a href="javascript:void(0)"
+						class="title-black udline open-lbox" (click)="openlbox('#terms4-lbox')">
+						<span class="en">{{message?.TermsOfCreditCardApply}}</span>信用卡申請書同意條款暨約定事項</a><br><span
+						class="red"><span class="en">{{message?.MustAgreeNotic}}</span>(須同意方可申請)</span></span>
+				<ul class="ctrl-block col-2-min center terms4">
+					<li>
+						<input type="radio" id="a41" formControlName="AgreeTnC" class="artfld surround" [value]="true">
+						<label for="a41"><small class="enSmall en">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a42" formControlName="AgreeTnC" class="artfld surround" [value]="false">
+						<label for="a42"><small class="en enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.AgreeTnC === false" class="red center req"><span
+						class="en">{{message?.AgreeTnCDisagreementNotic}}</span>很抱歉，如您不同意個人網路銀行服務條款，無法完成線上辦卡，如有任何問題，歡迎您撥打24小時服務專線02-2528-7776。
+				</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title"><span class="red">*</span><span class="en">{{message?.AutopayMatters}}
+					</span><a href="javascript:void(0)" class="title-black udline open-lbox"
+						(click)="openlbox('#terms12-lbox')">永豐信用卡自動扣繳申請及注意事項</a></span>
+				<ul class="ctrl-block col-2-min center terms8">
+					<li>
+						<input type="radio" id="a81" formControlName="AgreeTwdAuthDebit" class="artfld surround"
+							[value]="true">
+						<label for="a81"><small class="en enSmall">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a82" formControlName="AgreeTwdAuthDebit" class="artfld surround"
+							[value]="false">
+						<label for="a82"><small class="en enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<div class="content full-content" *ngIf="form.value.AgreeTwdAuthDebit">
+		<section class="trans-content">
+			<fieldset class="fieldset-block">
+				<legend><span class="en">{{message?.AutopayByNTDAccount}}</span>臺幣帳款自動扣繳</legend>
+			</fieldset>
+			<table class="new-datatable">
+				<tbody>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.SinopacAccount}}</span>永豐臺幣存款帳號</p>
+						</th>
+						<td>
+							<div class="chain-phone with-qmark switch-input">
+								<div class="toggle-input-method">
+									<div class="artfld select col-all-min col-4" *ngIf="!showTaiwanDepositAccount">
+										<select formControlName="TaiwanDepositAccount">
+											<option [ngValue]="null">請選擇</option>
+											<option *ngFor="let account of twdAccounts" [ngValue]="account.AccountNo">
+												{{account.IsDigitalAccount ? account.AccountNo + "*" : account.AccountNo}}
+											</option>
+										</select>
+									</div>
+									<input *ngIf="showTaiwanDepositAccount" type="text" class="artfld col-all-min col-4"
+										formControlName="TaiwanDepositAccount" placeholder="請輸入永豐臺幣存款帳號(14碼)" numberOnly maxlength="14">
+								</div>
+								<div class="tooltip-block">
+									<i class="icon-ques toggle-inputs" (click)="switchDepositAccount()"></i>
+									<div class="tooltip">
+										<p>點選以手動方式輸入帳號</p>
+										<p style="display: none;">點選以下拉方式選擇帳號</p>
+									</div>
+								</div>
+							</div>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2" class="reminds notice">
+							<p class="pink2">
+								<span class="en">{{message?.AutopayNotice1}}</span>
+								<span class="en">{{message?.AutopayNotice2}}</span>
+								<span class="en">{{message?.AutopayNotice3}}</span>
+								<span class="en">{{message?.AutopayNotice4}}</span>
+							</p>
+							<p class="pink2"><span>※提醒您！</span><br>
+								<span>1.填寫帳號即可申請【臺幣帳款自動轉帳扣繳】。</span><br>
+								<span>2.同意後本行將依此帳號自動扣繳您所有本行信用卡新臺幣費用，若您先前已設定本行臺幣帳戶自動轉帳扣繳舊有約定即失效。</span><br>
+								<span>3.帳號後「*」表數位帳戶，請注意相關卡片綁定數位帳戶加碼優惠。</span>
+							</p>
+						</td>
+					</tr>
+					<tr class="line">
+						<td colspan="2"></td>
+					</tr>
+					<tr>
+						<th>
+							<p><span class="red">*</span><span class="en">{{message?.AuthAutopayAmount}}</span>授權扣繳金額</p>
+						</th>
+						<td>
+							<ul class="ctrl-block col-2-min clear-margin">
+								<li>
+									<input type="radio" id="a11" class="artfld surround"
+										formControlName="TwdAuthDebitAmount" [value]="1">
+									<label for="a11"><small
+											class="en enSmall">{{btnMessage?.RadioButton.FullPayment}}</small>應繳總金額</label>
+								</li>
+								<li>
+									<input type="radio" id="a12" class="artfld surround"
+										formControlName="TwdAuthDebitAmount" [value]="2">
+									<label for="a12"><small
+											class="en enSmall">{{btnMessage?.RadioButton.MinimalPayment}}</small>最低應繳金額</label>
+								</li>
+							</ul>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title"><span class="red">*</span><span class="en">{{message?.PersonalInfoAgreement}}</span><a
+						href="javascript:void(0)" class="title-black udline open-lbox"
+						(click)="openlbox('#terms5-lbox')">聯名卡/認同機構之個人資料使用同意條款</a></span><br><span class="red"><span
+						class="en">{{message?.MustAgreeNotic}}</span>(須同意方可申請)</span>
+				<ul class="ctrl-block col-2-min center terms5">
+					<li>
+						<input type="radio" id="a51" formControlName="AgreeBrandedCard" class="artfld surround"
+							[value]="true">
+						<label for="a51"><small class="en enSmall">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a52" formControlName="AgreeBrandedCard" class="artfld surround"
+							[value]="false">
+						<label for="a52"><small class="en enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+					</li>
+				</ul>
+				<p *ngIf="form.value.AgreeBrandedCard === false" class="red center req"><span
+						class="en">{{message?.PersonalInfoDisagreementNotic}}</span>很抱歉，如您不同意個人網路銀行服務條款，無法完成線上辦卡，如有任何問題，歡迎您撥打24小時服務專線02-2528-7776。
+				</p>
+			</div>
+		</section>
+	</div>
+
+	<div class="content">
+		<section class="trans-content">
+			<div class="prfy">
+				<span class="title"><span class="red">*</span><span
+						class="en">{{message?.PersonalInfoForMarketingAgreement}}</span><a href="javascript:void(0)"
+						class="title-black udline open-lbox" (click)="openlbox('#terms6-lbox')">共同行銷/合作推廣個人資料</a></span>
+				<ul class="ctrl-block col-2-min center terms6">
+					<li>
+						<input type="radio" id="a61" formControlName="AgreeAllCompany" class="artfld surround"
+							[value]="true">
+						<label for="a61"><small class="en enSmall">{{btnMessage?.RadioButton.Agree}}</small>我同意</label>
+					</li>
+					<li>
+						<input type="radio" id="a62" formControlName="AgreeAllCompany" class="artfld surround"
+							[value]="false">
+						<label for="a62"><small class="en enSmall">{{btnMessage?.RadioButton.Disagree}}</small>我不同意</label>
+					</li>
+				</ul>
+			</div>
+		</section>
+	</div>
+
+	<p class="red"></p>
+	<div class="btn-zone flex-inline-min">
+		<a href="javascript:void(0)" class="nbtn" (click)="goPrev()"><span class="en">Back</span>上一步</a>
+		<a href="javascript:void(0)" class="nbtn focus" (click)="submit()"><span class="en">Continue</span>下一步</a>
+	</div>
+
+	<div class="lboxed">
+		<div class="close"></div>
+		<div class="lbox-block">
+			<div id="terms4-lbox" class="terms-lbox">
+				<h3>信用卡申請書同意條款暨約定事項</h3>
+				<h3>Provisions of agreement to the credit card application form</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.ApplicationAgreementUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeTnC: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeTnC: false})">不同意</a>
+				</div>
+			</div>
+			<div id="terms5-lbox" class="terms-lbox">
+				<h3>聯名卡/認同機構之個人資料使用同意條款</h3>
+				<h3>Provision of agreement to the use of personal information by the co-branding institution</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.BrandCardPersonalDataTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeBrandedCard: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeBrandedCard: false})">不同意</a>
+				</div>
+				<p>提供個人資料予聯名卡之聯名機構申請人。於上欄勾選同意者，如所申請之卡片中含悠遊功能者，則視為申請人亦同意 貴行提供個人資料予悠遊卡(股)公司
+				</p>
+				<br>
+				<p>The co-branded card cannot be issued if you do not select Agree</p>
+				<br>
+				<p>
+					to provide the personal information to applicant to the co-branding institution of the co-branded card. If you
+					select Agree in the above column, and if the card you apply contain the function of EasyCard, the applicant shall be
+					deemed to also agree that the Bank may provide the personal information to EasyCard Corporation.
+				</p>
+			</div>
+			<div id="terms6-lbox" class="terms-lbox">
+				<h3>共同行銷 /合作推廣之個人資料使用同意條款</h3>
+				<h3>Provision of agreement to the use of personal information for joint marketing/cooperative promotion</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.CoMarketingPersonalDataTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close" (click)="form.patchValue({AgreeAllCompany: true})">同意</a>
+					<a href="javascript:void(0)" class="nbtn close" (click)="form.patchValue({AgreeAllCompany: false})">不同意</a>
+				</div>
+				<div class="extra-remind">
+					<p class="red">All of the following companies (if the consent is checked, it will constitute the agreement of joint marketing/cooperative promotion), and those who have not checked the consent, it means that they do not agree</p>
+					<p>
+						<span>A.SinoPac Securities Corp.</span><br>
+						<span>B.SinoPac Leasing Corp.</span><br>
+						<span>C.SinoPac Securities Investment Trust Co., Ltd.</span><br>
+						<span>D.SinoPac Futures Corp</span><br>
+						<span>E.SinoPac Venture Capital Corp</span><br>
+					</p>
+				</div>
+			</div>
+			<div id="terms12-lbox" class="terms-lbox">
+				<h3>永豐信用卡自動扣繳申請及注意事項</h3>
+				<h3>Information of Credit Card Bill Auto Debit Application</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.AuthDebitAgreementUrl}}"></span></p>
+					</div>
+				</div>
+			</div>
+			<div id="terms-other-lbox" class="terms-lbox">
+				<h3>其他條款</h3>
+				<div class="terms-block">
+					<div class="wrapper">
+						<p><span loadHtml="{{cardinfo?.OtherTermsUrl}}"></span></p>
+					</div>
+				</div>
+				<div class="btn-zone flex-inline-min">
+					<a href="javascript:void(0)" class="nbtn focus close">關閉</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>

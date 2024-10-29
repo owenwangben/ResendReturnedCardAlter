@@ -1,0 +1,221 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">消費回饋查詢</h2>
+				<div class="formblock" [formGroup]="form" (ngSubmit)="onSubmit()">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable vtop">
+						<tr>
+							<th>查詢項目</th>
+							<td>
+								<div class="toggle-with-loading">
+									<div class="artfld select col-5">
+										<select formControlName="InquiryType" class="toggle-slide-select"
+											(change)="onSelectInquiryType($event.target.value)">
+											<option value="undefined" disabled>請選擇項目</option>
+											<option *ngFor="let item of typeOptions" [value]="item.Type">{{item.Name}}
+											</option>
+										</select>
+									</div>
+								</div>
+							</td>
+						</tr>
+						<tr class="line">
+							<td colspan="2"></td>
+						</tr>
+						<tr>
+							<th>查詢期間</th>
+							<td>
+								<div class="toggle-with-loading">
+									<div class="artfld select col-5">
+										<select formControlName="InquiryPeriod" class="toggle-slide-select">
+											<option value="undefined" disabled>請選擇期間</option>
+											<option *ngFor="let item of periodOptions" [value]="item">{{inquiryType !==
+												3 ? (item | date:'y/MM') : item}}</option>
+										</select>
+									</div>
+									<div style="margin-left:10px;">
+										<div class="btn-zone inline">
+											<a id="history-query" href="javascript:void(0)" class="nbtn"
+												(click)="onSubmit()">查詢</a>
+										</div>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div *ngIf="this.resultModel">
+					<h2 class="title">回饋查詢結果</h2>
+					<h3 class="regular center">
+						<span class="red">查詢項目: {{inquiryTypeName}}</span>
+						&emsp;
+						<span class="red">查詢期間: {{ inquiryPeriod && inquiryType !== 3 ? (inquiryPeriod | date:'y年M月')
+							: inquiryPeriod}}</span>
+            <ng-template [ngIf]="inquiryType === 7 && dawayNewCardMemberFeedbackDeadLine">
+              <br>
+              <span class="red">新戶加碼資格截止日：{{dawayNewCardMemberFeedbackDeadLine}}</span>
+            </ng-template>
+					</h3>
+					<table *ngIf="resultModel?.Level" cellpadding="0" cellspacing="0" border="0"
+						class="ntable center sizes row5 fs15">
+						<tr>
+							<th>回饋資格</th>
+						</tr>
+						<tr>
+							<td>{{resultModel?.Level}}</td>
+						</tr>
+					</table>
+					<table
+						*ngIf="(inquiryType === 2 && resultModel) || (inquiryType === 3 && resultModel?.TotalFeedbackAmt) || (inquiryType === 5 && resultModel) || (inquiryType === 6 && resultModel)"
+						cellpadding="0" cellspacing="0" border="0" class="ntable center sizes row5 fs15">
+						<tr *ngIf="inquiryType !== 6">
+							<th>總回饋金額 TWD 臺幣</th>
+						</tr>
+						<tr *ngIf="inquiryType === 6">
+							<th>總回饋豐點</th>
+						</tr>
+						<tr>
+							<td
+								[class.red]="resultModel?.TotalFeedbackAmt == '0' || resultModel?.TotalFeedbackAmtStyle == '[RED]'">
+								{{resultModel?.TotalFeedbackAmt ? (inquiryType === 3 && resultModel?.TotalFeedbackAmt ==
+								'0' ? '總消費金額未達回饋標準' : resultModel?.TotalFeedbackAmt) : '0'}}</td>
+						</tr>
+					</table>
+					<div class="red center cashB_font" *ngIf="!resultModel?.Summary">查無消費回饋資料</div>
+					<div *ngIf="resultModel?.Summary">
+						<h3 class="title">回饋明細</h3>
+						<h2 *ngIf="inquiryType !== 1 && inquiryType !== 4 && inquiryType !== 6 && inquiryType !== 7">臺幣</h2>
+					</div>
+					<div class="ftable  full-size fixwidth" *ngIf="resultModel?.Summary">
+						<table cellspacing="0" cellpadding="0" border="0"
+							class="ntable fs15 casbBtable vmiddle vmiddle">
+							<tbody>
+								<tr valign="middle" [ngSwitch]="true">
+									<th>名稱</th>
+									<th>消費金額小計</th>
+                  <th *ngSwitchCase="inquiryType === 4 || inquiryType === 6">豐點回饋</th>
+                  <th *ngSwitchCase="inquiryType === 7">回饋LINE POINTS點數</th>
+                  <th *ngSwitchDefault>回饋金額</th>
+								</tr>
+								<tr *ngFor="let item of resultModel?.Summary">
+									<td>{{item.Name}}</td>
+									<td class="cashB_td">{{item.TotalAmt}}</td>
+									<td class="cashB_td{{item.TotalFeedbackAmtStyle == '[RED]' ? ' red' : ''}}">
+										{{item.TotalFeedbackAmt}}</td>
+								</tr>
+						</table>
+					</div>
+					<div *ngIf="resultModel?.DetailA|| resultModel?.DetailB">
+						<h3 class="title">消費紀錄</h3>
+					</div>
+					<div class="formblock" *ngIf="resultModel?.DetailA">
+						<ul class="accordion">
+							<li *ngFor="let item of resultModel?.DetailA;let idx = index;">
+								<a href="javascript:void(0)" class="atitle {{idx === 0 ? 'active' : ''}}"
+									(click)="slideToggle($event.target)">{{item.Name}}</a>
+								<div class="acontent" [style.display]="idx === 0 ? '' : 'none'">
+									<div class="ftable full-size fixwidth">
+                    <ng-template [ngIf]="inquiryType === 7 && item.DESC === '1'" [ngIfElse]="normal">
+										  <table cellspacing="0" cellpadding="0" border="0" align="center"
+											  class="ntable fs15 casbBtable vmiddle vmiddle">
+                          <tbody>
+                            <tr>
+                              <th width="18%">點數入帳日</th>
+                              <th width="18%">消費日</th>
+                              <th width="28%">帳單說明</th>
+                              <th width="18%">消費金額</th>
+                              <th width="18%">回饋點數</th>
+                            </tr>
+                            <tr *ngFor="let txitem of item.Items">
+                              <td>{{txitem.DEDATE}}</td>
+                              <td>{{txitem.TXDATE}}</td>
+                              <td>{{txitem.MEMO}}</td>
+                              <td class="cashB_td">{{txitem.TX_AMT}}</td>
+                              <td>{{txitem.POINT}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+									    </ng-template>
+									    <ng-template #normal>
+                        <span class="cash_left red" style="font-size: 13px;" *ngIf="inquiryType === 7 && item.DESC === '2'">帳單次期月底前回饋 LINE POINTS 點數</span>
+                        <table cellspacing="0" cellpadding="0" border="0" align="center"
+											    class="ntable fs15 casbBtable vmiddle vmiddle">
+                          <tbody>
+                            <tr>
+                              <th width="20%">消費日</th>
+                              <th width="60%">帳單說明</th>
+                              <th width="20%">消費金額</th>
+                            </tr>
+                            <tr *ngFor="let txitem of item.Items">
+                              <td>{{txitem.TXDATE}}</td>
+                              <td>{{txitem.MEMO}}</td>
+                              <td class="cashB_td">{{txitem.TX_AMT}}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+									    </ng-template>
+									</div>
+								</div>
+							</li>
+							<li *ngFor="let item of resultModel?.DetailB;let idx = index;">
+								<a href="javascript:void(0)" class="atitle"
+									(click)="slideToggle($event.target)">{{item.Name}}</a>
+								<div class="acontent" [style.display]="'none'">
+									<div *ngFor="let cItem of item.CurrencyItems">
+										<a href="javascript:void(0)" class="atitle active"
+											(click)="slideToggle($event.target)">{{cItem.CurrencyName}}</a>
+										<div class="acontent">
+											<div class="ftable full-size fixwidth">
+												<table cellspacing="0" cellpadding="0" border="0" align="center"
+													class="ntable fs15 casbBtable vmiddle vmiddle">
+													<tbody>
+														<tr *ngIf="!cItem.CurrencyCode">
+															<th width="20%">消費日</th>
+															<th width="60%">帳單說明</th>
+															<th width="20%">消費金額</th>
+														</tr>
+														<tr *ngIf="cItem.CurrencyCode">
+															<th width="16%">消費日</th>
+															<th width="50%">帳單說明</th>
+															<th width="16%">原幣金額</th>
+															<th width="16%">約當臺幣</th>
+														</tr>
+														<tr *ngFor="let txitem of cItem.Items">
+															<td>{{txitem.TXDATE}}</td>
+															<td>{{txitem.MEMO}}</td>
+															<td class="cashB_td">{{cItem.CurrencyCode ? txitem.DCUR_AMT
+																: txitem.TW_AMT}}</td>
+															<td class="cashB_td" *ngIf="cItem.CurrencyCode">
+																{{txitem.TTL_AMT}}</td>
+														</tr>
+												</table>
+											</div>
+										</div>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<p class="cash_left">備註：本查詢結果僅供參考，活動額外回饋金額可能因匯率或不符合活動排除消費，將影響實際回饋金額，故請依本行系統結算為準，活動詳細注意事項請參閱活動網頁公告。
+					</p>
+					<div class="MemoContent-s2" id="divMemo">
+						<h2 class="title">注意事項</h2>
+						<div class="listStyle">
+							<ol class="inner decimal" *ngIf="inquiryType !== 7">
+								<li>本服務功能為提供「幣倍卡現金回饋查詢」、「大戶卡現金回饋查詢」、「國外消費刷卡金回饋查詢」、「SPORT卡豐點回饋查詢」、「現金回饋卡現金回饋查詢」及「
+									MOP聯名卡豐點回饋查詢」，相關活動內容、回饋資格及各卡片回饋比例等，請參考永豐銀行活動網頁公告。</li>
+							</ol>
+							<ol class="inner decimal" *ngIf="inquiryType === 7">
+								<li>本服務功能為提供「DAWAY卡消費回饋查詢」，相關活動內容、回饋資格及回饋點數，請參照永豐銀行活動網頁公告。</li>
+								<li>DAWAY卡消費回饋LINE POINTS點數有效期限為最後一次獲得點數當日起算180日止，一旦超過有效期限，將會立即失效且無法復原，請至LINE APP「錢包」＞「LINE POINTS」＞「歷史紀錄」＞於點數下方查看使用期限。</li>
+								<li>新戶加碼資格自核卡月份起算12個月，範例：小豐2024年4月份核卡，可享有新戶加碼資格至2025年4月30日。</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,127 @@
+<div class="abgne_tab" *ngIf="!detailMode">
+	<ul class="ntabs">
+		<li routerLink="/Reward/TPointsRedemptionRecords" routerLinkActive="active"><a href="javascript:void(0)">兌換紀錄與設定</a></li>
+		<li class="active"><a href="javascript:void(0)">累積查詢</a></li>
+	</ul>
+</div>
+<div [formGroup]="form" *ngIf="!detailMode">
+	<table class="new-datatable" width="100%">
+		<tr style="height:8px"></tr>
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">查詢月份</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select formControlName="InquiryPeriod" mweb-select="請選擇月份">
+						<option value="" disabled>請選擇月份</option>
+						<option *ngFor="let month of monthOptions" [value]="month">{{month | date:'y/MM'}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="btn-zone">
+					<button type="submit" class="nbtn focus" (click)="onSubmit()">查詢</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<table class="ntable table-striped" width="100%"  *ngIf="!detailMode && resultModel?.TotalPoints">
+	<tr style="height:8px"></tr>
+	<tr>
+		<th class="mobile-col-8 text-left" colspan="2">當月發放T Points</th>
+		<td class="mobile-col-4 text-right">{{resultModel?.TotalPoints ? resultModel?.TotalPoints : '0' | number}}</td>
+		<td><i style="width: 10px;display: inline-block;"></i></td>
+	</tr>
+</table>
+<table class="ntable table-striped" width="100%" *ngIf="!detailMode && resultModel?.TotalPoints !== 0 && resultModel?.Summary">
+	<thead>
+		<tr style="height:8px"></tr>
+		<tr>
+			<th class="mobile-col-4 text-left">名稱</th>
+			<th class="mobile-col-4 text-right">消費金額小計</th>
+			<th class="mobile-col-4 text-right">T Points</th>
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of resultModel?.Summary" (click)="showDetail(item)">
+			<td>{{item.Name}}</td>
+			<td class="text-right">{{item.TotalAmt | number}}</td>
+			<td class="text-right">{{item.TPoints | number}}</td>
+			<td><i class="right-arrow"></i></td>
+		</tr>
+	</tbody>
+</table>
+<table class="ntable table-striped" width="100%" *ngIf="detailMode && detailA">
+	<thead *ngIf="detailMode && detailA.DataType === 1">
+		<tr style="height:8px"></tr>
+		<tr>
+			<th class="mobile-col-2">消費日<br>(入點日)</th>
+			<th class="mobile-col-5">金額 / T Points<br>消費項目</th>
+			<th class="mobile-col-3 text-right">等級<br>回饋率</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="detailMode && detailA.DataType === 1">
+		<tr *ngFor="let txitem of this.detailA?.Items">
+			<td class="text-center">{{txitem.TX_DATE}}<br>{{txitem.DE_DATE}}</td>
+			<td class="text-center">{{txitem.TX_AMT | number}} / {{txitem.POINT | number}}<br>{{txitem.MEMO}}</td>
+			<td class="text-right">{{txitem.LEVEL}}<br>{{txitem.FEEDBACK_RATE}}</td>
+		</tr>
+		<tr *ngIf="!this.detailA?.Items?.length">
+			<td colspan="9">查無資料！</td>
+		</tr>
+	</tbody>
+	<thead *ngIf="detailMode && detailA.DataType === 2">
+		<tr style="height:8px"></tr>
+		<tr>
+			<th class="mobile-col-2">消費日<br>入點日</th>
+			<th class="mobile-col-5">消費項目</th>
+			<th class="mobile-col-3 text-right">消費金額</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="detailMode && detailA.DataType === 2">
+		<tr *ngFor="let txitem of this.detailA?.Items">
+			<td class="text-center">{{txitem.TX_DATE}}<br>{{txitem.DE_DATE}}</td>
+			<td class="text-center">{{txitem.MEMO}}</td>
+			<td class="text-right">{{txitem.TX_AMT | number}}</td>
+		</tr>
+		<tr *ngIf="!this.detailA?.Items?.length">
+			<td colspan="9">查無資料！</td>
+		</tr>
+	</tbody>
+	<thead *ngIf="detailMode && detailA.DataType === 3">
+		<tr style="height:8px"></tr>
+		<tr>
+			<th class="mobile-col-2">入點日</th>
+			<th class="mobile-col-5">消費項目</th>
+			<th class="mobile-col-3 text-right">回饋點數</th>
+		</tr>
+	</thead>
+	<tbody *ngIf="detailMode && detailA.DataType === 3">
+		<tr *ngFor="let txitem of this.detailA?.Items">
+			<td class="text-center">{{txitem.DE_DATE}}</td>
+			<td class="text-center">{{txitem.MEMO}}</td>
+			<td class="text-right">{{txitem.POINT | number}}</td>
+		</tr>
+		<tr *ngIf="!this.detailA?.Items?.length">
+			<td colspan="9">查無資料！</td>
+		</tr>
+	</tbody>
+</table>
+<div class="btn-zone" *ngIf="detailMode">
+	<button type="submit" class="nbtn focus" (click)="onBack()">返回</button>
+</div>
+<div *ngIf="resultModel">
+	<div class="MemoContent-s2">
+		<h2 class="title">注意事項</h2>
+		<div class="listStyle">
+			<ul>
+				<li>「開啟」折抵信用卡帳單功能將於次月第一個營業日扣除T Points點數並折抵次月帳單。(EX：7月20日設定「開啟」折抵信用卡帳單，不再異動，則該T Points點數將於8月第一個營業日扣除並折抵8月份帳單。)</li>
+				<li>本服務功能為提供永豐55688聯名卡之T Points回饋查詢，相關活動內容及回饋資格等，請參考永豐銀行活動網頁公告。</li>
+				<li>本「月份」為T Points回饋月份，非實際消費月份或帳單月份。</li>
+			</ul>
+		</div>
+	</div>
+</div>

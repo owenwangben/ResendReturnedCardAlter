@@ -1,0 +1,38 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "ApplyDate": "2017/06/05",
+        "TCLimit": "200000",
+        "ExpDate": "2017/06/16",
+        "Status": "審查中"
+      },
+      {
+        "ApplyDate": "2017/05/20",
+        "TCLimit": "100000",
+        "ExpDate": "2017/05/30",
+        "Status": "申請成功"
+      },
+      {
+        "ApplyDate": "2017/05/05",
+        "TCLimit": "60000",
+        "ExpDate": "2017/05/16",
+        "Status": "已結案"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

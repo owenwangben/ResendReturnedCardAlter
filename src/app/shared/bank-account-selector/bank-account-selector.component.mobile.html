@@ -1,0 +1,66 @@
+<div>
+	<div class="row mobile-radiolist" *ngIf="IsSinoPacAccountAvailable">
+		<label [class.selected]="IsSinoPacAccountSelected">
+			<input type="radio"
+				name="IsSinoPacAccountSelected"
+				[(ngModel)]="IsSinoPacAccountSelected"
+				(ngModelChange)="IsSinoPacAccountSelectedChange($event)"
+				[value]="true"/>自行帳戶
+		</label>
+		<label [class.selected]="!IsSinoPacAccountSelected">
+			<input type="radio"
+				name="IsSinoPacAccountSelected"
+				[(ngModel)]="IsSinoPacAccountSelected"
+				(ngModelChange)="IsSinoPacAccountSelectedChange($event)"
+				[value]="false"/>他行帳戶
+		</label>
+	</div>
+	<div *ngIf="IsSinoPacAccountSelected else OtherBank">
+		<div style="height:2px"></div>
+		<div class="row mobile-col-12">
+			<div *ngIf="TransferAccounts?.length" class="artfld select col-6 mobile-col-12">
+				<select [(ngModel)]="account" mweb-select="請選擇">
+					<option value="" disabled>請選擇</option>
+					<option *ngFor="let item of TransferAccounts" [value]="item.AccountNo">
+						{{ item.AccountNo }}
+					</option>
+				</select>
+			</div>
+		</div>
+	</div>
+	<ng-template #OtherBank class="row mobile-col-12">
+		<div style="height:2px"></div>
+		<div *ngIf="BankTypes?.length && Banks?.length" class="artfld select mobile-col-12">
+			<select [(ngModel)]="bankType" (ngModelChange)="bankTypeChanged($event)" mweb-select="請選擇">
+				<option value="" disabled>請選擇</option>
+				<option *ngFor="let item of BankTypes" [value]="item.Type">
+					{{ item.TypeName }}
+				</option>
+			</select>
+		</div>
+		<div style="height:2px"></div>
+		<div *ngIf="bankType && Banks?.length" class="artfld select mobile-col-12">
+			<select [(ngModel)]="bank" mweb-select="請選擇銀行">
+				<option value="" disabled>請選擇銀行</option>
+				<option *ngFor="let item of Banks" [value]="item.BankCode"
+					[hidden]="item.Type != bankType || (item.BankCode == sinoPacBankCode && IsSinoPacAccountAvailable)">
+					{{ item.BankName }}
+				</option>
+			</select>
+		</div>
+		<div style="height:2px"></div>
+		<div *ngIf="bank && Branches?.length" class="artfld select mobile-col-12">
+			<select [(ngModel)]="branch"  mweb-select="請選擇分行">
+				<option value="" disabled>請選擇分行</option>
+				<option *ngFor="let item of Branches" [value]="item.BranchCode">
+					{{ item.FullName }}
+				</option>
+			</select>
+		</div>
+		<div style="height:2px"></div>
+		<div *ngIf="branch">
+			<input type="text" [(ngModel)]="account" class="artfld mobile-col-12"
+				placeholder="請輸入轉入帳號" numberOnly maxlength=16/>
+		</div>
+	</ng-template>
+</div>

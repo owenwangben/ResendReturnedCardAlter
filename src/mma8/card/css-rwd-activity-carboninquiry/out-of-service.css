@@ -1,0 +1,11 @@
+h3 {
+  font-size: 1rem; }
+  @media (min-width: 768px) {
+    h3 {
+      font-size: 1.75rem; } }
+
+.icon {
+  width: 4rem;
+  height: 4rem; }
+
+/*# sourceMappingURL=out-of-service.css.map */

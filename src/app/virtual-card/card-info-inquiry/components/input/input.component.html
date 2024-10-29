@@ -1,0 +1,34 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="new-datatable mobile-col-12">
+			<tbody>
+				<tr>
+					<th class="mobile-col-4">信用卡卡號</th>
+					<td>
+						<div class="artfld select col-3 mobile-col-12">
+							<select formControlName="CardNo" mweb-select="請選擇信用卡">
+								<option value="" disabled>請選擇信用卡</option>
+								<option *ngFor="let item of data.Cards" [value]="item.CardNo">{{item.Name + '(' + item.CardTypeDesc + ") " + item.CardNo?.slice(-4)}}</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th class="mobile-col-4">
+						知識性問答：
+					</th>
+					<td class="text-left">
+						<div>{{question}}</div>
+						<input type="radio" class="artfld circle" id="r11" formControlName="Answer" [value]=true>
+						<label for="r11"><span><span class="getCheck"></span></span>是</label>
+						<input type="radio" class="artfld circle" id="r12" formControlName="Answer" [value]=false>
+						<label for="r12"><span><span class="getCheck"></span></span>否</label>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<button type="submit" class="nbtn focus">確認</button>
+	</div>
+</form>

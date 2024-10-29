@@ -1,0 +1,72 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-details">
+				<div class="abgne_tab">
+					<ul class="ntabs">
+						<li class="active"><a href="javascript:void(0)">紅利點數查詢</a></li>
+						<li routerLink="/Reward/RedemptionRecords" routerLinkActive="active"><a href="javascript:void(0)">紅利兌換紀錄</a></li>
+					</ul>
+				</div>
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div class="tab_container">
+					<div class="tab_content">
+						<table class="ntable table-striped" *ngIf="!IsMobile">
+							<thead>
+								<tr>
+									<th>{{yearBeforeLast}}點數</th>
+									<th>{{lastYear}}點數</th>
+									<th>{{thisYear}}點數</th>
+									<th>目前可用點數</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngIf="model">
+									<td class="num-align">{{model?.YearBeforeLastPoint | number}}</td>
+									<td class="num-align">{{model?.LastYearPoint | number}}</td>
+									<td class="num-align">{{model?.ThisYearPoint | number}}</td>
+									<td class="num-align">{{model?.Point | number}}</td>
+								</tr>
+								<tr *ngIf="!model">
+									<td colspan="4">查無資料!</td>
+								</tr>
+							</tbody>
+						</table>
+						<table class="ntable table-striped" *ngIf="IsMobile">
+							<tr>
+								<th class="mobile-col-6">{{yearBeforeLast}}點數</th>
+								<td class="mobile-col-6">{{model?.YearBeforeLastPoint | number}}</td>
+							</tr>
+							<tr>
+								<th>{{lastYear}}點數</th>
+								<td>{{model?.LastYearPoint | number}}</td>
+							</tr>
+							<tr>
+								<th>{{thisYear}}點數</th>
+								<td>{{model?.ThisYearPoint | number}}</td>
+							</tr>
+							<tr>
+								<th>目前可用點數</th>
+								<td>{{model?.Point | number}}</td>
+							</tr>
+						</table>
+						<div class="rowElem">
+							<table class="new-datatable">
+								<tr>
+									<td>可兌換點數：{{model?.Point | number}} 點</td>
+								</tr>
+								<tr>
+									<td>即將到期點數：{{model?.YearBeforeLastPoint | number}}點</td>
+								</tr>
+								<tr>
+									<td>提醒您，即將到期點數將於今年底到期，點數到期後將失效不可兌換，歡迎至豐市集、7-11、全家進行兌換，謝謝。</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

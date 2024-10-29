@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit(display.formData);">
+	<app-cash-advance-display #display></app-cash-advance-display>
+	<div id="cash-advance-pwd" *ngIf="!showOTP">
+		<div class="formblock">
+			<table class="new-datatable">
+				<div>
+					<tbody>
+						<tr>
+							<th class="mobile-col-5">預借現金密碼</th>
+							<td>
+								<input type="text" style="-webkit-text-security:disc;" class="artfld col-4"
+									formControlName="PIN" numberOnly maxlength="4" placeholder="請輸入密碼"/>
+							</td>
+						</tr>
+					</tbody>
+				</div>
+			</table>
+		</div>
+	</div>
+	<div id="cash-advance-opt" *ngIf="showOTP">
+		<div class="formblock">
+			<div class="red {{isMobile ? '' : 'center'}}" style="line-height: 1.5em">
+					為確保交易安全，請於2分鐘內輸入動態密碼，交易處理依本行系統時間為主，逾時未輸入，視同取消認證。
+					<br>
+					重新產生簡訊驗證碼超過5次，系統將自動暫停傳送密碼，隔日再開放。<br>
+          若未收到簡訊，請留意收訊是否良好，或將手機關機重開後操作，避免造成簡訊動態密碼多次輸入錯誤。
+			</div>
+			<table class="new-datatable">
+					<tbody>
+						<tr>
+							<th *ngIf="!isMobile" class="mobile-col-5">簡訊動態密碼 (6碼)</th>
+							<th class="mobile-col-3" *ngIf="isMobile">
+								動態密碼
+							</th>
+							<td>
+								<input type="text" class="artfld" [ngStyle]="isMobile ? {'width': '100px'} : null"
+								formControlName="OTP" placeholder="請輸入動態密碼" numberOnly maxlength="6">
+								<span *ngIf="!timer" class="btn-zone" style="padding: 0;">
+									<button type="submit" class="nbtn focus" (click)='checkOTP()'>傳送密碼</button>
+								</span>
+								<span *ngIf="timer"  >{{countdown | number_to_hms}}</span>
+							</td>
+						</tr>
+					</tbody>
+			</table>
+		</div>
+	</div>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">再次確認</button>
+	</div>
+</form>

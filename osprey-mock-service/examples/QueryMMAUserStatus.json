@@ -1,0 +1,26 @@
+{
+    "Result": {
+        "Header": "SUCCESS",
+        "Message": null,
+        "MMACUSTID": "A1544362440",
+        "CARDCUSTID": "A154436244",
+        "CPRTCD": "6",
+        "WWWSTATUS": "3",
+        "PWDERRORS": 0,
+        "CODEERRORS": 0
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

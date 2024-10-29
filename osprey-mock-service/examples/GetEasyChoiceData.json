@@ -1,0 +1,43 @@
+{
+  "Result": {
+    "CrMaxLimit": "20000",
+	"PCode": "A001",
+	"Email": "amanda.chien@devpro.com.tw",
+    "Items": [
+      {
+        "RateCycle": "30",
+        "Fee": "0",
+        "FeeRate": "15"
+      },
+      {
+        "RateCycle": "24",
+        "Fee": "0",
+        "FeeRate": "16"
+      },
+      {
+        "RateCycle": "12",
+        "Fee": "0",
+        "FeeRate": "17"
+      },
+      {
+        "RateCycle": "9",
+        "Fee": "0",
+        "FeeRate": "18"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

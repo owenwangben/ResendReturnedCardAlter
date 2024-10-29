@@ -1,0 +1,249 @@
+<app-applycard-step-indicator [step]="2" [type]="flag > 0 ? 0 : 1"></app-applycard-step-indicator>
+<div class="content full-content">
+	<section class="trans-content">
+		<table class="new-datatable">
+			<tbody>
+				<tr>
+					<td>
+						<div class="success">
+							<i class="icon-tick"></i>
+							<p *ngIf="flag > 0">感謝您申請永豐信用卡！</p>
+							<p *ngIf="flag === 0">您已上傳成功！</p>
+						</div>
+						<div *ngIf="flag === 0" class="promote">
+							<div class="promote__content" *ngIf="source !== 1 && noTwdAccount">
+								<img class="promote__ico dawho" src="/mma8/card/images/DAWHO.png" alt="DAWHO">
+								<p class="promote__p">立即開立永豐數位帳戶，<br />2024/6/30前享新臺幣活存<br />最高利率1.5%，存款1元就可以計息！</p>
+								<div class="btn-zone">
+									<a [href]="applyDawhoUrl" class="nbtn focus size-s">立即申辦享優惠</a>
+								</div>
+							</div>
+							<div class="promote__content" *ngIf="showMgmButton" >
+								<img class="promote__ico mgm" src="/mma8/card/images/MGM.png" alt="MGM">
+								<p class="promote__p">推薦好友享刷卡金回饋！<br>2024/6/30前，成功推薦享每卡300元<br>第6名(含)以上再加碼，享每卡500元<br>(推薦人與被推薦人皆需刷卡消費)</p>
+								<div class="btn-zone">
+									<a href="https://bank.sinopac.com/sinopacBT/webevents/1809_mgm/index.html" class="nbtn blue size-s">立即推薦賺回饋</a>
+								</div>
+							</div>
+							<div class="promote__content">
+								<img class="promote__ico dawho" src="/mma8/card/images/LINEBIZ.png" alt="LINE">
+								<p class="promote__p"><span class="highlight_green">綁定永豐LINE官方帳號</span><br/>立即享信用卡即時消費通知</p>
+								<div class="btn-zone">
+								  <a href="https://linebc.sinopac.com/SmartRobotbcweb/1k9lZ5#open-browser" target="_blank" class="nbtn size-s {{showMgmButton? 'blue':(source !== 1 && noTwdAccount? 'focus':'green')}}">立即綁定</a>
+								</div>
+							</div>
+							<div class="promote__content" *ngIf="!(source !== 1 && noTwdAccount && showMgmButton)">
+								<img class="promote__ico dawho" src="/mma8/card/images/DACARD.png" alt="DACARD">
+								<p class="promote__p"><span class="highlight_blue">大咖DACARD App</span><br/>申請進度查詢、線上開卡一手搞定</p>
+								<div class="btn-zone">
+								  <a href="https://dmp.sinopac.com/DMP_SA/r/ws" class="nbtn blue size-s">立即下載</a>
+								</div>
+							</div>
+						</div>
+            <div *ngIf="!isShowDawhoAd && flag > 0" class="promote promote__card promote__card--odd">
+              <div class="promote__content ">
+                <img class="promote__ico mgm" src="/mma8/card/images/MGM.png" alt="MGM">
+                <p class="promote__p">推薦好友享刷卡金回饋！<br>2024/6/30前，成功推薦享每卡300元<br>第6名(含)以上再加碼，享每卡500元<br>(推薦人與被推薦人皆需刷卡消費)</p>
+                <div class="btn-zone">
+                  <a href="https://bank.sinopac.com/sinopacBT/webevents/1809_mgm/index.html" class="nbtn blue size-s">立即推薦</a>
+                </div>
+              </div>
+              <div class="promote__content">
+                <img class="promote__ico line" src="/mma8/card/images/LINEBIZ.png" alt="LINE">
+                <p class="promote__p">綁定永豐LINE官方帳號<br>立刻享信用卡即時消費通知</p>
+                <div class="btn-zone">
+                  <a href="https://linebc.sinopac.com/SmartRobotbcweb/1k9lZ5#open-browser" target="_blank" class="nbtn green size-s">立即綁定</a>
+                </div>
+              </div>
+              <div class="promote__content">
+                <img class="promote__ico dawho" src="/mma8/card/images/DACARD.png" alt="DAWHO">
+                <p class="promote__p">大咖DACARD APP<br>申請進度查詢、線上開卡一手搞定</p>
+                <div class="btn-zone">
+                  <a href="https://dmp.sinopac.com/DMP_SA/r/ws" class="nbtn cardBlue size-s">立即下載</a>
+                </div>
+              </div>
+            </div>
+            <div *ngIf="isShowDawhoAd && flag > 0" class="promote promote__card flex-wrap">
+              <div class="promote__content ">
+                <img class="promote__ico" src="/mma8/card/images/DAWHOT.png" alt="DAWHO">
+                <p class="promote__p text-left">【DAWAY新卡友限定】即日起至2024/12/31， DAWAY卡新卡友<span class="daway">設定永豐銀行帳戶自動扣繳</span>，用LINE Pay交易享<span class="daway">最高3% LINE POINTS點數回饋無上限</span>！<br>成為永豐DAWHO、線上完成扣繳設定，超便利！</p>
+                <div class="btn-zone">
+                  <a [href]="applyDawhoUrl" class="nbtn whoGold size-s">立即申辦</a>
+                </div>
+              </div>
+              <div class="promote__content">
+                <img class="promote__ico" src="/mma8/card/images/MGM.png" alt="MGM">
+                <p class="promote__p">推薦好友享刷卡金回饋！<br>2024/6/30前，成功推薦享每卡300元<br>第6名(含)以上再加碼，享每卡500元<br>(推薦人與被推薦人皆需刷卡消費)</p>
+                <div class="btn-zone">
+                  <a href="https://bank.sinopac.com/sinopacBT/webevents/1809_mgm/index.html" class="nbtn blue size-s">立即推薦</a>
+                </div>
+              </div>
+              <div class="promote__content ">
+                <img class="promote__ico" src="/mma8/card/images/LINEBIZ.png" alt="LINE">
+                <p class="promote__p">綁定永豐LINE官方帳號<br>立刻享信用卡即時消費通知</p>
+                <div class="btn-zone">
+                  <a href="https://linebc.sinopac.com/SmartRobotbcweb/1k9lZ5#open-browser" target="_blank" class="nbtn green size-s">立即綁定</a>
+                </div>
+              </div>
+              <div class="promote__content">
+                <img class="promote__ico" src="/mma8/card/images/DACARD.png" alt="DACARD">
+                <p class="promote__p">大咖DACARD APP<br>申請進度查詢、線上開卡一手搞定</p>
+                <div class="btn-zone">
+                  <a href="https://dmp.sinopac.com/DMP_SA/r/ws" class="nbtn cardBlue size-s">立即下載</a>
+                </div>
+              </div>
+            </div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td></td>
+				</tr>
+				<tr *ngIf="flag === 0">
+					<td class="reminds">
+						<p>若有任何需服務之處，請聯絡客服專線 02-2528-7776。</p>
+					</td>
+				</tr>
+				<tr *ngIf="flag === 1">
+					<td class="reminds" *ngIf="!isDawhoCard">
+						<p>
+							本行將寄出申請書 PDF 至您所填寫的 Email 信箱供您備查，請妥善保存。為維護您的個人資料安全，
+							<span class="pink2">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776，或透過個人化資料自主運用(MyData)平臺進行資料上傳。
+						</p>
+					</td>
+					<td class="reminds" *ngIf="isDawhoCard">
+						<p class="pink2">提醒您：
+						<ol class="decimal">
+							<li>本行將寄出申請書 PDF 至您所填寫的 Email 信箱。</li>
+							<li>若您未成功申請數位帳戶，將無法核發DAWHO現金回饋信用卡。</li>
+						</ol>
+						<p>
+							為維護您的個人資料安全，
+							<span class="pink2">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776，或透過個人化資料自主運用(MyData)平臺進行資料上傳。
+						</p>
+					</td>
+				</tr>
+				<tr *ngIf="flag === 2">
+					<td class="reminds" *ngIf="!isDawhoCard">
+						<p class="pink2">提醒您：
+							<br class="hidden-max">申請尚未完成，請協助進行以下事項以完成。</p>
+						<br class="hidden-max">
+						<p>流程 :</p>
+						<ol class="decimal">
+							<li>本行將寄出申請書 PDF 至您所填寫的 Email 信箱供您備查，<span class="red">請妥善保存，無須寄回</span>。</li>
+							<li>若您尚未上傳身分證及財力證明，請備妥資料拍照上傳；或以傳真的方式將文件傳真至 02-8253-8074。</li>
+						</ol>
+						<br>
+						<p>為維護您的個人資料安全，<span class="red">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776，或透過個人化資料自主運用(MyData)平臺進行資料上傳。</p>
+					</td>
+					<td class="reminds" *ngIf="isDawhoCard">
+						<p class="pink2">提醒您：
+						<ol class="decimal">
+							<li>本行將寄出申請書PDF至您所填寫的Email信箱。</li>
+							<li>若您尚未上傳身分證及財力證明，請備妥資料拍照上傳，或將文件傳真或寄回。</li>
+							<li>若您未成功申請數位帳戶，將無法核發DAWHO現金回饋信用卡。</li>
+						</ol>
+						<br>
+						<p>為維護您的個人資料安全，<span class="red">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776，或透過個人化資料自主運用(MyData)平臺進行資料上傳。</p>
+					</td>
+				</tr>
+				<tr *ngIf="flag === 3">
+					<td class="reminds">
+						<p class="pink2">提醒您：
+							<br class="hidden-max">申請尚未完成，請協助進行以下事項以完成。</p>
+						<br class="hidden-max">
+						<p>流程 :</p>
+						<ol class="decimal">
+							<li>本行將寄出申請書 PDF 至您所填寫的 Email 信箱，<span class="red">請印出後簽名並傳真或寄回本行</span>。</li>
+						</ol>
+						<br>
+						<p>為維護您的個人資料安全，<span class="red">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776。</p>
+					</td>
+				</tr>
+				<tr *ngIf="flag === 4">
+					<td class="reminds">
+						<p class="pink2">提醒您：
+							<br class="hidden-max">申請尚未完成，請協助進行以下事項以完成。
+						</p>
+						<br class="hidden-max">
+						<p>流程 :</p>
+						<ol class="decimal">
+							<li>本行將寄出申請書 PDF 至您所填寫的 Email 信箱，<span class="red">請印出後簽名並傳真或寄回本行</span>。</li>
+							<li>若您尚未上傳身分證及財力證明，請備妥資料拍照上傳,或將文件與申請書一併傳真或寄回。</li>
+						</ol>
+						<br>
+						<p>為維護您的個人資料安全，<span class="red">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼</span>，若有任何需服務之處請聯絡客服專線 02-2528-7776。</p>
+					</td>
+				</tr>
+				<div class="btn-zone flex-inline-min" *ngIf="isMitsuiOutletParkCard">
+					<a [href]="applyDawhoUrl" class="nbtn focus" >邀請您立即申請DAWHO數位帳戶</a>
+				</div>
+				<tr class="line" *ngIf="!isMitsuiOutletParkCard">
+					<td></td>
+				</tr>
+				<tr *ngIf="!isMitsuiOutletParkCard">
+					<td class="reminds">
+						<p><img src="/MMA8/card/images/MyData_Logo.png" style="width: 25px; vertical-align: middle;" />個人化資料自主運用(MyData)平臺說明</p>
+						<br>
+						<p>為簡化線上申辦信用卡流程，於本行線上申辦信用卡網站透過個人化資料自主運用(MyData)平臺，經您完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡之相關證明文件。若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+						<br>
+						<p class="pink2">※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>
+						<br>※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用 iOS 12.4、Android 8.0 以上之系統。
+					</td>
+				</tr>
+				<div class="btn-zone flex-inline-min" *ngIf="!isMitsuiOutletParkCard">
+					<a href="javascript:void(0)" class="nbtn focus" (click)="DoMyData()">前往MyData平臺</a>
+				</div>
+
+				<tr *ngIf="flag === 5">
+					<td class="reminds">
+						<p>
+							本行將寄出申請書 PDF 至您所填寫的 Email 信箱供您備查，請妥善保存。為維護您的個人資料安全，
+							<span class="pink2">本行設定您的身分證字號為加密密碼 (英文字母為大寫)，請於開啟 PDF 檔案時輸入此密碼，虛擬卡號等資訊本行{{ applyFlag == "01" ? "會儘速" : "約1-2天將" }}以簡訊傳送至您所填寫的手機號碼，請留意簡訊。</span>若有任何需服務之處請聯絡客服專線 02-2528-7776。
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div id="gotoMydata">
+			<h3>前往個人化資料自主運用(MyData)平臺</h3>
+			<p>您已充分閱讀<a href="{{personalDataTermsUrl}}" class="udline open-lbox" target="_blank">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>並同意永豐銀行得蒐集處理及利用您的個人資料，接下來您即將離開永豐銀行網頁，前往個人化資料自主運用(MyData)平臺。</p>
+			<br>
+			<p>為簡化線上申辦信用卡流程，於本行線上申辦信用卡網站透過個人化資料自主運用(MyData)平臺服務，經您完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡之相關證明文件。若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+			<br>
+			<p class="pink2"><span *ngIf="isApp">目前提供自然人憑證、健保卡、行動自然人憑證(TW FidO) 、晶片金融卡、軟體憑證方式進行身分驗證，請選擇適合您的身分驗證方式。<br></span>
+				※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>
+				<br>※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用 iOS 12.4、Android 8.0 以上之系統。
+				<div class="btn-zone">
+					<!-- <a *ngIf="!isApp" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">同意並前往MyData</a> -->
+					<a href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">{{((isApp && isAndroid) || (!isMobile && (!isFromIOS && !isAndroid))) || isApp ? "其他驗證方式" : "同意並前往MyData"}}</a>
+					<a *ngIf="(isApp && isAndroid) || (!isMobile && (isFromIOS && isAndroid))" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="mydataCardVerify()">晶片金融卡</a>
+					<a *ngIf="isApp" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="softCertCheck()">軟體憑證</a>
+			</div>
+		</div>
+
+    <div id="dawhoApplyRedirect" class="error-msg">
+      <h3>綁定數位帳戶自扣享最高3%回饋無上限</h3>
+      <div>
+        <p class="error-msg-text notice-block">【新卡友限定】即日起至2024/12/31，DAWAY卡新卡友設定永豐銀行帳戶自動扣繳，用LINE Pay交易享<span class="daway">最高3% LINE POINTS點數回饋無上限</span>！</p>
+        <div class="btn-zone">
+          <a href="javascript:void(0)" (click)="closelbox()" class="nbtn">稍後申辦</a>
+          <a href="https://applydawho.sinopac.com/OpenAccount/OpenAccount/WhichOne?_sasdk=dMThiZjU5ZTkzZjAyMTUtMGEyNTVkMzMwZjNkOTgtMjYwMzEwNTEtMjA3MzYwMC0xOGJmNTllOTNmMTg4OQ#open-browser" target="_blank" class="nbtn focus">立即申辦</a>
+        </div>
+      </div>
+    </div>
+
+	</div>
+</div>
+<form id="mydata-form" method="post">
+	<input type="hidden" name="BusinessNo" value="{{mydataForm?.BusinessNo}}">
+	<input type="hidden" name="ApiVersion" value="{{mydataForm?.ApiVersion}}">
+	<input type="hidden" name="HashKeyNo" value="{{mydataForm?.HashKeyNo}}">
+	<input type="hidden" name="VerifyNo" value="{{mydataForm?.VerifyNo}}">
+	<input type="hidden" name="Token" value="{{mydataForm?.Token}}">
+	<input type="hidden" name="IdentifyNo" value="{{mydataForm?.IdentifyNo}}">
+</form>

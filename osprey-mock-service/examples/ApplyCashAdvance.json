@@ -1,0 +1,25 @@
+{
+  "Result": {
+    "Success": true,
+    "RefNo": "YTRDX316556985",
+    "ResultCode": "00",
+    "ResultMessage": "信用卡授權交易完成。(41700)",
+    "ResultCode2": "M0",
+    "ResultMessage2": "系統整理中，請稍後再試。(418M0) ",
+    "IsPinError": false
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

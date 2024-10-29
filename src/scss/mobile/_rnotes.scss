@@ -1,0 +1,22 @@
+.rnotes {
+	background: #E3E3E3;
+	margin: 0px 0px;
+	padding: 10px 0 10px 0;
+
+	span {
+		font-weight: bold;
+		// color: #b9160f;
+		// color: red;
+		display: block;
+		margin-bottom: 10px;
+		&.transaction_number {
+			margin-bottom: 30px;
+			&:after {
+				content: url('/mma8/card/images/success.png');
+				position: absolute;
+				right: 0px;
+				margin-top: -5px;
+			}
+		}
+	}
+}

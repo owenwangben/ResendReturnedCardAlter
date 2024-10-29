@@ -1,0 +1,68 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<h1>{{isFamilyBarcode ? messages?.TitleFamilyMart_HiLife : messages?.TitleOf7_11}}</h1>
+		<div style="color: #e72411;margin-top:1em;" *ngIf="errorMessage">{{errorMessage}}</div>
+
+		<div class="bar_code_711 center" *ngIf="success && !isFamilyBarcode">
+			<form [formGroup]="form">
+				<label>
+				<input type="radio" formControlName="IsCurrBalBarcode" [value]="true" (click)="showBarcode(1)">{{messages?.IsCurrBalBarcode_Y}}
+				</label>
+				<label>
+					<input type="radio" formControlName="IsCurrBalBarcode" [value]="false" (click)="showBarcode(2)">{{messages?.IsCurrBalBarcode_N}}
+				</label>
+			</form>
+
+			<div class="note_711 remark" style="color: #e72411;margin-top:1em;">{{remarkOf7_11}}</div>
+			<img height="340" width="270" style="transform:rotate(270deg)" src="data:image/jpeg;base64,{{barcode}}" *ngIf="barcode">
+		</div>
+
+		<div class="bar_code_family" *ngIf="success && isFamilyBarcode">
+			<div class="area">
+				<div class="info">{{messages?.CName}} :  {{resultModel?.CName}}</div>
+				<div id="ReBarcodeA" class="barcode" *ngIf="resultModel?.COLLECTION_BARCODE">
+					<img height="44" width="100%" src="data:image/jpeg;base64,{{resultModel?.COLLECTION_BARCODE}}">
+				</div>
+				<div id="InfoA" class="info">
+					{{resultModel?.COLLECTION}}
+				</div>
+
+				<div id="ReBarcodeB" class="barcode" *ngIf="resultModel?.BARCODE2_BARCODE">
+					<img height="44" width="100%" src="data:image/jpeg;base64,{{resultModel?.BARCODE2_BARCODE}}">
+				</div>
+				<div id="InfoB"  class="info">
+					{{resultModel?.BARCODE2}}
+				</div>
+			</div>
+			<div class="area">
+				<div class="info">{{messages?.CURRBAL}} : {{resultModel?.CURRBAL | number}}元</div>
+				<div  id="ReBarcodeC" class="barcode" *ngIf="resultModel?.CURRBAL_BARCODE">
+					<img height="44" width="100%" src="data:image/jpeg;base64,{{resultModel?.CURRBAL_BARCODE}}">
+				</div>
+				<div id="InfoC"  class="info">
+					{{resultModel?.CURRBAL_BARCODE_TEXT}}
+				</div>
+			</div>
+			<div class="area">
+				<div class="info">{{messages?.DUEAMT}} : {{resultModel?.DUEAMT | number}}元</div>
+				<div  id="ReBarcodeD" class="barcode" *ngIf="resultModel?.DUEAMT_BARCODE">
+					<img height="44" width="100%" src="data:image/jpeg;base64,{{resultModel?.DUEAMT_BARCODE}}">
+				</div>
+				<div id="InfoD"  class="info">
+					{{resultModel?.DUEAMT_BARCODE_TEXT}}
+				</div>
+			</div>
+		</div>
+		<!-- 注意事項 -->
+		<div class="notesContent" style="padding-top: 0.3em;font-size: 0.78em;" *ngIf="success">
+			<div class="notesTitle" style="font-size: 1.1em;color: #e72411;">{{messages?.Notes}}</div>
+			{{messages?.Notes_1}}<br>
+			{{messages?.Notes_2}}<br>
+		</div>
+		<!-- 注意事項 end-->
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="0" [Token]="token"></app-mobile-statement-nav>
+</div>

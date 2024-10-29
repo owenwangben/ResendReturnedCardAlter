@@ -1,0 +1,225 @@
+@charset "UTF-8";
+
+.wrapper {
+	width: 100%;
+}
+.container {
+	max-width: 500px;
+}
+.logo {
+	background-image: url(../images/sinopac-logo-min.svg);
+	height: 30px;
+	background-repeat: no-repeat;
+	background-size: contain;
+	display: block;
+	background-position: left top;
+	padding: 3px 0px 0px 140px;
+	color: #e72411;
+	font-weight: bold;
+	font-size: 120%;
+	width:  300px;
+	margin:  auto;
+}
+h1 {
+	font-size: 130%;
+	text-align: center;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #e72411;
+	margin-bottom: 10px;
+}
+body#index {
+	color: #fff;
+	background-color: #264a91;
+}
+#index a.logo {
+	color: #fff;
+	margin: auto;
+	float: none;
+}
+header {
+	background-color: #fff;
+	padding: 10px 10px;
+	width: 100%;
+	border-bottom: 6px solid #d00f24;
+}
+#index header {
+	margin-bottom: 50px;
+}
+input[type="text"], textarea, input[type="Password"] {
+	width: 100%;
+	padding: 8px;
+	margin-bottom: 10px;
+}
+input[type="submit"], input[type="reset"], input[type="button"], .btn, .btns a {
+	width: 100%;
+	background-color: #e82411;
+	color: #fff;
+	font-weight: bolder;
+	margin-bottom: 10px;
+}
+#index a {
+	color: #fff;
+}
+footer {
+	color:  #fff;
+	text-align: center;
+	font-size: 90%;
+	background-color: #254a91;
+	padding: 10px;
+	position:  fixed;
+	width:  100%;
+	bottom: 0;
+}
+#index main {
+	padding: 10px;
+	background-color: transparent;
+}
+#index .wrapper {
+	background-color: #e82411;
+	padding-top: 50px;
+}
+input[type="submit"], input[type="reset"], input[type="button"]:hover, .btn, .btns a {
+	background-color: #e92510;
+	color: #fff;
+	
+}
+#index img {
+	height: 43px;
+	width: auto;
+	margin-right: 10px;
+}
+nav {
+	background-color: #264991;
+	color: #fff;
+	text-align: center;
+	font-size: 90%;
+	line-height: 1.2;
+	width: 100%;
+	float: left;
+	position: fixed;
+	bottom: 0;
+}
+nav a {
+	color: #fff;
+}
+nav i {
+	font-size: 150%;
+}
+nav .col:hover {
+	background-color: #e72411;
+}
+nav .col {
+	cursor: pointer;
+	padding: 10px;
+}
+i.fas.fa-home {
+	color: #d10f24;
+	font-size: 180%;
+	margin-top: 5px;
+	display:  none;
+}
+main {
+	padding: 20px 5px;
+	clear: both;
+	background-color: #fff;
+	padding-bottom: 90px;
+}
+main a {
+	color: #000;
+}
+ul.listNews li:nth-child(even) {
+	background-color: #eee;
+}
+li {
+	padding: 5px;
+}
+nav a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+nav i {
+	margin-bottom: 5px;
+}
+nav li:hover, nav li.active {
+	background-color: #e82411;
+}
+th {
+	background-color: #e82411;
+	color: #fff;
+	text-align: center;
+	padding:  5px 0px;
+}
+tr:nth-child(even) {
+	background-color: #eee;
+}
+tr:last-child {
+	background-color: #fff;
+	border-top: 1px solid #e92510;
+}
+table {
+	margin-bottom: 20px;
+	width:  100%;
+}
+.logo span {
+	border-left: 1px solid #aaa;
+	padding-left: 10px;
+	margin-left: 10px;
+}
+header a,header a:hover {
+	color: #d10f24;
+}
+footer a {
+    color:  #fff;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+    
+    background: #eee;
+    color: #000;
+	
+    
+}.ui-state-active a, .ui-state-active a:link, .ui-state-active a:visited {
+	color: #000;}
+.ui-accordion .ui-accordion-content {
+    padding: 10px;
+    
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-right, .ui-corner-br {
+    border-bottom-right-radius: 0px;
+}
+.ui-corner-all, .ui-corner-bottom, .ui-corner-left, .ui-corner-bl {
+    border-bottom-left-radius: 0px;
+}
+.ui-widget-content {
+    border: 1px solid #ddd;
+    background: #fff;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-right, .ui-corner-tr {
+    border-top-right-radius: 0px;
+}
+.ui-corner-all, .ui-corner-top, .ui-corner-left, .ui-corner-tl {
+    border-top-left-radius: 0px;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+    
+    background: #eee;
+   
+    color: #000;
+}.ui-state-default a, .ui-state-default a:link, .ui-state-default a:visited {
+	color: #000;}
+.ui-state-default .ui-icon,.ui-state-active .ui-icon {
+	
+    
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	border: 1px solid #cccccc;}
+i.fas.fa-sync-alt {
+    margin-left: 5px;
+    color: #fff;
+    background-color: #0ca3b1;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding-top: 7px;
+    border-radius: 100px;
+}

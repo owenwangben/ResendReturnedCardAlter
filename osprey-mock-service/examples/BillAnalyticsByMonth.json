@@ -1,0 +1,243 @@
+{
+	"Result": {
+        "Items": [
+			{
+				"CardIdx": 0,
+				"Month": "201912",
+				"Amount": 7890.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202001",
+				"Amount": 14220.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202002",
+				"Amount": 19520.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202003",
+				"Amount": 10354.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202004",
+				"Amount": 23580.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202005",
+				"Amount": 48504.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202006",
+				"Amount": 26115.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202007",
+				"Amount": 14668.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202008",
+				"Amount": 35210.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202009",
+				"Amount": 23580.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202010",
+				"Amount": 22550.0
+			},
+			{
+				"CardIdx": 0,
+				"Month": "202011",
+				"Amount": 28890.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "201912",
+				"Amount": 100.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202001",
+				"Amount": 200.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202002",
+				"Amount": 300.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202003",
+				"Amount": 400.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202004",
+				"Amount": 500.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202005",
+				"Amount": 600.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202006",
+				"Amount": 200.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202007",
+				"Amount": 300.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202008",
+				"Amount": 400.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202009",
+				"Amount": 500.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202010",
+				"Amount": 600.0
+			},
+			{
+				"CardIdx": 1,
+				"Month": "202011",
+				"Amount": 700.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "201912",
+				"Amount": 1000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202001",
+				"Amount": 2000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202002",
+				"Amount": 3000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202003",
+				"Amount": 4000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202004",
+				"Amount": 5000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202005",
+				"Amount": 6000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202006",
+				"Amount": 2000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202007",
+				"Amount": 3000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202008",
+				"Amount": 4000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202009",
+				"Amount": 5000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202010",
+				"Amount": 6000.0
+			},
+			{
+				"CardIdx": 2,
+				"Month": "202011",
+				"Amount": 7000.0
+			},
+			{
+				"CardIdx": 3,
+				"Month": "201912",
+				"Amount": 100.0
+			},
+			{
+				"CardIdx": 3,
+				"Month": "202001",
+				"Amount": 200.0
+			},
+			{
+				"CardIdx": 3,
+				"Month": "202002",
+				"Amount": 300.0
+			},
+			{
+				"CardIdx": 3,
+				"Month": "202004",
+				"Amount": 500.0
+			},
+			{
+				"CardIdx": 3,
+				"Month": "202005",
+				"Amount": 600.0
+			}
+        ],
+		"Cards": [
+			{
+				"Index": 0,
+				"Name": "保倍卡(1234)"
+			},
+			{
+				"Index": 1,
+				"Name": "保倍卡(5678)附卡"
+			},
+			{
+				"Index": 2,
+				"Name": "DAWHO現金回饋卡(5566)"
+			},
+			{
+				"Index": 3,
+				"Name": "DAWHO現金回饋卡(0857)附卡"
+			}
+		]
+	},
+	"Header": {
+		"SessionID": "",
+		"ApplicationName": "EWEB2",
+		"ReferenceNo": "",
+		"UserID": "",
+		"RequestTime": "",
+		"TxCode": "",
+		"RemoteAddr": "",
+		"PageName": "",
+		"SsaToken": ""
+	},
+	"ResultCode": "00",
+	"ResultMessage": "",
+	"Error": null
+}

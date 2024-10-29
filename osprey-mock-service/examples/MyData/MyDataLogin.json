@@ -1,0 +1,25 @@
+{
+    "Result": {
+        "BusinessNo": "86517384",
+        "ApiVersion": "1.0",
+        "HashKeyNo": "2",
+        "VerifyNo": "a9409055-7565-4012-9c18-4da4070e4a12",
+        "Token": "1460aaf9eb4442f0a156b5d6b710891f0751de03",
+        "IdentifyNo": "d9d7f2860ef417b508934fd229bd447cc4ab73d66f94bfa611c0d3e4e6fee233",
+        "TwidPortalUrl": "http://10.11.37.16/IDPortal"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "0000",
+    "ResultMessage": "成功[0000]",
+    "Error": null
+}

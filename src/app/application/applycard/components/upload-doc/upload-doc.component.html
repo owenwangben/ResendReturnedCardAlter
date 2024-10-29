@@ -1,0 +1,638 @@
+<app-applycard-step-indicator [step]="1" [type]="step >= 0 ? 0 : 1"></app-applycard-step-indicator>
+<div class="content transparent">
+	<div class="no-upload">
+		<div *ngIf="step >= 0; else other">
+			<p class="pink2 center">為加速申請流程建議您上傳身分證及財力證明文件。提醒您，檔案格式限JPG、PNG、TIF檔，單一檔案大小不得超過5MB，財力證明文件最多上傳10張。</p>
+		</div>
+		<ng-template #other>
+			<p class="pink2 center mt20">提醒您，檔案格式限JPG、PNG、TIF檔，單一檔案大小不得超過 5MB，財力證明文件最多上傳10張。</p>
+		</ng-template>
+	</div>
+</div>
+<div class="content full-content">
+	<section class="trans-content">
+		<table class="new-datatable vmdl">
+			<tbody>
+				<tr>
+					<th>
+						<p>身分證正面影像</p>
+					</th>
+					<td>
+						<div *ngIf="isQuickaccount">
+							<p class="pink2" style="font-weight: bold">已拉取您雲端開戶上傳之影像</p>
+						</div>
+						<div *ngIf="isDawhoApplyCard">
+							<p class="pink2" style="font-weight: bold">已拉取您數位帳戶上傳之影像</p>
+						</div>
+						<div *ngIf="isocruploadsuccess">
+							<p class="pink2" style="font-weight: bold">身分證正面影像已上傳</p>
+						</div>
+						<div class="id-upload-block" *ngIf="!isDawhoApplyCard && !isocruploadsuccess && !isQuickaccount">
+							<input type="file" ng2FileSelect [uploader]="uploaders[0]" accept="image/jpeg,image/tiff,image/png" id="id_upload1"
+								name="upload_id1" class="artfld upload-img" (change)="readUrl($event, 0, uploaders[0])">
+							<label for="id_upload1">
+								<i class="icon-img"></i>
+								<span>上傳圖片</span>
+							</label>
+							<span class="filename"><a *ngIf="img_fname[0]" href="javascript:void(0)" class="remove" (click)="removefilename(0)"
+									style="display: inline;"></a><span>{{ img_fname[0] }}</span></span>
+							<div class="id-sample">
+								<img *ngIf="img_src[0]" [src]="img_src[0]" [alt]="img_fname[0]" style="width:100%;height:100%;">
+							</div>
+
+						</div>
+					</td>
+				</tr>
+				<tr class="line">
+					<td colspan="2"></td>
+				</tr>
+				<tr>
+					<th>
+						<p>身分證反面影像</p>
+					</th>
+					<td>
+						<div *ngIf="isQuickaccount">
+							<p class="pink2" style="font-weight: bold">已拉取您雲端開戶上傳之影像</p>
+						</div>
+						<div *ngIf="isDawhoApplyCard">
+							<p class="pink2" style="font-weight: bold">已拉取您數位帳戶上傳之影像</p>
+						</div>
+						<div *ngIf="isocruploadsuccess">
+							<p class="pink2" style="font-weight: bold">身份證反面影像已上傳</p>
+						</div>
+						<div class="id-upload-block" *ngIf="!isDawhoApplyCard && !isocruploadsuccess && !isQuickaccount">
+							<input type="file" ng2FileSelect [uploader]="uploaders[1]" accept="image/jpeg,image/tiff,image/png" id="id_upload2"
+								name="upload_id2" class="artfld upload-img" (change)="readUrl($event, 1, uploaders[1])">
+							<label for="id_upload2">
+								<i class="icon-img"></i>
+								<span>上傳圖片</span>
+							</label>
+							<span class="filename"><a *ngIf="img_fname[1]" href="javascript:void(0)" class="remove" (click)="removefilename(1)"
+									style="display: inline;"></a><span>{{ img_fname[1] }}</span></span>
+							<div class="id-sample">
+								<img *ngIf="img_src[1]" [src]="img_src[1]" style="width:100%;height:100%;">
+							</div>
+
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+<div class="content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block mb1">
+			<legend>財力證明上傳</legend>
+		</fieldset>
+		<div>
+			<p class="mb1">
+				您可至少擇一上傳: 健保APP個人投保紀錄、最新年度扣繳憑單、近二個月薪資單、近二個月薪資轉帳明細、近二個月活儲往來明細(含內頁及封面) 、其他證明文件(如最新年度綜所稅各類所得、財產資料清單、未到期定存證明、不動產證明….等)<br>
+				<span class="pink2">若您為永豐銀行存款戶/薪轉戶可先不用提供您的財力證明，若有需要將會通知您提供。</span>
+			</p>
+			<p class="pink2" *ngIf="isDawhoApplyCard || isocruploadsuccess || (!isDawhoApplyCard && !uploadFileIds[0] && step >= 0)">
+				<img src="/MMA8/card/images/MyData_Logo.png"
+					style="width: 25px; vertical-align: middle;" />※財力證明也可於確認上傳後，利用個人化資料自主運用(MyData)平臺進行資料上傳，更多資訊請至
+				<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>。
+			</p>
+			<div class="btn-zone inline">
+				<a href="javascript:void(0)" class="nbtn size-s open-lbox" ata-lboxid="#application"
+					(click)="openlbox('#application')">點我看財力證明攻略</a>
+			</div>
+		</div>
+		<br>
+		<p class="pink2">*選擇下列選項才能上傳財力證明文件唷，上傳兩種類別以上請選擇其他證明文件</p>
+		<ul class="mb1">
+			<li>
+				<input class="artfld tickr" id="a1" type="radio" name="statement" value="8"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a1">
+					<span><span class="getCheck"></span></span>
+					健保APP個人投保紀錄
+				</label>
+			</li>
+			<li>
+				<input class="artfld tickr" id="a2" type="radio" name="statement" value="9"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a2">
+					<span><span class="getCheck"></span></span>
+					最新年度扣繳憑單
+				</label>
+			</li>
+			<li>
+				<input class="artfld tickr" id="a3" type="radio" name="statement" value="10"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a3">
+					<span><span class="getCheck"></span></span>
+					近二個月薪資單
+				</label>
+			</li>
+			<li>
+				<input class="artfld tickr" id="a4" type="radio" name="statement" value="11"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a4">
+					<span><span class="getCheck"></span></span>
+					近二個月薪資轉帳明細
+				</label>
+			</li>
+			<li>
+				<input class="artfld tickr" id="a5" type="radio" name="statement" value="12"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a5">
+					<span><span class="getCheck"></span></span>
+					近二個月活儲往來明細(含內頁及封面)
+				</label>
+			</li>
+			<li>
+				<input class="artfld tickr" id="a6" type="radio" name="statement" value="3"
+					(click)="initFileUploader($event.target.value)">
+				<label for="a6">
+					<span><span class="getCheck"></span></span>
+					其他證明文件
+					<small class="gray">(如最新年度綜所稅各類所得、財產資料清單、未到期定存證明、不動產證明….等)</small>
+				</label>
+			</li>
+		</ul>
+		<ul class="fupload" id="fuploadlist1">
+			<li class="fupload__item" *ngFor="let fname of fin_state_img_fname; let idx = index">
+				<div class="fupload__title">{{fname}}</div>
+				<a class="fupload__del" href="javascript:void(0)" (click)="removefilename(idx + 2)"></a>
+			</li>
+		</ul>
+		<div class="id-upload-block">
+			<div class="btn-zone">
+				<input class="fupload__input visually-hidden artfld tickr upload-img" id="fupload1" type="file"
+					data-docname="money_proof" accept="image/jpeg,image/tiff,image/png" ng2FileSelect [uploader]="uploaders[2]"
+					(change)="readUrl($event, 2, uploaders[2])" [style.display]="checkstatement()">
+				<label id="statementBtnUpload" for="fupload1" class="fupload__btn mt10">
+					<i class="icon-img"></i><span>上傳圖片</span></label>
+			</div>
+		</div>
+	</section>
+</div>
+<div class="content full-content" *ngIf="!step">
+	<section class="trans-content">
+		<table class="new-datatable vmdl">
+			<tbody>
+				<tr>
+					<td class="reminds">
+						<p><img src="/MMA8/card/images/MyData_Logo.png" style="width: 25px; vertical-align: middle;" />使用個人化資料自主運用(MyData)平臺補件</p>
+						<br>
+						<p>為簡化線上申辦信用卡補件服務流程，於本行線上申辦信用卡網站透過個人化資料自主運用(MyData)平臺，經消費者完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡之相關證明文件。 若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+						<br>
+						<p class="pink2">※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a><br>
+						※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用 iOS 12.4、Android 8.0 以上之系統。
+						<br>※提醒您，若已於網站上傳補件，請點選「確認上傳」按鈕即可，不須再經由My Data平臺認證。
+						</p>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</section>
+</div>
+
+<div class="btn-zone flex-inline-min">
+	<a *ngIf="!isDawhoApplyCard && (imgExists(0) || imgExists(1) || imgExists(2) || isocruploadsuccess || isQuickaccount) && step >= 0" href="javascript:void(0)" class="nbtn focus disabled" >暫不上傳</a>
+	<a *ngIf="!isDawhoApplyCard && (!imgExists(0) && !imgExists(1) && !imgExists(2) && !isocruploadsuccess && !isQuickaccount) && step >= 0" href="javascript:void(0)" class="nbtn focus" (click)="submit(false, false)">暫不上傳</a>
+	<a href="javascript:void(0)" class="nbtn focus open-lbox" (click)="openlbox('#check-upload-items')">確認上傳</a>
+	<a *ngIf="!step" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="DoMyData()">前往MyData平臺</a>
+</div>
+
+<div class="lboxed">
+	<div class="close"></div>
+	<div class="lbox-block">
+		<div id="check-upload-items" class="check-upload-items">
+			<h3>上傳文件確認</h3>
+			<ol class="disc">
+				<li class="id_positive">身分證正面：
+					<span *ngIf="imgExists(0) || isDawhoApplyCard || isQuickaccount || isocruploadsuccess">有</span>
+					<span *ngIf="!isDawhoApplyCard && !imgExists(0) && !uploadFileIds[0] && !isQuickaccount && !isocruploadsuccess" class="pink2">無</span>
+				</li>
+				<li class="id_negative">身分證反面：
+					<span *ngIf="imgExists(1) || isDawhoApplyCard || isQuickaccount || isocruploadsuccess">有</span>
+					<span *ngIf="!isDawhoApplyCard && !imgExists(1) && !uploadFileIds[1] && !isQuickaccount && !isocruploadsuccess" class="pink2">無</span>
+				</li>
+				<li class="money_proof">財力證明：
+					<span *ngIf="imgExists(2)">有</span>
+					<span *ngIf="!imgExists(2)" class="pink2">無</span>
+				</li>
+			</ol>
+			<div class="btn-zone">
+				<a href="javascript:void(0)" class="nbtn close" (click)="closelbox()">返回</a>
+				<a *ngIf="imgExists(0) || imgExists(1) || imgExists(2) || isDawhoApplyCard || isocruploadsuccess" href="javascript:void(0)" class="nbtn focus" (click)="submit(true, (imgExists(0) || isocruploadsuccess) && (imgExists(1) || isocruploadsuccess) && imgExists(2))">確認送出</a>
+				<a *ngIf="!isDawhoApplyCard && (!imgExists(0) && !isocruploadsuccess) && (!imgExists(1) && !isocruploadsuccess) && !imgExists(2)" href="javascript:void(0)" class="nbtn focus disabled">確認送出</a>
+			</div>
+		</div>
+		<div id="gotoMydata">
+			<h3>前往個人化資料自主運用(MyData)平臺</h3>
+			<p>您已充分閱讀<a href="{{personalDataTermsUrl}}" class="udline open-lbox" target="_blank">永豐銀行個人資料蒐集、處理及利用告知義務內容</a>並同意永豐銀行得蒐集處理及利用您的個人資料，接下來您即將離開永豐銀行網頁，前往個人化資料自主運用(MyData)平臺。</p>
+			<br>
+			<p>為簡化線上申辦信用卡補件服務流程，透過個人化資料自主運用(MyData)平臺服務，經消費者完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為申辦信用卡之相關證明文件。 若您在申辦過程中有任何疑問，請洽客服專線(02)2528-7776/0800-058-888(限市話)</p>
+			<br>
+			<p class="pink2">
+				<span *ngIf="showC3Button()">目前提供自然人憑證、健保卡、行動自然人憑證(TW FidO) 、晶片金融卡、軟體憑證方式進行身分驗證，請選擇適合您的身分驗證方式。<br></span>
+				※提醒您，使用前請備妥自然人憑證與讀卡機，並安裝驅動程式，更多資訊請至<a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">個人化資料自主運用(MyData)平臺</a>
+				<br>※個人化資料自主運用(MyData)平臺適用 Chrome 80、Safari 13、Firefox 75、Edge18 以上之版本，1280 x 1024 解析度瀏覽，不適用IE瀏覽器。手機適用 iOS 12.4、Android 8.0 以上之系統。
+			<div class="btn-zone">
+				<!-- <a  href="javascript:void(0)" class="nbtn focus">同意並前往MyData</a> -->
+				<!-- <a *ngIf="!showC3Button()" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">同意並前往MyData</a> -->
+				<a href="javascript:void(0)" class="nbtn focus open-lbox" (click)="postMydata()">{{((showC3Button() && isAndroid) || showCardButton()) || showC3Button() ? "其他驗證方式" : "同意並前往MyData"}}</a>
+				<a *ngIf="(showC3Button() && isAndroid) || showCardButton()" href="javascript:void(0)" (click)="mydataCardVerify()" class="nbtn focus open-lbox">晶片金融卡</a>
+				<a *ngIf="showC3Button()" href="javascript:void(0)" class="nbtn focus open-lbox" (click)="softCertCheck()">軟體憑證</a>
+			</div>
+		</div>
+		<div id="application" class="application terms-lbox">
+		<!--以下是靜態網頁的部分-->
+		<div class="fixed-icon">
+		  <img src="/MMA8/card/images/raiders/btn_top.png" alt="至頂" />
+		</div>
+		<div id="app-tab-1" class="app__wrapper app-tab-content active">
+		  <!-- 主視覺 -->
+		  <section class="section section-kv">
+			<div class="bg-top">
+			  <img src="/MMA8/card/images/raiders/kv_bg_top.png" alt="" />
+			</div>
+			<div class="bg-center">
+			  <img class="desktop" src="/MMA8/card/images/raiders/kv_bg.png" alt="" />
+			  <img class="mobile" src="/MMA8/card/images/raiders/mobile/kv_bg_m.png" alt="" />
+			</div>
+			<div class="people">
+			  <img src="/MMA8/card/images/raiders/kv_people.png" alt="" />
+			</div>
+			<h1 class="app-title animated bounceInLeft delay-1s">
+			  <img src="/MMA8/card/images/raiders/kv_title.png" alt="快速辦卡攻略" />
+			</h1>
+			<h2 class="text animated fadeInUp delay-2s">
+			  <img src="/MMA8/card/images/raiders/kv_text.png" alt="免填寫書面資料, 免郵寄, 線上辦卡快速完成！" />
+			</h2>
+		  </section>
+
+		  <!-- 財力證明提供方式 -->
+		  <section class="section section-file">
+			<h2 class="app-title">請選擇財力證明提供方式</h2>
+			<div class="file-area">
+			  <a href="#" data-tab="app-tab-1"  class="file-item nav-tab nav-tab-active">
+				<img src="/MMA8/card/images/raiders/tab_active_1.png" alt="好簡單" />
+			  </a>
+			  <a href="#" data-tab="app-tab-2"  class="file-item nav-tab">
+				<img src="/MMA8/card/images/raiders/tab_inactive_2.png" alt="輕鬆給" />
+			  </a>
+			  <a href="#" data-tab="app-tab-3"  class="file-item nav-tab last-item">
+				<img src="/MMA8/card/images/raiders/tab_inactive_3.png" alt="也可以" />
+			  </a>
+			</div>
+			<div class="line">
+			  <img src="/MMA8/card/images/raiders/line.png" alt="" />
+			</div>
+		  </section>
+
+		  <!-- 本行往來資產>5萬元 -->
+		  <section class="section section-1-1">
+			<h2 class="section-content-title">
+			  <span class="blue-tag">永豐存戶</span>
+			  <span class="txt">本行往來資產>5萬元</span>
+			</h2>
+			<div class="block-area js-a-1">
+			  <div class="block-left">
+				<p class="txt">「往來資產」主要包含臺外幣存款、信託理財商品、結構型商品、實收保費、黃金存摺及其他各項理財商品之月平均餘額。</p>
+			  </div>
+			  <div class="block-right">
+				<img src="/MMA8/card/images/raiders/page_1/1_piggy.png" alt="不需額外提供財力證明" />
+			  </div>
+			</div>
+		  </section>
+
+		  <!-- 辦卡勾選同意調閱申請人名下不動產電子謄本 -->
+		  <section class="section section-1-2">
+			<h2 class="section-content-title">
+			  <span class="blue-tag">名下有不動產者</span>
+			  <span class="txt">辦卡勾選同意調閱申請人名下不動產電子謄本</span>
+			</h2>
+			<div class="block-area js-a-3">
+			  <div class="block-left">
+				<p class="txt">名下有不動產者，申辦時請勾選同意調閱申請人名下不動產電子謄本</p>
+			  </div>
+			  <div class="block-right">
+				<img src="/MMA8/card/images/raiders/page_1/1_estate.png" alt="" />
+			  </div>
+			</div>
+		  </section>
+		</div>
+
+		<div id="app-tab-2" class="app__wrapper app-tab-content">
+
+		  <!-- 主視覺 -->
+		  <section class="section section-kv">
+			<div class="bg-top">
+			  <img src="/MMA8/card/images/raiders/kv_bg_top.png" alt="" />
+			</div>
+			<div class="bg-center">
+			  <img class="desktop" src="/MMA8/card/images/raiders/kv_bg.png" alt="" />
+			  <img class="mobile" src="/MMA8/card/images/raiders/mobile/kv_bg_m.png" alt="" />
+			</div>
+			<div class="people">
+			  <img src="/MMA8/card/images/raiders/kv_people.png" alt="" />
+			</div>
+			<h1 class="app-title animated bounceInLeft delay-1s">
+			  <img src="/MMA8/card/images/raiders/kv_title.png" alt="快速辦卡攻略" />
+			</h1>
+			<h2 class="text animated fadeInUp delay-2s">
+			  <img src="/MMA8/card/images/raiders/kv_text.png" alt="免填寫書面資料, 免郵寄, 線上辦卡快速完成！" />
+			</h2>
+		  </section>
+
+		  <!-- 財力證明提供方式 -->
+		  <section class="section section-file">
+			<h2 class="app-title">請選擇財力證明提供方式</h2>
+			<div class="file-area">
+			  <a href="#" data-tab="app-tab-1"  class="file-item nav-tab">
+				<img src="/MMA8/card/images/raiders/tab_inactive_1.png" alt="好簡單" />
+			  </a>
+			  <a href="#" data-tab="app-tab-2"  class="file-item nav-tab nav-tab-active">
+				<img src="/MMA8/card/images/raiders/tab_active_2.png" alt="輕鬆給" />
+			  </a>
+			  <a href="#" data-tab="app-tab-3" class="file-item nav-tab last-item">
+				<img src="/MMA8/card/images/raiders/tab_inactive_3.png" alt="也可以" />
+			  </a>
+			</div>
+			<div class="line">
+			  <img src="/MMA8/card/images/raiders/line.png" alt="" />
+			</div>
+		  </section>
+
+		  <!-- 切 TAB -->
+		  <section class="section section-tab-area">
+			<div class="tab-block-ev">
+			  <div class="evtab js-handle-tab-click tab-left active" data-tab="tab-1-block">薪資單</div>
+			  <div class="evtab js-handle-tab-click tab-mid" data-tab="tab-2-block">薪資轉帳記錄</div>
+			  <div class="evtab js-handle-tab-click tab-right tab-app" data-tab="tab-3-block">健保APP</div>
+			</div>
+		  </section>
+
+		  <!-- 好簡單 -->
+		  <div class="js-tab-block tab-1-block">
+			<!-- 薪資單 -->
+			<section class="section section-2-1">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">薪資單</span>
+			  </h2>
+			  <div class="block-area js-a-1">
+				<div class="block-left">
+				  <ul class="block-list">
+					<li>請提供<span class="red">最近１個月</span>薪資單</li>
+					<li><span class="red">建議每月薪資>2.5萬元</span></li>
+					<li>可清楚看出您的<span class="red">姓名、公司名稱、薪資明細及年度月份</span></li>
+					<li>請提供完整薪資單，不可部分擷取或遮蔽</li>
+				  </ul>
+				</div>
+				<div class="block-right">
+				  <img src="/MMA8/card/images/raiders/page_2/2_salary.png" alt="薪資單" />
+				</div>
+			  </div>
+			</section>
+		  </div>
+
+		  <!-- 好簡單 -->
+		  <div class="js-tab-block tab-2-block" style="display: none">
+			<!-- 薪資轉帳記錄 -->
+			<section class="section section-2-2">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">薪資轉帳記錄</span>
+				<span class="txt">網路銀行明細+存摺封面</span>
+			  </h2>
+
+			  <div class="block-vertical">
+				<ul class="block-list">
+				  <li>請提供<span class="red">最近２個月</span>薪資轉帳紀錄，需有完整帳號及戶名</li>
+				  <li><span class="red">建議每月薪資>2.5萬元</span></li>
+				  <li><span class="red">請附上存摺封面或有帳號及戶名的畫面</span>，以方便核對帳戶資料</li>
+				</ul>
+				<ul class="block-list-notice">
+				  <li>交易明細需完整且連續，不可擷取或遮蔽，需含有日期、餘額等完整帳戶資料。</li>
+				  <li>若有多頁，請每頁皆完整附上。</li>
+				</ul>
+				<h3 class="block-tag-title title-1">
+				  <img src="/MMA8/card/images/raiders/page_2/2_passbook_title.png" alt="存摺封面" />
+				</h3>
+				<div class="block-image image-1">
+				  <img src="/MMA8/card/images/raiders/page_2/2_webpassbook.png" alt="存摺封面" />
+				</div>
+				<h3 class="block-tag-title title-2">
+				  <img src="/MMA8/card/images/raiders/page_2/2_record_title.png" alt="薪資轉帳記錄" />
+				</h3>
+				<div class="block-image image-2">
+				  <img src="/MMA8/card/images/raiders/page_2/2_record.png" alt="薪資轉帳記錄" />
+				</div>
+			  </div>
+			</section>
+		  </div>
+
+		  <!-- 好簡單 -->
+		  <div class="js-tab-block tab-3-block" style="display: none">
+			<!-- 健保APP -->
+			<section class="section section-2-3">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">健保APP</span>
+				<span class="txt">全民健保行動快易通｜健康存摺</span>
+			  </h2>
+
+			  <div class="block-area">
+				<div class="block-left">
+				  <ul class="block-list">
+					<li>下載「全民健保行動快易通|健康存摺」，截圖個人投保紀錄</li>
+					<li>需可清楚看出您的<span class="red">姓名、投保金額</span></li>
+					<li><span class="red">投保身分須為本人</span>，不可為眷屬</li>
+				  </ul>
+				  <img src="/MMA8/card/images/raiders/page_2/2_search.png" alt="全民健保行動快譯通" />
+				</div>
+				<div class="block-right">
+				  <img src="/MMA8/card/images/raiders/page_2/2_insurance.png" alt="" />
+				</div>
+			  </div>
+
+			  <div class="block-vertical">
+				<h3 class="block-tag-title title-1">
+				  <img src="/MMA8/card/images/raiders/page_2/2_app_title.png" alt="健保app操作步驟" />
+				</h3>
+				<div class="step-list js-step-list owl-carousel owl-theme">
+				  <div class="item">
+					<img src="/MMA8/card/images/raiders/page_2/2_app_1.png" alt="step1" />
+				  </div>
+				  <div class="item">
+					<img src="/MMA8/card/images/raiders/page_2/2_app_2.png" alt="step2" />
+				  </div>
+				  <div class="item">
+					<img src="/MMA8/card/images/raiders/page_2/2_app_3.png" alt="step3" />
+				  </div>
+				  <div class="item">
+					<img src="/MMA8/card/images/raiders/page_2/2_app_4.png" alt="step4" />
+				  </div>
+				</div>
+			  </div>
+			</section>
+		  </div>
+
+
+		</div>
+
+		<div id="app-tab-3" class="app__wrapper app-tab-content">
+
+
+		  <!-- 主視覺 -->
+		  <section class="section section-kv">
+			<div class="bg-top">
+			  <img src="/MMA8/card/images/raiders/kv_bg_top.png" alt="" />
+			</div>
+			<div class="bg-center">
+			  <img class="desktop" src="/MMA8/card/images/raiders/kv_bg.png" alt="" />
+			  <img class="mobile" src="/MMA8/card/images/raiders/mobile/kv_bg_m.png" alt="" />
+			</div>
+			<div class="people">
+			  <img src="/MMA8/card/images/raiders/kv_people.png" alt="" />
+			</div>
+			<h1 class="app-title animated bounceInLeft delay-1s">
+			  <img src="/MMA8/card/images/raiders/kv_title.png" alt="快速辦卡攻略" />
+			</h1>
+			<h2 class="text animated fadeInUp delay-2s">
+			  <img src="/MMA8/card/images/raiders/kv_text.png" alt="免填寫書面資料, 免郵寄, 線上辦卡快速完成！" />
+			</h2>
+		  </section>
+
+		  <!-- 財力證明提供方式 -->
+		  <section class="section section-file">
+			<h2 class="app-title">請選擇財力證明提供方式</h2>
+			<div class="file-area">
+			  <a href="#" data-tab="app-tab-1" class="file-item nav-tab" >
+				<img src="/MMA8/card/images/raiders/tab_inactive_1.png" alt="好簡單" />
+			  </a>
+			  <a href="#" data-tab="app-tab-2"  class="file-item nav-tab">
+				<img src="/MMA8/card/images/raiders/tab_inactive_2.png" alt="輕鬆給" />
+			  </a>
+			  <a href="#" data-tab="app-tab-3"  class="file-item nav-tab nav-tab-active last-item">
+				<img src="/MMA8/card/images/raiders/tab_active_3.png" alt="也可以" />
+			  </a>
+			</div>
+			<div class="line">
+			  <img src="/MMA8/card/images/raiders/line.png" alt="" />
+			</div>
+		  </section>
+
+		  <!-- 切 TAB -->
+		  <section class="section section-tab-area">
+			<div class="tab-block-ev">
+			  <div class="evtab js-handle-tab-click tab-left active" data-tab="tab-1-block">銀行電子對帳單</div>
+			  <div class="evtab js-handle-tab-click tab-mid" data-tab="tab-2-block">存摺明細</div>
+			  <div class="evtab js-handle-tab-click tab-right" data-tab="tab-3-block">網路銀行明細</div>
+			</div>
+		  </section>
+
+		  <!-- 也可以 -->
+		  <div class="js-tab-block tab-1-block">
+			<!-- 銀行電子對帳單 -->
+			<section class="section section-3-1">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">銀行電子對帳單</span>
+			  </h2>
+			  <div class="block-vertical js-a-1">
+				<ul class="block-list">
+				  <li>請提供<span class="red">最近１個月</span>往來銀行電子對帳單</li>
+				  <li>可清楚看出您的<span class="red">姓名、銀行名稱、帳戶明細</span></li>
+				  <li>請提供完整電子對帳單，不可部分擷取或遮蔽</li>
+				  <li><span class="red">建議可用餘額>5萬元</span></li>
+				</ul>
+				<div class="block-image image-1">
+				  <img src="/MMA8/card/images/raiders/page_3/3_bill.png" alt="綜合兌帳單" />
+				</div>
+			  </div>
+			</section>
+		  </div>
+
+		  <!-- 好簡單 -->
+		  <div class="js-tab-block tab-2-block" style="display: none">
+			<!-- 存摺明細 -->
+			<section class="section section-3-2">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">存摺封面＋存摺明細</span>
+			  </h2>
+
+			  <div class="block-vertical">
+				<ul class="block-list">
+				  <li>請提供<span class="red">最近2個月</span>往來銀行存摺明細及存摺封面</li>
+				  <li>可清楚看出您的<span class="red">姓名、銀行名稱、帳號、帳戶明細</span></li>
+				  <li>請提供完整存摺明細，不可部分擷取或遮蔽</li>
+				  <li><span class="red">建議可用餘額>5萬元</span></li>
+				</ul>
+				<ul class="block-list-notice">
+				  <li>交易明細需完整且連續，不可擷取或遮蔽，需含有日期、餘額等完整帳戶資料。</li>
+				  <li>若有多頁，請每頁皆完整附上。</li>
+				</ul>
+				<h3 class="block-tag-title title-1">
+				  <img src="/MMA8/card/images/raiders/page_3/2_passbook_title.png" alt="存摺封面" />
+				</h3>
+				<div class="block-image image-1">
+				  <img src="/MMA8/card/images/raiders/page_3/3_passbook.png" alt="存摺封面" />
+				</div>
+				<h3 class="block-tag-title title-2">
+				  <img src="/MMA8/card/images/raiders/page_3/3_passbook_record_title.png" alt="存摺明細" />
+				</h3>
+				<div class="block-image image-2">
+				  <img src="/MMA8/card/images/raiders/page_3/3_passbook_record.png" alt="存摺明細" />
+				</div>
+			  </div>
+			</section>
+		  </div>
+
+		  <!-- 好簡單 -->
+		  <div class="js-tab-block tab-3-block" style="display: none">
+			<!-- 網路銀行明細 -->
+			<section class="section section-3-3">
+			  <h2 class="section-content-title">
+				<span class="blue-tag">網路銀行明細＋存摺封面</span>
+			  </h2>
+
+			  <div class="block-vertical">
+				<ul class="block-list">
+				  <li>請提供<span class="red">最近2個月</span>往來網路銀行明細及存摺封面</li>
+				  <li>可清楚看出您的<span class="red">姓名、銀行名稱、帳號、帳戶明細</span></li>
+				  <li>請提供完整存摺明細，不可部分擷取或遮蔽</li>
+				  <li><span class="red">建議平均餘額>5萬元</span></li>
+				</ul>
+				<ul class="block-list-notice">
+				  <li>交易明細需完整且連續，不可擷取或遮蔽，需含有日期、餘額等完整帳戶資料。</li>
+				  <li>若有多頁，請每頁皆完整附上。</li>
+				</ul>
+				<h3 class="block-tag-title title-1">
+				  <img src="/MMA8/card/images/raiders/page_3/2_passbook_title.png" alt="存摺封面" />
+				</h3>
+				<div class="block-image image-1">
+				  <img src="/MMA8/card/images/raiders/page_3/3_webpassbook.png" alt="存摺封面" />
+				</div>
+				<h3 class="block-tag-title title-2">
+				  <img src="/MMA8/card/images/raiders/page_3/3_webbank_title.png" alt="網路銀行明細" />
+				</h3>
+				<div class="block-image image-2">
+				  <img src="/MMA8/card/images/raiders/page_3/3_webbank.png" alt="網路銀行明細" />
+				</div>
+			  </div>
+			</section>
+		  </div>
+		</div>
+
+		<div class="btn-zone flex-inline-min fixed">
+			<a href="javascript:void(0)" class="nbtn focus close">關閉</a>
+		</div>
+
+
+
+			<!--以上是靜態網頁的部分-->
+		  </div>
+	</div>
+</div>
+<form id="mydata-form" method="post">
+	<input type="hidden" name="BusinessNo" value="{{mydataForm?.BusinessNo}}">
+	<input type="hidden" name="ApiVersion" value="{{mydataForm?.ApiVersion}}">
+	<input type="hidden" name="HashKeyNo" value="{{mydataForm?.HashKeyNo}}">
+	<input type="hidden" name="VerifyNo" value="{{mydataForm?.VerifyNo}}">
+	<input type="hidden" name="Token" value="{{mydataForm?.Token}}">
+	<input type="hidden" name="IdentifyNo" value="{{mydataForm?.IdentifyNo}}">
+</form>

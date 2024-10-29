@@ -1,0 +1,79 @@
+<div class="wrapper_1"></div>
+<div class="mobile-menu">
+	<header>
+		<div class="header-top">
+			<div class="container">
+				<div class="left-pane">
+					<div class="logo">
+						<a>
+							<img src="/mma8/card/images/sinopac_logo_320.png" alt="永豐銀行">
+						</a>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+	</header>
+	<div class="nav-block">
+		<nav class="main-menu">
+			<ul class="nav-lv1">
+				<li>
+					<a href="javascript:void(0)" (click)="changeCategory(0)">商品一覽</a>
+				</li>
+				<li>
+					<a *ngFor="let item of Categories" href="javascript:void(0)" (click)="changeCategory(item.ID)">
+						{{item.Name}}
+					</a>
+				</li>
+				<li>
+					<a href="Reward/AvailablePoints">點數查詢</a>
+				</li>
+				<li>
+					<a routerLink="/Reward/Redemption/Redeem">兌換商品清單</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+
+<header>
+	<div class="header-top">
+		<div class="container">
+			<div class="left-pane">
+				<div class="logo">
+					<a>
+						<img class="hidden-min" src="/mma8/card/images/sinopac_logo.png" alt="永豐銀行" />
+						<img class="hidden-max" src="/mma8/card/images/sinopac_logo_320.png" alt="永豐銀行">
+					</a>
+				</div>
+				<h1 class="header-title">紅利點數兌換</h1>
+			</div>
+			<div class="right-pane hidden-min">
+				<div class="main-func">
+					<ul class="dynlast">
+						<li>
+							<a class="icon icon-service" href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" title="客服中心">客服中心</a>
+						</li>
+						<li>
+							<a class="icon icon-branch" href="https://mma.sinopac.com/MMA7txt/CustomerService/BranchService/mma_branch.html" title="營業據點">營業據點</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<div class="clearboth"></div>
+		</div>
+	</div>
+	<div class="mobile-nav-toggle hidden-max">
+		<div class="navbar">
+			<span></span>
+		</div>
+		<div class="navbar">
+			<span></span>
+		</div>
+		<div class="navbar">
+			<span></span>
+		</div>
+	</div>
+	<div class="clearfix"></div>
+</header>

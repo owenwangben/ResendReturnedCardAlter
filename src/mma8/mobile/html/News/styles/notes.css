@@ -1,0 +1,14 @@
+@import "reset.css";
+@import "font.css";
+.notes {
+    padding: 20px 16px;
+}
+.notesTitle {
+    color: #b9160f;
+    font-size: 1em;
+    padding-bottom: 10px;
+}
+.notesContent {
+    color: #6e6e6e;
+    font-size: 0.8em;
+}

@@ -1,0 +1,15 @@
+﻿<form [formGroup]="form" (ngSubmit)="submit()">
+	<div class="scrollbar" loadHtml="/mma8/card/htmls/行動電子帳單申請約定條款.html"></div>
+	<div style="margin-top: 10px">
+		<input type="checkbox" class="artfld" formControlName="consent" id="consent"/>
+		<label for="consent">
+			<span><span class="getCheck"></span></span>
+			<font class="red left fs15">我已閱讀並同意電子/行動帳單申請相關權益</font>
+		</label>
+	</div>
+	<div class="btn-zone">
+		<button type="button" class="nbtn" (click)="goPrev()">上一步</button>
+		<button type="submit" class="nbtn focus">同意並確定申請</button>
+	</div>
+</form>
+

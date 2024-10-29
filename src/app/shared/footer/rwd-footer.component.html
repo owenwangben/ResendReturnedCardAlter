@@ -1,0 +1,21 @@
+<footer>
+	<div class="container">
+		<div class="copyright">
+			<p>©版權所有 永豐銀行</p>
+			<p class="hidden-min" *ngIf="ieBrowser; else elseBlock">建議瀏覽器設定IE11.0以上/解析度1024*768</p>
+			<ng-template #elseBlock>
+				<p class="hidden-min">
+					<a href="https://mma.sinopac.com/Bank/BankFrame.aspx?url=browser/upgrade.html" target="_blank">建議使用之瀏覽器/建議解析度1024*768</a>
+				</p>
+			</ng-template>
+		</div>
+		<div class="copyright">
+			<p>
+				<a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a>
+				<a href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html"
+					target="_blank">網路安全說明</a>
+				<a href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank">隱私權保護聲明</a>
+			</p>
+		</div>
+	</div>
+</footer>

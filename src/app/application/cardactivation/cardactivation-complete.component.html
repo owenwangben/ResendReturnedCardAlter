@@ -1,0 +1,40 @@
+<div class="rnotes full-size center" *ngIf="model">
+	<span class="red">開卡成功，即刻起您可開始使用永豐銀行信用卡完整的服務</span>
+	<span class="transaction_number">交易序號：{{model.RefNo}}</span>
+</div>
+<div class="formblock">
+	<table class="new-datatable">
+		<tr>
+			<th class="mobile-col-5">
+				<div class="rowElem">您的卡號為</div>
+			</th>
+			<td>
+				<div class="rowElem select-sm text-sm">
+					<span>{{model.CardNo | creditcard}}</span>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div *ngIf="model.IsApplyElectronicBill == 0" class="billSet flex space-between aligncenter {{!isMobile ? 'billSetFullWidth':''}}">
+  <div class="billSet__text flex justify-center aligncenter">
+    <img class="hidden-min" src="/mma8/card/images/Energysaving.svg" />
+    <p class="fs16 lh15 ml10">
+      立即申請電子/行動帳單，<br />隨時隨地輕鬆查看消費紀錄。
+    </p>
+  </div>
+  <button class="billSet__button" (click)="redirectToEStatementChange()">前往設定</button>
+</div>
+<div *ngIf="model.IsApplyElectronicBill != 0 && (model.TypeFace == '428001' || model.TypeFace =='428178')" class="billSet flex space-between aligncenter {{!isMobile ? 'billSetFullWidth':''}}">
+  <div class="billSet__text flex justify-center aligncenter">
+    <img class="hidden-min" src="/mma8/card/images/LINEBIZ.png" />
+    <p class="lh15 ml10">
+      綁定永豐LINE官方帳號，<br>即可收到信用卡即時消費通知。
+    </p>
+  </div>
+  <button class="billSet__button" (click)="redirectToLineBinding()">立即綁定</button>
+</div>
+<!-- <div class="btn-zone">
+	<a href="#" id="cancel" class="nbtn">回服務申請</a>
+	<a href="#" id="cancel" class="nbtn">回服務申請</a>
+</div> -->

@@ -1,0 +1,102 @@
+{
+    "Result": {
+        "DeadLine": "20250331",
+        "Summary": [
+            {
+                "Code": "DAW1",
+                "Name": "DAWAY卡一般消費回饋(國內)",
+                "TotalAmt": "13,256",
+                "TotalFeedbackAmt": "133"
+            },
+            {
+                "Code": "DAW2",
+                "Name": "DAWAY卡一般消費回饋(國外)",
+                "TotalAmt": "23,518",
+                "TotalFeedbackAmt": "470"
+            },
+            {
+                "Code": "DAW3",
+                "Name": "DAWAY卡 新戶自扣加碼",
+                "TotalAmt": "36,774",
+                "TotalFeedbackAmt": "368"
+            },
+            {
+                "Code": "DAW4",
+                "Name": "DAWAY卡 新戶LINE Pay加碼",
+                "TotalAmt": "13,256",
+                "TotalFeedbackAmt": "66"
+            }
+        ],
+        "DetailA": [
+            {
+                "Code": "DAW1",
+                "Name": "DAWAY卡一般消費回饋(國內)",
+                "Items": [
+                    {
+                        "DEDATE": "20240205",
+                        "TXDATE": "20240201",
+                        "MEMO": "A- 里仁南京伊通店",
+                        "TX_AMT": "13,256",
+                        "POINT": "133"
+                    }
+                ]
+            },
+            {
+                "Code": "DAW2",
+                "Name": "DAWAY卡一般消費回饋(國外)",
+                "Items": [
+                    {
+                        "DEDATE": "20240205",
+                        "TXDATE": "20240201",
+                        "MEMO": "SP URBAN SOPHISTICAT WHITE PLAINS US",
+                        "TX_AMT": "23,518",
+                        "POINT": "470"
+                    }
+                ]
+            },
+            {
+                "Code": "DAW3",
+                "Name": "DAWAY卡 新戶自扣加碼",
+                "Items": [
+                    {
+                        "DEDATE": "20240205",
+                        "TXDATE": "20240201",
+                        "MEMO": "A- 里仁南京伊通店",
+                        "TX_AMT": "36,774",
+                        "POINT": "0"
+                    }
+                ]
+            },
+            {
+                "Code": "DAW4",
+                "Name": "DAWAY卡 新戶LINE Pay加碼",
+                "Items": [
+                    {
+                        "DEDATE": "20240205",
+                        "TXDATE": "20240201",
+                        "MEMO": "連加＊ＬＯＵＩＳＡ　Ｃ",
+                        "TX_AMT": "13,256",
+                        "POINT": "0"
+                    }
+                ]
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "EWEB2",
+        "ReferenceNo": "e052141b-e79d-4689-a134-d8251f0c25af",
+        "UserID": "A156254393",
+        "RequestTime": "2024-02-27T09:51:41.7941755+08:00",
+        "TxCode": "",
+        "RemoteAddr": "10.11.140.10",
+        "PageName": "",
+        "IsWriteLog": true,
+        "SsaToken": "",
+        "ClientRefNo": null,
+        "ClientTimestamp": null
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

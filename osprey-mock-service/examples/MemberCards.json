@@ -1,0 +1,36 @@
+{
+  "Result": {
+    "Items": [
+      {
+        "CardNo": "4637111122223333",
+        "Name": "MITSUI OUTLET PARK御璽聯名卡",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "111",
+        "ProductCode": "222"
+      },
+      {
+        "CardNo": "5588111122223333",
+        "Name": "日圓雙幣卡",
+        "CardTypeCode": "PP",
+        "CardTypeDesc": "主卡",
+        "CardFace": "222",
+        "ProductCode": "333"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

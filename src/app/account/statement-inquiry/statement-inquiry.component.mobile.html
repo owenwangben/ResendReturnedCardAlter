@@ -1,0 +1,199 @@
+<div class="btn-zone" style="text-align:left" *ngIf="!detailMode">
+	<ul class="ntabs">
+		<li *ngFor="let link of billMonthLinks" [class.active]="selectedMonth==link" (click)="onClickMonthLink(link)">
+			<a href="javascript:void(0)">{{link}}</a>
+		</li>
+	</ul>
+</div>
+<div *ngIf="!detailMode">
+	<table class="new-datatable" width="100%">
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">幣別</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select [(ngModel)]="currency" mweb-select="請選擇幣別">
+						<option *ngFor="let item of currencyList" [value]="item">{{item}}{{getCurrencyCode(item)}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<div *ngIf="!showTrx">
+	<table class="ntable table-striped two-cols-list" *ngIf="!detailMode">
+		<tr style="height:8px"></tr>
+		<tr>
+			<th class="mobile-col-5">結帳日</th>
+			<td>{{model?.BaseData.STMTDATE}}</td>
+		</tr>
+		<tr>
+			<th>繳款截止日</th>
+			<td>{{model?.BaseData.DUEDATE}}</td>
+		</tr>
+		<tr>
+			<th>上期應繳</th>
+			<td>{{billAmount?.PREVBAL}}</td>
+		</tr>
+		<tr>
+			<th>已繳款金額</th>
+			<td>{{billAmount?.PREVPAYAMT}}</td>
+		</tr>
+		<tr>
+			<th>本期新增</th>
+			<td>{{billAmount?.NEWADDAMT}}</td>
+		</tr>
+		<tr>
+			<th>循環利息</th>
+			<td>{{billAmount?.FINCHARGE}}</td>
+		</tr>
+		<tr>
+			<th>違約金</th>
+			<td>{{billAmount?.LATECHARGE}}</td>
+		</tr>
+		<tr>
+			<th>本期應繳</th>
+			<td>{{billAmount?.CURRBAL}}</td>
+		</tr>
+		<tr>
+			<th>最低應繳</th>
+			<td>{{billAmount?.DUEAMT}}</td>
+		</tr>
+		<tr>
+			<th>新增點數</th>
+			<td>{{model?.Reward.AddPoint | number}}</td>
+		</tr>
+		<tr>
+			<th>循環利率</th>
+			<td>{{model?.BaseData.IntRate}}</td>
+		</tr>
+		<tr>
+			<th>適用截止年月</th>
+			<td>{{model?.BaseData.IntDate}}</td>
+		</tr>
+	</table>
+	<div class="rowElem" *ngIf="!detailMode">
+		若您本期已繳納部分款項，請於再次繳款前先確認應繳金額，以免溢繳。您可前往<a class="link" routerLink="/Account/Info">帳務資訊</a>查詢最近繳款日期與金額。
+	</div>
+	<div class="btn-zone" *ngIf="!detailMode">
+		<a *ngIf="!model?.IsCompanyUser" class="nbtn" href="javascript:void(0)" (click)="showTrx=true">
+			<img style="vertical-align:middle" src="/MMA8/card/images/btn_ic/ic_detail.png"/>
+			消費明細
+		</a>
+		<a *ngIf="!model?.IsCompanyUser && ebillType === 0" class="nbtn" routerLink="/Application/EStatementChange">
+			<img height="28" style="vertical-align:middle" src="/MMA8/card/images/btn_ic/ic_ebill.png"/> 設定行動/電子帳單
+		</a>
+		<app-stmt-rte-button *ngIf="!model?.IsCompanyUser && billMonths && selectedMonth === billMonths[0]">
+			<img style="vertical-align:middle" src="/MMA8/card/images/btn_ic/ic_trans.png"/>
+			帳單分期
+		</app-stmt-rte-button>
+		<app-stmt-pdf-button *ngIf="model?.IsCompanyUser" [StmtMonth]="selectedMonth">下載當期帳單PDF</app-stmt-pdf-button>
+		<app-stmt-excel-button *ngIf="model?.IsCompanyUser" [StmtMonth]="selectedMonth">下載當期明細EXCEL</app-stmt-excel-button>
+	</div>
+
+	<div class="content2" *ngIf="msg && !detailMode">
+		<table id="AD_1" class="AD">
+			<tbody>
+				<tr>
+					<th><span style="color:#b9160f">{{msg[0]}}</span>{{msg[1]}}</th>
+				</tr>
+				<tr>
+					<td>
+						<span class="txt_event">{{msg[2]}}</span>
+						<span class="txt_event">{{msg[6]}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="txt_extra">{{msg[3]}}</span>
+						<span class="txt_extra">{{msg[7]}}</span>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[4]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[8]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[5]}}</span>
+						<span class="txt_checked_items"><i class="ADchecked_items"></i>{{msg[9]}}</span>
+					</td>
+				</tr>
+				<tr>
+				<td><a class="btn_o_red" href="{{msgUrl}}" target="_blank">立即申請</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div *ngIf="showTrx">
+	<table class="ntable table-striped" width="100%" *ngIf="!detailMode">
+		<thead>
+			<tr style="height:8px"></tr>
+			<tr>
+				<th>入帳起息日<br>消費日</th>
+				<th>消費說明</th>
+				<th>{{currency}}金額<br>卡號末四碼</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let record of billRecords">
+				<td class="mobile-col-4" *ngIf="record.TXCode.trim() !== '0'">{{record.DEDATE}}<br>{{record.TXDATE}}</td>
+				<td class="mobile-col-4" *ngIf="record.TXCode.trim() === '0'"></td>
+				<td class="mobile-col-5">{{record.MEMO}}</td>
+				<td class="mobile-col-3 num-align">{{record.AMT}}<br>{{record.TXCode.trim() !== '0' ? record.CardNo : ''}}</td>
+			</tr>
+			<tr *ngIf="!billRecords?.length">
+				<td colspan=3>查無資料！</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="btn-zone" *ngIf="!detailMode">
+		<a class="nbtn" href="javascript:void(0)" (click)="showTrx=false">
+			<img style="vertical-align:middle" src="/MMA8/card/images/btn_ic/ic_balance.png"/>
+			帳單資訊
+		</a>
+	</div>
+
+	<div *ngIf="!detailMode && model?.AsymmetricInstallmentInfo.length > 0">
+		<h1>專案分期查詢</h1>
+		<table class="ntable table-striped">
+			<thead>
+				<tr style="height:8px"></tr>
+				<tr>
+					<th>首期入帳日</th>
+					<th>消費說明</th>
+					<th>刷卡金額</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let item of AsymmetricInstallmentRecords" (click)="showDetail(item)">
+					<td>{{item.TXDATE}}</td>
+					<td>{{item.MEMO}}</td>
+					<td>{{item.AMT}}</td>
+					<td><i class="right-arrow"></i></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+	<table class="ntable table-striped" width="100%" *ngIf="detailMode && detailA">
+		<div *ngFor="let txitem of this.detailA">
+			<tr style="height:8px"></tr>
+			<tr>
+				<th>消費說明</th>
+				<td class="text-left">{{txitem.MEMO}}</td>
+			</tr>
+			<tr>
+				<th>分期金額說明</th>
+				<td class="text-left" [innerHTML]="txitem.INSAMT_MEMO"></td>
+			</tr>
+			<tr>
+				<th>繳款金額說明</th>
+				<td class="text-left" [innerHTML]="txitem.PAYAMT_MEMO"></td>
+			</tr>
+		</div>
+	</table>
+	<div class="btn-zone" *ngIf="detailMode">
+		<button type="submit" class="nbtn focus" (click)="onBack()">返回</button>
+	</div>
+</div>

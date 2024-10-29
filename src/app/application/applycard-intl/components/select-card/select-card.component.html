@@ -1,0 +1,87 @@
+<div class="formblock cards-showroom-block">
+	<br>
+	<fieldset>
+		<legend>
+			<div class="card-name" [innerHTML]="cardinfo?.Title"></div>
+		</legend>
+		<div class="cards-showroom">
+			<div class="cards-carousel owl-carousel">
+				<div *ngFor="let title of titles; let owlidx=index" class="card-holder"
+				[attr.data-title]="title" [attr.data-owl-index]="owlidx">
+				<img *ngFor="let card of getCards(title); let idx=index" [src]="card.CardFaceUrl"
+						[class.selected]="idx === 0"
+						[attr.data-card-type]="card.CardType" [attr.data-card-title]="getCardName(card)"
+						[attr.data-card-type-id]="card.Id" [attr.data-card-face]="card.CardFace">
+				</div>
+			</div>
+		</div>
+	</fieldset>
+</div>
+
+<div class="content">
+	<section class="card-apply-block">
+		<div class="lft">
+			<div class="tab-container">
+				<ul class="tab-block">
+					<li [class.active]="selectedTab === 1" (click)="tabClick(1)">
+						<a href="javascript:void(0)" class="EN-a">{{message?.LatestFavors}}</a>
+					</li>
+					<li [class.active]="selectedTab === 2" (click)="tabClick(2)">
+						<a href="javascript:void(0)" class="EN-a">{{message?.PrivilegedRights}}</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<div id="tab1" [class.active]="selectedTab === 1">
+						<div [innerHTML]="promotion | safeHtml"></div>
+					</div>
+					<div id="tab2" [class.active]="selectedTab === 2">
+						<div [innerHTML]="rights"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="rgt">
+			<div class="apply-block">
+				<h3>{{message?.ApplyImmed}}</h3>
+				<p class="title">{{message?.SelectKind}}</p>
+				<div class="artfld select">
+					<div class="icons icon-mastercard"></div>
+					<select id="card-type" (change)="cardTypeChange($event)"></select>
+				</div>
+				<div *ngIf="sso; else notsso" class="btn-zone">
+					<a href="javascript:void(0)" class="nbtn focus" *ngIf="canApply" (click)="submit('MMA')">Application</a>
+				</div>
+				<ng-template #notsso>
+					<div class="btn-zone">
+						<a href="javascript:void(0)" class="nbtn focus en-nbtn open-lbox" (click)="submit('CardOrAccount')">{{message?.Account}}</a>
+						<a href="javascript:void(0)" class="nbtn focus en-nbtn open-lbox" (click)="ShowOtherApplyBox(1)">{{message?.OthBanks}}</a>
+					</div>
+				</ng-template>
+			</div>
+		</div>
+	</section>
+</div>
+
+<div class="lboxed">
+    <div class="close"></div>
+    <div class="lbox-block">
+        <div id="choose-signup-method" class="choose-auth-method sign-method">
+            <h3>
+                <p class="en">{{message?.VerMethod}}</p>
+                請選擇認證方式
+            </h3>
+
+            <div class="auth-method-block">
+                <div class="btn-zone">
+                    <a href="javascript:void(0)" class="nbtn focus" (click)="submit('OtherBank')"><span class="sub">{{message?.OthBanksVerApply}}
+                        </span>
+                        <br>
+                        <span>他行臺幣帳戶驗證申請</span></a>
+                </div>
+				<div class="desc bubble-msg-block">
+					<span loadHtml="{{otherBankHtmlPath}}"></span>
+				</div>
+            </div>
+        </div>
+    </div>
+</div>

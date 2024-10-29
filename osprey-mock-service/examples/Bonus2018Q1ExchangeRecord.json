@@ -1,0 +1,47 @@
+{
+  "Result": {
+    "Items": [
+        {
+            "ExChg_SeqNo": 27,
+            "PID": "A176234988 ",
+            "ExChg_Type": "點數",
+            "ExChg_DT": "2018-03-06T00:00:00",
+            "ExChg_Gift": "2018Q101",
+            "ExChg_Gift_NM": "全家中杯熱美式咖啡*",
+            "ExChg_Num": 1
+        },
+        {
+            "ExChg_SeqNo": 17,
+            "PID": "A176234988 ",
+            "ExChg_Type": "點數",
+            "ExChg_DT": "2018-03-06T00:00:00",
+            "ExChg_Gift": "2018Q102",
+            "ExChg_Gift_NM": "全家早餐組合*",
+            "ExChg_Num": 1
+        },
+        {
+            "ExChg_SeqNo": 16,
+            "PID": "A176234988 ",
+            "ExChg_Type": "點數",
+            "ExChg_DT": "2018-03-06T00:00:00",
+            "ExChg_Gift": "2018Q102",
+            "ExChg_Gift_NM": "全家早餐組合*",
+            "ExChg_Num": 1
+        }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

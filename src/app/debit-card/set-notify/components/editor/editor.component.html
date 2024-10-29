@@ -1,0 +1,74 @@
+﻿<form [formGroup]="form" (ngSubmit)="onSubmit()">
+	<div class="formblock">
+		<table class="ntable cols" width="100%">
+			<tr>
+				<th width="30%">Debit卡<br />交易明細單寄送信箱</th>
+				<td width="50%" style="vertical-align:middle;border-right:none">
+					<span *ngIf="form.value.Email">{{ form.value.Email | mask:'1-' + ((form.value.Email || '').indexOf('@') - 1):'*' }}</span>
+					<span *ngIf="!form.value.Email">未設定</span>
+				</td>
+				<td width="20%" style="vertical-align:middle">
+					<span class="btn-zone">
+						<button type="button" class="nbtn mobile-small" (click)="onChangeEmail()">{{form.value.Email ? "變更" : "立即設定"}}</button>
+					</span>
+				</td>
+			</tr>
+		</table>
+		<div *ngIf="form.value.Email">
+			<table *ngIf="!isMobile" class="data-table center" width="100%">
+				<tr>
+					<td class="text-right" width="30%">
+						收取消費通知
+					</td>
+					<td class="text-left" >
+						<input type="radio" class="artfld circle" id="r21" formControlName="IsApplyConsumerCollection" [value]=true>
+						<label for="r21"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r22" formControlName="IsApplyConsumerCollection" [value]=false>
+						<label for="r22"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+				</tr>
+				<tr>
+					<td class="text-right" width="30%">
+						收取電子活動通知
+					</td>
+					<td class="text-left">
+						<input type="radio" class="artfld circle" id="r31" formControlName="IsApplyEaper" [value]=true>
+						<label for="r31"><span><span class="getCheck"></span></span>同意</label>
+						<input type="radio" class="artfld circle" id="r32" formControlName="IsApplyEaper" [value]=false>
+						<label for="r32"><span><span class="getCheck"></span></span>不同意</label>
+					</td>
+				</tr>
+			</table>
+			<table *ngIf="isMobile" class="data-table" width="100%">
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">收取消費通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsApplyConsumerCollection" id="switch2" checked="" value="on" /><label for="switch2"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td class="mobile-col-9" style="vertical-align:middle">
+						<div class="rowElem">收取電子活動通知</div>
+					</td>
+					<td class="mobile-col-3">
+						<div class="redot-space">
+							<div class="switch-dot">
+								<input type="checkbox" formControlName="IsApplyEaper" id="switch3" checked="" value="on" /><label for="switch3"></label>
+							</div>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="btn-zone">
+			<app-link-button type="cancel">取消</app-link-button>
+			<button type="submit" class="nbtn focus">確認</button>
+		</div>
+	</div>
+</form>

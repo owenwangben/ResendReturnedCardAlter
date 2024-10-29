@@ -1,0 +1,16 @@
+<div class="wrapper">
+	<app-mobile-statement-header Title="信用卡行動帳單"></app-mobile-statement-header>
+	<main>
+	<div class="container">
+		<a href="https://mma.sinopac.com/Card/card_withhold/card_withhold_service.aspx?" class="btn" style="white-space: normal;">{{messages?.card_withhold_service}}</a>
+		<a routerLink="/Transaction/RTEAgreement" class="btn" style="white-space: normal;">{{messages?.RTEAgreement}}</a>
+		<a routerLink="/Transaction/RTE" class="btn" style="white-space: normal;">{{messages?.RTE}}</a>
+		<a routerLink="/Transaction/CashAdvance" class="btn" style="white-space: normal;">{{messages?.CashAdvance}}</a>
+		<a routerLink="/Transaction/EasyChoice" class="btn" style="white-space: normal;">{{messages?.EasyChoice}}</a>
+		<a routerLink="/Application/EStatementChange" class="btn" style="white-space: normal;">{{messages?.EStatementChange}}</a>
+		<a href="javascript:void(0)" (click)="goApplyCard()" class="btn" style="white-space: normal;">{{messages?.ApplyCard}}</a>
+		<a routerLink="/Reward/Redemption/Products/0" class="btn" style="white-space: normal;">{{messages?.Reward}}</a>
+	</div>
+	</main>
+	<app-mobile-statement-nav [Index]="4" [Token]="token"></app-mobile-statement-nav>
+</div>

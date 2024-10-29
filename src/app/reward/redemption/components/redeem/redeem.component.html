@@ -1,0 +1,14 @@
+<div class="big-container">
+	<div class="wrapper">
+		<app-reward-redemption-header></app-reward-redemption-header>
+		<div class="body-container">
+			<div class="container" style="min-height: 400px;">
+				<section class="trans-content">
+					<app-wizard [(current)]="current" [steps]="steps" [hidden]="true"></app-wizard>
+				</section>
+				<app-reward-redemption-warning></app-reward-redemption-warning>
+			</div>
+		</div>
+		<app-reward-redemption-footer></app-reward-redemption-footer>
+	</div>
+</div>

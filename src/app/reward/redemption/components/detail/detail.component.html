@@ -1,0 +1,40 @@
+<div class="big-container">
+	<div class="wrapper">
+		<app-reward-redemption-header></app-reward-redemption-header>
+		<div class="body-container">
+			<div class="container" style="min-height: 400px;">
+				<section class="detail">
+					<app-reward-redemption-secondmenu></app-reward-redemption-secondmenu>
+					<h3>{{product?.Name}}</h3>
+					<div class="floatbox">
+						<div class="pright">
+							<div class="pimg">
+								<img *ngIf="product?.GiftNo" [src]="product?.SmallImagePath" [alt]="product?.Name" />
+							</div>
+							<div class="pxxchange btn-zone hidden-min">
+								<a href="javascript:void(0)" class="nbtn focus" (click)="addToCart()">兌　換</a>
+							</div>
+						</div>
+						<div class="pleft">
+							<div class="pdate">兌換期限：{{product?.EndTime | date:'y/MM/dd'}}</div>
+							<div class="ppoint">
+								<span class="red">{{product?.Point | number}}</span>點</div>
+							<div class="pxxchange btn-zone hidden-max">
+								<a href="javascript:void(0)" class="nbtn focus" (click)="addToCart()">兌　換</a>
+							</div>
+							<hr/>
+							<div class="attention">
+								<div *ngFor="let item of description">{{item}}</div>
+							</div>
+						</div>
+					</div>
+					<div class="btn-zone">
+						<a class="nbtn" routerLink="/Reward/Redemption/Products/0" [queryParams]="{isPreview: isPreview}">重新挑選</a>
+					</div>
+				</section>
+				<app-reward-redemption-warning></app-reward-redemption-warning>
+			</div>
+		</div>
+		<app-reward-redemption-footer></app-reward-redemption-footer>
+	</div>
+</div>

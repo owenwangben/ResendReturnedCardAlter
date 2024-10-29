@@ -1,0 +1,204 @@
+<!-- <div class="wrapper-container">
+  <div class="wrapper">
+    <div class="wrapper-mask"></div> -->
+    <!-- <header>
+      <div class="header-top">
+        <div class="container">
+          <div class="logo">
+            <a href="https://bank.sinopac.com/" title="永豐銀行首頁"
+              ><img class="hidden-min" src="../images/sinopac-logo.svg" alt="永豐銀行" /><img class="hidden-max" src="../images/sinopac-logo-min.svg" alt="永豐銀行"
+            /></a>
+          </div>
+          <h1 class="master-title">信用卡卡片退回重寄申請</h1>
+        </div>
+      </div>
+    </header> -->
+    <!-- <div class="outer_container">
+      <div class="container no-breadcrumbs">
+        <div class="content transparent step-panel-block"> -->
+          <!-- <div class="step">
+            <ul class="list-step list-step--gray">
+              <li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">填寫資料</span></li>
+              <li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">確認資料</span></li>
+              <li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">申請結果</span></li>
+            </ul>
+          </div> -->
+        <!-- </div> -->
+        <div class="content full-content">
+          <section class="trans-content">
+            <fieldset class="fieldset-block pink-legend">
+              <legend>卡片資料</legend>
+            </fieldset>
+            <table class="new-datatable">
+              <tbody>
+                <tr>
+                  <th>
+                    <p><span class="red">*</span>申請卡片</p>
+                  </th>
+                  <td>
+                    <ul>
+                      <li *ngFor="let item of model?.Items; let i = index">
+                        <input class="artfld tickr" id="checkb_card_{{i}}" name="card" type="checkbox" value="{{i}}"
+                        [(ngModel)]="item.Selected"/>
+                        <label for="checkb_card_{{i}}"
+                          ><span><span class="getCheck"></span></span>
+                          <p class="dis-inline">{{item.CardName}} <br />{{item.CardNo | creditcard}}</p>
+                        </label>
+                      </li>
+                      <!-- <li>
+                        <input class="artfld tickr" id="checkbox_card_2" name="card" type="checkbox" value="2" />
+                        <label for="checkbox_card_2"
+                          ><span><span class="getCheck"></span></span>
+                          <p class="dis-inline">SPORT悠遊鈦商奶油黃卡(主卡)<br />1234 **** **** 5678</p>
+                        </label>
+                      </li>
+                      <li>
+                        <input class="artfld tickr" id="checkbox_card_3" name="card" type="checkbox" value="3" />
+                        <label for="checkbox_card_3"
+                          ><span><span class="getCheck"></span></span>
+                          <p class="dis-inline">DAWHO現金回饋信用卡(主卡)<br />1234 **** **** 5678</p>
+                        </label>
+                      </li> -->
+                    </ul>
+                  </td>
+                </tr>
+                <tr class="line">
+                  <td colspan="2"></td>
+                </tr>
+                <tr>
+                  <th>
+                    <p><span class="red">*</span>卡片寄送地址</p>
+                  </th>
+                
+                  <td [formGroup] = "form"><!--資料聯繫-->
+                    <ul>
+                      <li *ngIf="address"><!--隱藏與顯示-->
+                        <input class="artfld tickr" id="radio_addres_1" formControlName="address" type="radio" value="1" />
+                        <label for="radio_addres_1"
+                          ><span><span class="getCheck"></span></span>同現居地址</label
+                        >
+                        <div class="req mthalf mbhalf" [ngStyle]="addressStyle[0]">
+                          <input class="artfld col-all-min col-7" type="text" placeholder="" value="{{address}}" disabled />
+                        </div>
+                      </li>
+                      <li *ngIf="residenceAddress">
+                        <input class="artfld tickr" id="radio_addres_2" formControlName="address" type="radio" value="2" />
+                        <label for="radio_addres_2"
+                          ><span><span class="getCheck"></span></span>同戶籍地址</label
+                        >
+                        <div class="req mthalf mbhalf" [ngStyle]="addressStyle[1]">
+                          <input class="artfld col-all-min col-7" type="text" placeholder="" value="{{residenceAddress}}" disabled />
+                        </div>
+                      </li>
+                      <li *ngIf="companyAddress">
+                        <input class="artfld tickr" id="radio_addres_3" formControlName="address" type="radio" value="3" />
+                        <label for="radio_addres_3"
+                          ><span><span class="getCheck"></span></span>同公司地址</label
+                        >
+                        <div class="req mthalf mbhalf" [ngStyle]="addressStyle[2]">
+                          <input class="artfld col-all-min col-7" type="text" placeholder="" value="{{companyAddress}}" disabled />
+                        </div>
+                      </li>
+                      <!-- <li>
+                        <input class="artfld tickr" id="radio_addres_4" name="addres" type="radio" value="4" />
+                        <label for="radio_addres_4"
+                          ><span><span class="getCheck"></span></span>其他地址</label
+                        >
+                        <div class="req mthalf mbhalf" style="display: none">
+                          <div class="inline-select">
+                            <div class="artfld select col-2 col-all-min">
+                              <select name="" id="">
+                                <option value="">請選擇縣市</option>
+                                <option value="">台北市</option>
+                              </select>
+                            </div>
+                            <div class="artfld select col-2 col-all-min">
+                              <select name="" id="">
+                                <option value="">請選擇區域</option>
+                                <option value="">中山區</option>
+                              </select>
+                            </div>
+                          </div>
+                          <input class="artfld col-all-min col-7" type="text" placeholder="請輸入卡片寄送地址" />
+                        </div>
+                      </li> -->
+                    </ul>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+        <div class="content full-content">
+          <section class="trans-content">
+            <table class="new-datatable">
+              <tbody>
+                <tr>
+                  <td class="reminds red">
+                    <div class="prfy">
+                      <p class="mbhalf">溫馨提醒：</p>
+                      <ol class="disc">
+                        <li>本功能僅限申請一次，敬請先確認您欲指定的完整地址後再提出申請</li>
+                        <li>申請重寄後，卡片於近日重新寄至您指定的地址(此設定僅針對本次卡片寄送使用)</li>
+                        <li>若連同原留存在本行的地址欲變更，請與客服聯絡(02)2528-7776</li>
+                      </ol>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+        <div class="btn-zone flex-inline-min">
+          <button class="nbtn focus" id="checkRequirment" type="submit" (click)="submit()">下一步</button>
+        </div>
+        <p class="red">燈箱在這!!!!!!!!!!!!!</p>
+        <!-- 燈箱--><a class="open-lbox" href="#" data-lboxid="#error-1">系統異常</a><a class="open-lbox" href="#" data-lboxid="#error-2">提醒您</a>
+      <!-- </div>
+    </div> -->
+    <div class="lboxed">
+      <div class="lbox-block">
+        <div class="error-msg" id="error-1">
+          <div class="close"></div>
+          <h3>系統異常</h3>
+          <div>
+            <p>請與客服聯絡(02)2528-7776</p>
+            <div class="btn-zone"><a class="nbtn focus close" href="#">確定</a></div>
+          </div>
+        </div>
+        <div class="error-msg" id="error-2">
+          <div class="close"></div>
+          <h3>提醒您</h3>
+          <div>
+            <p>親愛的客戶您好，經查系統無卡片退回記錄，若您近日已完成重寄申請，卡片將於近日內寄出，欲修改寄卡地址，請洽客服(02)2528-7776，謝謝。</p>
+            <div class="btn-zone"><a class="nbtn close" href="#">申請進度查詢</a><a class="nbtn focus close" href="#">前往線上辦卡</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <script>
+      $(document).ready(function () {
+        $('input[name="addres"]').change(function () {
+          var value = $(this).val();
+          $('input[name="addres"]').next().next().hide();
+          $(this).next().next().show();
+        });
+      });
+    </script> -->
+    <!-- <footer>
+      <div class="container">
+        <div class="copyright">
+          <p>©版權所有 永豐銀行</p>
+          <p class="hidden-min"><a href="https://mma.sinopac.com/Bank/BankFrame.aspx?url=browser/upgrade.html" target="_blank">建議使用之瀏覽器</a>/ 建議解析度1024*768</p>
+        </div>
+        <div class="copyright">
+          <p>
+            <a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a
+            ><a href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html" target="_blank">網路安全說明</a
+            ><a href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank">隱私權保護聲明</a>
+          </p>
+        </div>
+      </div>
+    </footer> -->
+  <!-- </div>
+</div> -->

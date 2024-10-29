@@ -1,0 +1,39 @@
+<div class="formblock">
+	<table class="data-table forvd" width="100%">
+		<tbody>
+			<tr>
+				<th class="mobile-col-4">
+					<div class="rowElem text-right">快速查詢</div>
+				</th>
+				<td class="mobile-col-8">
+					<div class="rowElem rowinline">
+						<ul *ngIf="!isMobile">
+							<li *ngFor="let option of fastQueryOptions;">
+								<a href="javascript:void(0)" (click)="onClickMonthLink(option);">{{option.DisplayName}}</a>
+							</li>
+						</ul>
+						<div *ngIf="isMobile" class="artfld select col-2 mobile-col-12">
+							<select [(ngModel)]="selectedIndex" (ngModelChange)="onSelectChange($event)" mweb-select="請選擇查詢區間">
+								<option *ngFor="let option of fastQueryOptions; let idx = index" [value]=idx>{{option.DisplayName}}</option>
+							</select>
+						</div>
+					</div>
+				</td>
+			</tr>
+			<tr *ngIf="showPeriod">
+				<th style="border-bottom: none;">
+					<div class="rowElem text-right">查詢期間</div>
+				</th>
+				<td style="border-bottom: none;">
+					<div class="rowElem" style="margin-bottom: 10px">
+						<input type="text" class="autofocus artfld col-2 mobile-col-3" datepicker [dob]="false" [maxDate]="MaxDate" [(ngModel)]="start" (ngModelChange)="dateChange(startChange, $event);">到
+						<input type="text" class="autofocus artfld col-2 mobile-col-3" datepicker [dob]="false" [minDate]="MinDate" [(ngModel)]="end" (ngModelChange)="dateChange(endChange, $event);">
+						<span class="btn-zone inline mobile-col-4">
+							<button type="button" class="nbtn" (click)="onSearch()">查詢</button>
+						</span>
+					</div>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

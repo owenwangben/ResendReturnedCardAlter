@@ -1,0 +1,71 @@
+<div class="outer_container">
+  <div class="container">
+    <app-breadcrumbs></app-breadcrumbs>
+    <div class="content">
+      <section class="trans-content">
+        <h2 class="title">{{pageinfo.name}}</h2>
+        <div class="formblock">
+          <div class="rowElem fs15 fwb">
+            <span>最新消費紀錄(授權金額)</span>
+            <div>
+              <span class="red fs15">
+                最新消費紀錄為21天內簽帳金融卡交易紀錄，實際金額以商家請款金額為準。
+              </span>
+            </div>
+          </div>
+		  <ul class="accordion">
+			<li #tables *ngFor="let item of detailClassifyModel;">
+				<a href="javascript:void(0)" class="atitle">{{item.CurrencyCName}}</a>
+				<div class="acontent">
+					<table class="ntable fs15">
+						<thead>
+							<tr>
+								<th>卡片末四碼</th>
+              					<th>授權日期</th>
+             					<th>授權時間</th>
+             					<th>消費類別/商店名稱</th>
+             					<th>授權金額({{item.CurrencyCName}})</th>
+             					<th>消費國別</th>
+             					<th>授權結果</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let record of item?.Items">
+								<td>{{record.CardNo}}</td>
+              					<td>{{record.AuthDate | date:'y/MM/dd'}}</td>
+             					<td>{{record.AuthTime}}</td>
+             					<td>{{record.Memo}}</td>
+             					<td>{{record.AuthAmt}}</td>
+             					<td>{{record.CountryCode}}</td>
+             					<td>{{record.AuthResult}}</td>
+							</tr>
+							<tr *ngIf="!item?.Items?.length">
+								<td colspan="7">查無資料！</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</li>
+			<table class="ntable" *ngIf="!detailClassifyModel?.length">
+				<tbody>
+					<tr>
+						<th>卡片末四碼</th>
+              			<th>授權日期</th>
+             			<th>授權時間</th>
+             			<th>消費類別/商店名稱</th>
+             			<th>授權金額(臺幣)</th>
+             			<th>消費國別</th>
+             			<th>授權結果</th>
+					  </tr>
+					<tr>
+						<td colspan="7">查無資料！</td>
+					</tr>
+				</tbody>
+			</table>
+		</ul>
+        </div>
+        <div loadHtml="/mma8/card/htmls/202209/Debit卡授權交易明細注意事項.html"></div>
+      </section>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<h2 class="title">{{pageinfo.name}}</h2>
+			<section class="trans-content">
+				<div class="abgne_tab">
+					<ul class="ntabs">
+						<li routerLink="/Reward/TPointsRedemptionRecords" routerLinkActive="active"><a href="javascript:void(0)">兌換紀錄與設定</a></li>
+						<li class="active"><a href="javascript:void(0)">累積查詢</a></li>
+					</ul>
+				</div>
+				<div class="formblock" [formGroup]="form" (ngSubmit)="onSubmit()">
+					<table cellpadding="0" cellspacing="0" border="0" width="100%" class="new-datatable vtop">
+						<tr>
+							<th>查詢月份</th>
+							<td>
+								<div class="toggle-with-loading">
+                                    <div class="artfld select col-5">
+										<select formControlName="InquiryPeriod" class="toggle-slide-select">
+											<option value="" disabled>請選擇月份</option>
+											<option *ngFor="let month of monthOptions" [value]="month">{{month | date:'y/MM'}}</option>
+										</select>
+									</div>
+									<div style="margin-left:10px;">
+                                        <div class="btn-zone inline">
+                                            <a id="history-query" href="javascript:void(0)" class="nbtn" (click)="onSubmit()">查詢</a>
+                                        </div>
+                                    </div>
+                                </div>
+							</td>
+						</tr>
+					</table>
+				</div>
+				<div *ngIf="this.resultModel">
+					<h2 class="title">回饋查詢結果</h2>
+					<h3 class="regular center">
+						<span class="red">查詢期間: {{inquiryPeriod | date:'y年M月'}}</span>
+					</h3>
+					<div class="ftable  full-size fixwidth">
+						<table cellspacing="0" cellpadding="0" border="0"
+							class="ntable fs15 casbBtable vmiddle vmiddle">
+							<tbody>
+								<tr valign="middle">
+									<th>當月發放T Points</th>
+								</tr>
+								<tr>
+									<td>{{resultModel?.TotalPoints | number}}</td>
+								</tr>
+						</table>
+					</div>
+					<div *ngIf="resultModel?.TotalPoints !== 0">
+						<h3 class="title">回饋明細</h3>
+						<div class="ftable  full-size fixwidth" >
+							<table cellspacing="0" cellpadding="0" border="0"
+							class="ntable fs15 casbBtable vmiddle vmiddle">
+								<tbody>
+									<tr valign="middle">
+										<th width="50%">名稱</th>
+										<th width="30%">消費金額小計</th>
+										<th width="20%">T Points</th>
+									</tr>
+									<tr *ngFor="let item of resultModel?.Summary">
+										<td>{{item.Name}}</td>
+										<td class="num-align">{{item.TotalAmt | number}}</td>
+										<td class="num-align">{{item.TPoints | number}}</td>
+									  </tr>
+									  <tr *ngIf="!resultModel?.Summary.length">
+										<td colspan="9">無回饋紀錄！</td>
+									  </tr>
+							</table>
+						</div>
+						<h3 class="title">消費紀錄</h3>
+						<div class="formblock">
+							<ul class="accordion">
+								<li *ngFor="let item of this.detailModel;let idx = index;">
+									<a href="javascript:void(0)" class="atitle {{idx === 0 ? 'active' : ''}}" (click)="slideToggle($event.target)">{{item.DataName}}</a>
+									<div class="acontent" [style.display]="idx === 0 ? '' : 'none'">
+										<div class="ftable full-size fixwidth">
+											<table cellspacing="0" cellpadding="0" border="0" align="center"
+												class="ntable fs15 casbBtable vmiddle vmiddle" *ngIf="item.DataType === 1">
+												<tbody>
+													<tr>
+														<th width="18%">消費日(入點日)</th>
+														<th width="10%">消費金額</th>
+                                                        <th width="10%">T Points</th>
+														<th width="46%">消費項目</th>
+														<th width="8%">等級</th>
+														<th width="8%">回饋率</th>
+													</tr>
+													<tr *ngFor="let txitem of item.Items">
+														<td>{{txitem.TX_DATE}}</td>
+														<td class="num-align">{{txitem.TX_AMT | number}}</td>
+                                                        <td class="num-align">{{txitem.POINT | number}}</td>
+														<td>{{txitem.MEMO}}</td>
+														<td>{{txitem.LEVEL}}</td>
+														<td class="num-align">{{txitem.FEEDBACK_RATE}}</td>
+													</tr>
+													<tr *ngIf="!item.Items?.length">
+														<td colspan="9">查無資料！</td>
+													</tr>
+											</table>
+											<table cellspacing="0" cellpadding="0" border="0" align="center"
+												class="ntable fs15 casbBtable vmiddle vmiddle" *ngIf="item.DataType === 2">
+												<tbody>
+													<tr>
+														<th width="13.5%">消費日</th>
+														<th width="13.5%">入點日</th>
+														<th width="53%">消費項目</th>
+														<th width="20%">消費金額</th>
+													</tr>
+													<tr *ngFor="let txitem of item.Items">
+														<td>{{txitem.TX_DATE}}</td>
+														<td>{{txitem.DE_DATE}}</td>
+														<td>{{txitem.MEMO}}</td>
+														<td class="num-align">{{txitem.TX_AMT | number}}</td>
+													</tr>
+													<tr *ngIf="!item.Items?.length">
+														<td colspan="9">查無資料！</td>
+													</tr>
+											</table>
+											<table cellspacing="0" cellpadding="0" border="0" align="center"
+												class="ntable fs15 casbBtable vmiddle vmiddle" *ngIf="item.DataType === 3">
+												<tbody>
+													<tr>
+														<th width="20%">入點日</th>
+														<th width="60%">消費項目</th>
+														<th width="20%">回饋點數</th>
+													</tr>
+													<tr *ngFor="let txitem of item.Items">
+														<td>{{txitem.DE_DATE}}</td>
+														<td>{{txitem.MEMO}}</td>
+														<td class="num-align">{{txitem.POINT | number}}</td>
+													</tr>
+													<tr *ngIf="!item.Items?.length">
+														<td colspan="9">查無資料！</td>
+													</tr>
+											</table>
+										</div>
+									</div>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="MemoContent-s2">
+						<h2 class="title">注意事項</h2>
+						<div class="listStyle">
+							<ol class="inner decimal">
+								<li>「開啟」折抵信用卡帳單功能將於次月第一個營業日扣除T Points點數並折抵次月帳單。(EX：7月20日設定「開啟」折抵信用卡帳單，不再異動，則該T Points點數將於8月第一個營業日扣除並折抵8月份帳單。)</li>
+								<li>本服務功能為提供永豐55688聯名卡之T Points回饋查詢，相關活動內容及回饋資格等，請參考永豐銀行活動網頁公告。</li>
+								<li>本「月份」為T Points回饋月份，非實際消費月份或帳單月份。</li>
+							</ol>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,23 @@
+{
+    "Result": {
+        "ID": "W273417476",
+        "Success": true,
+        "Mobile": "0987654321",
+		"IsBankUser": true,
+        "IsILoanUser": true
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

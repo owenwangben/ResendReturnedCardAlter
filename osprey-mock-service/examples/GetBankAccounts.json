@@ -1,0 +1,28 @@
+{
+    "Result": {
+        "Accounts": [
+            {
+				"AccountNo": "00100460185231",
+				"IsDigitalAccount": false
+            },
+            {
+				"AccountNo": "20100460185231",
+				"IsDigitalAccount": false
+            }
+        ]
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

@@ -1,0 +1,99 @@
+table.ntable {
+	margin-top: 0px;
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+	th, td {
+		padding: 0 10px 5px 5px;
+		width: 16%;
+		text-align: center;
+	}
+	td > a.billDetail {
+		font-weight:bold;
+		line-height: 32px;
+		text-decoration:underline;
+		font-size: 1.1em;
+	}
+	td > a.present {
+		color:#b9160f
+	}
+	&.cols {
+		th {
+			text-align: left;
+			line-height: 20px;
+		}
+	}
+}
+
+table.new-datatable {
+	margin-top: 0px;
+	th, td {
+		padding: 0 10px 5px 0;
+	}
+	th {
+		width: 25%;
+		line-height: 20px;
+		text-align: right;
+	}
+	td {
+		text-align: left;
+	}
+}
+
+table.data-table {
+	margin-top: 10px;
+	th, td {
+		padding: 0 10px 5px 0;
+	}
+	th {
+		text-align: right;
+	}
+}
+
+table.table-border {
+	th, td {
+		border: 1px solid black;
+		padding: 5px;
+	}
+}
+
+table.table-striped {
+	width: 100%;
+	border-spacing: 0;
+	border-collapse: collapse;
+
+	tr {
+		th, td {
+			padding: 6px;
+			vertical-align: middle;
+			border: 0 none;
+			text-align: center;
+		}
+	}
+
+	thead {
+		tr {
+			background: #CECECE;
+		}
+	}
+
+	tbody {
+		tr:nth-child(even) {
+			background: #F1F1F1;
+		}
+		tr:nth-child(odd) {
+			background: white;
+		}
+	}
+
+	&.two-cols-list {
+		th {
+			text-align: left;
+			padding-left: 40px;
+		}
+		td {
+			text-align: right;
+			padding-right: 40px;
+		}
+	}
+}

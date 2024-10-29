@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <meta property="og:title" content="">
+    <meta property="og:image" content="">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="">
+    <meta name="author" content="永豐銀行">
+    <meta name="copyright" content="永豐銀行">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title></title>
+    <link rel="shortcut icon" href="https://mma.sinopac.com/images/favicon.ico">
+    <link rel="stylesheet" href="css/reset.css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+    <script src="js/jquery-3.3.1.min.securejs" type="text/javascript"></script>
+    <script src="js/jquery.lightbox_me.securejs" type="text/javascript"></script>
+    <script src="js/scripts.securejs" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="wrapper-container">
+      <div class="wrapper">
+        <div class="wrapper-mask"></div>
+        <header>
+          <div class="header-top">
+            <div class="container">
+              <div class="logo"><a href="https://bank.sinopac.com/" title="永豐銀行首頁"><img class="hidden-min" src="images/sinopac-logo.svg" alt="永豐銀行"><img class="hidden-max" src="images/sinopac-logo-min.svg" alt="永豐銀行"></a></div>
+              <h1 class="header-title">信用卡掛失</h1>
+            </div>
+          </div>
+        </header>
+        <section class="container-block container">
+          <div class="content transparent">
+            <h2>以下方法為模擬 Ajax 取得資料回來後 render 在 lightbox 裡的方式，請自行串接使用。</h2>
+            <pre>用法1:
+openlbox('#err');
+$('#err h3').text(標題);
+$('#err .desc p').text(描述);
+
+用法2:
+openlbox('#cs-msg');
+$('#cs-msg h3').text(標題);
+$('#cs-msg .desc p').text(描述);
+
+HTML:
+&lt;a href="#" class="open-lbox" data-lboxid="#err"&gt;操作流程錯誤(驗證token序號不符)&lt;/a&gt;
+&lt;a href="#" class="open-lbox" data-lboxid="#cs-msg"&gt;訊息(掛失多張卡片)&lt;/a&gt;</pre>
+            <h2>以上方法不想用的話或者直接參考 html 原始檔內的 script 自行斟酌使用也行。</h2>
+            <hr>
+            <div id="lists"></div>
+          </div>
+        </section>
+        <div class="lboxed">
+          <div class="close"></div>
+          <div class="lbox-block">
+            <div class="error-msg" id="err">
+              <h3></h3>
+              <div class="desc">
+                <p></p>
+              </div>
+              <div class="btn-block center"><a class="btn close" href="#">關閉</a></div>
+            </div>
+            <div class="error-msg" id="cs-msg">
+              <h3></h3>
+              <div class="desc">
+                <p></p>
+              </div>
+              <div class="btn-block center"><a class="btn cancel" href="tel:(02)2528-7776">聯絡客服</a>
+                <button class="btn close">再掛一張</button>
+              </div>
+            </div>
+            <div class="error-msg" id="cs-msg2">
+              <h3></h3>
+              <div class="desc">
+                <p></p>
+              </div>
+              <div class="btn-block center">
+                <button class="btn cancel close">取消</button><a class="btn" href="tel:(02)2528-7776">聯絡客服</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <style>
+          /* 火力展示用，不用抄 */
+          #lists a {display: block;}
+        </style>
+        <script>
+          // 以下程式碼是模擬錯誤訊息的回傳值，請 IT 依狀況自行斟酌使用。
+          var datas = [
+            {
+              "title": "訊息",
+              "sub": "掛失多張卡片",
+              "desc": "若您仍需要掛失多張卡片，歡迎撥打客服 02-25287776，由客服直接為您服務。",
+              "msg_type": "#cs-msg"
+            },
+            {
+              "title": "訊息",
+              "sub": "減免費用",
+              "desc": "為了感謝貴用戶長期對本行的支持，將為您減免本次掛失所產生的費用。謝謝。",
+              "msg_type": "#err"
+            },
+            {
+              "title": "訊息",
+              "sub": "持卡數過多",
+              "desc": "由於您持卡數過多，請直接撥打客服 02-25287776，由專人為您服務。",
+              "msg_type": "#cs-msg2"
+            }
+          ];
+          
+          $(datas).map(function(k,v) { // 火力展示用，只是產出這個東西而已：<a href="#" class="open-lbox" data-lboxid="{msg_type}">{title}({sub})</a>
+            var elem = document.createElement("a");
+            elem.setAttribute('href', "#");
+            elem.classList.add('open-lbox');
+            elem.setAttribute('data-lboxid', v.msg_type);
+            elem.innerText = v.title + '('+v.sub+')';
+            document.getElementById('lists').appendChild(elem);
+          });
+          
+          $('.open-lbox').click(function(e){ // 請 IT 依狀況自行斟酌使用
+            e.preventDefault();
+            var self_index = $(this).index();
+            var lightbox_id = $(this).data('lboxid');
+            $(lightbox_id).find('h3').text(datas[self_index].title);
+            $(lightbox_id).find('.desc p').text(datas[self_index].desc);
+          });
+        </script>
+        <div class="container">
+          <div class="warnings">
+            <p>謹慎理財 信用至上</p>
+            <p>24小時服務專線：(02)2528-7776/0800-058-888 (限市話)<span class="hidden-min">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><br class="hidden-max">郵政信箱：100台北郵局39-88號信箱<br>循環信用利率年息2.74%~15% (基準日2015/8/3)，<br class="hidden-max">預借現金手續費：預借現金金額X3.5%+NT$100</p>
+          </div>
+        </div>
+        <footer>
+          <div class="container">
+            <div class="copyright">
+              <p>©版權所有 永豐銀行</p>
+              <p class="hidden-min">建議瀏覽器設定IE11.0以上/解析度1024*768</p>
+              <p class="hidden-min"><a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a></p>
+              <p class="hidden-max">24小時會員服務專線：<br>02-25059999 | 0203-08989</p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>

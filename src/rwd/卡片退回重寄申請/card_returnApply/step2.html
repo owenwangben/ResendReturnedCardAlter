@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,Chrome=1" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta property="og:title" content="" />
+    <meta property="og:image" content="" />
+    <meta property="og:url" content="" />
+    <meta property="og:description" content="" />
+    <meta name="author" content="永豐銀行" />
+    <meta name="copyright" content="永豐銀行" />
+    <meta name="keywords" content="" />
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <title></title>
+    <link rel="shortcut icon" href="https://mma.sinopac.com/images/favicon.ico" />
+    <link href="../css/jpreloader.css" rel="stylesheet" type="text/css" />
+    <link href="../css/styles.css" rel="stylesheet" type="text/css" />
+    <script src="../js/jquery.min.securejs" type="text/javascript"></script>
+    <script src="../js/jquery-migrate.min.securejs" type="text/javascript"></script>
+    <script src="../js/jquery.lightbox_me.securejs" type="text/javascript"></script>
+    <script src="../js/jpreloader.min.securejs" type="text/javascript"></script>
+    <script src="../js/scripts.securejs" type="text/javascript"></script>
+    <link href="../css/splide.min.css" rel="stylesheet" type="text/css" />
+    <link href="../css/carousel.css" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <div class="wrapper-container">
+      <div class="wrapper">
+        <div class="wrapper-mask"></div>
+        <header>
+          <div class="header-top">
+            <div class="container">
+              <div class="logo">
+                <a href="https://bank.sinopac.com/" title="永豐銀行首頁"
+                  ><img class="hidden-min" src="../images/sinopac-logo.svg" alt="永豐銀行" /><img class="hidden-max" src="../images/sinopac-logo-min.svg" alt="永豐銀行"
+                /></a>
+              </div>
+              <h1 class="master-title">信用卡卡片退回重寄申請</h1>
+            </div>
+          </div>
+        </header>
+        <div class="outer_container">
+          <div class="container no-breadcrumbs">
+            <div class="content transparent step-panel-block">
+              <div class="step">
+                <ul class="list-step list-step--gray">
+                  <li class="list-step__item list-step__item--active"><span class="list-step__item-num"></span><span class="list-step__item-title">填寫資料</span></li>
+                  <li class="list-step__item list-step__item--current"><span class="list-step__item-num"></span><span class="list-step__item-title">確認資料</span></li>
+                  <li class="list-step__item"><span class="list-step__item-num"></span><span class="list-step__item-title">申請結果</span></li>
+                </ul>
+              </div>
+            </div>
+            <div class="content">
+              <section class="trans-content">
+                <fieldset class="fieldset-block pink-legend">
+                  <legend class="nowrap">基本資料<i class="fieldset-block__icon-collapse"></i></legend>
+                  <div class="fieldset-block__body">
+                    <div class="confirm-data-block">
+                      <table>
+                        <tbody>
+                          <tr>
+                            <th>
+                              <p>申請卡片</p>
+                            </th>
+                            <td>
+                              <p class="mbhalf">台灣大車隊聯名卡(主卡)<br />1234 **** **** 5678</p>
+                              <p class="mbhalf">SPORT悠遊鈦商奶油黃卡(主卡)<br />1234 **** **** 5678</p>
+                              <p class="mbhalf">DAWHO現金回饋信用卡(主卡)<br />1234 **** **** 5678</p>
+                            </td>
+                          </tr>
+                          <tr>
+                            <th>
+                              <p>卡片寄送地址</p>
+                            </th>
+                            <td>測試市DEMO區308號6樓</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </fieldset>
+              </section>
+            </div>
+            <div class="btn-zone flex-inline-min">
+              <a class="nbtn" href="#">上一步</a>
+              <input class="nbtn focus" id="next" type="submit" value="送出" />
+            </div>
+            <script>
+              $('#next').click(function (e) {
+                e.preventDefault();
+                showLoading(true);
+                setTimeout(function () {
+                  // 開發時 setTimeout 要代換成 Ajax
+                  /**
+                   * 模擬使用 Ajax 的時間延遲 Loading 圖示
+                   * 並切換至下一步的畫面
+                   */
+                  showLoading(false);
+                  //do something here
+                }, 1000); // 開發時 setTimeout 要代換成 Ajax
+              });
+
+              $('.fieldset-block--collapse legend').click(function (e) {
+                e.preventDefault();
+                var $collapse = $(this).closest('.fieldset-block');
+
+                $collapse.attr('data-open', $collapse.attr('data-open') == 'false' ? 'true' : 'false');
+              });
+            </script>
+          </div>
+        </div>
+        <footer>
+          <div class="container">
+            <div class="copyright">
+              <p>©版權所有 永豐銀行</p>
+              <p class="hidden-min"><a href="https://mma.sinopac.com/Bank/BankFrame.aspx?url=browser/upgrade.html" target="_blank">建議使用之瀏覽器</a>/ 建議解析度1024*768</p>
+            </div>
+            <div class="copyright">
+              <p>
+                <a href="https://bank.sinopac.com/MMA8/bank/service/service-index.html" target="_blank">客服中心</a
+                ><a href="https://mma.sinopac.com/MemberPortal/Member/MmaInfoFrame.aspx?url=channel/other/safe.html" target="_blank">網路安全說明</a
+                ><a href="https://bank.sinopac.com/sinopacBT/footer/privacy-statement.html" target="_blank">隱私權保護聲明</a>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+    <script src="../js/splide.min.securejs" type="text/javascript"></script>
+  </body>
+</html>

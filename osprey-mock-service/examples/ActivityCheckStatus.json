@@ -1,0 +1,25 @@
+{
+  "Result": {
+	"Code": "AB12",
+    "Name": "水電瓦斯中華電信費代繳紅利回饋無上限！",
+    "IsActive": true,
+    "Count": 1,
+    "CanSign": true,
+    "IsVipActivity" : true,
+    "IsInstallmentActivity" : true
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

@@ -1,0 +1,265 @@
+<div class="container-fluid u-maxWidth-1024 pt-3" *ngIf="isError;else error">
+  <h2 class="text-left my-4 u-font-weight-700 t-superTitle">消費碳足跡查詢</h2>
+  <div class="card card--shadow bg-light mb-4">
+    <div class="card-body">
+      <form [formGroup]="form">
+        <div class="row align-items-center mb-0">
+          <div class="col-12 col-md-2 pt-2 align-self-start">交易時間</div>
+          <div class="col-12 col-sm-12 col-md-10 mt-2 mt-sm-0">
+            <ul class="nav nav-pills mb-1 mb-sm-0" id="pills-tab" role="tablist">
+              <li class="nav-item mr-2 mb-2 mb-sm-0" *ngFor="let Date of quickDates;index as idx">
+                <button class="nav-link" [class.active]="idx === Timeselect"
+                  (click)="quickSearch(idx);Timeselect=idx">{{ Date.Date }}</button>
+              </li>
+            </ul>
+            <ng-container *ngIf="customPickDate" class="custom-date">
+              <!-- 大網 -->
+              <ng-container *ngIf="!isMobile;else mobile">
+                <div class="row align-items-center form-date mt-3">
+                  <!-- 起 -->
+                  <div class="col-sm-4">
+                    <input type="text" class="autofocus artfld col-10 form-control" datepicker [minDate]="MinDate"
+                      [maxDate]="Maxdate" [slashfmt]="true" [dob]="false" [defDate]="MinDate" maxlength=10 required
+                      id="Start" formControlName="DateStart" placeholder="查詢起日" readonly />
+                  </div>
+                  <!-- 迄 -->
+                  <div class="col-sm-4">
+                    <input type="text" class="autofocus artfld col-10 form-control" datepicker [minDate]="MinDate"
+                      [maxDate]="Maxdate" [slashfmt]="true" [dob]="false" placeholder="查詢迄日" maxlength=10 required
+                      id="End" formControlName="DateEnd" readonly />
+                  </div>
+                  <div class="col-12 col-sm-4">
+                    <p class="m-0 mt-2 mt-sm-0 text-gray-600 u-font-size-14">{{ customnotice }}</p>
+                  </div>
+                </div>
+              </ng-container>
+              <!-- 小網 -->
+              <ng-template #mobile>
+                <div class="row align-items-center mt-3">
+                  <!-- 起 -->
+                  <div class="col-12 col-sm-4">
+                    <input type="text" inputmode="numeric" class="autofocus artfld col-12 form-control"
+                      mask="0000/00/00" placeholder="YYYY/MM/DD" formControlName="DateStartM" required>
+                  </div>
+                  <div class="col-12" style="text-align:center;">
+                    <span> 至 </span>
+                  </div>
+                  <!-- 迄 -->
+                  <div class="col-12 col-sm-4">
+                    <input type="text" inputmode="numeric" class="autofocus artfld col-12 form-control"
+                      mask="0000/00/00" placeholder="YYYY/MM/DD" formControlName="DateEndM" required>
+                  </div>
+                  <div class="col-12 col-sm-4">
+                    <p class="m-0 mt-2 mt-sm-0 text-gray-600 u-font-size-14">{{ customnotice }}</p>
+                  </div>
+                </div>
+              </ng-template>
+              <hr class="my-4 u-border-top-dashed">
+            </ng-container>
+          </div>
+        </div>
+        <div *ngIf="customPickDate" class="d-flex justify-content-center align-items-center flex-wrap">
+          <button class="btn btn-primary btn-xs-block"
+            (click)="customDate(form.value.DateStart?form.value.DateStart:DateStartM.value,form.value.DateEnd?form.value.DateEnd:DateEndM.value,true)">查詢</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="card card--shadow mb-4 query-result">
+    <div class="card-header border-0 bg-aliceblue">
+      <p class="m-0">查詢期間 : {{ searchDateS | date:'y/MM/dd' }}-{{ searchDateE | date:'y/MM/dd' }}</p>
+    </div>
+    <div class="card-body">
+      <div class="d-flex justify-content-center align-items-center">
+        <figure> <img class="img-fluid" src="/mma8/card/images/carbon/query/figure-1.png" alt=""></figure>
+        <div class="ml-4">
+          <div class="d-flex align-items-center">
+            <p class="m-0 u-font-weight-700">碳足跡</p><a class="d-inline-flex" data-toggle="modal"
+              data-target="#exampleModal" (click)="showbox = true"><span class="icon icon-information-gray"></span></a>
+          </div>
+          <h3 [ngClass]="TotalGrams > 900 ? 'text-primary' : ''">{{ TotalGrams| number:'1.2-2' }}</h3>
+          <p class="text-gray-600 u-font-size-14">CO<sub>2</sub>排放量以Kg計</p>
+        </div>
+      </div>
+      <div *ngIf="TotalGrams > 900 && Timeselect!==3" class="card-footer border-0 rounded bg-cornsilk">
+        <p class="m-0 text-left text-sm-center text-peru u-font-size-14">提醒您！您的消費碳足跡已超過國人平均值，請一同減碳愛地球。</p>
+      </div>
+    </div>
+  </div>
+  <!-- 總覽、明細tab -->
+  <ul class="nav nav-tabs nav-fill mb-4" id="resultType">
+    <li class="nav-item"><a [ngClass]="selectedTab === 'overvier'?'nav-link active':'nav-link'"
+        (click)="onSelectType(lastcardidx);this.lastType='000'">總覽</a></li>
+    <li class="nav-item"><a [ngClass]="selectedTab === 'detail'?'nav-link active':'nav-link'"
+        (click)="onSelectType(lastcardidx,'000')">明細</a></li>
+  </ul>
+  <!-- 總覽 -->
+  <ng-container *ngIf="selectedTab === 'overvier'">
+    <div class="row align-items-center mb-4">
+      <div class="col-6 col-md-4">
+        <select class="form-control" id="inputState1" [(ngModel)]="lastcardidx" #cardselect
+          (change)="onSelectType(cardselect.value)">
+          <option *ngFor="let card of cardOption; index as idx" [value]="idx">
+            {{ card.Name }}</option>
+        </select>
+      </div>
+    </div>
+    <div class="overview">
+      <div *ngFor="let item of carbonDataOverflow; index as idx"
+        class="d-flex align-items-center p-0 py-3 px-md-3 border-bottom">
+        <div class="overview-title flex-grow-0 flex-shrink-0">
+          <div class="d-flex align-items-center">
+            <i class="dot bg-{{item.color}} mr-2"></i>
+            <p class="m-0">{{ item.Type }}</p>
+          </div>
+        </div>
+        <div class="flex-grow-1 flex-shrink-1 px-1 px-md-3">
+          <div class="progress rounded-0">
+            <div class="progress-bar bg-{{item.color}}" role="progressbar" [style.width.%]="item.bar" aria-valuenow="25"
+              aria-valuemin="0" aria-valuemax="100">
+            </div>
+          </div>
+          <!-- bar -->
+        </div>
+        <div class="overview-amount flex-grow-0">
+          <div class="d-flex justify-content-end align-items-center">
+            <p class="m-0">{{ item.total | number:'1.2-2' }}Kg</p><a class="d-inline-flex"
+              (click)="onSelectType(cardselect.value,typeOverflow.value)"><span class="icon icon-page-next ml-2"></span>
+              <option value="{{item.MccCode}}" #typeOverflow></option>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <!-- 明細 -->
+  <ng-container *ngIf="selectedTab === 'detail'">
+    <div class="row align-items-center mb-4">
+      <div class="col-6 col-md-4">
+        <select class="form-control" [(ngModel)]="lastcardidx" id="inputState2" #seleCard
+          (change)="onSelectType(seleCard.value,selecType.value)">
+          <option *ngFor="let card of cardOption; index as idx" [value]="idx">{{ card.Name }}</option>
+        </select>
+      </div>
+      <div class="col-6 col-md-4">
+        <select class="form-control" id="inputState" (change)="onSelectType(seleCard.value,selecType.value)" #selecType>
+          <option *ngFor="let type of typeOption" value="{{type.Code}}" [selected]="lastType===type.Code">
+            {{type.Type}}</option>
+        </select>
+      </div>
+      <div class="col-12 col-md-4">
+        <p class="m-0 mt-3 mt-md-0 text-left text-md-right u-font-size-18">累計碳足跡 {{ typeKg | number:'1.2-2' }} Kg
+        </p>
+      </div>
+    </div>
+    <!-- 無資料 -->
+    <ng-container *ngIf="!hasItem;else detail">
+      <h5 style="text-align: center;height: 200px;">查無資料</h5>
+    </ng-container>
+    <!-- 明細Table -->
+    <ng-template #detail>
+      <table class="table table-borderless mb-4 d-none d-md-table">
+        <thead class="bg-primary">
+          <tr>
+            <th class="align-middle text-white u-width-10">消費日</th>
+            <th class="align-middle text-white u-width-10">入帳起息日</th>
+            <th class="align-middle text-white u-width-20">消費說明</th>
+            <th class="align-middle text-white u-width-15">消費類別</th>
+            <th class="align-middle text-white u-width-15">卡片</th>
+            <th class="align-middle text-white text-right u-width-15">消費金額</th>
+            <th class="align-middle text-white text-right u-width-15">碳足跡(Kg)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- 明細 -->
+          <tr *ngFor="let item of showDetail | paginate: { itemsPerPage: 10, currentPage: pages } ; index as idx">
+            <td class="align-middle">{{ item?.TransactionDate }}</td>
+            <td class="align-middle">{{ item?.DEDate }}</td>
+            <td class="align-middle">{{ item?.Memo }}</td>
+            <td class="align-middle">{{ item?.MCCDesc }}</td>
+            <td class="align-middle">{{ item?.CardDesc }} </td>
+            <td class="align-middle text-right">{{ item?.CurrencyCode+' ' }}{{ item?.Amount | number }}</td>
+            <td class="align-middle text-right">{{ item?.Grams | number:'1.2-2' }}</td>
+          </tr>
+        </tbody>
+      </table>
+      <!-- 手機版 -->
+      <div class="d-block d-md-none"
+        *ngFor="let item of showDetail | paginate: { itemsPerPage: 10, currentPage: pages } ">
+        <div class="card mb-3">
+          <div class="card-body">
+            <div class="row mb-2">
+              <div class="col text-gray-600">消費日</div>
+              <div class="col text-right">{{ item?.TransactionDate }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col text-gray-600">商店名稱</div>
+              <div class="col text-right">{{ item?.Memo }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col text-gray-600">消費類別</div>
+              <div class="col text-right">{{ item?.MCCDesc }}</div>
+            </div>
+            <div class="row mb-2">
+              <div class="col text-gray-600">消費金額</div>
+              <div class="col text-right">{{ item?.CurrencyCode+' ' }}{{ item?.Amount | number }}</div>
+            </div>
+            <div class="row">
+              <div class="col text-gray-600">碳足跡(Kg)</div>
+              <div class="col text-right">{{ item?.Grams | number:'1.2-2' }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 分頁 -->
+      <div class="mb-4">
+        <pagination-controls class=" pagination justify-content-center " (pageChange)="pages = $event;scrollTop()"
+          previousLabel="上一頁" nextLabel="下一頁"></pagination-controls>
+      </div>
+    </ng-template>
+  </ng-container>
+  <!-- 碳足跡 i icon 彈窗 -->
+  <ng-container *ngIf="showbox">
+    <div class="modal fade show" role="dialog" style="display: block;" aria-modal="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content pt-2">
+          <div class="modal-header px-0 border-bottom-0">
+            <h5 class="mb-3 font-weight-bold t-subtitle">永豐銀行碳足跡計算器服務</h5>
+          </div>
+          <div class="modal-body">
+            <p class="m-0 ">
+              永豐銀行與萬事達卡(Mastercard)合作，推出碳足跡計算器，系統將使用您購買的交易資訊，如商店的類別、消費金額等，透過奧蘭指數(Åland
+              Index)的運算技術估算您每一筆消費的碳排放量，讓您了解您的消費碳足跡。</p>
+          </div>
+          <div class="modal-footer py-3 border-top-0 justify-content-center">
+            <a class="btn btn-outline-primary btn-md-block"
+              href="https://bank.sinopac.com/sinopacBT/webevents/2208_green/index.html" target="_blank">了解更多</a>
+            <button class="btn btn-primary btn-md-block" (click)="showbox = false">我知道了</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+  </ng-container>
+</div>
+<ng-template #error>
+  <div class="container-fluid u-maxWidth-1024 pt-3">
+    <h2 class="text-left my-4 u-font-weight-700 t-superTitle">消費碳足跡查詢</h2>
+    <div class="d-flex flex-column align-items-center"> <span class="Erroricon icon-information-red mt-5 mb-3"></span>
+      <h3>系統忙碌中，請稍後再試</h3>
+    </div>
+  </div>
+</ng-template>
+
+<div [ngClass]="selectedTab === 'overvier'?'footer-notice':''">
+  <div style="background-color:#f8f8f8" *ngIf="selectedTab === 'detail'">
+    <div class="contact">
+      <span style="font-weight:bold;">注意事項</span><br>
+      <ol type="1">
+        <li>以上資料僅供您作為參考，實際明細仍以本行帳單為準。</li>
+        <li>消費碳足跡資料(為估計值)，可於刷卡消費後約1~8天後查詢。</li>
+        <li>消費碳足跡明細僅提供近一年資料，自啟用日起計算。</li>
+      </ol>
+    </div>
+  </div>
+</div>

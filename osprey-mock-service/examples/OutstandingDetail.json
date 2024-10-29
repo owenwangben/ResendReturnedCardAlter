@@ -1,0 +1,112 @@
+{
+  "Result": {
+    "Detail": [
+      {
+        "ORG": "000",
+		"CurrencyCode": "000",
+        "CurrencyName": "臺幣",
+        "TXDATE": "20170309",
+        "DEDATE": "20170309",
+        "CardLast4": "1201",
+        "MEMO": "台灣XXXXX",
+        "TXCUR": "",
+        "AMT": "3,000",
+        "TXAMT": "0"
+      },
+      {
+        "ORG": "000",
+		"CurrencyCode": "000",
+        "CurrencyName": "臺幣",
+        "TXDATE": "20170310",
+        "DEDATE": "20170309",
+        "CardLast4": "1201",
+        "MEMO": "家用XXXXX",
+        "TXCUR": "",
+        "AMT": "660",
+        "TXAMT": "0"
+      },
+      {
+        "ORG": "000",
+		"CurrencyCode": "000",
+        "CurrencyName": "臺幣",
+        "TXDATE": "20170320",
+        "DEDATE": "20170320",
+        "CardLast4": "8804",
+        "MEMO": "萊爾富繳款入帳，謝謝！",
+        "TXCUR": "",
+        "AMT": "-2,000",
+        "TXAMT": "0"
+      },
+      {
+        "ORG": "840",
+		"CurrencyCode": "840",
+        "CurrencyName": "美元",
+        "TXDATE": "20170320",
+        "DEDATE": "20170320",
+        "CardLast4": "8804",
+        "MEMO": "萊爾富繳款入帳，謝謝！",
+        "TXCUR": "",
+        "AMT": "70.22",
+        "TXAMT": "0"
+      },
+      {
+        "ORG": "840",
+		"CurrencyCode": "840",
+        "CurrencyName": "美元",
+        "TXDATE": "20170320",
+        "DEDATE": "20170320",
+        "CardLast4": "2124",
+        "MEMO": "3Q！",
+        "TXCUR": "",
+        "AMT": "92.22",
+        "TXAMT": "0"
+      },
+      {
+        "ORG": "978",
+		"CurrencyCode": "978",
+        "CurrencyName": "歐元",
+        "TXDATE": "20170320",
+        "DEDATE": "20170320",
+        "CardLast4": "7704",
+        "MEMO": "OK!",
+        "TXCUR": "",
+        "AMT": "70.22",
+        "TXAMT": "0"
+      }
+    ],
+    "SubTotal": [
+      {
+        "CurrencyCode": "000",
+        "CurrencyName": "臺幣",
+        "Count": 3,
+        "SubTotalAmt": "1,660"
+      },
+	  {
+        "CurrencyCode": "840",
+        "CurrencyName": "美元",
+        "Count": 2,
+        "SubTotalAmt": "7,777"
+      },
+	  {
+        "CurrencyCode": "978",
+        "CurrencyName": "歐元",
+        "Count": 1,
+        "SubTotalAmt": "9,999"
+      }
+    ]
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "",
+  "Error": null
+}

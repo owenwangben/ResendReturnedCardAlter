@@ -1,0 +1,102 @@
+<div class="content">
+	<section class="trans-content">
+		<div class="prfy">
+		<p>您的溢繳款餘額為<span class="red">NT${{model.Balance | number}}</span></p>
+		</div>
+	</section>
+</div>
+<div [formGroup]="form">
+<div class="content full-content">
+	<section class="trans-content">
+		<fieldset class="fieldset-block pink-legend">
+		<legend>{{accountType == 1 ? '選擇本行帳戶' : '選擇他行帳戶'}}</legend>
+		</fieldset>
+		<table class="new-datatable">
+		<tbody>
+			<tr>
+			<th>
+				<p><span class="red">*</span>銀行</p>
+			</th>
+			<td *ngIf="accountType == 1">
+				<p>807-永豐商業銀行</p>
+			</td>
+			<td *ngIf="accountType != 1">
+				<div class="artfld select col-all-min col-5">
+					<select formControlName="bank">
+						<option value="" disabled>請選擇銀行</option>
+						<option *ngFor="let item of Banks" [value]="item.BankCode">
+							{{ item.BankName }}
+						</option>
+					</select>
+				</div>
+				<div class="mt1">
+					<div class="artfld select col-all-min col-5">
+						<select formControlName="branch">
+						<option value="" disabled>請選擇分行</option>
+						<option *ngFor="let item of Branches" [value]="item.BranchCode">
+							{{ item.FullName }}
+						</option>
+						</select>
+					</div>
+				</div>
+			</td>
+			</tr>
+			<tr class="line">
+			<td colspan="2"> </td>
+			</tr>
+			<tr>
+			<th>
+				<p><span class="red">*</span>存款帳號</p>
+			</th>
+			<td *ngIf="accountType == 1">
+				<div class="artfld select col-all-min col-5">
+				<select id="select-acct-num" formControlName="account">
+					<option value="" disabled>請選擇</option>
+					<option *ngFor="let actno of model.Accounts" [value]="actno">
+					{{ actno }}
+					</option>
+				</select>
+				</div>
+			</td>
+			<td *ngIf="accountType != 1">
+				<input class="artfld col-all-min col-5" type="text" placeholder="請輸入正確完整存款帳號" numberOnly maxlength=16 formControlName="account">
+			</td>
+			</tr>
+			<tr class="line">
+			<td colspan="2"> </td>
+			</tr>
+			<tr>
+			<th>
+				<p><span class="red">*</span>姓名</p>
+			</th>
+			<td class="captcha-block flex-wrap align-top">
+				<p>{{model.Name}}</p><span class="remark">(若您的姓名已非本行留存姓名，<span class="text-line">請洽客服電話02-25287776，由專人為您服務。)</span></span>
+			</td>
+			</tr>
+		</tbody>
+		</table>
+	</section>
+</div>
+<div class="content" *ngIf="accountType != 1">
+	<section class="trans-content">
+		<div class="prfy check1">
+		<input class="artfld tickr" id="checkbox01" type="checkbox" formControlName="agree">
+		<label for="checkbox01"> <span> <span class="getCheck"></span></span>同意領回溢繳款時需負擔手續費每筆NT$30，於溢繳款餘額扣除，且限退回持卡人本人之金融機構帳戶。
+		</label>
+		</div>
+	</section>
+</div>
+<div class="content" *ngIf="accountType != 1">
+	<section class="trans-content">
+		<div class="prfy check1">
+		<input class="artfld tickr" id="checkbox02" type="checkbox" formControlName="agree2">
+		<label for="checkbox02"> <span> <span class="getCheck"></span></span>同意本行基於服務立場，將申請人之基本資料，如身分證字號、新臺幣存款帳號等，透過財金資訊股份有限公司進行金融帳戶資訊檢驗之相關作業。
+		</label>
+		</div>
+	</section>
+</div>
+</div>
+<div class="btn-zone flex-inline-min">
+	<button class="nbtn" (click)="goPrev()">上一步</button>
+	<input class="nbtn focus" id="next" type="submit" (click)="submit()" value="下一步">
+</div>

@@ -1,0 +1,165 @@
+<div [formGroup]="form" *ngIf="!detailMode">
+	<table class="new-datatable" width="100%">
+		<tr style="height:8px"></tr>
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">查詢項目</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select formControlName="InquiryType" mweb-select="請選擇項目" (ngModelChange)="onSelectInquiryType($event)">
+						<option value="undefined" disabled>請選擇項目</option>
+						<option *ngFor="let item of typeOptions" [value]="item.Type">{{item.Name}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">查詢期間</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select formControlName="InquiryPeriod" mweb-select="請選擇期間">
+						<option value="undefined" disabled>請選擇期間</option>
+						<option *ngFor="let item of periodOptions" [value]="item">{{inquiryType !== 3 ? (item | date:'y/MM') : item}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<div class="btn-zone">
+					<button type="submit" class="nbtn focus" (click)="onSubmit()">查詢</button>
+				</div>
+			</td>
+		</tr>
+	</table>
+</div>
+<table class="ntable table-striped two-cols-list" *ngIf="!detailMode && resultModel?.Level">
+	<tr style="height:8px"></tr>
+	<tr>
+		<th class="text-left mobile-col-3">回饋資格</th>
+		<td class="text-left mobile-col-7">{{resultModel?.Level}}</td>
+	</tr>
+</table>
+<table class="ntable table-striped" width="100%"  *ngIf="(!detailMode && ((inquiryType === 2 && resultModel)) || (inquiryType === 3 && resultModel?.TotalFeedbackAmt) || (inquiryType === 5 && resultModel?.TotalFeedbackAmt)) || (!detailMode && (inquiryType === 6 && resultModel))">
+	<tr style="height:8px"></tr>
+	<tr>
+		<th *ngIf="inquiryType !== 6" class="mobile-col-8 text-left" colspan="2">總回饋金額 TWD 臺幣</th>
+		<th *ngIf="inquiryType === 6" class="mobile-col-8 text-left" colspan="2">總回饋豐點</th>
+		<td class="mobile-col-4 text-right" *ngIf="inquiryType === 2 || inquiryType === 5 || inquiryType === 6">{{resultModel?.TotalFeedbackAmt ? resultModel?.TotalFeedbackAmt : '0'}}</td>
+		<td class="mobile-col-4 text-right{{resultModel?.TotalFeedbackAmtStyle == '[RED]' ? ' red' : ''}}" *ngIf="inquiryType === 3 && resultModel?.TotalFeedbackAmt != '0'">{{resultModel?.TotalFeedbackAmt ? resultModel?.TotalFeedbackAmt : '0'}}</td>
+		<td class="mobile-col-4 text-right red" *ngIf="inquiryType === 3 && resultModel?.TotalFeedbackAmt == '0'">總消費金額<br>未達回饋標準</td>
+		<td><i style="width: 10px;display: inline-block;"></i></td>
+	</tr>
+
+</table>
+<div *ngIf="resultModel">
+	<table class="ntable table-striped two-cols-list" *ngIf="!detailMode && !resultModel?.Summary">
+		<tr style="height:8px"></tr>
+		<tr>
+			<td class="red text-center mobile-col-7">查無消費回饋紀錄</td>
+		</tr>
+	</table>
+</div>
+<p  *ngIf="!detailMode && inquiryType === 7 && dawayNewCardMemberFeedbackDeadLine" class="cash_left red text-center">新戶加碼資格截止日：{{dawayNewCardMemberFeedbackDeadLine}}</p>
+<table class="ntable table-striped" width="100%" *ngIf="!detailMode && resultModel?.Summary">
+	<thead>
+		<tr style="height:8px"></tr>
+		<tr [ngSwitch]="true">
+			<th class="mobile-col-4 text-left">名稱</th>
+			<th class="mobile-col-4 text-right">消費金額小計</th>
+      <th class="mobile-col-4 text-right" *ngSwitchCase="inquiryType === 4 || inquiryType === 6">豐點回饋</th>
+      <th class="mobile-col-4 text-right" *ngSwitchCase="inquiryType === 7">回饋點數</th>
+      <th class="mobile-col-4 text-right" *ngSwitchDefault>回饋金額</th>
+			<!-- <ng-template [ngIf]="inquiryType !== 4 && inquiryType !== 6" [ngIfElse]="SportTitle">
+				<th class="mobile-col-4 text-right">回饋金額</th>
+			</ng-template>
+			<ng-template #SportTitle>
+				<th class="mobile-col-4 text-right">豐點回饋</th>
+			</ng-template> -->
+			<th></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr *ngFor="let item of resultModel?.Summary" (click)="showDetail(item)">
+			<td>{{item.Name}}</td>
+			<td class="text-right">{{item.TotalAmt}}</td>
+			<td class="text-right{{item.TotalFeedbackAmtStyle == '[RED]' ? ' red' : ''}}">{{item.TotalFeedbackAmt}}</td>
+			<td><i class="right-arrow"></i></td>
+		</tr>
+	</tbody>
+</table>
+<table class="ntable table-striped" width="100%" *ngIf="detailMode && detailA">
+	<thead>
+		<tr style="height:8px"></tr>
+		<tr [ngSwitch]="true">
+			<th *ngSwitchCase="inquiryType === 7 && detailA.DESC === '1'" class="mobile-col-2">消費日<br>入點日</th>
+			<th *ngSwitchDefault class="mobile-col-2">消費日</th>
+			<th class="mobile-col-5">帳單說明</th>
+			<th *ngSwitchCase="inquiryType === 7 && detailA.DESC === '1'" class="mobile-col-3 text-right">消費金額<br>回饋點數</th>
+			<th *ngSwitchDefault class="mobile-col-3 text-right">消費金額</th>
+		</tr>
+	</thead>
+	<tbody [ngSwitch]="true">
+		<tr *ngFor="let txitem of this.detailA?.Items">
+			<td *ngSwitchCase="inquiryType === 7 && detailA.DESC === '1'">{{txitem.TXDATE}}<br>{{txitem.DEDATE}}</td>
+			<td *ngSwitchDefault>{{txitem.TXDATE}}</td>
+			<td>{{txitem.MEMO}}</td>
+			<td *ngSwitchCase="inquiryType === 7 && detailA.DESC === '1'" class="text-right">{{txitem.TX_AMT}}<br>{{txitem.POINT}}</td>
+			<td *ngSwitchDefault class="text-right">{{txitem.TX_AMT}}</td>
+		</tr>
+	</tbody>
+</table>
+<div *ngIf="detailMode && detailB">
+	<div *ngFor="let cItem of detailB.CurrencyItems" width="100%">
+		<table class="ntable table-striped">
+			<thead>
+				<tr style="height:8px"></tr>
+				<tr *ngIf="!cItem.CurrencyCode">
+					<th class="mobile-col-6" colspan="3">消費記錄</th>
+					<th class="mobile-col-3 text-right">依臺幣計</th>
+				</tr>
+				<tr *ngIf="cItem.CurrencyCode">
+				<th class="mobile-col-5" colspan="2">消費記錄 ({{cItem.CurrencyName}})</th>
+					<th class="mobile-col-2 text-right">原幣金額</th>
+					<th class="mobile-col-2 text-right">約當臺幣</th>
+				</tr>
+			</thead>
+			<tbody *ngIf="!cItem.CurrencyCode">
+				<tr *ngFor="let txitem of cItem.Items">
+					<td>{{txitem.TXDATE}}</td>
+					<td colspan="2">{{txitem.MEMO}}</td>
+					<td class="text-right">{{txitem.TW_AMT}}</td>
+				</tr>
+			</tbody>
+			<tbody *ngIf="cItem.CurrencyCode">
+				<tr *ngFor="let txitem of cItem.Items">
+					<td>{{txitem.TXDATE}}</td>
+					<td>{{txitem.MEMO}}</td>
+					<td class="text-right">{{txitem.DCUR_AMT}}</td>
+					<td class="text-right">{{txitem.TTL_AMT}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div class="btn-zone" *ngIf="detailMode">
+	<button type="submit" class="nbtn focus" (click)="onBack()">返回</button>
+</div>
+<div *ngIf="resultModel">
+  <div class="rowElem">
+  <p class="cash_left red" *ngIf="detailMode && detailA && detailA.DESC === '2'">帳單次期月底前回饋 LINE POINTS 點數</p>
+	<p class="cash_left">備註：本查詢結果僅供參考，活動額外回饋金額可能因匯率或不符合活動排除消費，將影響實際回饋金額，故請依本行系統結算為準，活動詳細注意事項請參閱活動網頁公告。</p>
+</div>
+<div class="MemoContent-s2">
+	<h2 class="title">注意事項</h2>
+	<div class="listStyle">
+		<ul *ngIf="inquiryType !== 7">
+			<li>本服務功能為提供「幣倍卡現金回饋查詢」、「大戶卡現金回饋查詢」、「國外消費刷卡金回饋查詢」、「SPORT卡豐點回饋查詢」、「現金回饋卡現金回饋查詢」及「 MOP聯名卡豐點回饋查詢」，相關活動內容、回饋資格及各卡片回饋比例等，請參考永豐銀行活動網頁公告。</li>
+		</ul>
+		<ul *ngIf="inquiryType === 7">
+			<li>本服務功能為提供「DAWAY卡LINE POINTS回饋查詢」，相關活動內容、回饋資格及各卡片回饋比例等，請參考永豐銀行活動網頁公告。</li>
+			<li>DAWAY卡消費回饋LINE POINTS點數有效期限為最後一次獲得點數當日起算180日止，一旦超過有效期限，將會立即失效且無法復原，請至LINE APP「錢包」＞「LINE POINTS」＞「歷史紀錄」＞於點數下方查看使用期限。</li>
+			<li>新戶加碼資格自核卡月份起算12個月，範例：小豐2024年4月份核卡，可享有新戶加碼資格至2025年4月30日。</li>
+		</ul>
+	</div>
+</div>
+</div>

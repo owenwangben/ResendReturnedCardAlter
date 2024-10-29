@@ -1,0 +1,3 @@
+<input type="text" class="autofocus artfld col-3 mobile-col-10"
+	#txtCardNo [(ngModel)]="cardNo" (blur)="onBlur($event)" (focus)="onFocus($event)"
+	(ngModelChange)="ngModelChange($event)" numberOnly maxlength="16"/>

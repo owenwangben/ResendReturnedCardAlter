@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="http://10.11.22.23/mma8/mma/js/jquery.lightbox_me.js"></script>
+<script type="text/javascript">
+var starttime = '2017/06/14 11:51:00'; //設定開始時間格式 yyyy/mm/dd 00:00:00 中間記得要空格
+var endtime = '2017/06/15 10:30:00'; //設定結束時間格式 
+var now = new Date();
+
+if((Date.parse(starttime).valueOf() < Date.parse(now).valueOf()) && (Date.parse(now).valueOf() < Date.parse(endtime).valueOf())){
+  $(document).ready(function () {
+     $('#post02').lightbox_me({
+      centered: true,
+      overlayCSS:{background: 'black', opacity: .6},
+      onLoad: function() { 
+          setTimeout(lightbox, 2000);
+          function lightbox() {
+              $('#post02').trigger('close');
+          }
+      }   
+    });
+  });  
+}
+</script>
+<style>
+
+.popupbox.post { width: 720px; padding: 0; padding-top: 77px; background: none; }
+.popupbox.post .con { margin: 0px auto; font-size: 15px; line-height: 26px; background: #fff; border-radius: 5px; padding: 30px 20px; color: #474747; }
+.popupbox.post .con p { font-size: 15px; }
+.popupbox.post:before { display: block; content: url(/MMA8/mma/images/systemupdate.png); width: 200px; height: 122px; text-align: center; position: absolute; top: 0; left: 240px; }
+.popupbox.post .icon-close_x { top: 90px; }
+.popupbox .right { text-align: right; }
+.popupbox .listico { list-style: none; margin: 15px auto; border-top: #dddddd 1px solid; }
+.popupbox .listico li { background: url(/MMA8/mma/images/icons.png) no-repeat left -1647px; padding-left: 25px; line-height: 40px; border-bottom: #dddddd 1px solid; float: left; width: 50%; font-size: 14px; box-sizing: border-box; white-space: nowrap; }
+.popupbox .listico:after { content: ''; display: block; clear: both; }
+.popupbox .con { text-align: left; margin: 20px auto 0 auto; }
+
+</style>
+
+</head>
+
+<body>
+<form>    
+<div class="popupbox post" id="post02" style="left: 50%; margin-left: -360px; z-index: 1002; position: fixed; top: 50%; margin-top: -199px; display: none;">
+	<div class="con">
+		<p>親愛的客戶，您好！</p><p>
+		<br></p><p>茲因本行系統維護作業，將於<span class="red">106.06.16（星期五）19:00～20:00</span> 將暫停以下服務。</p>
+		<ul class="listico">		   
+		   <li>MMA網路銀行</li><li>行動銀行</li>
+		   <li>MMAb2c華商個人金融網</li>
+		   		   
+		</ul>
+		<p>如您有資金上的安排或投資需求，請您提早準備。 造成您的不便，深感抱歉！</p>
+		<p class="right">永豐商業銀行 敬上</p>
+	</div>
+	
+	<a href="" class="close_x close icon icon-close_x"></a>
+</div>
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,86 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit($event);">
+	<div class="formblock">
+		<table class="data-table" width="100%">
+			<tbody>
+				<tr>
+					<th>信用卡號</th>
+					<td>
+						<div class="artfld select col-5 mobile-col-10">
+							<select formControlName="CardNo" mweb-select="請選擇信用卡">
+								<option value="" disabled>請選擇信用卡</option>
+								<option *ngFor="let item of data?.CardList" [value]="item.CardNo">{{(item.CardNo || item.Name) | creditcard}}</option>
+							</select>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>有效期限</th>
+					<td>
+						<app-expirydate-selector formControlName="ExpiryDate"></app-expirydate-selector>
+					</td>
+				</tr>
+				<tr>
+					<th>借款金額</th>
+					<td>
+						<input type="text" id="Amount" formControlName="Amount" class="artfld col-3 mobile-col-10" numberOnly maxlength=7/>
+						<span>元</span><br *ngIf="isMobile" />
+						<span class="red" [ngStyle]="!isMobile ? {'margin-left': '20px'} : null">可用預借現金額度 {{data?.CashAvailable | number}} 元</span>
+
+					</td>
+				</tr>
+				<tr>
+					<th class="mobile-col-3" style="vertical-align:top">
+						<div class="web-hide" style="height:8px"></div>
+						<div>轉入帳號</div>
+					</th>
+					<td class="mobile-col-9">
+						<app-bank-account-selector formControlName="TransBankAccount"
+							(bankDisplayNameChange)="bankDisplayName = $event"
+							(branchDisplayNameChange)="branchDisplayName = $event"
+							[FunctionName]="FunctionName">
+						</app-bank-account-selector>
+					</td>
+				</tr>
+				<tr *ngIf="ShowPinType">
+					<th *ngIf="!isMobile" class="mobile-col-3" style="vertical-align:top">
+						<div class="web-hide" style="height:8px"></div>
+						<div>請選擇驗證方式</div>
+					</th>
+					<th *ngIf="isMobile" class="mobile-col-3" style="vertical-align:top">
+							<div>請選擇<br/>驗證方式</div>
+						</th>
+					<td class="mobile-col-9">
+						<div class="row" >
+							<span>
+									<input type="radio" class="artfld circle" id="r9"
+										formControlName="PinType"
+										[value]="1"/>
+									<label for="r9">
+										<span><span class="getCheck"></span></span>
+										預借現金密碼
+									</label>
+							</span>
+						</div>
+						<div class="row">
+								<span>
+									<input type="radio" class="artfld circle" id="r10"
+										formControlName="PinType"
+										[value]="2"/>
+									<label for="r10">
+										<span><span class="getCheck"></span></span>
+										簡訊動態密碼
+									</label>
+									<span class="red">(申請一次性預借現金密碼)</span>
+								</span>
+						</div>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="btn-zone">
+		<!-- <a class="nbtn" href="/Shared/HomePageTwd.aspx?CH=card&ID=2">取消</a> -->
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">確定送出</button>
+	</div>
+</form>

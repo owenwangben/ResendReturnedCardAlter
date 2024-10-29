@@ -1,0 +1,19 @@
+{
+  "Result": {
+    "Success": true
+  },
+  "Header": {
+    "SessionID": "",
+    "ApplicationName": "EWEB",
+    "ReferenceNo": "",
+    "UserID": "",
+    "RequestTime": "",
+    "TxCode": "",
+    "RemoteAddr": "",
+    "PageName": "",
+    "SsaToken": ""
+  },
+  "ResultCode": "00",
+  "ResultMessage": "客服已收到您的申請，我們會儘速回覆您！[00]",
+  "Error": null
+}

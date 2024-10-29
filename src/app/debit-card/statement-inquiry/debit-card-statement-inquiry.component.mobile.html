@@ -1,0 +1,51 @@
+<div class="btn-zone" style="text-align:left">
+	<ul class="ntabs">
+		<li *ngFor="let link of billMonthLinks" [class.active]="selectedMonth==link" (click)="onClickMonthLink(link)">
+			<a href="javascript:void(0)">{{link}}</a>
+		</li>
+	</ul>
+</div>
+<div>
+	<table class="new-datatable" width="100%">
+		<tr>
+			<td class="mobile-col-3 text-right" style="font-weight:bold">幣別</td>
+			<td>
+				<div class="artfld select mobile-col-10">
+					<select [(ngModel)]="currency" mweb-select="請選擇幣別">
+						<option *ngFor="let item of currencyList" [value]="item.CurrencyEName">{{item.CurrencyCName}}{{item.CurrencyEName}}</option>
+					</select>
+				</div>
+			</td>
+		</tr>
+	</table>
+	<table class="ntable table-striped" width="100%">
+		<thead>
+			<tr style="height:8px"></tr>
+			<tr>
+				<th class="mobile-col-2">入帳日<br>消費日</th>
+				<th class="mobile-col-7">交易明細說明</th>
+				<th class="mobile-col-2">金額</th>
+				<th class="mobile-col-1"></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let item of records">
+				<ng-template [ngIf]="item.TXDATE?.trim()" [ngIfElse]="SubTotal">
+					<td>{{item.DEDATE}}<br>{{item.TXDATE}}</td>
+					<td>{{item.MEMO}}</td>
+					<td>{{item.AMT}}</td>
+					<td></td>
+				</ng-template>
+				<ng-template #SubTotal>
+					<td colspan="2">{{item.MEMO}}</td>
+					<td>{{item.AMT}}</td>
+					<td></td>
+				</ng-template>
+			</tr>
+			<tr *ngIf="!records?.length">
+				<td colspan=4>無交易資料</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="rowElem" loadHtml="/mma8/card/htmls/Debit卡近期交易明細注意事項.html"></div>
+</div>

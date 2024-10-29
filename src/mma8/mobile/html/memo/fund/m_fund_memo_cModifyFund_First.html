@@ -1,0 +1,221 @@
+﻿<!--基金交易查詢_基金下單_定時定額申購-->
+<head>
+<link href="/App_Themes/Default/Default.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="/MMA8/mobile/css/notes.css">
+<style type="text/css">
+.style1 {color: #FF0000}
+body {background:#fff;font-family: CustomFont, sans-serif;微軟正黑體;}
+table {border-collapse: separate; border-spacing: 1;}
+TABLE.mt {BACKGROUND-COLOR: #E2E2E2;}
+#risk-notice ol ul {margin-left: 25px;}
+.column40-1 {width:50%;}
+.column20-1, .column20-2, column20-00  {width:25%;}
+.column20-0-2r2, .column20-00 {width:28%;}
+.notesTitle {font-size: 1.1em;}
+#risk-notice ol ul li ul li {list-style-position: outside; }
+</style>
+</head>
+<body>
+<div id="risk-notice">
+<div class="notesTitle"><b>注意事項</b></div>
+	  <ol>
+	    <li type="1" value="1"><b>交易時間</b></li>
+	        <ul><li>週一至週五09：00至15：30，超過當日交易時間，則視為預約次一營業日之交易。</li></ul>
+			
+	    <li type="1" value="2"><b>交易適用日</b></li>
+			<ul>
+				<li>定時定額各項約定事項變更，若於「原扣款日」之前一營業日15:30前辦理完成之異動資料為當月份生效，若於「原扣款日」之前一營業日15:30以後異動者，則於下次扣款日方能生效。 
+					(例如定時定額「約定扣款日」為每月15(五)、16(六)日，若15日下午3:30以前變更約定扣款日為每月16日，則當月份扣款日為16日；若15日下午3:30以後變更約定扣款日為16日，
+					則當月扣款日為15、16日；下個月扣款日則為16日)。 
+				</li>
+			</ul>
+		  
+	    <li type="1" value="3"><b>「定時定額扣款」變更注意事項</b></li>
+			<ul><li type="I" value="1">如遇基金清算時，受託人得自動終止委託人之定時定額扣款。如遇基金合併時，受託人仍將維持原定時定額扣款，並於合併後以存續基金為扣款標的，惟合併前後基金公司有暫停交易之情形，則從其規定。信託資金以外幣收付者，合併前後之扣款基金為不同計價幣別，委託人應重新約定扣款帳號及扣款金額，若未重新約定扣款帳號，則以原基金扣款帳號扣款；另若未重新約定扣款金額，則以存續基金所屬計價幣別規定之最低扣款金額為準。</li></ul>
+			<ul><li type="I" value="2">「約定扣款金額」變更 </li></ul>
+			<ul>
+				<li>
+					<ul><li style="color:#ff0000;"><b>a. 定時定額最低申購金額</b></li></ul>
+				</li>
+	      <table width="100%" border="0" cellspacing="1" class="mt">
+            <tr>
+              <td width="33%" height="30" class="bsc10" style="padding:5px">項目</td>
+              <td width="34%" class="bsc10" style="padding:5px">幣別</td>
+              <td width="33%" class="bsc10" style="padding:5px">定時定額</td>
+              </tr>
+            <tr>
+              <td class="bwc10">新臺幣信託</td>
+              <td class="bwc10">NTD</td>
+              <td class="bwc10 style1">3,000</td>
+              </tr>
+            <tr>
+              <td rowspan="12" class="bwc10">外幣信託<br /></td>
+              <td class="bwc10">USD</td>
+              <td class="bwc10 style1">120</td>
+              </tr>
+            <tr>
+              <td class="bwc10">EUR</td>
+              <td class="bwc10 style1">90</td>
+              </tr>
+            <tr>
+              <td class="bwc10">JPY</td>
+              <td class="bwc10 style1">12,000</td>
+              </tr>
+            <tr>
+              <td class="bwc10">GBP</td>
+              <td class="bwc10 style1">60</td>
+              </tr>
+            <tr>
+              <td class="bwc10">HKD</td>
+              <td class="bwc10 style1">900</td>
+              </tr>
+            <tr>
+              <td class="bwc10">AUD</td>
+              <td class="bwc10 style1">150</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CAD</td>
+              <td class="bwc10 style1">120</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CHF</td>
+              <td class="bwc10 style1">120</td>
+              </tr>
+            <tr>
+              <td class="bwc10">SGD</td>
+              <td class="bwc10 style1">180</td>
+              </tr>
+            <tr>
+              <td class="bwc10">ZAR</td>
+              <td class="bwc10 style1">900</td>
+              </tr>
+            <tr>
+              <td class="bwc10">NZD</td>
+              <td class="bwc10 style1">150</td>
+              </tr>
+            <tr>
+              <td class="bwc10">CNY/CNH</td>
+              <td class="bwc10 style1">600</td>
+              </tr>
+          </table>
+	      	
+				<li><p> ※為符合利安系列基金公開說明書最低申購金額之規定，利安系列基金<span class="ColorR"><b>最低申購金額為新臺幣5,000元、美元200元及新加坡幣300元。</b></span><br />
+						※外幣申購境外基金時，基金結匯幣別須與扣款帳號之幣別相同。<br />
+						※外幣申購境外基金之手續費一律由<span class="ColorR"><b>外幣帳戶</b></span>收取。<br /> 
+						<b>※「百元基金專案」僅適用於限定商品，其定時定額/定時不定額適用之幣別為新臺幣、美元及人民幣，最低申購金額分別為新臺幣100元、美元100元及人民幣100元，適用商品依本行於MMA金融交易網公告者為準。</b>
+					</p>
+				</li>
+				<br>
+				<li>
+					<ul>
+						<li><span class="ColorR">b. 請務必在每月「約定扣款日」之前一營業日確認約定扣款帳戶內有足够之金額可供扣款含申購手續費）；若為信用卡扣款，亦請您自行確認信用卡之信用額度是否足夠，以免發生餘額不足，導致該筆預約交易失敗。請於「約定扣款日」後自行確認交易是否成功，本行將不另行通知。</span>
+						</li>
+					</ul>
+				</li>
+			</ul>
+			<ul>
+				<li type="I" value="3">「約定扣款日」變更
+					<ul>
+						<li>1. 帳戶扣款或<span class="ColorR">以永豐銀行信用卡扣款</span>之定時定額交易，<span class="ColorR">1~31日皆可選擇且不限扣款天數，約定扣款日遇例假日，則順延至下一個營業日扣款，若遇當月無該設定之扣款日(EX.2月份，無30/31日 )，則當月不執行該筆約定扣款；已申請之定時定額交易，皆可變更為不限扣款天數。</span></li>
+						<li>2. 若您的定時定額基金尚未完成首次扣款，不可變更「扣款金額」及「扣款日」。 </li>
+					</ul>
+				</li>
+			</ul>
+			<ul>
+				<li type="I" value="4">「信用卡扣款」變更
+					<ul>
+						<li>1. 若為「信用卡扣款」擬變更為「活儲帳戶扣款」，如須改變約定扣款日，請重新選擇每月「約定扣款日」。</li>
+						<li>2. 若為「活儲帳戶扣款」擬變更為「信用卡扣款」，如須改變約定扣款日，請重新選擇每月「約定扣款日」。 </li>
+						<li>3. 若選擇信用卡申購基金，限使用本人之永豐銀行信用卡扣款，且投資幣別限「新台幣」。</li>
+					</ul>
+				</li>
+			</ul>
+		<li type="1" value="4"><b>定時定額暫停/恢復扣款</b></li>
+			<ul><li type="I" value="1"><span class="ColorR">若您於本行營業日下午3點半前執行暫停及恢復扣款，則暫停及恢復扣款生效日為次一日曆日；若超過當日營業時間視為預約交易，則暫停及恢復扣款生效日為預約交易生效後之次一日曆日。</span><br>
+															（例如：若您於2014年12月1日下午1:00執行暫停扣款，則定時(不)定額將自2014年12月2日暫停扣款；若您於2014年12月1日下午4:00執行暫停扣款，則定時(不)定額將自2014年12月3日開始暫停扣款）
+			</li></ul>
+			<ul><li type="I" value="2">若約定扣款日適逢<span class="ColorR">非營業日</span>，請務必於<span class="ColorR">前一營業日</span>下午3點半前執行暫停/恢復扣款交易，始能當次生效。</li></ul>
+			<ul><li type="I" value="3">若您已辦理『暫停扣款』，系統將顯示您目前的暫停扣款期間，您可重新選擇『恢復扣款』。</li></ul>
+			
+	    <li type="1" value="5"><b>定時定額終止扣款</b></li>
+			<ul><li type="I" value="1">週一至週五09：00至15：30，超過當日交易時間，則視為次一營業日之交易。於「交易生效日」之後的「約定扣款日」將不再執行扣款。</li></ul>
+			<ul><li type="I" value="2">定時定額契約一但終止扣款無法再恢復。</li></ul>
+			<ul><li type="I" value="3">當您尚有申購單位數未回報時，該基金憑證將無法申請「定時定額終止扣款」服務，須待單位數回報後，才可申請「定時定額終止扣款」服務。</li></ul>
+			<ul><li type="I" value="4">委託人於贖回前已申請定時定額「終止扣款」者，信託管理費之最低收費標準則比照「單筆申購」之收費方式。</li></ul>
+	        <ul>
+				<li>
+					信託管理費<span class="ColorR"><b>單筆最低收費標準</b></span>如下：
+				</li>
+			<div class="table-outline">
+                    <div class="column40-1">項目</div>              
+                    <div class="column20-1">幣別</div>
+                    <div class="column20-2">單筆</div>
+                    <div class="column20-0-2r2">新臺幣信託 </div>
+                    <div class="column20-1" style="width:22%;">國內基金</div>
+                    <div class="column20-1 ">NTD </div>
+                    <div class="column20-2 ">100 </div>
+                    <div class="column20-1" style="width:22%;">境外基金  </div>
+                    <div class="column20-1 ">NTD </div>
+                    <div class="column20-2">500  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">USD  </div>
+                    <div class="column20-2">15 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">EUR  </div>
+                    <div class="column20-2">15 </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">JPY  </div>
+                    <div class="column20-2">2,000  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">GBP  </div>
+                    <div class="column20-2">11  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"> </div>
+                    <div class="column20-1">HKD </div>
+                    <div class="column20-2">120 </div>
+                    <div class="column20-00">外幣<br>信託 </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">AUD  </div>
+                    <div class="column20-2">15  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">CAD  </div>
+                    <div class="column20-2">20  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0"></div>
+                    <div class="column20-1">CHF  </div>
+                    <div class="column20-2">15  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">SGD  </div>
+                    <div class="column20-2">25  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">ZAR </div>
+                    <div class="column20-2">125  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-1">NZD  </div>
+                    <div class="column20-2">20  </div>
+                    <div class="column20-00"> </div>
+                    <div class="column20-0">  </div>
+                    <div class="column20-0 min-text" style="width:25%">CNY/CNH</div>
+                    <div class="column20-00" style="width:25%">100</div>
+             </div>
+			</ul>
+     <li type="1" value="6" style="float: left;"> 有關基金應負擔之費用（含分銷費用）已揭露於基金公開說明書及投資人須知，投資人可至境外基金資訊觀測站（<a href="http://www.fundclear.com.tw" target="new">http://www.fundclear.com.tw</a>）下載，或至基金公司網站查閱。</li>
+	 <li type="1" value="7" style="float: left;"> 以上相關規定以本行或基金公司之規定及實際作業為準。</li>
+	 </ol>
+	 <span class="ColorR" style="float:left;clear:both;margin:2% 3%"><b>申訴管道：<br />
+            免付費申訴專線：0800-088-111<br />
+            其他服務電話：（02）2505-9999<br />
+            傳真：（02）2191-1009<br />
+            電子郵件信箱E-MAIL：<a href="mailto:callcenter@sinopac.com">callcenter@sinopac.com</a>
+			</b>
+	</span>
+   </div>
+</body>

@@ -1,0 +1,283 @@
+@import 'grid';
+@import 'stepsboard';
+@import 'tabs';
+@import 'table';
+@import 'rnotes';
+@import 'switch-dot';
+
+body {
+	font-size: 14px;
+}
+
+input:not([type=radio]):not([type=checkbox]), select, textarea {
+	color: #6e6e6e;
+	background-color: #f3f3f3;
+	padding: 0 5px;
+	outline: 0 none;
+	font-size: 0.9em;
+	height: 36px;
+	vertical-align: middle;
+
+	&:focus {
+		border-color: #b9160f;
+	}
+}
+input[type=checkbox] {
+	-webkit-appearance: checkbox !important;
+}
+input[type=radio] {
+	-webkit-appearance: radio !important;
+}
+
+label {
+	input, select {
+		left: inherit;
+		position: inherit;
+	}
+}
+
+th {
+	vertical-align: middle;
+}
+
+.select {
+	padding: 0;
+	display: inline-block;
+	width: auto;
+	select {
+		width: 100%;
+	}
+	&:after {
+		content: '';
+		border-right: 4px dotted #b9160f;
+		position: absolute;
+		top: 10px;
+		right: 5px;
+		height: 16px;
+	}
+	&.native {
+		&:after {
+			border-right: 4px dotted #b9160f;
+			top: 12px;
+			height: 10px;
+		}
+	}
+}
+
+.btn-zone {
+	text-align: center;
+	padding: 10px;
+	.nbtn {
+		padding: 0px 15px;
+		border: 1px solid #969696;
+		background: linear-gradient(to bottom, #9f9f9f 0%, #959595 100%);
+		color: white;
+		line-height: 2.5;
+		margin: 5px;
+		display: inline-block;
+		font-size: 100%;
+	}
+
+	.mobile-small {
+		padding: 0px 5px !important;
+	}
+}
+
+.rowElem {
+	text-align: left;
+	padding: 10px;
+	.btn-zone {
+		margin-top: 0; margin-bottom: 0;
+	}
+}
+
+div.wrapper {
+	height: 42px;
+}
+
+div.content {
+	// padding-top: 44px;
+	// padding-top: 0px;
+	padding: 0;
+}
+
+div.mobile-content {
+	padding: 25px 40px;
+}
+
+section {
+	> h2.title {
+		display: none;
+	}
+
+	&.trans-content {
+		position: relative;
+	}
+
+}
+
+app-breadcrumbs {
+	display: none;
+}
+
+app-fileupload {
+	.drop-zone {
+		width: 100% !important;
+		&:after {
+			content: url('/mma8/card/images/upgrade-lbox.png') !important;
+			left: calc(50% - 50px) !important;
+		}
+	}
+}
+
+// .container-with-wizard {
+// 	padding-top: 34px;
+// }
+
+.mobile-hide, .hide:not(.mobile-show) {
+	display: none;
+}
+
+.mobile-span {
+	display: block;
+}
+
+.mobile-radiolist {
+	display: flex;
+	justify-content: center;
+	label {
+		border: 1px solid #b9160f;
+		margin: 0 !important;
+		position: relative;
+		padding: 5px;
+		width: auto;
+		flex: 1;
+		text-align: center;
+
+		input[type=radio] {
+			position: absolute;
+			left: -9999px;
+		}
+
+		&.selected {
+			background: #b9160f;
+			color: white;
+		}
+
+		&:first-child {
+			border-top-left-radius: 5px;
+			border-bottom-left-radius: 5px;
+		}
+		&:last-child {
+			border-top-right-radius: 5px;
+			border-bottom-right-radius: 5px;
+		}
+	}
+}
+
+// i.right-arrow {
+// 	$arrow-width: 6px;
+// 	display: inline-block;
+// 	height: $arrow-width * 2;
+// 	width: $arrow-width;
+// 	position: relative;
+// 	&:before {
+// 		content: '';
+// 		display: block;
+// 		border-left: $arrow-width solid #ffa9a6;
+// 		border-top: $arrow-width solid transparent;
+// 		border-bottom: $arrow-width solid transparent;
+// 		left: 2px;
+// 		position: absolute;
+// 	}
+// 	&:after {
+// 		content: '';
+// 		display: block;
+// 		border-left: $arrow-width solid white;
+// 		border-top: $arrow-width solid transparent;
+// 		border-bottom: $arrow-width solid transparent;
+// 		left: 0px;
+// 		position: absolute;
+// 	}
+// }
+
+i.right-arrow {
+	$arrow-width: 10px;
+	display: inline-block;
+	height: $arrow-width;
+	width: $arrow-width;
+	position: relative;
+	border-top: 2px solid #ffa9a6;
+	border-right: 2px solid #ffa9a6;
+	transform: rotate(45deg) skew(0deg);
+}
+
+.text-right {
+	text-align: right !important;
+}
+.text-left {
+	text-align: left !important;
+}
+.text-center {
+	text-align: center !important;
+}
+
+.num-align {
+	text-align: right !important;
+}
+
+.rowinline {
+	ul li {
+		display: inline;
+		a {
+			margin-left: 10px;
+			color: #0B27F2;
+			text-decoration: underline;
+		}
+	}
+}
+
+.MemoContent-s2 {
+	h2 {
+		.title {
+			color: #474747;
+		}
+	}
+	ul li {
+		list-style: square outside;
+		text-align: justify;
+		text-justify: inter-ideograph;
+	}
+	.listStyle {
+		margin: 5px 20px;
+	}
+}
+
+.ui-datepicker-trigger {
+    margin-left: 6px;
+}
+
+.formblock {
+	margin-top: 10px;
+}
+
+div.scrollbar {
+	height:310px;
+	width:100%;
+	overflow-y:scroll;
+}
+
+button {
+	cursor: pointer;
+}
+
+ul.ntabs {
+	li {
+		cursor: pointer;
+	}
+}
+
+a.link {
+	color: #004d99;
+	// text-decoration: underline;
+}

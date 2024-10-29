@@ -1,0 +1,209 @@
+<form #form="ngForm" (ngSubmit)="onSubmit(form);">
+	<div class="formblock">
+		<table class="data-table" width="100%">
+			<tbody>
+				<tr>
+					<th class="mobile-col-6">原始信用額度</th>
+					<td class="mobile-col-6">
+						{{ data.OriginalCredit | number }}
+					</td>
+				</tr>
+				<tr>
+					<th>申請增加信用額度</th>
+					<td>
+						<input type="text"
+							name="IncreaseCredit"
+							class="artfld col-3 mobile-col-8"
+							[(ngModel)]="data.IncreaseCredit"
+							numberOnly
+							maxlength=6
+							required
+							oncopy="return false"
+							onpaste="return false"
+							oninput="this.value = this.value.replace(new RegExp('[^0-9]|^[0][0]*|^[0{n}]','g'),'')"
+							placeholder="{{isMobile ? '以仟元為單位' : ''}}"/>元
+						<span class="mobile-hide">(以仟元為單位)</span>
+					</td>
+				</tr>
+				<tr>
+					<th>申請提高信用額度至</th>
+					<td>
+						{{ getTotalCredit() | number }}
+					</td>
+				</tr>
+				<ng-template [ngIf]="!isMortgageCM" [ngIfElse]="MortgageBlock">
+				<tr *ngIf="!data?.IsSmsList">
+					<th>申請原因</th>
+					<td>
+						<div class="artfld select col-4 mobile-col-12">
+							<select name="Reason" [(ngModel)]="data.Reason" required mweb-select="請選擇申請原因">
+								<option value="" disabled>請選擇申請原因</option>
+								<option *ngFor="let option of reasonOptions" [value]="option.key">{{ option.value }}</option>
+							</select>
+						</div>
+						<div style="margin-top:5px">
+							<input type="text" class="artfld col-4 mobile-col-12" name="ReasonDesc" [(ngModel)]="data.ReasonDesc" placeholder="請說明原因" />
+						</div>
+					</td>
+				</tr>
+				<tr *ngIf="!data?.IsSmsList">
+					<th>服務機構名稱</th>
+					<td>
+						<input type="text"
+							name="Company"
+							class="artfld col-3 mobile-col-12"
+							[(ngModel)]="data.Company"
+							placeholder="{{isMobile ? '請輸入目前公司名稱' : ''}}"/>
+					<span class="mobile-hide">(請輸入目前公司名稱)</span>
+					</td>
+				</tr>
+				<tr *ngIf="!data?.IsSmsList || data?.IsRequireFinancialProof">
+					<th>上傳財力證明</th>
+					<td>
+						<input type="radio" class="artfld" id="FinancialProofType1" name="FinancialProofType" [(ngModel)]="data.FinancialProofType" [value]="1"/>
+						<label for="FinancialProofType1">
+							<span><span class="getCheck"></span></span>
+							<font class="fs15">我是永豐銀行理財客戶，依本行往來資料審理。
+								<span *ngIf="data.FinancialProofType == 1"><br>我是永豐銀行授信客戶，同意永豐銀行依一年內申辦本行相關授信業務提供之所得或財力資料審理。</span></font>
+						</label>
+						<div>
+							<input type="radio" class="artfld" id="FinancialProofType2" name="FinancialProofType" [(ngModel)]="data.FinancialProofType" [value]="2"/>
+							<label for="FinancialProofType2">
+								<span><span class="getCheck"></span></span>
+								<font class="fs15">財力或其他證明文件</font>
+							</label>
+							<div *ngIf="data.FinancialProofType == 2">
+							<app-fileupload
+								[uploadUrl]="fileUploadUrl"
+								[additionalParameter]="additionalParameter"
+								alias="File"
+								(fileUploadedSuccess)="onFileUploadedSuccess($event)"
+								(fileUploadedFailed)="onFileUploadedFailed($event)">
+							</app-fileupload>
+							<span>您可擇一上傳：最新年度扣繳憑單或國稅局各式報稅憑單證明、車齡十年內之汽車行照、任一金融機構網銀畫面(畫面需含戶名，如存款紀錄、基金、股票)、最近三個月內ATM餘額單(含提款卡正反面影本或存摺封面)、近期薪資證明:薪資單、在職薪資證明(需蓋有公司大小章或發票章)、近兩個月薪資轉帳(含帳號戶名)、不動產證明(權狀、稅單、謄本或財產清單)。</span>
+							</div>
+						</div>
+						<div>
+							<input type="radio" class="artfld" id="FinancialProofType3" name="FinancialProofType" [(ngModel)]="data.FinancialProofType" [value]="3"/>
+							<label for="FinancialProofType3">
+								<span><span class="getCheck"></span></span>
+								<font class="fs15">我名下有不動產，同意委託永豐商業銀行代為調閱不動產電子謄本。</font>
+							</label>
+							<div *ngIf="data.FinancialProofType == 3" style="padding-left: 2em;">
+								<div><span class="red">*</span> 請選擇不動產謄本地址</div>
+								<input type="radio" class="artfld" id="LandRegisterAddressType1" name="LandRegisterAddressType" [(ngModel)]="data.LandRegisterAddressType" [value]="1"/>
+								<label for="LandRegisterAddressType1">
+									<span><span class="getCheck"></span></span>
+									<font class="fs15">同現居地</font>
+								</label>
+								<br *ngIf="isMobile">
+								<input type="radio" class="artfld" id="LandRegisterAddressType2" name="LandRegisterAddressType" [(ngModel)]="data.LandRegisterAddressType" [value]="2"/>
+								<label for="LandRegisterAddressType2">
+									<span><span class="getCheck"></span></span>
+									<font class="fs15">同戶籍地</font>
+								</label>
+								<br *ngIf="isMobile">
+								<input type="radio" class="artfld" id="LandRegisterAddressType3" name="LandRegisterAddressType" [(ngModel)]="data.LandRegisterAddressType" [value]="3"/>
+								<label for="LandRegisterAddressType3">
+									<span><span class="getCheck"></span></span>
+									<font class="fs15">其他</font>
+								</label>
+								<div *ngIf="+data.LandRegisterAddressType === 3">
+									<div class="inline-select">
+										<div class="artfld select col-2 col-all-min">
+											<select [(ngModel)]="data.LandRegisterAddress1" name="LandRegisterAddress1" required>
+												<option [ngValue]="undefined" disabled>請選擇</option>
+												<option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+											</select>
+										</div>
+										<div class="artfld select col-2 col-all-min">
+											<select [(ngModel)]="data.LandRegisterZipCodeId" name="LandRegisterZipCodeId" required>
+												<option [ngValue]="undefined" disabled>請選擇</option>
+												<option *ngFor="let item of getAreas(data.LandRegisterAddress1)" [ngValue]="item.Id">{{item.Area}}</option>
+											</select>
+										</div>
+									</div>
+									<input type="text" class="artfld col-all-min col-7" [(ngModel)]="data.LandRegisterAddress3" name="LandRegisterAddress3" required maxlength=60>
+								</div>
+							</div>
+						</div>
+						<input type="radio" class="artfld" id="FinancialProofType4" name="FinancialProofType" [(ngModel)]="data.FinancialProofType" [value]="4"/>
+						<label for="FinancialProofType4">
+							<span><span class="getCheck"></span></span>
+							<font class="fs15">使用 個人化資料自主運用(MyData)平臺
+								<span *ngIf="data.FinancialProofType == 4"><br>透過個人化資料自主運用(MyData)平臺，經您完成身分驗證及同意後，將健保個人投保資料、財稅個人財產及所得資料等提供予本行做為永久額度調整之相關證明文件。
+								<br><a href="https://mydata.nat.gov.tw/sp/about#open-browser" target="_blank">了解更多個人化資料自主運用(MyData)平臺資訊</a></span>
+								</font>
+						</label>
+					</td>
+				</tr>
+				</ng-template>
+
+				<ng-template #MortgageBlock>
+				<tr>
+					<th>申請原因</th>
+					<td>
+						<div class="artfld select col-4 mobile-col-12">
+							<select name="Reason" [(ngModel)]="data.Reason" required mweb-select="請選擇申請原因">
+								<option value="" disabled>請選擇申請原因</option>
+								<option *ngFor="let option of reasonOptions" [value]="option.key">{{ option.value }}</option>
+							</select>
+						</div>
+						<div style="margin-top:5px">
+							<input type="text" class="artfld col-4 mobile-col-12" name="ReasonDesc" [(ngModel)]="data.ReasonDesc" placeholder="請說明原因" />
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<th>服務機構名稱</th>
+					<td>
+						<input type="text"
+							name="Company"
+							class="artfld col-3 mobile-col-12"
+							[(ngModel)]="data.Company"
+							placeholder="{{isMobile ? '請輸入目前公司名稱' : ''}}"/>
+					<span class="mobile-hide">(請輸入目前公司名稱)</span>
+					</td>
+				</tr>
+				<tr>
+					<th>上傳財力證明</th>
+					<td>
+						<input type="checkbox" class="artfld" id="r1" name="IsFinancialCustomer" [(ngModel)]="data.IsFinancialCustomer"/>
+						<label for="r1">
+							<span><span class="getCheck"></span></span>
+							<font class="red fs15">我是永豐銀行房貸客戶，依本行往來資料審理，暫不上傳財力證明</font>
+						</label>
+						<app-fileupload
+							[uploadUrl]="fileUploadUrl"
+							[additionalParameter]="additionalParameter"
+							alias="File"
+							(fileUploadedSuccess)="onFileUploadedSuccess($event)"
+							(fileUploadedFailed)="onFileUploadedFailed($event)">
+						</app-fileupload>
+					</td>
+				</tr>
+				</ng-template>
+			</tbody>
+		</table>
+	</div>
+	<div class="text-red" *ngIf="data?.IsSmsList && !data.IsRequireFinancialProof">
+		<input type="checkbox" class="artfld" id="r1" name="IsFinancialCustomer" [(ngModel)]="data.IsFinancialCustomer" required />
+		<label for="r1">
+			<span><span class="getCheck"></span></span>
+			<font class="red fs15">我是永豐銀行理財客戶，依本行往來資料審理。<br />
+			我是永豐銀行授信客戶，同意永豐銀行依一年內申辦本行相關授信業務提供之所得或財力資料審理。</font>
+		</label>
+	</div>
+	<div class="text-red">
+		<input type="checkbox" class="artfld" id="r2" name="agree" ngModel required/>
+		<label for="r2">
+			<span><span class="getCheck"></span></span>
+			<font class="red fs15">{{isMortgageCM ? "本人聲明以上所記載額度調整申請內容均為事實，並同意貴行查詢本人於財團法人金融聯合徵信中心之信用記錄。 且本行保有徵提文件及額度調整與否之權利。" : "申請人聲明以上所記載額度調整申請內容均為事實，並同意貴行查詢申請人於財團法人金融聯合徵信中心之信用記錄。本行保有徵提文件及額度調整與否、核准額度之權利。"}}</font>
+		</label>
+	</div>
+	<div class="btn-zone">
+		<!-- <a class="nbtn" href="/Shared/HomePageTwd.aspx?CH=card&ID=1">取消</a> -->
+		<app-link-button type="cancel">取消</app-link-button>
+		<button type="submit" class="nbtn focus">我要申請</button>
+	</div>
+</form>

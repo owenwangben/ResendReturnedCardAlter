@@ -1,0 +1,14 @@
+<div class="artfld select col-2 mobile-col-4">
+	<select ngModel [formControl]="mm" (ngModelChange)="change_mm($event)" mweb-select="請選擇效期月份">
+		<option value="" disabled>MM</option>
+		<option *ngFor="let month of months" [value]="month">{{(month > 9 ? '' : '0') + month}}</option>
+	</select>
+</div>
+<span class="spanbox">月</span>
+<div class="artfld select col-2 mobile-col-5">
+	<select ngModel [formControl]="yyyy" (ngModelChange)="change_yyyy($event)" mweb-select="請選擇效期年份">
+		<option value="" disabled>YYYY</option>
+		<option *ngFor="let year of years" [value]="year">{{year}}</option>
+	</select>
+</div>
+<span class="spanbox">年</span>

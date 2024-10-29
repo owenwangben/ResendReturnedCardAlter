@@ -1,0 +1,861 @@
+@charset "utf-8";
+html, body, #map-canvas {
+	height: 100%;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	font-family: 微軟正黑體;
+	color: #474747;
+}
+
+.panel {
+	position: absolute;
+	top: 5px;
+	left: 10px;
+	z-index: 10;
+	background-color: #fff;
+	padding: 3px;
+	border: #d2d1d1 1px solid;
+	-webkit-box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	-moz-box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-indent: -9999px;
+	height: 26px;
+	width: 26px;
+	background: url(../../../MMA7txt/CustomerService/images/search_btn.png) no-repeat 5px 5px #FFF;
+	background-size: 70%;
+}
+.panelon {
+	-webkit-box-shadow: 0px -10px 12px 0px rgba(198, 198, 198, 1);
+	-moz-box-shadow: 0px -10px 12px 0px rgba(198, 198, 198, 1);
+	box-shadow: 0px -10px 12px 0px rgba(198, 198, 198, 1);
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+	border-bottom: none;
+}
+#panel a {
+	background: #FFF;
+}
+/*列表按鈕css*/
+#Search_all {
+	position: absolute;
+	top: 5px;
+	right: 10px;
+	z-index: 1;
+	border: #d2d1d1 1px solid;
+	-webkit-box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	-moz-box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	box-shadow: 0px 0px 12px 0px rgba(210,210,210,1);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	display: table-cell;
+}
+#Search_all div {
+	background: #FFF;
+	color: #484848;
+	font-size: 1em;
+	line-height: 2em;
+	padding: 0 10px;
+	float: left;
+	white-space: nowrap;
+	cursor: pointer;
+}
+#Search_all .on {
+	background: #5571a0;
+	color: #FFF;
+	cursor: default;
+}
+#Search_all .map {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+#Search_all .list {
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-moz-border-radius-bottomright: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+}
+/*分行導航按鈕css*/
+#Search_map {
+}
+/*ATM導航按鈕css*/
+#Search_ATMmap {
+}
+/*縣市下拉選單css*/
+#address-zone {
+	position: absolute;
+	top: 37px;
+	left: 10px;
+	z-index: 2;
+	background-color: #fff;
+	padding: 1em;
+	border: 1px solid #c6c6c6;
+	width: 160px;
+}
+.atm-search {
+	width: 195px !important;
+}
+#address-zone h2 {
+	float: left;
+	font-size: 1em;
+	font-weight: normal;
+	line-height: 28px;
+	padding-right: 5%;
+}
+#address-zone .selectbar {
+	float: left;
+}
+.selectbar select {
+	margin-bottom: 15px;
+	/*padding: 3px 0;*/
+	vertical-align: middle;
+}
+.selectbar input.nbtn {
+margin-top: 13px;}
+/*分行logo css*/
+.placeIcon {
+	width: 13px;
+	height: auto;
+
+}
+/*右邊列表css*/
+#listing {
+	position: relative;
+    width: 100%;
+	left: 0px;
+	top: 50px;
+	cursor: pointer;
+	overflow-x: hidden;
+	z-index: 5;
+	background-color: #fff;
+	height: 100%;
+	height: -moz-calc(100% - 50px);
+	height: -webkit-calc(100% - 50px);
+	height: calc(100% - 50px);
+	border-top:#c6c6c6 1px solid;
+
+}
+/*右邊列表 css*/
+#resultsTable {
+	border-collapse: collapse;
+	width: 100%;
+	margin-top:-30px;
+}
+#resultsTable tr {
+	border-bottom: #c6c6c6 1px solid;
+}
+#resultsTable td {
+	font-size: 0.9em;
+	padding: 10px 2.5%;padding-right:2%;
+	font-family:微軟正黑體,Arial;
+	
+}
+#resultsTable .icontd {
+	padding: 2% 0;
+	width:13px;
+}
+#resultsTable td .distance {
+	float: right;
+	color: #5571a0;
+	font-weight: bold;
+}
+#resultsTable td div {
+	line-height: 1.6em;
+}
+#resultsTable td .name {
+	float: left;
+	font-weight: bold;
+	font-size: 1.1em;
+	line-height: 1.6em;
+}
+#resultsTable .withdrawoutcurr,#resultsTable .deposits,#resultsTable .sTM_24_service {padding: 3px 5px;padding-left:16px;}
+#resultsTable .withdrawoutcurr{	padding-top:6px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+	background:url(../../../MMA7txt/CustomerService/images/redarrow.png) no-repeat 8px 14px #fff3f2;}
+#resultsTable .deposits {background:url(../../../MMA7txt/CustomerService/images/redarrow.png) no-repeat 8px 12px #fff3f2;}
+#resultsTable .sTM_24_service{
+padding-bottom:6px;
+-webkit-border-bottom-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+-moz-border-radius-bottomright: 4px;
+-moz-border-radius-bottomleft: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-left-radius: 4px;
+background:url(../../../MMA7txt/CustomerService/images/redarrow.png) no-repeat 8px 11px #fff3f2;}
+#resultsTable .atm-address {margin-bottom:10px;}
+.clear {
+	clear: both;
+}
+.iw_table_row {
+	z-index: 5;
+	height: 25px;
+}
+/*列表按鈕css*/
+#directions-panel {
+	position: absolute;
+	width: 100%;
+	overflow: auto;
+	left: 0px;
+	cursor: pointer;
+	overflow-x: hidden;
+	z-index: 5;
+	background-color: #fff;
+	z-index: 100;
+	font-size: 0.8em;
+	font-family: 微軟正黑體;
+	display:table;
+}
+ #close {
+	width: 100%;
+	width: 100%;
+position: fixed;
+z-index: 101;
+}
+ #close img {
+	width: 100%;
+	height: auto;
+	vertical-align: bottom;
+}
+/*交通工具按鈕css*/
+#Transport {
+	width: 94%;
+	display: table;
+	margin: 4% auto;
+	text-align: center;
+}
+.adp-fullwidth, .adp {
+	width: 90%;
+	margin: 20px auto;
+	margin-top: 9px;
+}
+.adp-directions {
+	width: 100%;
+}
+#Transport a {
+	width: 32%;
+	display: inline-block;
+	height: 26px;
+	padding: 3px 0;
+	text-align: center;
+	border: #dcdcdc 1px solid;
+	background: #f8f8f8;
+	line-height: 26px;
+}
+#Transport .driving img {
+	width: 15px;
+	height: 12px;
+	background: url(../../../MMA7txt/CustomerService/images/transport.png) no-repeat left -1px;
+	vertical-align: middle;
+	opacity: 0.65;
+}
+#Transport .transit img {
+	width: 11px;
+	height: 15px;
+	background: url(../../../MMA7txt/CustomerService/images/transport.png) no-repeat left -21px;
+	vertical-align: middle;
+	opacity: 0.65;
+}
+#Transport .walking img {
+	width: 10px;
+	height: 16px;
+	background: url(../../../MMA7txt/CustomerService/images/transport.png) no-repeat left -42px;
+	vertical-align: middle;
+	opacity: 0.65;
+}
+#Transport a:hover {
+	background: #eee;
+	border: #ccc 1px solid;
+	-webkit-transition: all 0.0s;
+	-moz-transition: all 0.0s;
+	-o-transition: all 0.0s;
+	transition: all 0.0s;
+	-webkit-box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1);
+	-moz-box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1);
+	box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1)
+}
+#Transport .on {
+	background: #eee;
+	border: #ccc 1px solid;
+	-webkit-transition: all 0.0s;
+	-moz-transition: all 0.0s;
+	-o-transition: all 0.0s;
+	transition: all 0.0s;
+	-webkit-box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1);
+	-moz-box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1);
+	box-shadow: inset 0px 0px 7px 1px rgba(212, 212, 212, 1);
+}
+#Transport .on img {
+	opacity: 0.85;
+}
+#Transport .transit {
+	-webkit-border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-moz-border-radius-bottomright: 3px;
+	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+	border-left: none;
+}
+#Transport .driving {
+	-webkit-border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-top-left-radius: 3px;
+	border-bottom-left-radius: 3px;
+	border-right: none;
+}
+#Transport .transit:hover {
+	border-left: none;
+}
+#Transport .driving:hover {
+	border-right: none;
+}
+.adp-list {
+	border: none;
+	border-top: #e7e7e7 1px solid;
+	padding: 0;
+	font-family: 微軟正黑體;
+}
+.adp-listheader {
+	color: #77c;
+	font-weight: bold;
+}
+.adp-fullwidth td.adp-listsel, #directions-panel div ol li.adp-listsel {
+	background: #ebf2fc;
+	border-left: 1px solid #ebeff9;
+	border-right: 1px solid #ebeff9;
+	font-weight: bold;
+	padding: 7px 9px !important;
+}
+#directions-panel div ol {
+	width: 90%;
+	margin: 20px auto !important;
+	margin-top: 0 !important;
+}
+.adp-fullwidth td, #directions-panel div ol li {
+	padding: 7px 9px !important;
+	border-bottom: #e6e6e6 1px solid;
+}
+.adp-list .adp-listsel b {
+	font-weight: bold;
+}
+.adp-placemark {
+	border: none;
+	background: none;
+}
+.adp-placemark .adp-text {
+	font-weight: bold;
+}
+img.adp-marker {
+	margin-right: 10px;
+}
+.adp-substep b {
+	font-weight: bold;
+}
+#info-content table {
+	min-width: 200px;
+}
+#info-content table td {
+	font-family:微軟正黑體,Arial;
+}
+#iw-url {
+	line-height:2em;
+}
+#iw-url b {
+	padding-right: 5px;
+	display: block;
+}
+#iw-distance {
+	color: #5571a0;
+	font-weight: bold;
+}
+#Search_map img {
+	width: 85px;
+	height: auto;
+}
+#iw-url a {
+	color: #474747;
+	font-weight: bold;
+	font-size: 1.15em;
+}
+#iw-location {
+	font-weight: bold;
+	font-size: 1.15em;
+	line-height: 2em;
+}
+#iw-fax {
+	white-space: nowrap;
+	padding-right: 10px;
+}
+#iw-savingwithdrawoutntd-row td, #iw-withdrawoutcurr-row td, #iw-ATM_24_service-row td {
+	padding: 3px 10px;padding-left:18px;
+	background:url(../../../MMA7txt/CustomerService/images/redarrow.png) no-repeat 8px 10px #fff3f2;
+	line-height:1em;
+}
+#iw-savingwithdrawoutntd-row td {
+	padding-top:6px;
+	-webkit-border-top-left-radius: 4px;
+	-webkit-border-top-right-radius: 4px;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-topright: 4px;
+	border-top-left-radius: 4px;
+	border-top-right-radius: 4px;
+}
+#iw-ATM_24_service-row td{
+padding-bottom:6px;
+-webkit-border-bottom-right-radius: 4px;
+-webkit-border-bottom-left-radius: 4px;
+-moz-border-radius-bottomright: 4px;
+-moz-border-radius-bottomleft: 4px;
+border-bottom-right-radius: 4px;
+border-bottom-left-radius: 4px;
+background:url(../../../MMA7txt/CustomerService/images/redarrow.png) no-repeat 8px 7px #fff3f2;
+}
+.atm-add-tr td {padding-bottom:10px;}
+.maproute {
+	white-space: nowrap;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+.maproute div {
+	background: #e46262; /* Old browsers */
+	/* IE9 SVG, needs conditional override of 'filter' to 'none' */
+	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2U0NjI2MiIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjQ1JSIgc3RvcC1jb2xvcj0iI2RiNTk1OSIgc3RvcC1vcGFjaXR5PSIxIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNjMDNkM2QiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
+	background: -moz-linear-gradient(top, #e46262 0%, #db5959 45%, #c03d3d 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #e46262), color-stop(45%, #db5959), color-stop(100%, #c03d3d)); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, #e46262 0%, #db5959 45%, #c03d3d 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, #e46262 0%, #db5959 45%, #c03d3d 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, #e46262 0%, #db5959 45%, #c03d3d 100%); /* IE10+ */
+	background: linear-gradient(to bottom, #e46262 0%, #db5959 45%, #c03d3d 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e46262', endColorstr='#c03d3d', GradientType=0 ); /* IE6-8 */
+	width: 100%;
+	border-top: #fa8181 1px solid;
+	border-bottom: #720404 1px solid;
+	border-left: #a23030 1px solid;
+	border-right: #a23030 1px solid;
+	-moz-border-radius: 3px;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	width: 100%;
+	line-height: 2em;
+	color: #FFF;
+	letter-spacing: 0.5em;
+	text-align: center;
+}
+.mylocation {right: 10px !important;
+bottom: 45px !important;}
+.mylocation div {z-index: 10;
+	background-color: #fff;
+	padding: 3px;
+	border: #d2d1d1 1px solid;
+	-webkit-box-shadow: 0px 0px 12px 0px rgba(192,192,192,1);
+	-moz-box-shadow: 0px 0px 12px 0px rgba(192,192,192,1);
+	box-shadow: 0px 0px 12px 0px rgba(192,192,192,1);
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	text-indent: -9999px;
+	height: 26px;
+	width: 26px;
+	background: url(../../../MMA7txt/CustomerService/images/mylocation.png) no-repeat 5px 5px #FFF;
+	background-size: 70%; cursor:pointer;}
+a.nbtn, input.nbtn, button.nbtn {
+	font-weight: normal;
+	display: inline-block;
+*display:inline;
+	zoom: 1;
+	font-size: 15px;
+	color: #666666;
+	padding: 8px 30px;
+	line-height: 15px;
+	background: -moz-linear-gradient( top, #ffffff 0%, #ffffff 25%, #efefef);
+	background: -webkit-gradient( linear, left top, left bottom, from(#ffffff), color-stop(0.25, #ffffff), to(#efefef));
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	border: 1px solid #dddddd;
+	-moz-box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+	-webkit-box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+	box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+}
+a.nbtn:hover, input.nbtn:hover, button.nbtn:hover {
+	color: #FFF;
+	background: #d00f24;
+	background: -moz-linear-gradient( top, #fd3442 0%, #f71020 25%, #e3070f);
+	background: -webkit-gradient( linear, left top, left bottom, from(#fd3442), color-stop(0.25, #f71020), to(#e3070f));
+	border: #d00f24 1px solid;
+	border-bottom: #d00f24 1px solid;
+	-moz-box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+	-webkit-box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+	box-shadow: 0px 1px 1px rgba(180,178,178,0.5), inset 0px 0px 0px rgba(255,255,255,0.7);
+}
+a.nbtn:hover {
+	text-decoration: none;
+}
+/*fancyfields ---for form type*/
+.ffTextBoxWrapper, .ffPasswordWrapper, .ffCheckboxWrapper, .ffRadioWrapper, .ffTextAreaWrapper, .ffSubmitWrapper, .ffResetWrapper, .ffButtonWrapper {
+	display: inline-block;
+	zoom: 1;
+*display: inline;
+	vertical-align: middle;
+}
+.ffSelectWrapper {
+	display: inline-block;
+	zoom: 1;
+	vertical-align: middle;
+}
+.ffTextBoxLeft, .ffTextBoxRight, .ffPasswordLeft, .ffPasswordRight, .ffCheckbox, .ffRadio, .ffSelectButton, .ffSelectButton span, .ffSelectMenuWrapper div.ffSelectMenuTop, .ffSelectMenuWrapper div.ffSelectMenuBottom, .ffSelectMenuWrapper > div > span, .ffTextAreaTop, .ffTextAreaTop span, .ffTextAreaBottom, .ffTextAreaBottom span, .ffSubmitWrapper a, .ffSubmitWrapper a span, .ffResetWrapper a, .ffResetWrapper a span, .ffButtonWrapper a, .ffButtonWrapper a span {
+	background-image: url(../../../MMA7txt/CustomerService/images/sprite.png);
+	background-repeat: no-repeat;
+}
+/* text box */
+.ffTextBoxRight, .ffPasswordRight {
+	background-position: right -256px;
+	padding-right: 5px;
+}
+.ffTextBoxLeft, .ffPasswordLeft {
+	background-position: 0 0;
+	padding: 0 5px 0 10px;
+}
+.ffTextBoxLeft input, .ffPasswordLeft input {
+	border: 0;
+	height: 34px;
+	background-color: transparent;
+	margin-top: 8px\9;
+	height: 26px\9;
+}
+.ffTextBoxRight:hover, .ffPasswordRight:hover {
+	background-position: right -320px;
+}
+.ffTextBoxLeft:hover, .ffPasswordLeft:hover {
+	background-position: 0 -38px;
+}
+.focus .ffTextBoxRight, .focus .ffPasswordRight {
+	background-position: right -320px;
+}
+.focus .ffTextBoxLeft, .focus .ffPasswordLeft {
+	background-position: 0 -76px;
+}
+.ffTextBoxWrapper.disabled .ffTextBoxRight, .ffPasswordWrapper.disabled .ffPasswordRight {
+	background-position: right -206px;
+}
+.ffTextBoxWrapper.disabled .ffTextBoxLeft, .ffPasswordWrapper.disabled .ffPasswordLeft {
+	background-position: 0 -112px;
+	color: #999;
+}
+/* checkbox */
+
+.ffCheckboxWrapper a {
+	text-decoration: none;
+	color: #6F6F6F;
+	position: relative;
+	top: 1px;
+	padding-left: 5px;
+	margin-right: 10px;
+}
+.ffCheckbox {
+	width: 21px;
+	height: 21px;
+	float: left;
+	background-position: 0 -296px;
+	cursor: pointer;
+}
+.ffCheckboxWrapper:hover a, .ffCeckboxWrapper.focus a {
+	color: #4e4e4e;
+}
+.ffCheckboxWrapper:hover .ffCheckbox, .ffCeckboxWrapper.focus .ffCheckbox {
+	background-position: -30px -296px;
+}
+.ffCheckboxWrapper.on .ffCheckbox {
+	background-position: -60px -296px;
+}
+.ffCheckboxWrapper.on:hover .ffCheckbox, .ffCeckboxWrapper.on.focus .ffCheckbox {
+	background-position: -90px -296px;
+}
+.ffCheckboxWrapper.disabled .ffCheckbox {
+	background-position: -120px -296px;
+}
+.ffCheckboxWrapper.on.disabled .ffCheckbox {
+	background-position: -150px -296px;
+}
+.ffCheckboxWrapper.disabled a, .ffCeckboxWrapper.disabled:hover a, .ffCeckboxWrapper.disabled.focus a {
+	color: #999;
+}
+/* radio */
+.ffRadioWrapper a {
+	text-decoration: none;
+	color: #555;
+	position: relative;
+	top: 1px;
+	padding-left: 5px;
+	margin-right: 10px;
+}
+.ffRadio {
+	width: 18px;
+	height: 18px;
+	float: left;
+	background-position: -180px -296px;
+	cursor: pointer;
+}
+.line24 .ffRadio {
+	height: 24px;
+}
+.ffRadioWrapper:hover a, .ffRadioWrapper.focus a {
+	color: #4e4e4e;
+}
+.ffRadioWrapper:hover .ffRadio, .ffRadioWrapper.focus .ffRadio {
+	background-position: -210px -296px;
+}
+.ffRadioWrapper.on .ffRadio {
+	background-position: -240px -296px;
+}
+.line24 .ffRadioWrapper.on .ffRadio {
+	background-position: -240px -296px;
+}
+.ffRadioWrapper.on:hover .ffRadio, .ffRadioWrapper.on.focus .ffRadio {
+	background-position: -270px -296px;
+}
+.line24 .ffRadioWrapper.on:hover .ffRadio, .line24 .ffRadioWrapper.on.focus .ffRadio {
+	background-position: -270px -296px;
+}
+.ffRadioWrapper.disabled .ffRadio {
+	background-position: -300px -296px;
+}
+.ffRadioWrapper.on.disabled .ffRadio {
+	background-position: -330px -296px;
+}
+.ffRadioWrapper.disabled a, .ffRadioWrapper.disabled:hover a, .ffRadioWrapper.disabled.focus a {
+	color: #999;
+}
+/* selectbox */
+.ffSelectWrapper {
+	width: 120px;
+*clear:both;
+}
+.selectbar .ffSelectWrapper {
+	margin-bottom: 15%;
+}
+.ffSelect {
+	position: relative;
+}
+.ffSelect > a {
+	background-position: right -128px;
+	display: block;
+	text-decoration: none;
+	outline: 0;
+	cursor: default;
+}
+.ffSelect > a > span {
+	display: block;
+	height: 34px;
+	margin-right: 33px;
+	padding-left: 10px;
+	background-position: 0 0;
+	overflow: hidden;
+	line-height: 34px;
+	color: #555;
+	white-space: nowrap;
+*white-space: normal;
+	text-overflow: ellipsis;
+}
+.ffSelect:hover > a, .ffSelectWrapper.focus .ffSelect > a {
+	background-position: right -165px;
+}
+.ffSelect:hover > a > span, .ffSelectWrapper.focus .ffSelect > a > span {
+	background-position: 0 -76px;
+}
+.ffSelectWrapper.active .ffSelect> a {
+	background-position: right -165px;
+	z-index: 1005;
+	position: relative;
+}
+.ffSelectWrapper.active .ffSelect > a > span {
+	background-position: 0 -76px;
+}
+.ffSelectWrapper.disabled .ffSelect > a {
+	background-position: right -128px;
+}
+.ffSelectWrapper.disabled .ffSelect > a > span {
+	background-position: 0 -112px;
+	color: #999;
+}
+.ffSelectMenuWrapper {
+	width: 100%;
+}
+.ffSelectMenuWrapper .ffSelectMenuMidBG ul {
+	list-style-type: none;
+	margin: 0 0;
+	padding: 0;
+}
+.ffSelectMenuWrapper .ffSelectMenuMidBG li {
+	cursor: default;
+	background-color: #ffffcc;
+	line-height: 34px;
+	padding-left: 10px;
+}
+.ffSelectMenuWrapper .ffSelectMenuMidBG li SPAN {
+}
+.ffSelectMenuWrapper .ffSelectMenuMidBG li.disabled SPAN {
+	color: #888;
+}
+.ffSelectMenuWrapper .ffSelectMenuMidBG li.on {
+	background-color: #ffea5f;
+}
+.ffSelectMenuWrapper {
+}
+.ffSelectMenuTop {
+	height: 5px;
+	background-position: 0 -394px;
+}
+.ffSelectMenuTop span {
+	display: block;
+	height: 5px;
+	margin-left: 8px;
+	background: right -384px;
+}
+.ffSelectMenuBottom {
+	height: 5px;
+	background-position: 0 -414px;
+}
+.ffSelectMenuBottom span {
+	display: block;
+	height: 5px;
+	margin-left: 8px;
+	background-position: right -404px;
+}
+.ffSelectMenuMidBG {
+	background: url(../../../MMA7txt/CustomerService/images/sides.png) repeat-y right 0;
+}
+.ffSelectMenuMid {
+	max-height: 200px;
+	overflow: auto;
+	background: url(../../../MMA7txt/CustomerService/images/sides.png) repeat-y 0 0;
+	padding-left: 4px;
+	margin-right: 4px;
+}
+.scrollingBarWrapper {
+	width: 24px;
+	height: 200px;
+	background: url(../../../MMA7txt/CustomerService/images/scrollingBarBg.png) no-repeat;
+	right: 3px!important;
+}
+.scrollingHandle {
+	width: 24px;
+	padding-top: 20px;
+	background: url(../../../MMA7txt/CustomerService/images/scrollingHandleTop.png) no-repeat 0 0;
+}
+.scrollingHandleBottom {
+	width: 24px;
+	background: url(../../../MMA7txt/CustomerService/images/scrollingHandleBottom.png) no-repeat 0px bottom
+}
+/* textarea */
+.ffTextAreaWrapper textarea {
+	border: 0;
+	margin: 10px 10px 10px 15px;
+	padding: 0;
+	color: #555;
+	background: none;
+	font-family: Arial;
+	resize: none;
+}
+.ffTextAreaTop {
+	height: 5px;
+	background-position: 0 -394px;
+}
+.ffTextAreaTop span {
+	display: block;
+	height: 5px;
+	margin-left: 8px;
+	background-position: right -384px;
+}
+.ffTextAreaMid {
+	background: transparent url(../../../MMA7txt/CustomerService/images/sides.png) repeat-y right 0;
+}
+.ffTextAreaMid .ffTextAreaLeft {
+	background: url(../../../MMA7txt/CustomerService/images/sides.png) repeat-y 0 0;
+	margin-right: 4px;
+}
+.ffTextAreaBottom {
+	height: 5px;
+	background-position: 0 -414px;
+}
+.ffTextAreaBottom span {
+	display: block;
+	height: 5px;
+	margin-left: 6px;
+	background-position: right -404px;
+}
+/* button */
+.ffButtonWrapper > a {
+	background-position: right -585px;
+	display: block;
+	text-decoration: none;
+	outline: 0;
+}
+.ffButtonWrapper > a > span {
+	display: block;
+	height: 36px;
+	padding-bottom: 2px;
+	line-height: 39px;
+	background-position: 0 -424px;
+	text-align: center;
+	padding: 0 10px 0 15px;
+	color: #fff;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin-right: 5px;
+}
+.ffButtonWrapper:hover > a {
+	background-position: right -625px;
+}
+.ffButtonWrapper:hover > a > span {
+	background-position: 0 -464px;
+}
+.ffButtonWrapper > a:active {
+	background-position: right -665px;
+	position: relative;
+}
+.ffButtonWrapper > a:active > span {
+	background-position: 0 -504px;
+}
+.ffButtonWrapper.disabled > a {
+	background-position: right -705px;
+	position: static;
+}
+.ffButtonWrapper.disabled > a > span {
+	background-position: 0 -544px;
+	color: #c1c1c1;
+}
+input[type="text"], input[type="password"], textarea, select {
+	outline: none;
+} /* remove webkit yellow border */
+
+#main {padding: 0 !important;
+position: absolute;
+height: 100%;
+width: 100%;}
+
+#header {width:100%; z-index:102; top:0;}

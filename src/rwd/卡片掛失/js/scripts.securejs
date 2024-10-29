@@ -1,0 +1,22 @@
+$(document).ready(function(){
+  $('.open-lbox').on('click', function(e){
+    e.preventDefault();
+    openlbox($(this).data('lboxid'));
+  });
+
+  $('.notice-block b').on('click', function(){
+    $(this).toggleClass('active').siblings('.notice-desc').slideToggle();
+  });
+
+  if ($('.notice-block b').hasClass('active')) {
+    $('.notice-block .notice-desc').slideToggle();
+  }
+});
+
+function openlbox(lboxid) {
+  $('.lbox-block').find(lboxid).show().siblings().hide();
+  $('.lboxed').lightbox_me({
+    closeClick: false,
+    centered: true
+  });
+}

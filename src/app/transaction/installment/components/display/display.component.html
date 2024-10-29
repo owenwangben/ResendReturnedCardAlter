@@ -1,0 +1,32 @@
+<div class="formblock">
+	<table class="ntable cols table-striped" width="100%">
+		<tr>
+			<th class="mobile-col-5">申請日期</th>
+			<td class="mobile-col-7">{{ Today | date:'y/MM/dd' }}</td>
+		</tr>
+		<tr>
+			<th>分期本金</th>
+			<td>{{ Info.LoanAmt | number }} 元</td>
+		</tr>
+		<tr>
+			<th>選擇期數</th>
+			<td>{{ Info.Period }} 期</td>
+		</tr>
+		<tr>
+			<th>年利率</th>
+			<td><span class="red">{{ Info.Rate / 100 | percent:'1.2-2' }}</span></td>
+		</tr>
+		<tr>
+			<th>手續費</th>
+			<td>{{ Info.Fee | number }} 元</td>
+		</tr>
+		<tr>
+			<th>首期應繳分期本金</th>
+			<td>{{ Info.FirstPeriodAmt }} 元</td>
+		</tr>
+		<tr>
+			<th>首期應繳利息</th>
+			<td>{{ Info.FirstInterest | number }} 元</td>
+		</tr>
+	</table>
+</div>

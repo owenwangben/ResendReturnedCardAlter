@@ -1,0 +1,19 @@
+<div class="wrapper">
+	<div class="cover"></div>
+	<app-activity-register-header></app-activity-register-header>
+	<div class="outer_container">
+		<div class="container no-breadcrumbs">
+			<div class="content">
+				<section class="trans-content">
+					<h2 class="title">{{IsVipActivity ? "限定貴賓專屬活動" : "登錄活動"}}
+						<a routerLink="/Activity/RegisteredInquiry" class="pull-right query">已登錄活動查詢</a>
+					</h2>
+					<app-wizard [(current)]="current" [steps]="steps" [hidden]="true"></app-wizard>
+				</section>
+				<div loadHtml="/mma8/card/htmls/卡登錄大網BN.html"></div>
+				<app-activity-register-warning></app-activity-register-warning>
+			</div>
+		</div>
+	</div>
+	<app-activity-register-footer></app-activity-register-footer>
+</div>

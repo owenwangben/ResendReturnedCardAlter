@@ -1,0 +1,30 @@
+{
+    "Result": {
+        "Mobile": "7957522522",
+        "HomeTel": "774-22222557-",
+        "CompanyTel": "777-55555555",
+        "ResidenceTel": "774-22222557-",
+        "AddrInd": "2",
+        "HomeZip": "43646",
+        "CompanyZip": "815",
+        "ResidenceZip": "436",
+        "HomeAddress": "現居地址１                  現居地址２",
+        "CompanyAddress": "公司地址１                  公司地址２",
+        "ResidenceAddress": "戶籍地址１                  戶籍地址２",
+        "CompanyName": "家管"
+    },
+    "Header": {
+        "SessionID": "",
+        "ApplicationName": "",
+        "ReferenceNo": "",
+        "UserID": "",
+        "RequestTime": "",
+        "TxCode": "",
+        "RemoteAddr": "",
+        "PageName": "",
+        "SsaToken": ""
+    },
+    "ResultCode": "00",
+    "ResultMessage": "",
+    "Error": null
+}

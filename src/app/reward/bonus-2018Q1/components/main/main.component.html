@@ -1,0 +1,28 @@
+<div class="formblock">
+	<p class="title">請點選欲選擇兌換的方式</p>
+	<div class="btn-block">
+		<a class="btn" href="javascript:void" (click)="redeem('/Reward/Bonus2018Q1/Redeem1')">點數兌換</a>
+		<a class="btn" href="javascript:void" (click)="redeem('/Reward/Bonus2018Q1/Redeem2')">滿額兌換</a>
+		<a class="btn" routerLink="/Reward/Bonus2018Q1/Inquiry">兌換紀錄</a>
+	</div>
+	<p class="title">截至目前為止您符合條件的消費的紀錄如下</p>
+	<table>
+		<thead>
+			<tr>
+				<th>序號</th>
+				<th>消費日</th>
+				<th class="full">刷卡金額</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr *ngFor="let tx of transactions">
+				<td>{{tx.SeqNo}}</td>
+				<td>{{tx.TX_DATE | date:'y/MM/dd'}}</td>
+				<td>{{tx.TX_AMT | number }}</td>
+			</tr>
+			<tr *ngIf="transactions.length === 0">
+				<td colspan="3">查無資料</td>
+			</tr>
+		</tbody>
+	</table>
+</div>

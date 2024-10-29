@@ -1,0 +1,135 @@
+body.scroll-fixed {
+	overflow: hidden; }
+
+  header .header-content {
+	  position: relative;
+  }
+
+  header .header-content .hamburger {
+	  position: absolute;
+	  left: 0;
+	  top: 50%;
+	  -webkit-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  transform: translateY(-50%);
+	  width: 24px;
+	  height: 24px;
+	  background-repeat: no-repeat;
+	  background-position: center center;
+	  background-size: contain;
+	  background-image: url(/mma8/card/images/hamburger-open.svg);
+  }
+
+  header .header-content .hamburger.open {
+	  background-image: url(/mma8/card/images/hamburger-close.svg);
+  }
+
+  header .header-content .logo img {
+	  max-width: 40%;
+  }
+
+  @media (min-width: 350px) {
+	  header .header-content .logo img {
+		  max-width: 100%;
+	  }
+  }
+
+  header .header-content .logo h1 {
+	  margin: 0;
+	  margin-left: 8px;
+	  font-size: 0.875rem;
+	  font-weight: 700;
+	  white-space: nowrap;
+  }
+
+  @media (min-width: 350px) {
+	  header .header-content .logo h1 {
+		  margin-left: 16px;
+		  font-size: 1.125rem;
+	  }
+  }
+
+  @media (min-width: 576px) {
+	  header .header-content .logo h1 {
+		  margin-left: 20px;
+	  }
+  }
+
+  header .nav-content {
+	  display: none;
+	  position: fixed;
+	  top: 55px;
+	  right: 0;
+	  bottom: 0;
+	  left: 0;
+	  background: #FFF;
+	  z-index: 1000;
+  }
+
+  @media (min-width: 350px) {
+	  header .nav-content {
+		  top: 59px;
+	  }
+  }
+
+  @media (min-width: 576px) {
+	  header .nav-content {
+		  top: 59px;
+	  }
+  }
+
+  @media (min-width: 768px) {
+	  header .nav-content {
+		  display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+		  -webkit-box-pack: end;
+		  -ms-flex-pack: end;
+		  justify-content: flex-end;
+		  position: relative;
+		  top: auto;
+		  right: auto;
+		  bottom: auto;
+		  left: auto;
+		  height: auto;
+		  background: transparent;
+	  }
+  }
+
+  header .nav-content.open {
+	  display: block;
+  }
+
+  @media (min-width: 768px) {
+	  header .nav-content.open {
+		  display: -webkit-box;
+		  display: -ms-flexbox;
+		  display: flex;
+	  }
+  }
+
+  header .nav-content nav {
+	  -webkit-box-orient: vertical;
+	  -webkit-box-direction: normal;
+	  -ms-flex-direction: column;
+	  flex-direction: column;
+	  -webkit-box-pack: start;
+	  -ms-flex-pack: start;
+	  justify-content: flex-start;
+  }
+
+  @media (min-width: 768px) {
+	  header .nav-content nav {
+		  -webkit-box-orient: horizontal;
+		  -webkit-box-direction: normal;
+		  -ms-flex-direction: row;
+		  flex-direction: row;
+		  -webkit-box-pack: end;
+		  -ms-flex-pack: end;
+		  justify-content: flex-end;
+	  }
+  }
+
+  header .nav-content nav .nav-link-hover:hover {
+	  color: #CF0209 !important;
+  }

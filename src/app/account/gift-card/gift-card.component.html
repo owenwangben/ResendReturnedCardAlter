@@ -1,0 +1,105 @@
+﻿<div class="outer_container">
+	<div class="container">
+		<app-breadcrumbs></app-breadcrumbs>
+		<div class="content">
+			<section class="trans-content">
+				<h2 class="title">{{pageinfo.name}}</h2>
+				<div class="abgne_tab">
+					<ul class="ntabs">
+						<li [class.active]="tab == 1" (click)="setTab(1)"><a href="javascript:void(0)">儲值金餘額查詢</a></li>
+						<li [class.active]="tab == 2" (click)="setTab(2)"><a href="javascript:void(0)">交易明細查詢</a></li>
+					</ul>
+					<div class="tab-container">
+						<div class="tab-content">
+							<div class="formblock" ngForm #f="ngForm">
+								<table class="new-datatable">
+									<tbody>
+										<tr>
+											<th>儲值卡卡號</th>
+											<td>
+												<app-card-number-input name="cardNo" [(ngModel)]="requestModel.CardNo"></app-card-number-input>
+												<font>請依序輸入卡號共16碼</font>
+											</td>
+										</tr>
+										<tr>
+											<th>卡片驗證碼</th>
+											<td>
+												<input type="text" class="artfld col-2" name="CVV2" [(ngModel)]="requestModel.CVV2" numberOnly maxlength=3 placeholder="驗證碼">
+											</td>
+										</tr>
+										<tr>
+											<th>有效期限</th>
+											<td>
+												<app-expirydate-selector name="ValidDateMMYY" [(ngModel)]="requestModel.ValidDateMMYY"></app-expirydate-selector>
+											</td>
+										</tr>
+										<tr>
+											<th>驗證碼</th>
+											<td>
+												<app-vcaptcha name="captcha" [(ngModel)]="requestModel.captcha"></app-vcaptcha>
+											</td>
+										</tr>
+										<tr *ngIf="tab == 2">
+											<td colspan=2>
+												<app-period-query
+													[fastQueryOptions]="fastQueryOptions"
+													[(start)]="requestModel.StartDate"
+													[(end)]="requestModel.EndDate"
+													(search)="queryData()">
+												</app-period-query>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+								<div *ngIf="tab == 1" class="btn-zone">
+									<button type="button" class="nbtn" (click)="clear()">清除</button>
+									<button type="button" *ngIf="tab == 1" class="nbtn focus" (click)="queryDataRealTime()">查詢</button>
+								</div>
+							</div>
+
+							<br />
+
+							<table class="ntable cols" *ngIf="tab == 1">
+								<tr>
+									<th>儲值金餘額(即時)</th>
+									<td>
+										<font color="red">{{resultModel?.Balance | number}}元</font>
+									</td>
+								</tr>
+							</table>
+							<table class="ntable" *ngIf="tab == 2">
+								<thead>
+									<tr>
+										<th>交易日期</th>
+										<th>消費名稱</th>
+										<th>消費總金額</th>
+										<th>儲值金額</th>
+										<th>備註</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr *ngFor="let item of resultModel?.Items">
+										<td>{{item.TXDATE.substring(0,4) + "/" + item.TXDATE.substring(4,6) + "/" + item.TXDATE.substring(6,8)}}</td>
+										<td>{{item.TXSOURCE}}</td>
+										<td class="num-align">{{item.TDAMT}}</td>
+										<td class="num-align">{{item.TXAMT}}</td>
+										<td>{{item.MEMO}}</td>
+									</tr>
+									<tr *ngIf="!resultModel?.Items?.length">
+										<td colspan="5">查無資料！</td>
+									</tr>
+								</tbody>
+							</table>
+							<div class="btn-zone">
+								<!-- <button type="button" class="nbtn">帳務資訊</button>
+								<button type="button" class="nbtn">可用額度查詢</button> -->
+								<a class="nbtn" href="https://mma.sinopac.com/mma/bank/transfer/mma_transfer.aspx">立即Gif Card儲值</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div loadHtml="/mma8/card/htmls/GIFT CARD交易查詢注意事項.html"></div>
+			</section>
+		</div>
+	</div>
+</div>
